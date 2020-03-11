@@ -58,8 +58,6 @@ components:
       properties:
         timestamp:
           type: integer
-          minimum: 10
-          maximum: 10
         variant:
           type: string
         app_key:
