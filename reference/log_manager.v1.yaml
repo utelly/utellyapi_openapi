@@ -14,7 +14,7 @@ paths:
   /log:
     post:
       summary: ''
-      operationId: post-log
+      operationId: app.post_log
       responses:
         '200':
           description: OK
@@ -25,10 +25,10 @@ paths:
               $ref: '#/components/schemas/Log'
       security:
         - Authorization: []
-  /log_multi:
+  /logs:
     post:
       summary: ''
-      operationId: post-log_multi
+      operationId: app.post_logs
       responses:
         '200':
           description: OK
@@ -41,6 +41,7 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Log'
+    parameters: []
 components:
   schemas:
     Log:
@@ -80,3 +81,4 @@ components:
       name: Authorization
       type: apiKey
       in: header
+      description: ''
