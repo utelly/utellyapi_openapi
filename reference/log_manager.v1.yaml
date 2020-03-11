@@ -10,6 +10,75 @@ servers:
     description: dev
   - url: 'https://staging-utellapis.com/log_manager/v1'
     description: staging
-paths: {}
+paths:
+  /log:
+    post:
+      summary: ''
+      operationId: post-log
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Log'
+      security:
+        - Authorization: []
+  /log_multi:
+    post:
+      summary: ''
+      operationId: post-log_multi
+      responses:
+        '200':
+          description: OK
+      security:
+        - Authorization: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Log'
 components:
-  schemas: {}
+  schemas:
+    Log:
+      title: Log
+      type: object
+      x-examples:
+        '1':
+          timestamp: 1583934547
+          variant: utellygn
+          app_key: 36a637a56e184748b0470e50e6242901
+          system_name: user_manager
+          version: 2
+          payload:
+            message: pipeline successfully created
+      properties:
+        timestamp:
+          type: integer
+          minimum: 10
+          maximum: 10
+        variant:
+          type: string
+        app_key:
+          type: string
+        payload:
+          type: object
+        system_name:
+          type: string
+        version:
+          type: number
+      required:
+        - timestamp
+        - variant
+        - app_key
+        - payload
+        - system_name
+        - version
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
