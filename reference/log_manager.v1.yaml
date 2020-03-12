@@ -14,7 +14,7 @@ paths:
   /log:
     post:
       summary: ''
-      operationId: app.post_log
+      operationId: v1.log.post_log
       responses:
         '200':
           description: OK
@@ -28,7 +28,7 @@ paths:
   /logs:
     post:
       summary: ''
-      operationId: app.post_logs
+      operationId: v1.logs.post_logs
       responses:
         '200':
           description: OK
@@ -82,4 +82,4 @@ components:
       type: apiKey
       in: header
       description: ''
-      x-apikeyInfoFunc: app.check_token
+      x-apikeyInfoFunc: security.check_token
