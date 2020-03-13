@@ -51,6 +51,8 @@ paths:
       security:
         - Authorization: []
       description: ''
+      tags:
+        - Log Management
   /logs:
     post:
       summary: Batch add Log entries
@@ -96,6 +98,8 @@ paths:
               items:
                 $ref: '#/components/schemas/Log'
       description: ''
+      tags:
+        - Log Management
     parameters: []
 components:
   schemas:
