@@ -31,6 +31,18 @@ paths:
                 required:
                   - status_code
                   - log
+              examples:
+                '1':
+                  value:
+                    status_code: 200
+                    log:
+                      timestamp: 1583934547
+                      variant: utellygn
+                      app_key: 36a637a56e184748b0470e50e6242901
+                      system_name: user_manager
+                      version: 2
+                      payload:
+                        message: pipeline successfully created
       requestBody:
         content:
           application/json:
@@ -60,6 +72,18 @@ paths:
                 required:
                   - status_code
                   - logs
+              examples:
+                '1':
+                  value:
+                    status_code: 200
+                    logs:
+                      - timestamp: 1583934547
+                        variant: utellygn
+                        app_key: 36a637a56e184748b0470e50e6242901
+                        system_name: user_manager
+                        version: 2
+                        payload:
+                          message: pipeline successfully created
       security:
         - Authorization: []
       requestBody:
