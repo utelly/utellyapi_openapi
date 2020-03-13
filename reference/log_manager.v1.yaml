@@ -6,9 +6,9 @@ info:
 servers:
   - url: 'https://utellapis.com/log_manager/v1'
     description: prod
-  - url: 'https://dev-utellapis.com/log_manager/v1'
+  - url: 'https://dev.utellapis.com/log_manager/v1'
     description: dev
-  - url: 'https://staging-utellapis.com/log_manager/v1'
+  - url: 'https://staging.utellapis.com/log_manager/v1'
     description: staging
 paths:
   /log:
