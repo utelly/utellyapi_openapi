@@ -13,7 +13,7 @@ servers:
 paths:
   /log:
     post:
-      summary: ''
+      summary: Add a Log entry
       operationId: v1.log.post_log
       responses:
         '200':
@@ -50,10 +50,10 @@ paths:
               $ref: '#/components/schemas/Log'
       security:
         - Authorization: []
-      description: Add a Log entry
+      description: ''
   /logs:
     post:
-      summary: ''
+      summary: Batch add Log entries
       operationId: v1.logs.post_logs
       responses:
         '200':
@@ -95,7 +95,7 @@ paths:
               uniqueItems: false
               items:
                 $ref: '#/components/schemas/Log'
-      description: Batch add Log entries
+      description: ''
     parameters: []
 components:
   schemas:
