@@ -26,8 +26,11 @@ paths:
                 properties:
                   status_code:
                     type: integer
+                  log:
+                    $ref: '#/components/schemas/Log'
                 required:
                   - status_code
+                  - log
       requestBody:
         content:
           application/json:
@@ -50,8 +53,11 @@ paths:
                 properties:
                   status_code:
                     type: number
+                  logs:
+                    $ref: '#/components/schemas/Log'
                 required:
                   - status_code
+                  - logs
       security:
         - Authorization: []
       requestBody:
