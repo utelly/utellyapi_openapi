@@ -16,8 +16,8 @@ paths:
       summary: ''
       operationId: v1.log.post_log
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
       requestBody:
         content:
           application/json:
@@ -30,8 +30,8 @@ paths:
       summary: ''
       operationId: v1.logs.post_logs
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
       security:
         - Authorization: []
       requestBody:
