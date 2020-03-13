@@ -22,6 +22,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   status_code:
                     type: integer
@@ -45,6 +46,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   status_code:
                     type: number
