@@ -50,6 +50,7 @@ paths:
               $ref: '#/components/schemas/Log'
       security:
         - Authorization: []
+      description: Add a Log entry
   /logs:
     post:
       summary: ''
@@ -94,6 +95,7 @@ paths:
               uniqueItems: false
               items:
                 $ref: '#/components/schemas/Log'
+      description: Batch add Log entries
     parameters: []
 components:
   schemas:
