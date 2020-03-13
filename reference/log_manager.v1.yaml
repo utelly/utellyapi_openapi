@@ -48,6 +48,16 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Log'
+            examples:
+              '1':
+                value:
+                  timestamp: 1583934547
+                  variant: utellygn
+                  app_key: 36a637a56e184748b0470e50e6242901
+                  system_name: user_manager
+                  version: 2
+                  payload:
+                    message: pipeline successfully created
       security:
         - Authorization: []
       description: ''
@@ -97,6 +107,16 @@ paths:
               uniqueItems: false
               items:
                 $ref: '#/components/schemas/Log'
+            examples:
+              '1':
+                value:
+                  - timestamp: 1583934547
+                    variant: utellygn
+                    app_key: 36a637a56e184748b0470e50e6242901
+                    system_name: user_manager
+                    version: 2
+                    payload:
+                      message: pipeline successfully created
       description: ''
       tags:
         - Log Management
