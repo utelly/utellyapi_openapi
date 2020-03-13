@@ -54,7 +54,9 @@ paths:
                   status_code:
                     type: number
                   logs:
-                    $ref: '#/components/schemas/Log'
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Log'
                 required:
                   - status_code
                   - logs
@@ -65,6 +67,7 @@ paths:
           application/json:
             schema:
               type: array
+              uniqueItems: false
               items:
                 $ref: '#/components/schemas/Log'
     parameters: []
