@@ -135,6 +135,8 @@ components:
         - payload
         - system_name
         - version
+      x-tags:
+        - Models
   securitySchemes:
     Authorization:
       name: Authorization
