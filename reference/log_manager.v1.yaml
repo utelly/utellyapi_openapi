@@ -16,8 +16,17 @@ paths:
       summary: ''
       operationId: v1.log.post_log
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                required:
+                  - status_code
       requestBody:
         content:
           application/json:
@@ -30,8 +39,17 @@ paths:
       summary: ''
       operationId: v1.logs.post_logs
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: number
+                required:
+                  - status_code
       security:
         - Authorization: []
       requestBody:
