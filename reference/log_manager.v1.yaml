@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: log_manager
-  version: '1'
+  version: v1
   description: Log manager for the Utelly API platform
 servers:
   - url: 'https://utellapis.com/log_manager/v1'
@@ -60,7 +60,7 @@ paths:
                     message: pipeline successfully created
       security:
         - Authorization: []
-      description: ''
+      description: Add a Log entry
       tags:
         - Log Management
   /logs:
@@ -117,9 +117,10 @@ paths:
                     version: 2
                     payload:
                       message: pipeline successfully created
-      description: ''
+      description: Batch add Log entries
       tags:
         - Log Management
+      parameters: []
     parameters: []
 components:
   schemas:
