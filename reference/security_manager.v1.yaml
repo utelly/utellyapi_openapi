@@ -13,7 +13,7 @@ paths:
   /authenticate:
     post:
       summary: Authenticate
-      operationId: post-authenticate
+      operationId: v1.user.authenticate
       responses:
         '200':
           description: OK
