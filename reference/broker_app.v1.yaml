@@ -1,19 +1,19 @@
 openapi: 3.0.0
 info:
-  title: security_manager
-  version: v1
+  title: broker_app
+  version: '1.0'
 servers:
-  - url: 'https://utellapis.com/security_manager/v1'
+  - url: 'https://utellapis.com/broker_app/v1'
     description: prod
-  - url: 'https://staging.utellapis.com/security_manager/v1'
+  - url: 'https://staging.utellapis.com/broker_app/v1'
     description: staging
-  - url: 'https://dev.utellapis.com/security_manager/v1'
+  - url: 'https://dev.utellapis.com/broker_app/v1'
     description: dev
 paths:
-  /authenticate:
+  /login:
     post:
-      summary: Authenticate
-      operationId: v1.user.authenticate
+      summary: User Login
+      operationId: v1.user.login
       responses:
         '200':
           description: OK
@@ -26,14 +26,22 @@ paths:
                     type: string
                   authentication_token:
                     type: string
+                  roles:
+                    type: array
+                    items:
+                      type: string
                 required:
                   - id
                   - authentication_token
+                  - roles
               examples:
                 '1':
                   value:
                     id: 9b38b54dd74644db96e772d6076615da
                     authentication_token: 9b38b54dd74644db96e772d6076615da
+                    roles:
+                      - admin
+      description: ''
       requestBody:
         content:
           application/json:
@@ -52,9 +60,12 @@ paths:
                 value:
                   email: hello@utelly.com
                   password: 3@Ubc1iCYZUKGtAi
-        description: ''
-      description: Authenticates a user
-      tags:
-        - Authentication Management
+  /register:
+    post:
+      summary: User Register
+      operationId: v1.user.register
+      responses:
+        '200':
+          description: OK
 components:
   schemas: {}
