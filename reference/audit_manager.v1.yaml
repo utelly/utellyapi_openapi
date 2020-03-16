@@ -4,12 +4,12 @@ info:
   version: v1
   description: Log manager for the Utelly API platform
 servers:
-  - url: 'https://utellapis.com/audit_manager/v1'
+  - url: 'https://services.utelly.com/audit_manager/v1'
     description: prod
-  - url: 'https://dev.utellapis.com/audit_manager/v1'
-    description: dev
-  - url: 'https://staging.utellapis.com/audit_manager/v1'
+  - url: 'https://staging-services.utelly.com/audit_manager/v1'
     description: staging
+  - url: 'https://dev-services.utelly.com/audit_manager/v1'
+    description: dev
 paths:
   /log:
     post:

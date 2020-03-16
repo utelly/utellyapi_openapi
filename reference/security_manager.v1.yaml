@@ -3,11 +3,11 @@ info:
   title: security_manager
   version: v1
 servers:
-  - url: 'https://utellapis.com/security_manager/v1'
+  - url: 'https://services.utelly.com/security_manager/v1'
     description: prod
-  - url: 'https://staging.utellapis.com/security_manager/v1'
+  - url: 'https://staging-services.utelly.com/security_manager/v1'
     description: staging
-  - url: 'https://dev.utellapis.com/security_manager/v1'
+  - url: 'https://dev-services.utelly.com/security_manager/v1'
     description: dev
 paths:
   /authenticate:

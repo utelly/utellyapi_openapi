@@ -3,11 +3,11 @@ info:
   title: user_manager
   version: v1
 servers:
-  - url: 'https://utellapis.com/user_manager/v1'
+  - url: 'https://services.utelly.com/user_manager/v1'
     description: prod
-  - url: 'https://staging.utellapis.com/user_manager/v1'
+  - url: 'https://staging-services.utelly.com/user_manager/v1'
     description: staging
-  - url: 'https://dev.utellapis.com/user_manager/v1'
+  - url: 'https://dev-services.utelly.com/user_manager/v1'
     description: dev
 paths:
   '/user/{user_id}/roles':
@@ -32,13 +32,17 @@ paths:
                   roles:
                     type: array
                     items:
-                      type: string
+                      $ref: './broker_app.v1.yaml#/components/schemas/Role'
                 required:
                   - roles
               examples:
                 '1':
                   value:
-                    roles: []
+                    roles:
+                      - perspective_id: 1
+                        module_id: 1
+                        environment_id: 1
+                        permission: login_to_portal
       operationId: v1.user.get_roles
       security:
         - Authorization: []
@@ -50,4 +54,4 @@ components:
       name: Authorization
       type: apiKey
       in: header
-      x-apikeyInfoFunc: security.check_token      
+      x-apikeyInfoFunc: security.check_token

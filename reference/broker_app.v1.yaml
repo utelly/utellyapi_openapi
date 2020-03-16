@@ -3,11 +3,11 @@ info:
   title: broker_app
   version: v1
 servers:
-  - url: 'https://utellapis.com/broker_app/v1'
+  - url: 'https://services.utelly.com/broker_app/v1'
     description: prod
-  - url: 'https://staging.utellapis.com/broker_app/v1'
+  - url: 'https://staging-services.utelly.com/broker_app/v1'
     description: staging
-  - url: 'https://dev.utellapis.com/broker_app/v1'
+  - url: 'https://dev-services.utelly.com/broker_app/v1'
     description: dev
 paths:
   /login:
@@ -43,7 +43,7 @@ paths:
                       - perspective_id: 1
                         module_id: 1
                         environment_id: 1
-                        permission: '1'
+                        permission: login_to_portal
       description: ''
       requestBody:
         content:
@@ -84,7 +84,7 @@ components:
           perspective_id: 1
           module_id: 1
           environment_id: 1
-          permission: '1'
+          permission: login_to_portal
       properties:
         environment_id:
           type: integer
@@ -94,3 +94,8 @@ components:
           type: integer
         permission:
           type: string
+      required:
+        - environment_id
+        - perspective_id
+        - module_id
+        - permission
