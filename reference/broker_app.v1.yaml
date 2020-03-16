@@ -29,7 +29,7 @@ paths:
                   roles:
                     type: array
                     items:
-                      type: string
+                      $ref: '#/components/schemas/Role'
                 required:
                   - id
                   - authentication_token
@@ -40,7 +40,10 @@ paths:
                     id: 9b38b54dd74644db96e772d6076615da
                     authentication_token: 9b38b54dd74644db96e772d6076615da
                     roles:
-                      - admin
+                      - perspective_id: 1
+                        module_id: 1
+                        environment_id: 1
+                        permission: '1'
       description: ''
       requestBody:
         content:
@@ -72,4 +75,22 @@ paths:
       tags:
         - User Management
 components:
-  schemas: {}
+  schemas:
+    Role:
+      title: Role
+      type: object
+      x-examples:
+        '1':
+          perspective_id: 1
+          module_id: 1
+          environment_id: 1
+          permission: '1'
+      properties:
+        environment_id:
+          type: integer
+        perspective_id:
+          type: integer
+        module_id:
+          type: integer
+        permission:
+          type: string
