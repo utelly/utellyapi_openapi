@@ -1,14 +1,14 @@
 openapi: 3.0.0
 info:
-  title: log_manager
+  title: audit_manager
   version: v1
   description: Log manager for the Utelly API platform
 servers:
-  - url: 'https://utellapis.com/log_manager/v1'
+  - url: 'https://utellapis.com/audit_manager/v1'
     description: prod
-  - url: 'https://dev.utellapis.com/log_manager/v1'
+  - url: 'https://dev.utellapis.com/audit_manager/v1'
     description: dev
-  - url: 'https://staging.utellapis.com/log_manager/v1'
+  - url: 'https://staging.utellapis.com/audit_manager/v1'
     description: staging
 paths:
   /log:
