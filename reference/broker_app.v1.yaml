@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: broker_app
-  version: '1.0'
+  version: v1
 servers:
   - url: 'https://utellapis.com/broker_app/v1'
     description: prod
