@@ -32,7 +32,7 @@ paths:
                   roles:
                     type: array
                     items:
-                      $ref: './broker_app.v1.yaml#/components/schemas/Role'
+                      $ref: '#/components/schemas/Role'
                 required:
                   - roles
               examples:
@@ -48,7 +48,30 @@ paths:
         - Authorization: []
       description: Get user roles
 components:
-  schemas: {}
+  schemas:
+    Role:
+      title: Role
+      type: object
+      x-examples:
+        '1':
+          perspective_id: 1
+          module_id: 1
+          environment_id: 1
+          permission: login_to_portal
+      properties:
+        environment_id:
+          type: integer
+        perspective_id:
+          type: integer
+        module_id:
+          type: integer
+        permission:
+          type: string
+      required:
+        - environment_id
+        - perspective_id
+        - module_id
+        - permission
   securitySchemes:
     Authorization:
       name: Authorization
