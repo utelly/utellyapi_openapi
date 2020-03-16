@@ -19,7 +19,8 @@ paths:
         required: true
     get:
       summary: Get user roles
-      tags: []
+      tags:
+        - User Management
       responses:
         '200':
           description: OK

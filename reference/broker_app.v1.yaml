@@ -60,6 +60,8 @@ paths:
                 value:
                   email: hello@utelly.com
                   password: 3@Ubc1iCYZUKGtAi
+      tags:
+        - User Management
   /register:
     post:
       summary: User Register
@@ -67,5 +69,7 @@ paths:
       responses:
         '200':
           description: OK
+      tags:
+        - User Management
 components:
   schemas: {}
