@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: security_manager
+  version: v1
+servers:
+  - url: 'https://utellapis.com/security_manager/v1'
+    description: prod
+  - url: 'https://staging.utellapis.com/security_manager/v1'
+    description: staging
+  - url: 'https://dev.utellapis.com/security_manager/v1'
+    description: dev
+paths:
+  /authenticate:
+    post:
+      summary: Authenticate
+      operationId: post-authenticate
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  authentication_token:
+                    type: string
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                required:
+                  - id
+                  - authentication_token
+                  - roles
+              examples:
+                '1':
+                  value:
+                    id: 9b38b54dd74644db96e772d6076615da
+                    authentication_token: 9b38b54dd74644db96e772d6076615da
+                    role: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+            examples:
+              '1':
+                value:
+                  email: hello@utelly.com
+                  password: 3@Ubc1iCYZUKGtAi
+        description: ''
+      description: Authenticates a user
+      tags:
+        - Authentication Management
+components:
+  schemas: {}

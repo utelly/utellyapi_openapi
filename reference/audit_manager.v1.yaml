@@ -37,10 +37,10 @@ paths:
                     status_code: 200
                     log:
                       timestamp: 1583934547
-                      variant: utellygn
-                      app_key: 36a637a56e184748b0470e50e6242901
+                      user_id: 4ae0359e57bf4465b79d730d27f84426
                       system_name: user_manager
-                      version: 2
+                      system_version: 2
+                      code: pipeline_success
                       payload:
                         message: pipeline successfully created
       requestBody:
@@ -52,17 +52,17 @@ paths:
               '1':
                 value:
                   timestamp: 1583934547
-                  variant: utellygn
-                  app_key: 36a637a56e184748b0470e50e6242901
+                  user_id: 4ae0359e57bf4465b79d730d27f84426
                   system_name: user_manager
-                  version: 2
+                  system_version: 2
+                  code: pipeline_success
                   payload:
                     message: pipeline successfully created
       security:
         - Authorization: []
       description: Add a Log entry
       tags:
-        - Log Management
+        - Audit Management
   /logs:
     post:
       summary: Batch add Log entries
@@ -91,10 +91,10 @@ paths:
                     status_code: 200
                     logs:
                       - timestamp: 1583934547
-                        variant: utellygn
-                        app_key: 36a637a56e184748b0470e50e6242901
+                        user_id: 4ae0359e57bf4465b79d730d27f84426
                         system_name: user_manager
-                        version: 2
+                        system_version: 2
+                        code: pipeline_success
                         payload:
                           message: pipeline successfully created
       security:
@@ -111,16 +111,17 @@ paths:
               '1':
                 value:
                   - timestamp: 1583934547
-                    variant: utellygn
-                    app_key: 36a637a56e184748b0470e50e6242901
+                    user_id: 4ae0359e57bf4465b79d730d27f84426
                     system_name: user_manager
-                    version: 2
+                    system_version: 2
+                    code: pipeline_success
                     payload:
                       message: pipeline successfully created
+        description: ''
       description: Batch add Log entries
-      tags:
-        - Log Management
       parameters: []
+      tags:
+        - Audit Management
     parameters: []
 components:
   schemas:
@@ -130,34 +131,31 @@ components:
       x-examples:
         '1':
           timestamp: 1583934547
-          variant: utellygn
-          app_key: 36a637a56e184748b0470e50e6242901
+          user_id: 4ae0359e57bf4465b79d730d27f84426
           system_name: user_manager
-          version: 2
+          system_version: 2
+          code: pipeline_success
           payload:
             message: pipeline successfully created
+      x-tags:
+        - Models
       properties:
         timestamp:
           type: integer
-        variant:
+        system_name:
           type: string
-        app_key:
+        system_version:
+          type: number
+        code:
           type: string
         payload:
           type: object
-        system_name:
-          type: string
-        version:
-          type: number
       required:
         - timestamp
-        - variant
-        - app_key
-        - payload
         - system_name
-        - version
-      x-tags:
-        - Models
+        - system_version
+        - code
+        - payload
   securitySchemes:
     Authorization:
       name: Authorization
