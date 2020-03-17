@@ -60,7 +60,7 @@ paths:
                     message: pipeline successfully created
       security:
         - Authorization: []
-      description: Add a Log entry
+      description: Add a Log entry.
       tags:
         - Audit Management
   /logs:
