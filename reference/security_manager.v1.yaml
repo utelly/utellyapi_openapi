@@ -60,10 +60,10 @@ paths:
       description: Authenticates a user
       tags:
         - Authentication Management
-  /refresh_jwt_token:
+  /refresh_jwt_access_token:
     post:
-      summary: ''
-      operationId: v1.user.refresh_jwt_token
+      summary: Refresh jwt access_token
+      operationId: v1.user.refresh_jwt_access_token
       responses:
         '200':
           description: OK
@@ -100,6 +100,7 @@ paths:
                   refresh_token: cc53ca4aaf294c489a29c1515cb1f1b3
       tags:
         - Authentication Management
+    parameters: []
 components:
   schemas: {}
   securitySchemes: {}
