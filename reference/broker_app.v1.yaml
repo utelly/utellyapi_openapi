@@ -102,8 +102,6 @@ paths:
               '1':
                 value:
                   refresh_token: cc53ca4aaf294c489a29c1515cb1f1b3
-      security:
-        - Authorization: []
       description: ''
     parameters: []
 components:
