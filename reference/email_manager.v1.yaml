@@ -12,7 +12,7 @@ servers:
 paths:
   /send_email:
     post:
-      summary: ''
+      summary: Send email
       operationId: v1.email.send
       responses:
         '200':
@@ -63,6 +63,8 @@ paths:
                       value: Keiser
                     - key: token
                       value: token
+      tags:
+        - Email Management
 components:
   schemas: {}
   securitySchemes:
