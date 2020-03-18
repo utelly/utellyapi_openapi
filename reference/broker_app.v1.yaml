@@ -25,21 +25,25 @@ paths:
                 properties:
                   id:
                     type: string
-                  authentication_token:
+                  access_token:
                     type: string
                   roles:
                     type: array
                     items:
                       $ref: '#/components/schemas/Role'
+                  refresh_token:
+                    type: string
                 required:
                   - id
-                  - authentication_token
+                  - access_token
                   - roles
+                  - refresh_token
               examples:
                 '1':
                   value:
                     id: 9b38b54dd74644db96e772d6076615da
-                    authentication_token: 9b38b54dd74644db96e772d6076615da
+                    access_token: 9b38b54dd74644db96e772d6076615da
+                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
                     roles:
                       - perspective_id: 1
                         module_id: 1
@@ -64,15 +68,6 @@ paths:
                 value:
                   email: hello@utelly.com
                   password: 3@Ubc1iCYZUKGtAi
-      tags:
-        - User Management
-  /register:
-    post:
-      summary: User Register
-      operationId: v1.user.register
-      responses:
-        '200':
-          description: OK
       tags:
         - User Management
 components:

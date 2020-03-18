@@ -24,11 +24,14 @@ paths:
                 properties:
                   id:
                     type: string
-                  authentication_token:
+                  access_token:
+                    type: string
+                  refresh_token:
                     type: string
                 required:
                   - id
-                  - authentication_token
+                  - access_token
+                  - refresh_token
               examples:
                 '1':
                   value:
