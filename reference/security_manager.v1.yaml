@@ -22,16 +22,16 @@ paths:
               schema:
                 type: object
                 properties:
-                  id:
-                    type: string
                   access_token:
                     type: string
                   refresh_token:
                     type: string
+                  id:
+                    type: string
                 required:
-                  - id
                   - access_token
                   - refresh_token
+                  - id
               examples:
                 '1':
                   value:
@@ -101,6 +101,135 @@ paths:
       tags:
         - Authentication Management
     parameters: []
+  /register:
+    post:
+      summary: ''
+      operationId: v.user.register
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  access_token:
+                    type: string
+                  refresh_token:
+                    type: string
+                required:
+                  - id
+                  - access_token
+                  - refresh_token
+              examples:
+                '1':
+                  value:
+                    id: 9b38b54dd74644db96e772d6076615da
+                    access_token: 9b38b54dd74644db96e772d6076615da
+                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                registration_token:
+                  type: string
+                password:
+                  type: string
+                password_confirm:
+                  type: string
+              required:
+                - first_name
+                - last_name
+                - email
+                - registration_token
+                - password
+                - password_confirm
+            examples:
+              '1':
+                value:
+                  first_name: Keizer
+                  last_name: Söze
+                  email: keizer@email.com
+                  registration_token: 55a68d8af89b4a29a453c9a21b37445f
+                  password: password
+                  password_confirm: password
+  /forgot_password:
+    post:
+      summary: ''
+      operationId: v1.user.forgot_password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                required:
+                  - token
+              examples:
+                '1':
+                  value:
+                    token: f29ec3f2b0304456b9fd29ae81865af2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+                - email
+            examples:
+              '1':
+                value:
+                  email: keiser@email.com
+  /forgot_password_confirm:
+    post:
+      summary: ''
+      operationId: v1.user.forgot_password
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                token:
+                  type: string
+                password:
+                  type: string
+                password_config:
+                  type: string
+              required:
+                - email
+                - token
+                - password
+                - password_config
+            examples:
+              '1':
+                value:
+                  email: keiser@email.com
+                  token: f29ec3f2b0304456b9fd29ae81865af2
+                  password: password
+                  password_confirm: password
 components:
   schemas: {}
   securitySchemes: {}

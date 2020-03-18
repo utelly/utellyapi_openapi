@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: email_manager
+  version: v1
+servers:
+  - url: 'https://services.utelly.com/email_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/email_manager/v1'
+    description: staging
+  - url: 'https://dev-services.utelly.com/email_manager/v1'
+    description: dev
+paths:
+  /send_email:
+    post:
+      summary: ''
+      operationId: v1.email.send
+      responses:
+        '200':
+          description: OK
+      security:
+        - Authentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                variables:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                      - key
+                      - value
+                template_name:
+                  type: string
+                email_body:
+                  type: string
+                email_to:
+                  type: string
+                email_from:
+                  type: string
+                subject:
+                  type: string
+              required:
+                - variables
+                - email_to
+                - subject
+            examples:
+              '1':
+                value:
+                  subject: 'Hey! Looks like you forgot your password'
+                  email_from: hello@utelly.com
+                  email_to: keiser@email.com
+                  template_name: forgot_password
+                  variables:
+                    - key: name
+                      value: Keiser
+                    - key: token
+                      value: token
+components:
+  schemas: {}
+  securitySchemes:
+    Authentication:
+      name: Authentication
+      type: apiKey
+      in: header
