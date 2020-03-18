@@ -200,7 +200,7 @@ paths:
   /forgot_password_confirm:
     post:
       summary: ''
-      operationId: v1.user.forgot_password
+      operationId: v1.user.forgot_password_confirm
       responses:
         '200':
           description: OK
