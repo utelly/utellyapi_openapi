@@ -71,3 +71,4 @@ components:
       name: Authentication
       type: apiKey
       in: header
+      x-apikeyInfoFunc: security.check_token
