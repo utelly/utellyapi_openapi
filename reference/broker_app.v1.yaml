@@ -129,8 +129,4 @@ components:
         - perspective_id
         - module_id
         - permission
-  securitySchemes:
-    Authorization:
-      name: Authorization
-      type: apiKey
-      in: header
+  securitySchemes: {}

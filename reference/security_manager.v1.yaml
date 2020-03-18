@@ -100,8 +100,4 @@ paths:
                   refresh_token: cc53ca4aaf294c489a29c1515cb1f1b3
 components:
   schemas: {}
-  securitySchemes:
-    Authorization:
-      name: Authorization
-      type: apiKey
-      in: header
+  securitySchemes: {}
