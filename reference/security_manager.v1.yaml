@@ -103,7 +103,7 @@ paths:
     parameters: []
   /register:
     post:
-      summary: ''
+      summary: User register
       operationId: v.user.register
       responses:
         '200':
