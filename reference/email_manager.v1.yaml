@@ -37,8 +37,6 @@ paths:
                     required:
                       - key
                       - value
-                template_name:
-                  type: string
                 email_body:
                   type: string
                 email_to:
@@ -49,6 +47,7 @@ paths:
                   type: string
               required:
                 - variables
+                - email_body
                 - email_to
                 - subject
             examples:
