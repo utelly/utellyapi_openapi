@@ -181,6 +181,8 @@ paths:
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
                   password: password
                   password_confirm: password
+      tags:
+        - User Management
   /forgot_password:
     post:
       summary: Forgot password
@@ -207,6 +209,8 @@ paths:
                   email: keiser@email.com
                   destination_url_template: 'https://mydomain.com/forgot_password_page?email={email}&token={token}'
       description: sends an email with a authentication token
+      tags:
+        - User Management
   /forgot_password_confirm:
     post:
       summary: Forgot password confirm
@@ -240,6 +244,8 @@ paths:
       responses:
         '200':
           description: OK
+      tags:
+        - User Management
 components:
   schemas:
     Role:

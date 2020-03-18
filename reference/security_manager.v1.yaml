@@ -163,6 +163,8 @@ paths:
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
                   password: password
                   password_confirm: password
+      tags:
+        - Authentication Management
   /forgot_password:
     post:
       summary: Forgot password
