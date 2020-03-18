@@ -18,7 +18,7 @@ paths:
         '200':
           description: OK
       security:
-        - Authentication: []
+        - Authorization: []
       requestBody:
         content:
           application/json:
@@ -67,8 +67,8 @@ paths:
 components:
   schemas: {}
   securitySchemes:
-    Authentication:
-      name: Authentication
+    Authorization:
+      name: Authorization
       type: apiKey
       in: header
       x-apikeyInfoFunc: security.check_token
