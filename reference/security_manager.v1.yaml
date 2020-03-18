@@ -165,7 +165,7 @@ paths:
                   password_confirm: password
   /forgot_password:
     post:
-      summary: ''
+      summary: Forgot password
       operationId: v1.user.forgot_password
       responses:
         '200':
@@ -197,9 +197,11 @@ paths:
               '1':
                 value:
                   email: keiser@email.com
+      tags:
+        - Authentication Management
   /forgot_password_confirm:
     post:
-      summary: ''
+      summary: Forgot password confirm
       operationId: v1.user.forgot_password_confirm
       responses:
         '200':
@@ -230,6 +232,8 @@ paths:
                   token: f29ec3f2b0304456b9fd29ae81865af2
                   password: password
                   password_confirm: password
+      tags:
+        - Authentication Management
 components:
   schemas: {}
   securitySchemes: {}
