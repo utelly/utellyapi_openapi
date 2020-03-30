@@ -165,6 +165,8 @@ paths:
                   type: string
                 password_confirm:
                   type: string
+                destination_url_template:
+                  type: string
               required:
                 - first_name
                 - last_name
@@ -172,6 +174,7 @@ paths:
                 - registration_token
                 - password
                 - password_confirm
+                - destination_url_template
             examples:
               '1':
                 value:
@@ -181,6 +184,7 @@ paths:
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
                   password: password
                   password_confirm: password
+                  destination_url_template: 'https://mydomain.com/confirm?user_id={user_id}&code={code}'
       tags:
         - User Management
   /forgot_password:
