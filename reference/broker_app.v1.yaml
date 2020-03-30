@@ -248,7 +248,7 @@ paths:
         - User Management
   /confirm:
     post:
-      summary: ''
+      summary: Confirm email
       operationId: v1.user.confirm
       responses:
         '200':
@@ -263,6 +263,8 @@ paths:
             type: string
           in: query
           name: code
+      tags:
+        - User Management
 components:
   schemas:
     Role:

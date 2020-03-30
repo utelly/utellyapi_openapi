@@ -238,7 +238,7 @@ paths:
         - Authentication Management
   /confirm:
     post:
-      summary: ''
+      summary: Confirm email
       operationId: v1.user.confirm
       responses:
         '200':
@@ -254,6 +254,8 @@ paths:
           name: user_id
           description: ''
       description: validates user email
+      tags:
+        - Authentication Management
 components:
   schemas: {}
   securitySchemes: {}
