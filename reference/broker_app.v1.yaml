@@ -246,6 +246,23 @@ paths:
           description: OK
       tags:
         - User Management
+  /confirm:
+    post:
+      summary: ''
+      operationId: v1.user.confirm
+      responses:
+        '200':
+          description: OK
+      description: validates user email
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user_id
+        - schema:
+            type: string
+          in: query
+          name: code
 components:
   schemas:
     Role:

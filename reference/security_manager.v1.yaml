@@ -236,6 +236,24 @@ paths:
                   password_confirm: password
       tags:
         - Authentication Management
+  /confirm:
+    post:
+      summary: ''
+      operationId: v1.user.confirm
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: code
+        - schema:
+            type: string
+          in: query
+          name: user_id
+          description: ''
+      description: validates user email
 components:
   schemas: {}
   securitySchemes: {}
