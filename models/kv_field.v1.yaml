@@ -1,4 +1,4 @@
-title: preference
+title: kv_field
 type: object
 properties:
   key:
@@ -12,3 +12,9 @@ properties:
       - type: object
       - type: array
         items: {}
+x-examples:
+  '1':
+    key: name
+    value: keiser
+x-tags:
+  - fields

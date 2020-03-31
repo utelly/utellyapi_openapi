@@ -34,3 +34,5 @@ required:
   - name
   - description
   - tooltip
+x-tags:
+  - Models

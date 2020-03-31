@@ -24,17 +24,13 @@ paths:
                 type: object
                 additionalProperties: false
                 properties:
-                  status_code:
-                    type: integer
                   log:
                     $ref: ../models/Log.v1.yaml
                 required:
-                  - status_code
                   - log
               examples:
                 '1':
                   value:
-                    status_code: 200
                     log:
                       timestamp: 1583934547
                       user_id: 4ae0359e57bf4465b79d730d27f84426
@@ -76,19 +72,15 @@ paths:
                 type: object
                 additionalProperties: false
                 properties:
-                  status_code:
-                    type: number
                   logs:
                     type: array
                     items:
                       $ref: ../models/Log.v1.yaml
                 required:
-                  - status_code
                   - logs
               examples:
                 '1':
                   value:
-                    status_code: 200
                     logs:
                       - timestamp: 1583934547
                         user_id: 4ae0359e57bf4465b79d730d27f84426

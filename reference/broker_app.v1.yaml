@@ -259,6 +259,92 @@ paths:
           name: code
       tags:
         - User Management
+  '/user/{user_id}/preferences':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    get:
+      summary: Get user preferences
+      operationId: v1.user.get_preferences
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  values:
+                    type: array
+                    items:
+                      $ref: ../models/kv_field.v1.yaml
+                required:
+                  - values
+        '':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  values:
+                    type: array
+                    items:
+                      $ref: ../models/kv_field.v1.yaml
+                required:
+                  - values
+              examples:
+                '1':
+                  value:
+                    values:
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_module
+                        value: '1'
+      description: ''
+      security:
+        - Authorization: []
+  '/ui/layout/user/{user_id}':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: v1.ui.get_layout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                perspectives:
+                  type: array
+                  items:
+                    $ref: ../models/Perspective.v1.yaml
+                views:
+                  type: array
+                  items:
+                    $ref: ../models/View.v1.yaml
+                environments:
+                  type: array
+                  items:
+                    $ref: ../models/Environment.v1.yaml
+      security:
+        - Authorization: []
+      description: ''
 components:
   schemas: {}
-  securitySchemes: {}
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header

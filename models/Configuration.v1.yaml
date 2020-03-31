@@ -1,0 +1,38 @@
+title: Configuration
+type: object
+properties:
+  id:
+    type: string
+  name:
+    $ref: ./i18n_field.v1.yaml
+  payload:
+    type: object
+  type:
+    type: string
+    enum:
+      - MUX
+      - DATA SOURCE
+      - ENRICHER
+      - MODIFIER
+      - SEARCH
+      - RECOMMEND
+      - DISCOVER
+      - EXPORT
+  schedule:
+    type: string
+    enum:
+      - daily
+      - weekly
+      - montly
+      - hourly
+  linked_configuration_ids:
+    type: array
+    items:
+      type: string
+required:
+  - id
+  - name
+  - payload
+  - schedule
+x-tags:
+  - Models

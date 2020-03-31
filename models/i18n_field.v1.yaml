@@ -1,4 +1,4 @@
-title: i18n_label
+title: i18n_field
 type: object
 x-examples:
   '1':
@@ -12,3 +12,5 @@ properties:
 required:
   - value
   - locale
+x-tags:
+  - fields
