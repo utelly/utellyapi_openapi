@@ -42,7 +42,7 @@ paths:
                       - perspective_id: 1
                         module_id: 1
                         environment_id: 1
-                        permission: login_to_portal
+                        permission: read
       operationId: v1.user.get_roles
       security:
         - Authorization: []
@@ -57,7 +57,7 @@ components:
           perspective_id: 1
           module_id: 1
           environment_id: 1
-          permission: login_to_portal
+          permission: read
       properties:
         environment_id:
           type: integer
@@ -67,6 +67,9 @@ components:
           type: integer
         permission:
           type: string
+          enum:
+            - read
+            - write
       required:
         - environment_id
         - perspective_id
