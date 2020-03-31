@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: dictionary_manager
+  version: v1
+  description: ''
+servers:
+  - url: 'https://services.utelly.com/dictionary_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/dictionary_manager/v1'
+    description: staging
+  - url: 'https://dev-services.utelly.com/dictionary_manager/v1'
+    description: ''
+paths:
+  '/dictionary/{name}':
+    get:
+      summary: Get dictionary
+      tags:
+        - Dictionary Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: ../models/Environment.v1.yaml
+                        - $ref: ../models/Perspective.v1.yaml
+                        - $ref: ../models/View.v1.yaml
+                required:
+                  - value
+              examples:
+                '1':
+                  value:
+                    value:
+                      - id: '1'
+                        name: development
+                        label:
+                          en: development
+                          nl: ontwikkeling
+                        description: use and make things to break them
+                        tooltip: this environment gets refreshed daily
+      operationId: v1.dictionary.get
+      description: ''
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - environments
+            - perspectives
+            - modules
+        name: name
+        in: path
+        required: true
+components:
+  schemas: {}

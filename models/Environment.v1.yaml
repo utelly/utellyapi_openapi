@@ -1,0 +1,36 @@
+title: Environment
+type: object
+x-examples:
+  '1':
+    id: 1
+    name:
+      - locale: en
+        value: development
+      - locale: nl
+        value: ontwikkeling
+    description:
+      - locale: en
+        value: use and make things to break them
+    tooltip:
+      - locale: en
+        value: this environment gets refreshed daily
+properties:
+  id:
+    type: string
+  name:
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
+  description:
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
+  tooltip:
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
+required:
+  - id
+  - name
+  - description
+  - tooltip

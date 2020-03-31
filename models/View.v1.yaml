@@ -1,0 +1,41 @@
+title: Module
+type: object
+x-examples:
+  '1':
+    id: 1
+    name:
+      - locale: en
+        value: Overview
+    resource: data_flows
+    type: df_overview
+    description:
+      - locale: en
+        value: ''
+    tooltip:
+      - locale: en
+        value: ''
+    perspectives_id:
+      - '1'
+properties:
+  id:
+    type: string
+  name:
+    $ref: ./i18n_field.v1.yaml
+  resource:
+    type: string
+  type:
+    type: string
+  description:
+    $ref: ./i18n_field.v1.yaml
+  tooltip:
+    $ref: ./i18n_field.v1.yaml
+  perspectives_id:
+    type: string
+required:
+  - id
+  - name
+  - resource
+  - type
+  - description
+  - tooltip
+  - perspectives_id

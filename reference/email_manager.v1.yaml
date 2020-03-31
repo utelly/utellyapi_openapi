@@ -28,15 +28,7 @@ paths:
                 variables:
                   type: array
                   items:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      value:
-                        type: string
-                    required:
-                      - key
-                      - value
+                    $ref: ../models/kv_field.v1.yaml
                 email_body:
                   type: string
                 email_to:
@@ -56,12 +48,13 @@ paths:
                   subject: 'Hey! Looks like you forgot your password'
                   email_from: hello@utelly.com
                   email_to: keiser@email.com
-                  template_name: forgot_password
+                  email_body: 'Hey {name} !, here is your {token}'
                   variables:
                     - key: name
                       value: Keiser
                     - key: token
                       value: token
+        description: ''
       tags:
         - Email Management
 components:

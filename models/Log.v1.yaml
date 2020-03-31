@@ -1,0 +1,31 @@
+    
+      title: Log
+      type: object
+      x-examples:
+        '1':
+          timestamp: 1583934547
+          user_id: 4ae0359e57bf4465b79d730d27f84426
+          system_name: user_manager
+          system_version: 2
+          code: pipeline_success
+          payload:
+            message: pipeline successfully created
+      x-tags:
+        - Models
+      properties:
+        timestamp:
+          type: integer
+        system_name:
+          type: string
+        system_version:
+          type: number
+        code:
+          type: string
+        payload:
+          type: object
+      required:
+        - timestamp
+        - system_name
+        - system_version
+        - code
+        - payload

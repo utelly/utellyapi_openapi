@@ -32,7 +32,7 @@ paths:
                   roles:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Role'
+                      $ref: ../models/Role.v1.yaml
                 required:
                   - roles
               examples:
@@ -47,34 +47,47 @@ paths:
       security:
         - Authorization: []
       description: Get user roles
+  '/user/{user_id}/preferences':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  values:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      $ref: ../models/kv_field.v1.yaml
+                required:
+                  - values
+              examples:
+                '1':
+                  value:
+                    values:
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_module
+                        value: '1'
+      operationId: v1.user.get_preferences
+      security:
+        - Authorization: []
 components:
-  schemas:
-    Role:
-      title: Role
-      type: object
-      x-examples:
-        '1':
-          perspective_id: '1'
-          module_id: '1'
-          environment_id: '1'
-          permission: read
-      properties:
-        environment_id:
-          type: string
-        perspective_id:
-          type: string
-        module_id:
-          type: string
-        permission:
-          type: string
-          enum:
-            - read
-            - write
-      required:
-        - environment_id
-        - perspective_id
-        - module_id
-        - permission
+  schemas: {}
   securitySchemes:
     Authorization:
       name: Authorization

@@ -1,0 +1,14 @@
+title: i18n_label
+type: object
+x-examples:
+  '1':
+    locale: en
+    value: my english string
+properties:
+  value:
+    type: string
+  locale:
+    type: string
+required:
+  - value
+  - locale
