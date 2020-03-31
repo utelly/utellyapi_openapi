@@ -54,9 +54,9 @@ components:
       type: object
       x-examples:
         '1':
-          perspective_id: 1
-          module_id: 1
-          environment_id: 1
+          perspective_id: '1'
+          module_id: '1'
+          environment_id: '1'
           permission: read
       properties:
         environment_id:
