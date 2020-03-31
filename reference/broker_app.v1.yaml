@@ -45,9 +45,9 @@ paths:
                     access_token: 9b38b54dd74644db96e772d6076615da
                     refresh_token: f9a664c1ba3f4665aa902ded47edaca9
                     roles:
-                      - perspective_id: 1
-                        module_id: 1
-                        environment_id: 1
+                      - perspective_id: '1'
+                        module_id: '1'
+                        environment_id: '1'
                         permission: read
       description: ''
       requestBody:
@@ -142,9 +142,9 @@ paths:
                     access_token: 9b38b54dd74644db96e772d6076615da
                     refresh_token: f9a664c1ba3f4665aa902ded47edaca9
                     roles:
-                      - perspective_id: 1
-                        module_id: 1
-                        environment_id: 1
+                      - perspective_id: '1'
+                        module_id: '1'
+                        environment_id: '1'
                         permission: read
       description: ''
       requestBody:
@@ -276,17 +276,17 @@ components:
       type: object
       x-examples:
         '1':
-          perspective_id: 1
-          module_id: 1
-          environment_id: 1
+          perspective_id: '1'
+          module_id: '1'
+          environment_id: '1'
           permission: read
       properties:
         environment_id:
-          type: integer
+          type: string
         perspective_id:
-          type: integer
+          type: string
         module_id:
-          type: integer
+          type: string
         permission:
           type: string
           enum:

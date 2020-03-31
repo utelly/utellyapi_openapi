@@ -39,9 +39,9 @@ paths:
                 '1':
                   value:
                     roles:
-                      - perspective_id: 1
-                        module_id: 1
-                        environment_id: 1
+                      - perspective_id: '1'
+                        module_id: '1'
+                        environment_id: '1'
                         permission: read
       operationId: v1.user.get_roles
       security:
@@ -60,11 +60,11 @@ components:
           permission: read
       properties:
         environment_id:
-          type: integer
+          type: string
         perspective_id:
-          type: integer
+          type: string
         module_id:
-          type: integer
+          type: string
         permission:
           type: string
           enum:
