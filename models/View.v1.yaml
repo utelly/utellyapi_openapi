@@ -7,7 +7,7 @@ x-examples:
       - locale: en
         value: Overview
     resource: data_flows
-    type: df_overview
+    renderer: df_overview
     description:
       - locale: en
         value: ''
@@ -16,6 +16,8 @@ x-examples:
         value: ''
     perspectives_id:
       - '1'
+x-tags:
+  - Models
 properties:
   id:
     type: string
@@ -23,21 +25,21 @@ properties:
     $ref: ./i18n_field.v1.yaml
   resource:
     type: string
-  type:
+  renderer:
     type: string
   description:
     $ref: ./i18n_field.v1.yaml
   tooltip:
     $ref: ./i18n_field.v1.yaml
   perspectives_id:
-    type: string
+    type: array
+    items:
+      type: string
 required:
   - id
   - name
   - resource
-  - type
+  - renderer
   - description
   - tooltip
   - perspectives_id
-x-tags:
-  - Models

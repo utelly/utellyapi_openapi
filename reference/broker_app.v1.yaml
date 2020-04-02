@@ -326,18 +326,80 @@ paths:
             schema:
               type: object
               properties:
-                perspectives:
+                layout:
                   type: array
                   items:
-                    $ref: ../models/Perspective.v1.yaml
-                views:
-                  type: array
-                  items:
-                    $ref: ../models/View.v1.yaml
-                environments:
-                  type: array
-                  items:
-                    $ref: ../models/Environment.v1.yaml
+                    type: object
+                    properties:
+                      environment:
+                        $ref: ../models/Environment.v1.yaml
+                      perspectives:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            perspective:
+                              $ref: ../models/Perspective.v1.yaml
+                            views:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  view:
+                                    $ref: ../models/View.v1.yaml
+                                  permission:
+                                    type: string
+                                    enum:
+                                      - read
+                                      - write
+            examples:
+              '1':
+                value:
+                  layout:
+                    environment:
+                      id: '1'
+                      name:
+                        - locale: en
+                          value: development
+                        - locale: nl
+                          value: ontwikkeling
+                      description:
+                        - locale: en
+                          value: use and make things to break them
+                      tooltip:
+                        - locale: en
+                          value: this environment gets refreshed daily
+                    perspectives:
+                      - perspective:
+                          id: '1'
+                          name:
+                            - locale: en
+                              value: architect
+                            - locale: nl
+                              value: ontwerp
+                          description:
+                            - locale: en
+                              value: this is where you wire things up
+                          tooltip:
+                            - locale: en
+                              value: 'In this view, we can orchestrate how things are connected'
+                        views:
+                          - view:
+                              id: '1'
+                              name:
+                                - locale: en
+                                  value: Overview
+                              resource: data_flows
+                              renderer: df_overview
+                              description:
+                                - locale: en
+                                  value: ''
+                              tooltip:
+                                - locale: en
+                                  value: ''
+                              perspectives_id:
+                                - '1'
+                            permission: read
       security:
         - Authorization: []
       description: ''

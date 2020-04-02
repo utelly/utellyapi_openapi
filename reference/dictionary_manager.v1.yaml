@@ -38,12 +38,49 @@ paths:
                   value:
                     value:
                       - id: '1'
-                        name: development
-                        label:
-                          en: development
-                          nl: ontwikkeling
-                        description: use and make things to break them
-                        tooltip: this environment gets refreshed daily
+                        name:
+                          - locale: en
+                            value: development
+                          - locale: nl
+                            value: ontwikkeling
+                        description:
+                          - locale: en
+                            value: use and make things to break them
+                        tooltip:
+                          - locale: en
+                            value: this environment gets refreshed daily
+                '2':
+                  value:
+                    value:
+                      - id: '1'
+                        name:
+                          - locale: en
+                            value: architect
+                          - locale: nl
+                            value: ontwerp
+                        description:
+                          - locale: en
+                            value: this is where you wire things up
+                        tooltip:
+                          - locale: en
+                            value: 'In this view, we can orchestrate how things are connected'
+                '3':
+                  value:
+                    values:
+                      - id: '1'
+                        name:
+                          - locale: en
+                            value: Overview
+                        resource: data_flows
+                        renderer: df_overview
+                        description:
+                          - locale: en
+                            value: ''
+                        tooltip:
+                          - locale: en
+                            value: ''
+                        perspectives_id:
+                          - '1'
       operationId: v1.dictionary.get
       description: ''
     parameters:
@@ -52,7 +89,7 @@ paths:
           enum:
             - environments
             - perspectives
-            - modules
+            - views
         name: name
         in: path
         required: true
