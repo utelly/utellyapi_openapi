@@ -267,8 +267,8 @@ paths:
         in: path
         required: true
     get:
-      summary: Get user preferences
-      operationId: v1.user.get_preferences
+      summary: ''
+      operationId: get-user-user_id-preferences
       responses:
         '200':
           description: OK
@@ -280,30 +280,13 @@ paths:
                   values:
                     type: array
                     items:
-                      $ref: ../models/kv_field.v1.yaml
-                required:
-                  - values
-        '':
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  values:
-                    type: array
-                    items:
-                      $ref: ../models/kv_field.v1.yaml
-                required:
-                  - values
+                      $ref: ../models/i18n_field.v1.yaml
               examples:
                 '1':
                   value:
                     values:
                       - key: name
                         value: keiser
-      description: ''
-      security:
-        - Authorization: []
   '/ui/layout/user/{user_id}':
     parameters:
       - schema:
@@ -397,7 +380,6 @@ paths:
                                   - '1'
                               permission: read
       operationId: v1.ui.get_layout
-      requestBody: {}
       security:
         - Authorization: []
       description: ''
