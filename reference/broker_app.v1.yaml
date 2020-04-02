@@ -299,12 +299,8 @@ paths:
                 '1':
                   value:
                     values:
-                      - key: default_env
-                        value: '1'
-                      - key: default_perspective
-                        value: '1'
-                      - key: default_module
-                        value: '1'
+                      - key: name
+                        value: keiser
       description: ''
       security:
         - Authorization: []
@@ -318,7 +314,16 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wello:
+                    type: string
       operationId: v1.ui.get_layout
       requestBody:
         content:
