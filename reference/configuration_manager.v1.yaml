@@ -9,17 +9,24 @@ servers:
     description: staging
   - url: 'https://dev-services.utelly.com/configuration_manager/v1'
     description: dev
+components:
+  schemas: {}
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: query
 paths:
-  'user/{user_id}/environment/{environment_id}/view/{view_id}':
+  '/user/{user_id}/environment/{environment_id}/view/{view_id}':
     parameters:
       - schema:
           type: string
-        name: environment_id
+        name: user_id
         in: path
         required: true
       - schema:
           type: string
-        name: user_id
+        name: environment_id
         in: path
         required: true
       - schema:
@@ -30,28 +37,16 @@ paths:
     get:
       summary: Get configurations
       tags: []
+      operationId: v1.configs.get
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ../models/Configuration.v1.yaml
-        '':
-          content:
-            application/json:
-              schema:
                 type: array
                 items:
                   $ref: ../models/Configuration.v1.yaml
-      operationId: v1.configuration.get
-      description: ''
       security:
         - Authorization: []
-components:
-  schemas: {}
-  securitySchemes:
-    Authorization:
-      name: Authorization
-      type: apiKey
-      in: query
+      description: ''
