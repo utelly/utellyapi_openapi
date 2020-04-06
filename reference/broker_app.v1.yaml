@@ -408,7 +408,6 @@ paths:
                           value: friendly name of the conf2
                       payload: {}
       operationId: v1.configuration.get
-      requestBody: {}
       description: ''
       security:
         - Authorization: []
