@@ -31,7 +31,6 @@ paths:
         required: true
     get:
       summary: Get configurations
-      tags: []
       operationId: v1.configs.get
       responses:
         '200':
@@ -62,3 +61,5 @@ paths:
       security:
         - Authorization: []
       description: ''
+      tags:
+        - Configuration Management

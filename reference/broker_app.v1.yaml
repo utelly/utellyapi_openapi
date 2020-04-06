@@ -280,14 +280,17 @@ paths:
                   values:
                     type: array
                     items:
-                      $ref: ../models/i18n_field.v1.yaml
+                      $ref: ../models/kv_field.v1.yaml
               examples:
                 '1':
                   value:
                     values:
-                      - default_env: '1'
-                        default_view: '1'
-                        default_perspective: '1'
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_view
+                        value: '1'
       security:
         - Authorization: []
       description: ''
@@ -388,8 +391,6 @@ paths:
   '/configurations/environment/{environment_id}/view/{view_id}':
     get:
       summary: Get configurations
-      tags:
-        - Configuration
       responses:
         '200':
           description: OK
@@ -420,6 +421,8 @@ paths:
       description: ''
       security:
         - Authorization: []
+      tags:
+        - Configuration Management
     parameters:
       - schema:
           type: string

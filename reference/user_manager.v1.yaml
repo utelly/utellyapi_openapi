@@ -46,7 +46,8 @@ paths:
     parameters: []
     get:
       summary: Get user preferences
-      tags: []
+      tags:
+        - User Management
       responses:
         '200':
           description: OK
@@ -71,7 +72,7 @@ paths:
                         value: '1'
                       - key: default_perspective
                         value: '1'
-                      - key: default_module
+                      - key: default_view
                         value: '1'
       operationId: v1.user.get_preferences
       security:
