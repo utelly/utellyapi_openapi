@@ -55,26 +55,6 @@ paths:
                         - locale: en
                           value: friendly name of the conf2
                       payload: {}
-        '':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ../models/Configuration.v1.yaml
-              examples:
-                '1':
-                  value:
-                    - id: 1
-                      name:
-                        - locale: en
-                          value: friendly name of the conf
-                      payload: {}
-                    - id: 2
-                      name:
-                        - locale: en
-                          value: friendly name of the conf
-                      payload: {}
       security:
         - Authorization: []
       description: ''
