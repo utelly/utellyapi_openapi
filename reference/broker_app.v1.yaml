@@ -303,75 +303,78 @@ paths:
                     items:
                       type: object
                       properties:
-                        environment:
-                          $ref: ../models/Environment.v1.yaml
-                        perspectives:
+                        environments:
                           type: array
                           items:
                             type: object
                             properties:
-                              perspective:
-                                $ref: ../models/Perspective.v1.yaml
-                              views:
+                              environment:
+                                $ref: ../models/Environment.v1.yaml
+                              perspectives:
                                 type: array
                                 items:
                                   type: object
                                   properties:
-                                    view:
-                                      $ref: ../models/View.v1.yaml
-                                    permission:
-                                      type: string
-                                      enum:
-                                        - read
-                                        - write
+                                    perspective:
+                                      $ref: ../models/Perspective.v1.yaml
+                                    views:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          view:
+                                            $ref: ../models/View.v1.yaml
+                                          permission:
+                                            type: string
               examples:
                 '1':
                   value:
                     layout:
-                      - environment:
-                          id: '1'
-                          name:
-                            - locale: en
-                              value: development
-                            - locale: nl
-                              value: ontwikkeling
-                          description:
-                            - locale: en
-                              value: use and make things to break them
-                          tooltip:
-                            - locale: en
-                              value: this environment gets refreshed daily
-                        perspectives:
-                          - perspective:
+                      - environments:
+                          - environment:
                               id: '1'
                               name:
                                 - locale: en
-                                  value: architect
+                                  value: development
                                 - locale: nl
-                                  value: ontwerp
+                                  value: ontwikkeling
                               description:
                                 - locale: en
-                                  value: this is where you wire things up
+                                  value: use and make things to break them
                               tooltip:
                                 - locale: en
-                                  value: 'In this view, we can orchestrate how things are connected'
-                            views:
-                              - view:
+                                  value: this environment gets refreshed daily
+                            perspectives:
+                              - perspective:
                                   id: '1'
                                   name:
                                     - locale: en
-                                      value: Overview
-                                  resource: data_flows
-                                  renderer: df_overview
+                                      value: architect
+                                    - locale: nl
+                                      value: ontwerp
                                   description:
                                     - locale: en
-                                      value: ''
+                                      value: this is where you wire things up
                                   tooltip:
                                     - locale: en
-                                      value: ''
-                                  perspectives_id:
-                                    - '1'
-                                permission: read
+                                      value: 'In this view, we can orchestrate how things are connected'
+                                views:
+                                  - view:
+                                      id: '1'
+                                      name:
+                                        - locale: en
+                                          value: Overview
+                                      resource: data_flows
+                                      renderer: df_overview
+                                      description:
+                                        - locale: en
+                                          value: ''
+                                      tooltip:
+                                        - locale: en
+                                          value: ''
+                                      perspectives_id:
+                                        - '1'
+                                    permission: read
       operationId: v1.ui.get_layout
       security:
         - Authorization: []
