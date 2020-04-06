@@ -17,13 +17,8 @@ components:
       type: apiKey
       in: query
 paths:
-  '/user/{user_id}/environment/{environment_id}/view/{view_id}':
+  '/environment/{environment_id}/view/{view_id}':
     parameters:
-      - schema:
-          type: string
-        name: user_id
-        in: path
-        required: true
       - schema:
           type: string
         name: environment_id

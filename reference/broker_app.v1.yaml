@@ -259,13 +259,8 @@ paths:
           name: code
       tags:
         - User Management
-  '/user/{user_id}/preferences':
-    parameters:
-      - schema:
-          type: string
-        name: user_id
-        in: path
-        required: true
+  /user/preferences:
+    parameters: []
     get:
       summary: ''
       operationId: get-user-user_id-preferences
@@ -287,13 +282,10 @@ paths:
                     values:
                       - key: name
                         value: keiser
-  '/ui/layout/user/{user_id}':
-    parameters:
-      - schema:
-          type: string
-        name: user_id
-        in: path
-        required: true
+      security:
+        - Authorization: []
+  /ui/layout:
+    parameters: []
     get:
       summary: Your GET endpoint
       tags: []
