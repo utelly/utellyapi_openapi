@@ -1,5 +1,14 @@
 title: Configuration
 type: object
+x-tags:
+  - Models
+x-examples:
+  '1':
+    id: 1
+    name: friendly name of the conf
+    environment_id: '1'
+    module_id: '1'
+    payload: {}
 properties:
   id:
     type: string
@@ -7,32 +16,7 @@ properties:
     $ref: ./i18n_field.v1.yaml
   payload:
     type: object
-  type:
-    type: string
-    enum:
-      - MUX
-      - DATA SOURCE
-      - ENRICHER
-      - MODIFIER
-      - SEARCH
-      - RECOMMEND
-      - DISCOVER
-      - EXPORT
-  schedule:
-    type: string
-    enum:
-      - daily
-      - weekly
-      - montly
-      - hourly
-  linked_configuration_ids:
-    type: array
-    items:
-      type: string
 required:
   - id
   - name
   - payload
-  - schedule
-x-tags:
-  - Models
