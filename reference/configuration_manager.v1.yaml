@@ -45,12 +45,12 @@ paths:
               examples:
                 '1':
                   value:
-                    - id: 1
+                    - id: '1'
                       name:
                         - locale: en
                           value: friendly name of the conf
                       payload: {}
-                    - id: 2
+                    - id: '2'
                       name:
                         - locale: en
                           value: friendly name of the conf2

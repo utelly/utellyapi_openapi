@@ -4,7 +4,7 @@ x-tags:
   - Models
 x-examples:
   '1':
-    id: 1
+    id: '1'
     name: friendly name of the conf
     environment_id: '1'
     module_id: '1'
