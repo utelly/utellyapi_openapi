@@ -10,13 +10,8 @@ servers:
   - url: 'https://dev-services.utelly.com/user_manager/v1'
     description: dev
 paths:
-  '/user/{user_id}/roles':
-    parameters:
-      - schema:
-          type: string
-        name: user_id
-        in: path
-        required: true
+  /user/roles:
+    parameters: []
     get:
       summary: Get user roles
       tags:
@@ -47,13 +42,8 @@ paths:
       security:
         - Authorization: []
       description: Get user roles
-  '/user/{user_id}/preferences':
-    parameters:
-      - schema:
-          type: string
-        name: user_id
-        in: path
-        required: true
+  /user/preferences:
+    parameters: []
     get:
       summary: Get user preferences
       tags: []
