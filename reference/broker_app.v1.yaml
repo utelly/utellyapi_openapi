@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: broker_app
   version: v1
-  description: "Use the url by clicking the Mock url CTA.\n\nexample for login users:\n\ncurl --request POST \\\n  --url https://stoplight.io/p/mocks/12076/66030/login \\\n  --header 'content-type: application/json' \\\n  --data '{\"email\":\"test@email.com\",\"password\":\"password\"}'\n"
+  description: ''
 servers:
   - url: 'https://services.utelly.com/broker_app/v1'
     description: prod
@@ -297,8 +297,6 @@ paths:
     parameters: []
     get:
       summary: Get ui layout
-      tags:
-        - UI
       responses:
         '200':
           description: OK
@@ -385,6 +383,8 @@ paths:
       security:
         - Authorization: []
       description: ''
+      tags:
+        - UI
   '/configurations/environment/{environment_id}/view/{view_id}':
     get:
       summary: Get configurations
