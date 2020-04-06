@@ -202,7 +202,7 @@ paths:
             examples:
               '1':
                 value:
-                  email: keiser@email.com
+                  email: keizer@email.com
                   destination_url_template: 'https://mydomain.com/forgot_password_page?email={email}&token={token}'
       description: sends an email with a authentication token
       tags:
@@ -234,7 +234,7 @@ paths:
             examples:
               '1':
                 value:
-                  email: keiser@email.com
+                  email: keizer@email.com
                   token: 1e5b4fa91553455aa3e3e1b33928a6cd
                   password: password
                   password_config: password
