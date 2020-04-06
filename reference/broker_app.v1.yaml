@@ -104,8 +104,8 @@ paths:
       summary: Register
       operationId: v1.user.register
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
           content:
             application/json:
               schema:
@@ -227,7 +227,7 @@ paths:
                   email: keizer@email.com
                   token: 1e5b4fa91553455aa3e3e1b33928a6cd
                   password: password
-                  password_config: password
+                  password_confirm: password
       responses:
         '200':
           description: OK
@@ -328,50 +328,50 @@ paths:
                 '1':
                   value:
                     layout:
-                      environment:
-                        id: '1'
-                        name:
-                          - locale: en
-                            value: development
-                          - locale: nl
-                            value: ontwikkeling
-                        description:
-                          - locale: en
-                            value: use and make things to break them
-                        tooltip:
-                          - locale: en
-                            value: this environment gets refreshed daily
-                      perspectives:
-                        - perspective:
-                            id: '1'
-                            name:
-                              - locale: en
-                                value: architect
-                              - locale: nl
-                                value: ontwerp
-                            description:
-                              - locale: en
-                                value: this is where you wire things up
-                            tooltip:
-                              - locale: en
-                                value: 'In this view, we can orchestrate how things are connected'
-                          views:
-                            - view:
-                                id: '1'
-                                name:
-                                  - locale: en
-                                    value: Overview
-                                resource: data_flows
-                                renderer: df_overview
-                                description:
-                                  - locale: en
-                                    value: ''
-                                tooltip:
-                                  - locale: en
-                                    value: ''
-                                perspectives_id:
-                                  - '1'
-                              permission: read
+                      - environment:
+                          id: '1'
+                          name:
+                            - locale: en
+                              value: development
+                            - locale: nl
+                              value: ontwikkeling
+                          description:
+                            - locale: en
+                              value: use and make things to break them
+                          tooltip:
+                            - locale: en
+                              value: this environment gets refreshed daily
+                        perspectives:
+                          - perspective:
+                              id: '1'
+                              name:
+                                - locale: en
+                                  value: architect
+                                - locale: nl
+                                  value: ontwerp
+                              description:
+                                - locale: en
+                                  value: this is where you wire things up
+                              tooltip:
+                                - locale: en
+                                  value: 'In this view, we can orchestrate how things are connected'
+                            views:
+                              - view:
+                                  id: '1'
+                                  name:
+                                    - locale: en
+                                      value: Overview
+                                  resource: data_flows
+                                  renderer: df_overview
+                                  description:
+                                    - locale: en
+                                      value: ''
+                                  tooltip:
+                                    - locale: en
+                                      value: ''
+                                  perspectives_id:
+                                    - '1'
+                                permission: read
       operationId: v1.ui.get_layout
       security:
         - Authorization: []
@@ -397,12 +397,12 @@ paths:
                 '1':
                   value:
                     configurations:
-                      - id: 1
+                      - id: '1'
                         name:
                           - locale: en
                             value: friendly name of the conf
                         payload: {}
-                      - id: 2
+                      - id: '2'
                         name:
                           - locale: en
                             value: friendly name of the conf2

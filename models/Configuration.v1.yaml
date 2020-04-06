@@ -6,14 +6,14 @@ x-examples:
   '1':
     id: '1'
     name: friendly name of the conf
-    environment_id: '1'
-    module_id: '1'
     payload: {}
 properties:
   id:
     type: string
   name:
-    $ref: ./i18n_field.v1.yaml
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
   payload:
     type: object
 required:

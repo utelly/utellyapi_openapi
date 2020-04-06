@@ -22,15 +22,21 @@ properties:
   id:
     type: string
   name:
-    $ref: ./i18n_field.v1.yaml
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
   resource:
     type: string
   renderer:
     type: string
   description:
-    $ref: ./i18n_field.v1.yaml
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
   tooltip:
-    $ref: ./i18n_field.v1.yaml
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
   perspectives_id:
     type: array
     items:
