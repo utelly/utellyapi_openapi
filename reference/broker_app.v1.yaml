@@ -228,9 +228,8 @@ paths:
                   token: 1e5b4fa91553455aa3e3e1b33928a6cd
                   password: password
                   password_confirm: password
+        description: ''
       responses:
-        '200':
-          description: OK
         '201':
           content:
             application/json:
