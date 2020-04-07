@@ -37,7 +37,7 @@ paths:
                 '1':
                   value:
                     id: 9b38b54dd74644db96e772d6076615da
-                    access_tokens: 9b38b54dd74644db96e772d6076615da
+                    access_token: 9b38b54dd74644db96e772d6076615da
                     refresh_token: f9a664c1ba3f4665aa902ded47edaca9
       description: ''
       requestBody:
