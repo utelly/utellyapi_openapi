@@ -198,59 +198,6 @@ paths:
       tags:
         - User Management
     parameters: []
-  /user/forgot_password_confirm:
-    post:
-      summary: Forgot password confirm
-      operationId: v1.user.forgot_password_confirm
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                token:
-                  type: string
-                password:
-                  type: string
-                password_confirm:
-                  type: string
-              required:
-                - email
-                - token
-                - password
-                - password_confirm
-            examples:
-              '1':
-                value:
-                  email: keizer@email.com
-                  token: 1e5b4fa91553455aa3e3e1b33928a6cd
-                  password: password
-                  password_confirm: password
-        description: ''
-      responses:
-        '201':
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  access_token:
-                    type: string
-                  refresh_token:
-                    type: string
-              examples:
-                '1':
-                  value:
-                    id: 9b38b54dd74644db96e772d6076615da
-                    access_token: 9b38b54dd74644db96e772d6076615da
-                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
-      tags:
-        - User Management
-    parameters: []
   /user/email_confirm:
     post:
       summary: Confirm email
@@ -446,6 +393,51 @@ paths:
         name: view_id
         in: path
         required: true
+  /user/forgot_password_confirm:
+    post:
+      summary: ''
+      operationId: v1.user.forgot_password_confirm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                token:
+                  type: string
+                password:
+                  type: string
+                password_confirm:
+                  type: string
+            examples:
+              '1':
+                value:
+                  email: keizer@email.com
+                  token: 3c5ace8b39354d54aaefec5c7c35da76
+                  password: password
+                  password_confirm: password
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  access_token:
+                    type: string
+                  refresh_token:
+                    type: string
+              examples:
+                '1':
+                  value:
+                    id: 4546ed7dd9ed477ba368749f0bd8b3a1
+                    access_token: eb1b44a9977c44e1a880df4637efec4a
+                    refresh_token: f63034cbebf34f7d852f7ab83a39a1b4
 components:
   schemas: {}
   securitySchemes:
