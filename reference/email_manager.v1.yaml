@@ -46,12 +46,12 @@ paths:
               '1':
                 value:
                   subject: 'Hey! Looks like you forgot your password'
-                  email_from: hello@utelly.com
-                  email_to: keiser@email.com
+                  email_from: hello@email.com
+                  email_to: keizer@email.com
                   email_body: 'Hey {name} !, here is your {token}'
                   variables:
                     - key: name
-                      value: Keiser
+                      value: Keizer
                     - key: token
                       value: token
         description: ''

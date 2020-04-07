@@ -54,7 +54,7 @@ paths:
             examples:
               '1':
                 value:
-                  email: hello@utelly.com
+                  email: keizer@email.com
                   password: 3@Ubc1iCYZUKGtAi
         description: ''
       description: Authenticates a user
@@ -198,7 +198,7 @@ paths:
             examples:
               '1':
                 value:
-                  email: keiser@email.com
+                  email: keizer@email.com
       tags:
         - Authentication Management
   /forgot_password_confirm:
@@ -230,7 +230,7 @@ paths:
             examples:
               '1':
                 value:
-                  email: keiser@email.com
+                  email: keizer@email.com
                   token: f29ec3f2b0304456b9fd29ae81865af2
                   password: password
                   password_confirm: password
