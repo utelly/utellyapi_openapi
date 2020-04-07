@@ -15,7 +15,8 @@ components:
     Authorization:
       name: Authorization
       type: apiKey
-      in: query
+      in: header
+      x-apikeyInfoFunc: security.check_token
 paths:
   '/environment/{environment_id}/view/{view_id}':
     parameters:
