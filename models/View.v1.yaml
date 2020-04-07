@@ -1,4 +1,4 @@
-title: Module
+title: View
 type: object
 x-examples:
   '1':
@@ -49,3 +49,4 @@ required:
   - description
   - tooltip
   - perspectives_id
+description: ''
