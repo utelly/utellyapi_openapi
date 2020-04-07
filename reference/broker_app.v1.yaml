@@ -400,7 +400,7 @@ paths:
         required: true
   /user/forgot_password_confirm:
     post:
-      summary: ''
+      summary: Forgot password confirm
       operationId: v1.user.forgot_password_confirm
       requestBody:
         content:
@@ -443,6 +443,8 @@ paths:
                     id: 4546ed7dd9ed477ba368749f0bd8b3a1
                     access_token: eb1b44a9977c44e1a880df4637efec4a
                     refresh_token: f63034cbebf34f7d852f7ab83a39a1b4
+      tags:
+        - User Management
 components:
   schemas: {}
   securitySchemes:
