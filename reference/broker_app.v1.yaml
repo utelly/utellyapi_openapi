@@ -219,6 +219,11 @@ paths:
                   type: string
                 code:
                   type: string
+            examples:
+              '1':
+                value:
+                  user_id: 9b38b54dd74644db96e772d6076615da
+                  code: 06ebadbe3bbf4e2798fd421b1346c1ee
     parameters: []
   /user/preferences:
     parameters: []
