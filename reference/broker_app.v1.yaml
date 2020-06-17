@@ -567,14 +567,15 @@ components:
               items: {}
             titles:
               type: array
-              items: {}
+              items:
+                type: object
             type:
               type: string
             updated_at:
               type: string
             release_year:
               type: string
-    Data-Browsing-Metadata:
+    Data-Browsing-Language-Metadata:
       title: Data-Browsing-Language-Metadata
       type: object
       description: Language Metadata
