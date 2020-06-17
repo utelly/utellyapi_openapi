@@ -493,7 +493,13 @@ paths:
     get:
       summary: Retrieve Specific Browsing Data Id
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data-Browsing-With-Id'
       operationId: get-data-browser-id
 components:
   schemas:
