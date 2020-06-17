@@ -556,7 +556,15 @@ components:
               type: string
             descriptions:
               type: array
-              items: {}
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  metadata:
+                    $ref: ''
+                  primary:
+                    type: boolean
             guid:
               type: string
             identifiers:
