@@ -569,6 +569,13 @@ components:
               type: array
               items:
                 type: object
+                properties:
+                  metadata:
+                    $ref: '#/components/schemas/Data-Browsing-Metadata'
+                  value:
+                    type: string
+                  primary:
+                    type: boolean
             type:
               type: string
             updated_at:
