@@ -574,6 +574,19 @@ components:
               type: string
             release_year:
               type: string
+    Data-Browsing-Metadata:
+      title: Data-Browsing-Language-Metadata
+      type: object
+      description: Language Metadata
+      properties:
+        country:
+          type: string
+        language:
+          type: string
+        source:
+          type: string
+        type:
+          type: string
   securitySchemes:
     Authorization:
       name: Authorization
