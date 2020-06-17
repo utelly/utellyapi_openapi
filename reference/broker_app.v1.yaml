@@ -561,21 +561,33 @@ components:
               type: string
             identifiers:
               type: array
-              items: {}
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  source:
+                    type: string
             relationships:
               type: array
-              items: {}
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  '':
+                    type: string
             titles:
               type: array
               items:
                 type: object
                 properties:
-                  metadata:
-                    $ref: '#/components/schemas/Data-Browsing-Metadata'
                   value:
                     type: string
                   primary:
                     type: boolean
+                  metadata:
+                    $ref: '#/components/schemas/Data-Browsing-Language-Metadata'
             type:
               type: string
             updated_at:
