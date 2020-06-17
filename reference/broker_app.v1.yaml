@@ -445,8 +445,97 @@ paths:
                     refresh_token: f63034cbebf34f7d852f7ab83a39a1b4
       tags:
         - User Management
+  /data-browser:
+    get:
+      summary: Retrieve Browsing Data
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embed:
+                    type: object
+                    properties:
+                      genres:
+                        type: array
+                        items: {}
+                      _links:
+                        type: object
+                      artworks:
+                        type: array
+                        items: {}
+                      created_at:
+                        type: string
+                      descriptions:
+                        type: array
+                        items: {}
+                      guiid:
+                        type: string
+                      '':
+                        type: string
+              examples: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-data-browser
+  '/data-browser/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Retrieve Specific Browsing Data Id
+      tags: []
+      responses: {}
+      operationId: get-data-browser-id
 components:
-  schemas: {}
+  schemas:
+    Data-Browsing:
+      title: Data-Browsing
+      type: object
+      description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse'
+      properties:
+        headers:
+          type: object
+          properties:
+            id:
+              type: string
+            title:
+              type: string
+            type:
+              type: string
+            release:
+              type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+              type:
+                type: string
+              release:
+                type: string
+      required:
+        - headers
+        - data
+    Data-Browsing-With-Id:
+      title: Data-Browsing-With-Id
+      type: object
+      description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse '
+      properties:
+        id:
+          $ref: ''
   securitySchemes:
     Authorization:
       name: Authorization
