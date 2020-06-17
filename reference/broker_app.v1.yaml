@@ -541,7 +541,7 @@ components:
       type: object
       description: 'Data to be retrieved on the https://portal2-dev.utelly.com/{perspective}/data-flows/data-builder/data-browse when the user selects an item from the table'
       properties:
-        _embedded:
+        resource:
           type: object
           properties:
             genres:
@@ -612,6 +612,28 @@ components:
               type: string
             release_year:
               type: string
+            _embedded:
+              type: object
+              properties:
+                genres:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _links:
+                        type: object
+                      created_ad:
+                        type: string
+                      guid:
+                        type: string
+                      identifiers:
+                        type: string
+                      names:
+                        type: string
+                      relationships:
+                        type: string
+                      updated_at:
+                        type: string
     Data-Browsing-Language-Metadata:
       title: Data-Browsing-Language-Metadata
       type: object
