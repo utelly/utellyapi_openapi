@@ -551,7 +551,17 @@ components:
               type: object
             artworks:
               type: array
-              items: {}
+              items:
+                type: object
+                properties:
+                  height:
+                    type: integer
+                  width:
+                    type: integer
+                  url:
+                    type: string
+                  metadata:
+                    $ref: '#/components/schemas/Data-Browsing-Language-Metadata'
             created_at:
               type: string
             descriptions:
