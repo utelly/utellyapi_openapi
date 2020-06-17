@@ -501,6 +501,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Data-Browsing-With-Id'
       operationId: get-data-browser-id
+      description: ''
 components:
   schemas:
     Data-Browsing:
@@ -538,10 +539,41 @@ components:
     Data-Browsing-With-Id:
       title: Data-Browsing-With-Id
       type: object
-      description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse '
+      description: 'Data to be retrieved on the https://portal2-dev.utelly.com/{perspective}/data-flows/data-builder/data-browse when the user selects an item from the table'
       properties:
-        id:
-          $ref: ''
+        _embedded:
+          type: object
+          properties:
+            genres:
+              type: array
+              items: {}
+            _links:
+              type: object
+            artworks:
+              type: array
+              items: {}
+            created_at:
+              type: string
+            descriptions:
+              type: array
+              items: {}
+            guid:
+              type: string
+            identifiers:
+              type: array
+              items: {}
+            relationships:
+              type: array
+              items: {}
+            titles:
+              type: array
+              items: {}
+            type:
+              type: string
+            updated_at:
+              type: string
+            release_year:
+              type: string
   securitySchemes:
     Authorization:
       name: Authorization
