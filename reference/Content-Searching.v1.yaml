@@ -40,7 +40,21 @@ paths:
                 properties:
                   results:
                     type: array
-                    items: {}
+                    items:
+                      type: object
+                      properties:
+                        locations:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Location'
+                        picture:
+                          type: string
+                        id:
+                          type: string
+                        weight:
+                          type: number
+                        name:
+                          type: string
                   updated:
                     type: string
                   term:
