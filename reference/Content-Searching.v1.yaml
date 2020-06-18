@@ -68,5 +68,20 @@ paths:
                     status_code: 200
                     variant: utelly
 components:
-  schemas: {}
+  schemas:
+    Location:
+      title: Location
+      type: object
+      description: "Location is a simple object containing multiple attributes based on the the data provider's data"
+      properties:
+        display_name:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        id:
+          type: string
+        icon:
+          type: string
   securitySchemes: {}
