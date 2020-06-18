@@ -49,6 +49,24 @@ paths:
                     type: string
                   variant:
                     type: string
+              examples:
+                Example JSON Response:
+                  value:
+                    results:
+                      - locations:
+                          - display_name: NetflixIVAGB
+                            name: NetflixIVAGB
+                            url: 'https://www.netflix.com/title/70298933'
+                            id: 5d84d6e2d95dc7385f6a442d
+                            icon: 'https://utellyassets7.imgix.net/locations_icons/utelly/black_new/NetflixIVAGB.png?w=92&auto=compress&app_version=ce101448-2d02-4769-a4b4-21dbe9a8efb7_e2019-11-06'
+                        picture: 'https://utellyassets9-1.imgix.net/api/Images/4e4d50a0040fd4500193202edbafce6a/Redirect'
+                        id: 5d914028302b840050acbe62
+                        weight: 9981
+                        name: BoJack Horseman
+                    updated: '2019-11-06T05:30:34+0000'
+                    term: bojack
+                    status_code: 200
+                    variant: utelly
 components:
   schemas: {}
   securitySchemes: {}
