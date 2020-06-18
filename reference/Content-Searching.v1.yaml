@@ -81,6 +81,19 @@ paths:
                     term: bojack
                     status_code: 200
                     variant: utelly
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sub_code:
+                    type: string
+                  message:
+                    type: string
+                  status_code:
+                    type: number
 components:
   schemas:
     Location:
