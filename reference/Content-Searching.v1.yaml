@@ -94,6 +94,19 @@ paths:
                     type: string
                   status_code:
                     type: number
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sub_code:
+                    type: string
+                  message:
+                    type: string
+                  status_code:
+                    type: string
 components:
   schemas:
     Location:
