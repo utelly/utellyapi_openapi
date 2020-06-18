@@ -1,52 +1,53 @@
+additionalProperties: false
+description: ''
+properties:
+  description:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+  id:
+    type: string
+  name:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+  perspectives_id:
+    items:
+      type: string
+    type: array
+  renderer:
+    type: string
+  resource:
+    type: string
+  tooltip:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+required:
+- id
+- name
+- resource
+- renderer
+- description
+- tooltip
+- perspectives_id
 title: View
 type: object
 x-examples:
   '1':
+    description:
+    - locale: en
+      value: ''
     id: 1
     name:
-      - locale: en
-        value: Overview
-    resource: data_flows
-    renderer: df_overview
-    description:
-      - locale: en
-        value: ''
-    tooltip:
-      - locale: en
-        value: ''
+    - locale: en
+      value: Overview
     perspectives_id:
-      - '1'
+    - '1'
+    renderer: df_overview
+    resource: data_flows
+    tooltip:
+    - locale: en
+      value: ''
 x-tags:
-  - Models
-properties:
-  id:
-    type: string
-  name:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-  resource:
-    type: string
-  renderer:
-    type: string
-  description:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-  tooltip:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-  perspectives_id:
-    type: array
-    items:
-      type: string
-required:
-  - id
-  - name
-  - resource
-  - renderer
-  - description
-  - tooltip
-  - perspectives_id
-description: ''
+- Models

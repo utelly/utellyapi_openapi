@@ -1,38 +1,39 @@
+additionalProperties: false
+properties:
+  description:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+  id:
+    type: string
+  name:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+  tooltip:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+required:
+- id
+- name
+- description
+- tooltip
 title: Environment
 type: object
 x-examples:
   '1':
+    description:
+    - locale: en
+      value: use and make things to break them
     id: 1
     name:
-      - locale: en
-        value: development
-      - locale: nl
-        value: ontwikkeling
-    description:
-      - locale: en
-        value: use and make things to break them
+    - locale: en
+      value: development
+    - locale: nl
+      value: ontwikkeling
     tooltip:
-      - locale: en
-        value: this environment gets refreshed daily
-properties:
-  id:
-    type: string
-  name:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-  description:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-  tooltip:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-required:
-  - id
-  - name
-  - description
-  - tooltip
+    - locale: en
+      value: this environment gets refreshed daily
 x-tags:
-  - Models
+- Models

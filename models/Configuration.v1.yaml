@@ -1,22 +1,24 @@
+additionalProperties: false
+properties:
+  id:
+    type: string
+  name:
+    items:
+      $ref: ./i18n_field.v1.yaml
+    type: array
+  payload:
+    additionalProperties: false
+    type: object
+required:
+- id
+- name
+- payload
 title: Configuration
 type: object
-x-tags:
-  - Models
 x-examples:
   '1':
     id: '1'
     name: friendly name of the conf
     payload: {}
-properties:
-  id:
-    type: string
-  name:
-    type: array
-    items:
-      $ref: ./i18n_field.v1.yaml
-  payload:
-    type: object
-required:
-  - id
-  - name
-  - payload
+x-tags:
+- Models

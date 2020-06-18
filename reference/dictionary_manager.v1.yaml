@@ -1,97 +1,98 @@
-openapi: 3.0.0
+components:
+  schemas: {}
 info:
+  description: ''
   title: dictionary_manager
   version: v1
-  description: ''
-servers:
-  - url: 'https://services.utelly.com/dictionary_manager/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/dictionary_manager/v1'
-    description: staging
-  - url: 'https://dev-services.utelly.com/dictionary_manager/v1'
-    description: ''
+openapi: 3.0.0
 paths:
-  '/dictionary/{name}':
+  /dictionary/{name}:
     get:
-      summary: Get dictionary
-      tags:
-        - Dictionary Management
+      description: ''
+      operationId: v1.dictionary.get
       responses:
         '200':
-          description: OK
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      anyOf:
-                        - $ref: ../models/Environment.v1.yaml
-                        - $ref: ../models/Perspective.v1.yaml
-                        - $ref: ../models/View.v1.yaml
-                required:
-                  - value
               examples:
                 '1':
                   value:
                     value:
-                      - id: '1'
-                        name:
-                          - locale: en
-                            value: development
-                          - locale: nl
-                            value: ontwikkeling
-                        description:
-                          - locale: en
-                            value: use and make things to break them
-                        tooltip:
-                          - locale: en
-                            value: this environment gets refreshed daily
+                    - description:
+                      - locale: en
+                        value: use and make things to break them
+                      id: '1'
+                      name:
+                      - locale: en
+                        value: development
+                      - locale: nl
+                        value: ontwikkeling
+                      tooltip:
+                      - locale: en
+                        value: this environment gets refreshed daily
                 '2':
                   value:
                     value:
-                      - id: '1'
-                        name:
-                          - locale: en
-                            value: architect
-                          - locale: nl
-                            value: ontwerp
-                        description:
-                          - locale: en
-                            value: this is where you wire things up
-                        tooltip:
-                          - locale: en
-                            value: 'In this view, we can orchestrate how things are connected'
+                    - description:
+                      - locale: en
+                        value: this is where you wire things up
+                      id: '1'
+                      name:
+                      - locale: en
+                        value: architect
+                      - locale: nl
+                        value: ontwerp
+                      tooltip:
+                      - locale: en
+                        value: In this view, we can orchestrate how things are connected
                 '3':
                   value:
                     values:
-                      - id: '1'
-                        name:
-                          - locale: en
-                            value: Overview
-                        resource: data_flows
-                        renderer: df_overview
-                        description:
-                          - locale: en
-                            value: ''
-                        tooltip:
-                          - locale: en
-                            value: ''
-                        perspectives_id:
-                          - '1'
-      operationId: v1.dictionary.get
-      description: ''
+                    - description:
+                      - locale: en
+                        value: ''
+                      id: '1'
+                      name:
+                      - locale: en
+                        value: Overview
+                      perspectives_id:
+                      - '1'
+                      renderer: df_overview
+                      resource: data_flows
+                      tooltip:
+                      - locale: en
+                        value: ''
+              schema:
+                additionalProperties: false
+                properties:
+                  value:
+                    items:
+                      anyOf:
+                      - $ref: ../models/Environment.v1.yaml
+                      - $ref: ../models/Perspective.v1.yaml
+                      - $ref: ../models/View.v1.yaml
+                    type: array
+                required:
+                - value
+                type: object
+          description: OK
+      summary: Get dictionary
+      tags:
+      - Dictionary Management
     parameters:
-      - schema:
-          type: string
-          enum:
-            - environments
-            - perspectives
-            - views
-        name: name
-        in: path
-        required: true
-components:
-  schemas: {}
+    - in: path
+      name: name
+      required: true
+      schema:
+        enum:
+        - environments
+        - perspectives
+        - views
+        type: string
+servers:
+- description: prod
+  url: https://services.utelly.com/dictionary_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/dictionary_manager/v1
+- description: ''
+  url: https://dev-services.utelly.com/dictionary_manager/v1
