@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  title: Content Searching
+  version: '1.0'
+  description: The following API is responsible for content searching
+servers:
+  - url: 'https://api.utelly.com/phoenix/9'
+paths: {}
+components:
+  schemas: {}
+  securitySchemes:
+    X-AppKey:
+      type: apiKey
+      in: header
+      name: X-AppKey
+      description: Key providing access to the api
+    term:
+      name: term
+      type: apiKey
+      in: query
+    query:
+      name: query
+      type: apiKey
+      in: query
+      description: Location to get search results from - Defaults to UK if not specified
