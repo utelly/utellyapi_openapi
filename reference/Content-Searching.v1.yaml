@@ -10,7 +10,6 @@ paths:
     get:
       summary: lookup
       tags: []
-      responses: {}
       operationId: get-lookup
       description: An object with response attributes for the combination of term / location
       parameters:
@@ -31,6 +30,25 @@ paths:
           in: query
           name: country
           description: Location to get search results from - Defaults to UK if not specified
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items: {}
+                  updated:
+                    type: string
+                  term:
+                    type: string
+                  status_code:
+                    type: string
+                  variant:
+                    type: string
 components:
   schemas: {}
   securitySchemes: {}
