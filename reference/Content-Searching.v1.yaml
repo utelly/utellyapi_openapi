@@ -8,18 +8,4 @@ servers:
 paths: {}
 components:
   schemas: {}
-  securitySchemes:
-    X-AppKey:
-      type: apiKey
-      in: header
-      name: X-AppKey
-      description: Key providing access to the api
-    term:
-      name: term
-      type: apiKey
-      in: query
-    query:
-      name: query
-      type: apiKey
-      in: query
-      description: Location to get search results from - Defaults to UK if not specified
+  securitySchemes: {}
