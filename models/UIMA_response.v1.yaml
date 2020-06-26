@@ -1,0 +1,98 @@
+title: UIMA_response
+type: object
+x-examples:
+  empty_example:
+    payload: {}
+    ui_configuration: {}
+  cw_table_example:
+    payload:
+      _links:
+        self:
+          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=3'
+        first:
+          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works'
+        prev:
+          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=2'
+        next:
+          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=4'
+        last:
+          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=133'
+      count: 3
+      total: 498
+      _embedded:
+        creative_works:
+          - _links:
+              self:
+                href: /content/creative_works/27c13eec19014084a0a3173061702b46
+            guid: 27c13eec19014084a0a3173061702b46
+            release_year: '1998'
+            created_at: '2020-01-01T00:00:00Z'
+            updated_at: '2020-01-01T00:10:00Z'
+            type: movie
+            titles:
+              - metadata:
+                  country: GB
+                  language: en
+                  source: gracenote
+                  type: official
+                title: The Usual Suspects
+              - metadata:
+                  country: GB
+                  language: en
+                  source: gracenote
+                  type: theatrical
+                title: Usual Suspects (The Movie)
+          - _links:
+              self:
+                href: /content/creative_works/27c13eec19014084a0a3173061702b47
+            guid: 27c13eec19014084a0a3173061702b47
+            release_year: '2010'
+            created_at: '2020-01-01T00:00:00Z'
+            updated_at: '2020-01-01T00:10:00Z'
+            type: movie
+            titles:
+              - metadata:
+                  country: GB
+                  language: en
+                  source: gracenote
+                  type: official
+                title: Toy Story
+              - metadata:
+                  country: GB
+                  language: en
+                  source: gracenote
+                  type: theatrical
+                title: Toy Story
+    ui_configuration:
+      manifest:
+        resource: creative_work
+      columns:
+        - label: ID
+          language: en-gb
+          value_type: text
+          value: creative_work/guid
+        - label: Title
+          language: en-gb
+          value_type: text
+          value: creative_work/titles
+        - label: Type
+          language: en-gb
+          value_type: text
+          value: creative_work/type
+        - label: Release Year
+          language: en-gb
+          value_type: text
+          value: creative_work/release_year
+      options:
+        sorting: false
+        pagination: true
+        filter: false
+description: Object that mingles the resources returned by the COMA and the presentation info needed for UI
+properties:
+  payload:
+    type: object
+  ui_configuration:
+    type: object
+required:
+  - payload
+  - ui_configuration
