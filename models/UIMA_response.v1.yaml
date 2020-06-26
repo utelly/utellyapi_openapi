@@ -93,6 +93,9 @@ properties:
     type: object
   ui_configuration:
     type: object
+    properties:
+      '':
+        type: string
 required:
   - payload
   - ui_configuration

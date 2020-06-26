@@ -177,12 +177,12 @@ paths:
                   user_id: 9b38b54dd74644db96e772d6076615da
             schema:
               additionalProperties: false
+              type: object
               properties:
                 code:
                   type: string
                 user_id:
                   type: string
-              type: object
       responses:
         '200':
           description: OK
@@ -587,6 +587,14 @@ paths:
           in: query
           name: limit
           description: 'for pagination, default is ?'
+        - schema:
+            type: string
+          in: query
+          name: filter
+        - schema:
+            type: string
+          in: query
+          name: sort
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'

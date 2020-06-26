@@ -1,0 +1,152 @@
+components:
+  schemas: {}
+  securitySchemes:
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-apikeyInfoFunc: security.check_token
+info:
+  title: UI Manager
+  version: v1
+  contact:
+    email: developers@utelly.com
+openapi: 3.0.0
+paths:
+  '/environment/{environment_id}/view/{view_id}':
+    get:
+      description: ''
+      operationId: v1.configs.get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    configurations:
+                      - id: '1'
+                        name:
+                          - locale: en
+                            value: friendly name of the conf
+                        payload: {}
+                      - id: '2'
+                        name:
+                          - locale: en
+                            value: friendly name of the conf2
+                        payload: {}
+              schema:
+                additionalProperties: false
+                properties:
+                  configurations:
+                    items:
+                      $ref: ../models/Configuration.v1.yaml
+                    type: array
+                type: object
+          description: OK
+      security:
+        - Authorization: []
+      summary: Get configurations
+      tags:
+        - Configuration Management
+    parameters:
+      - in: path
+        name: environment_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: view_id
+        required: true
+        schema:
+          type: string
+  '/dictionary/{name}':
+    get:
+      description: A dictionnary is a list of reference values
+      operationId: v1.dictionary.get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    value:
+                      - description:
+                          - locale: en
+                            value: use and make things to break them
+                        id: '1'
+                        name:
+                          - locale: en
+                            value: development
+                          - locale: nl
+                            value: ontwikkeling
+                        tooltip:
+                          - locale: en
+                            value: this environment gets refreshed daily
+                '2':
+                  value:
+                    value:
+                      - description:
+                          - locale: en
+                            value: this is where you wire things up
+                        id: '1'
+                        name:
+                          - locale: en
+                            value: architect
+                          - locale: nl
+                            value: ontwerp
+                        tooltip:
+                          - locale: en
+                            value: 'In this view, we can orchestrate how things are connected'
+                '3':
+                  value:
+                    values:
+                      - description:
+                          - locale: en
+                            value: ''
+                        id: '1'
+                        name:
+                          - locale: en
+                            value: Overview
+                        perspectives_id:
+                          - '1'
+                        renderer: df_overview
+                        resource: data_flows
+                        tooltip:
+                          - locale: en
+                            value: ''
+              schema:
+                additionalProperties: false
+                properties:
+                  value:
+                    items:
+                      anyOf:
+                        - $ref: ../models/Environment.v1.yaml
+                        - $ref: ../models/Perspective.v1.yaml
+                        - $ref: ../models/View.v1.yaml
+                    type: array
+                required:
+                  - value
+                type: object
+          description: OK
+      summary: Get dictionary
+      tags:
+        - Dictionary Management
+    parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          enum:
+            - environments
+            - perspectives
+            - views
+          type: string
+servers:
+  - description: prod
+    url: 'https://services.utelly.com/ui_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/ui_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/ui_manager/v1'
