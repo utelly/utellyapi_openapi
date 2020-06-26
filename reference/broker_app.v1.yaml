@@ -12,7 +12,7 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /configurations/environment/{environment_id}/view/{view_id}:
+  '/configurations/environment/{environment_id}/view/{view_id}':
     get:
       description: ''
       operationId: v1.configuration.get
@@ -24,16 +24,16 @@ paths:
                 '1':
                   value:
                     configurations:
-                    - id: '1'
-                      name:
-                      - locale: en
-                        value: friendly name of the conf
-                      payload: {}
-                    - id: '2'
-                      name:
-                      - locale: en
-                        value: friendly name of the conf2
-                      payload: {}
+                      - id: '1'
+                        name:
+                          - locale: en
+                            value: friendly name of the conf
+                        payload: {}
+                      - id: '2'
+                        name:
+                          - locale: en
+                            value: friendly name of the conf2
+                        payload: {}
               schema:
                 additionalProperties: false
                 properties:
@@ -44,21 +44,21 @@ paths:
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get configurations
       tags:
-      - Configuration Management
+        - Configuration Management
     parameters:
-    - in: path
-      name: environment_id
-      required: true
-      schema:
-        type: string
-    - in: path
-      name: view_id
-      required: true
-      schema:
-        type: string
+      - in: path
+        name: environment_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: view_id
+        required: true
+        schema:
+          type: string
   /ui/layout:
     get:
       description: ''
@@ -71,52 +71,51 @@ paths:
                 '1':
                   value:
                     layout:
-                    - environments:
-                      - environment:
-                          description:
-                          - locale: en
-                            value: use and make things to break them
-                          id: '1'
-                          name:
-                          - locale: en
-                            value: development
-                          - locale: nl
-                            value: ontwikkeling
-                          tooltip:
-                          - locale: en
-                            value: this environment gets refreshed daily
-                        perspectives:
-                        - perspective:
-                            description:
-                            - locale: en
-                              value: this is where you wire things up
-                            id: '1'
-                            name:
-                            - locale: en
-                              value: architect
-                            - locale: nl
-                              value: ontwerp
-                            tooltip:
-                            - locale: en
-                              value: In this view, we can orchestrate how things are
-                                connected
-                          views:
-                          - permission: read
-                            view:
+                      - environments:
+                          - environment:
                               description:
-                              - locale: en
-                                value: ''
+                                - locale: en
+                                  value: use and make things to break them
                               id: '1'
                               name:
-                              - locale: en
-                                value: Overview
-                              perspectives_id:
-                              - '1'
-                              renderer: df_overview
-                              resource: data_flows
+                                - locale: en
+                                  value: development
+                                - locale: nl
+                                  value: ontwikkeling
                               tooltip:
-                              - locale: en
-                                value: ''
+                                - locale: en
+                                  value: this environment gets refreshed daily
+                            perspectives:
+                              - perspective:
+                                  description:
+                                    - locale: en
+                                      value: this is where you wire things up
+                                  id: '1'
+                                  name:
+                                    - locale: en
+                                      value: architect
+                                    - locale: nl
+                                      value: ontwerp
+                                  tooltip:
+                                    - locale: en
+                                      value: 'In this view, we can orchestrate how things are connected'
+                                views:
+                                  - permission: read
+                                    view:
+                                      description:
+                                        - locale: en
+                                          value: ''
+                                      id: '1'
+                                      name:
+                                        - locale: en
+                                          value: Overview
+                                      perspectives_id:
+                                        - '1'
+                                      renderer: df_overview
+                                      resource: data_flows
+                                      tooltip:
+                                        - locale: en
+                                          value: ''
               schema:
                 additionalProperties: false
                 properties:
@@ -155,10 +154,10 @@ paths:
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get ui layout
       tags:
-      - UI
+        - UI
     parameters: []
   /user/email_confirm:
     parameters: []
@@ -187,7 +186,7 @@ paths:
           description: OK
       summary: Confirm email
       tags:
-      - User Management
+        - User Management
   /user/forgot_password:
     parameters: []
     post:
@@ -199,7 +198,7 @@ paths:
             examples:
               '1':
                 value:
-                  destination_url_template: https://mydomain.com/forgot_password_page?email={email}&token={token}
+                  destination_url_template: 'https://mydomain.com/forgot_password_page?email={email}&token={token}'
                   email: keizer@email.com
             schema:
               additionalProperties: false
@@ -209,15 +208,15 @@ paths:
                 email:
                   type: string
               required:
-              - email
-              - destination_url_template
+                - email
+                - destination_url_template
               type: object
       responses:
         '200':
           description: OK
       summary: Forgot password
       tags:
-      - User Management
+        - User Management
   /user/forgot_password_confirm:
     post:
       operationId: v1.user.forgot_password_confirm
@@ -266,7 +265,7 @@ paths:
           description: Created
       summary: Forgot password confirm
       tags:
-      - User Management
+        - User Management
   /user/login:
     parameters: []
     post:
@@ -288,8 +287,8 @@ paths:
                 password:
                   type: string
               required:
-              - email
-              - password
+                - email
+                - password
               type: object
       responses:
         '200':
@@ -311,14 +310,14 @@ paths:
                   refresh_token:
                     type: string
                 required:
-                - id
-                - access_token
-                - refresh_token
+                  - id
+                  - access_token
+                  - refresh_token
                 type: object
           description: OK
       summary: Login
       tags:
-      - User Management
+        - User Management
   /user/preferences:
     get:
       description: ''
@@ -331,12 +330,12 @@ paths:
                 '1':
                   value:
                     values:
-                    - key: default_env
-                      value: '1'
-                    - key: default_perspective
-                      value: '1'
-                    - key: default_view
-                      value: '1'
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_view
+                        value: '1'
               schema:
                 additionalProperties: false
                 properties:
@@ -347,10 +346,10 @@ paths:
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get preferences
       tags:
-      - User Management
+        - User Management
     parameters: []
   /user/refresh_jwt_access_token:
     parameters: []
@@ -370,7 +369,7 @@ paths:
                 refresh_token:
                   type: string
               required:
-              - refresh_token
+                - refresh_token
               type: object
       responses:
         '200':
@@ -386,12 +385,12 @@ paths:
                   access_token:
                     type: string
                 required:
-                - access_token
+                  - access_token
                 type: object
           description: OK
       summary: Refresh JWT access_token
       tags:
-      - User Management
+        - User Management
   /user/register:
     parameters: []
     post:
@@ -403,10 +402,10 @@ paths:
             examples:
               '1':
                 value:
-                  destination_url_template: https://mydomain.com/confirm?user_id={user_id}&code={code}
+                  destination_url_template: 'https://mydomain.com/confirm?user_id={user_id}&code={code}'
                   email: keizer@email.com
                   first_name: Keizer
-                  last_name: "S\xF6ze"
+                  last_name: Söze
                   password: password
                   password_confirm: password
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
@@ -428,13 +427,13 @@ paths:
                 registration_token:
                   type: string
               required:
-              - first_name
-              - last_name
-              - email
-              - registration_token
-              - password
-              - password_confirm
-              - destination_url_template
+                - first_name
+                - last_name
+                - email
+                - registration_token
+                - password
+                - password_confirm
+                - destination_url_template
               type: object
       responses:
         '201':
@@ -456,18 +455,54 @@ paths:
                   refresh_token:
                     type: string
                 required:
-                - id
-                - access_token
-                - refresh_token
+                  - id
+                  - access_token
+                  - refresh_token
                 type: object
           description: Created
       summary: Register
       tags:
-      - User Management
+        - User Management
+  '/modules/{module_id}/browse':
+    parameters:
+      - schema:
+          type: string
+        name: module_id
+        in: path
+        required: true
+    get:
+      summary: browse module content
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/UIMA_response.v1.yaml
+              examples:
+                example-1: {}
+      operationId: get-modules-module_id-browse
+      security:
+        - Authorization: []
+      description: |-
+        for a given module id, allow to browse its content
+        - support pagination and filering
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: 'for pagination. default is 0, ie first page'
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: 'for pagination, default is ?'
 servers:
-- description: prod
-  url: https://services.utelly.com/broker_app/v1
-- description: staging
-  url: https://staging-services.utelly.com/broker_app/v1
-- description: dev
-  url: https://dev-services.utelly.com/broker_app/v1
+  - description: prod
+    url: 'https://services.utelly.com/broker_app/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/broker_app/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/broker_app/v1'
