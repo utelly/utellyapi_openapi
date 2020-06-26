@@ -591,10 +591,12 @@ paths:
             type: string
           in: query
           name: filter
+          description: filters as passed on to the Content API
         - schema:
             type: string
           in: query
           name: sort
+          description: sort as supported by the Content API
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'

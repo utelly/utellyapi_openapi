@@ -64,8 +64,6 @@ x-examples:
                   type: theatrical
                 title: Toy Story
     ui_configuration:
-      manifest:
-        resource: creative_work
       columns:
         - label: ID
           language: en-gb
@@ -92,10 +90,11 @@ properties:
   payload:
     type: object
   ui_configuration:
-    type: object
-    properties:
-      '':
-        type: string
+    oneOf:
+      - $ref: ./UIMA_table_renderer.v1.yaml
 required:
   - payload
   - ui_configuration
+x-tags:
+  - Models
+  - UI

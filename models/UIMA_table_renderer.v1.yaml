@@ -1,0 +1,43 @@
+title: UIMA_table_renderer
+type: object
+x-examples:
+  t1:
+    columns:
+      - label: ID
+        language: en-gb
+        value_type: text
+        value: creative_work/guid
+      - label: Title
+        language: en-gb
+        value_type: text
+        value: creative_work/titles
+      - label: Type
+        language: en-gb
+        value_type: text
+        value: creative_work/type
+      - label: Release Year
+        language: en-gb
+        value_type: text
+        value: creative_work/release_year
+    options:
+      sorting: false
+      pagination: true
+      filter: false
+description: Describes how to render a table
+properties:
+  columns:
+    type: array
+    items:
+      $ref: ./UIMA_table_column.v1.yaml
+  options:
+    type: object
+    properties:
+      sorting:
+        type: boolean
+      fiter:
+        type: boolean
+      pagination:
+        type: boolean
+x-tags:
+  - Models
+  - UI

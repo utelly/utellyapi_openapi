@@ -6,18 +6,40 @@ x-examples:
   '1':
     description:
       - locale: en
-        value: ''
-    id: 1
+        value: Browser for content
+    id: '1'
     name:
       - locale: en
-        value: Overview
+        value: Browse
     perspectives_id:
       - '1'
-    renderer: df_overview
-    resource: data_flows
+    resource: creative_works
+    renderer:
+      columns:
+        - label: ID
+          language: en-gb
+          value_type: text
+          value: creative_work/guid
+        - label: Title
+          language: en-gb
+          value_type: text
+          value: creative_work/titles
+        - label: Type
+          language: en-gb
+          value_type: text
+          value: creative_work/type
+        - label: Release Year
+          language: en-gb
+          value_type: text
+          value: creative_work/release_year
+      options:
+        sorting: false
+        pagination: true
+        filter: false
     tooltip:
       - locale: en
         value: ''
+  example-2: {}
 x-tags:
   - Models
 properties:
@@ -37,6 +59,13 @@ properties:
     type: array
     items:
       $ref: ./i18n_field.v1.yaml
+  environment_id:
+    type: string
+  renderer:
+    oneOf:
+      - $ref: ./UIMA_table_renderer.v1.yaml
+  resource:
+    type: string
 required:
   - description
   - id
