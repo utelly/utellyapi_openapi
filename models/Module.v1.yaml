@@ -1,0 +1,45 @@
+additionalProperties: false
+description: metadata describing a module
+title: Module
+type: object
+x-examples:
+  '1':
+    description:
+      - locale: en
+        value: ''
+    id: 1
+    name:
+      - locale: en
+        value: Overview
+    perspectives_id:
+      - '1'
+    renderer: df_overview
+    resource: data_flows
+    tooltip:
+      - locale: en
+        value: ''
+x-tags:
+  - Models
+properties:
+  description:
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
+  id:
+    type: string
+  name:
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
+  perspective_id:
+    type: string
+  tooltip:
+    type: array
+    items:
+      $ref: ./i18n_field.v1.yaml
+required:
+  - description
+  - id
+  - name
+  - perspective_id
+  - tooltip
