@@ -63,7 +63,7 @@ properties:
     type: string
   renderer:
     oneOf:
-      - $ref: ./UIMA_table_renderer.v1.yaml
+      - $ref: '../reference/ui_manager.v1.yaml#/components/schemas/UIMA_table_renderer'
   resource:
     type: string
 required:

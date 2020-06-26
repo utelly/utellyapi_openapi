@@ -484,7 +484,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/UIMA_response.v1.yaml
+                $ref: './ui_manager.v1.yaml#/components/schemas/UIMA_response'
               examples:
                 cw_tableview:
                   value:
