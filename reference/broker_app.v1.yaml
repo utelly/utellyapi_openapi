@@ -477,7 +477,6 @@ paths:
     get:
       summary: browse module content
       tags:
-        - content browsing
         - UI
       responses:
         '200':
