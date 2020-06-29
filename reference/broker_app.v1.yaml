@@ -972,6 +972,48 @@ paths:
                     activeTab: 1xd
       operationId: get-data-browser-id
       description: 'Retrieve a complex definition of a table entry based on the `id` parameter being passed.  '
+  /data-flows:
+    get:
+      summary: data-flows
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data-Table'
+              examples:
+                base:
+                  value:
+                    headers:
+                      - value: '#'
+                        key: id
+                      - value: Title
+                        key: title
+                      - value: Created At
+                        key: created_at
+                      - value: Status
+                        key: status
+                    data:
+                      - id: '1710034532'
+                        title: Telenet Data Flow
+                        created_at: '2020-06-10 13:29:23 UTC'
+                        status: Ok
+                      - id: '3818912293'
+                        title: Merging mutliple sources
+                        created_at: '2020-06-08 16:09:18 UTC'
+                        status: Pending
+                      - id: '8150790266'
+                        title: Pending data flow config
+                        created_at: '2020-06-06 11:49:53 UTC'
+                        status: Pending
+                      - id: '7467799651'
+                        title: First data flow
+                        created_at: '2020-06-03 10:21:37 UTC'
+                        status: Pending
+      operationId: get-data-flows
+      description: Retrieve the simplified definition of data-flows in a table format.
 components:
   schemas:
     Data-Browsing:
