@@ -1210,6 +1210,60 @@ components:
       required:
         - headers
         - data
+    Data-Flow:
+      title: Data-Flow
+      type: object
+      description: Data definition for a data flow.
+      properties:
+        apps:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type:
+                  - string
+                  - number
+              title:
+                type: string
+              subitems:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    name:
+                      type: string
+        flow:
+          type: object
+          properties:
+            key:
+              type:
+                - string
+                - number
+            type:
+              type: string
+            name:
+              type: string
+            buckets:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  apps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        type:
+                          type: string
+                        title:
+                          type: string
   securitySchemes:
     Authorization:
       name: Authorization
