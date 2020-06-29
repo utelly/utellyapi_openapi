@@ -972,7 +972,7 @@ paths:
                     activeTab: 1xd
       operationId: get-data-browser-id
       description: 'Retrieve a complex definition of a table entry based on the `id` parameter being passed.  '
-  /data-flows:
+  /data-flow:
     get:
       summary: data-flows
       tags: []
@@ -1014,6 +1014,7 @@ paths:
                         status: Pending
       operationId: get-data-flows
       description: Retrieve the simplified definition of data-flows in a table format.
+    parameters: []
 components:
   schemas:
     Data-Browsing:
