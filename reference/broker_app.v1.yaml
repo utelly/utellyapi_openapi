@@ -1025,7 +1025,202 @@ paths:
     get:
       summary: data-flow-id
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data-Flow'
+              examples:
+                '1710034532':
+                  value:
+                    apps:
+                      - key: 0
+                        title: Data Sources
+                        subitems:
+                          - type: DATA SOURCE
+                            name: Gracenote
+                          - type: DATA SOURCE
+                            name: IVA
+                          - type: DATA SOURCE
+                            name: UCM
+                      - key: 1
+                        title: Data Transformation
+                        subitems:
+                          - type: MUX
+                            name: Data Merger
+                          - type: MODIFIER
+                            name: Data Modifications
+                          - type: ENRICHER
+                            name: Data Enrichments
+                      - key: 2
+                        title: Apps
+                        subitems:
+                          - type: SEARCH
+                            name: Data Search
+                          - type: BROWSE
+                            name: Data Browser
+                          - type: RECOMMEND
+                            name: My Recommendation Engine
+                    flow:
+                      key: 1710034532
+                      type: DATA FLOW BUILDER
+                      name: Telenet Data Flow
+                      buckets:
+                        - type: data_sources
+                          apps:
+                            - type: DATA SOURCE
+                              name: Gracenote
+                              title: Data Sources
+                            - type: DATA SOURCE
+                              name: IVA
+                              title: Data Sources
+                            - type: DATA SOURCE
+                              name: UCM
+                              title: Data Sources
+                        - type: data_transformers
+                          apps:
+                            - type: MUX
+                              name: Telenet Data Merger
+                              title: Data Transformation
+                            - type: ENRICHER
+                              name: Telenet Data Enrichments
+                              title: Data Transformation
+                            - type: MODIFIER
+                              name: Telenet Data Modifications
+                              title: Data Transformation
+                        - type: data_apps
+                          apps:
+                            - type: SEARCH
+                              name: Yelo Play Search
+                              title: Apps
+                            - type: BROWSE
+                              name: Data Browser
+                              title: Apps
+                '3818912293':
+                  value:
+                    apps:
+                      - key: 0
+                        title: Data Sources
+                        subitems:
+                          - type: DATA SOURCE
+                            name: Gracenote
+                          - type: DATA SOURCE
+                            name: IVA
+                          - type: DATA SOURCE
+                            name: UCM
+                      - key: 1
+                        title: Data Transformation
+                        subitems:
+                          - type: MUX
+                            name: Data Merger
+                          - type: MODIFIER
+                            name: Data Modifications
+                          - type: ENRICHER
+                            name: Data Enrichments
+                      - key: 2
+                        title: Apps
+                        subitems:
+                          - type: SEARCH
+                            name: Data Search
+                          - type: BROWSE
+                            name: Data Browser
+                          - type: RECOMMEND
+                            name: My Recommendation Engine
+                    flow:
+                      key: 3818912293
+                      type: DATA FLOW BUILDER
+                      name: Merging mutliple sources
+                      buckets:
+                        - type: data_sources
+                          apps: []
+                        - type: data_transformers
+                          apps: []
+                        - type: data_apps
+                          apps: []
+                '7467799651':
+                  value:
+                    apps:
+                      - key: 0
+                        title: Data Sources
+                        subitems:
+                          - type: DATA SOURCE
+                            name: Gracenote
+                          - type: DATA SOURCE
+                            name: IVA
+                          - type: DATA SOURCE
+                            name: UCM
+                      - key: 1
+                        title: Data Transformation
+                        subitems:
+                          - type: MUX
+                            name: Data Merger
+                          - type: MODIFIER
+                            name: Data Modifications
+                          - type: ENRICHER
+                            name: Data Enrichments
+                      - key: 2
+                        title: Apps
+                        subitems:
+                          - type: SEARCH
+                            name: Data Search
+                          - type: BROWSE
+                            name: Data Browser
+                          - type: RECOMMEND
+                            name: My Recommendation Engine
+                    flow:
+                      key: 7467799651
+                      type: DATA FLOW BUILDER
+                      name: First data flow
+                      buckets:
+                        - type: data_sources
+                          apps: []
+                        - type: data_transformers
+                          apps: []
+                        - type: data_apps
+                          apps: []
+                '8150790266':
+                  value:
+                    apps:
+                      - key: 0
+                        title: Data Sources
+                        subitems:
+                          - type: DATA SOURCE
+                            name: Gracenote
+                          - type: DATA SOURCE
+                            name: IVA
+                          - type: DATA SOURCE
+                            name: UCM
+                      - key: 1
+                        title: Data Transformation
+                        subitems:
+                          - type: MUX
+                            name: Data Merger
+                          - type: MODIFIER
+                            name: Data Modifications
+                          - type: ENRICHER
+                            name: Data Enrichments
+                      - key: 2
+                        title: Apps
+                        subitems:
+                          - type: SEARCH
+                            name: Data Search
+                          - type: BROWSE
+                            name: Data Browser
+                          - type: RECOMMEND
+                            name: My Recommendation Engine
+                    flow:
+                      key: 8150790266
+                      type: DATA FLOW BUILDER
+                      name: Pending data flow config
+                      buckets:
+                        - type: data_sources
+                          apps: []
+                        - type: data_transformers
+                          apps: []
+                        - type: data_apps
+                          apps: []
       operationId: get-data-flow-id
       description: Retrieve the complex definition of a data-flow.
 components:
