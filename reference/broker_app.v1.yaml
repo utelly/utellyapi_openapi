@@ -445,7 +445,7 @@ paths:
                     refresh_token: f63034cbebf34f7d852f7ab83a39a1b4
       tags:
         - User Management
-  /data-browser:
+  /data-browse:
     get:
       summary: Retrieve Browsing Data
       tags: []
@@ -455,34 +455,43 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  _embed:
-                    type: object
-                    properties:
-                      genres:
-                        type: array
-                        items: {}
-                      _links:
-                        type: object
-                      artworks:
-                        type: array
-                        items: {}
-                      created_at:
-                        type: string
-                      descriptions:
-                        type: array
-                        items: {}
-                      guiid:
-                        type: string
-                      '':
-                        type: string
-              examples: {}
+                $ref: '#/components/schemas/Data-Table'
+              examples:
+                base:
+                  value:
+                    headers:
+                      - value: '#'
+                        key: id
+                      - value: Title
+                        key: title
+                      - value: Type
+                        key: type
+                      - value: Release Year
+                        key: release_year
+                    data:
+                      - id: '4697406978'
+                        title: Game of Thrones
+                        type: Series
+                        release_year: '2011'
+                      - id: '4068078248'
+                        title: Peaky Blinders
+                        type: Series
+                        release_year: '2013'
+                      - id: '3405012100'
+                        title: Sherlock
+                        type: Series
+                        release_year: '2010'
+                      - id: '9444728546'
+                        title: The Avengers
+                        type: Movie
+                        release_year: '2012'
             application/xml:
               schema:
                 type: object
                 properties: {}
       operationId: get-data-browser
+      description: 'Retrieve a simple definition for each table row.  '
+    parameters: []
   '/data-browser/{id}':
     parameters:
       - schema:
