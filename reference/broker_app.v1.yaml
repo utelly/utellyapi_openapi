@@ -1234,6 +1234,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Data-Browsing'
+              examples:
+                base:
+                  value:
+                    headers:
+                      - value: '#'
+                        key: id
+                      - value: Title
+                        key: title
+                      - value: Created At
+                        key: created_at
+                      - value: Status
+                        key: status
+                    data:
+                      - id: '8665594510'
+                        title: Gracenote
+                        created_at: '2020-06-14 12:01:33 UTC'
+                        status: Ok
+                      - id: '1167601297'
+                        title: IVA
+                        created_at: '2020-06-15 13:55:00 UTC'
+                        status: Ok
+                      - id: '3923486757'
+                        title: UCM
+                        created_at: '2020-06-16 12:40:09 UTC'
+                        status: Ok
       operationId: get-data-source
       description: Retrieve the base definition of a table containing all the available data-sources.
 components:
