@@ -492,7 +492,7 @@ paths:
       operationId: get-data-browser
       description: 'Retrieve a simple definition for each table row.  '
     parameters: []
-  '/data-browser/{id}':
+  '/data-browse/{id}':
     parameters:
       - schema:
           type: string
@@ -510,7 +510,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Data-Browsing-With-Id'
       operationId: get-data-browser-id
-      description: ''
+      description: 'Retrieve a complex definition of a table entry based on the `id` parameter being passed.  '
 components:
   schemas:
     Data-Browsing:
