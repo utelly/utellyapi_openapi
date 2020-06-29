@@ -1104,6 +1104,22 @@ components:
                         type: string
                       updated_at:
                         type: string
+        activeTab:
+          type: string
+        ui_configuration:
+          type: object
+          properties:
+            tabs:
+              type: array
+              items:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  key:
+                    type: string
+            forms:
+              type: object
     Data-Browsing-Language-Metadata:
       title: Data-Browsing-Language-Metadata
       type: object
