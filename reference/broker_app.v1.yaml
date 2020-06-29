@@ -1015,6 +1015,19 @@ paths:
       operationId: get-data-flows
       description: Retrieve the simplified definition of data-flows in a table format.
     parameters: []
+  '/data-flow/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: data-flow-id
+      tags: []
+      responses: {}
+      operationId: get-data-flow-id
+      description: Retrieve the complex definition of a data-flow.
 components:
   schemas:
     Data-Browsing:
