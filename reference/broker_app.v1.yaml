@@ -647,6 +647,27 @@ components:
           type: string
         type:
           type: string
+    Data-Table:
+      title: Data-Table
+      type: object
+      description: This model represents the data that can populate a table in the Portal Reloaded Portal.
+      properties:
+        headers:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+        data:
+          type: array
+          items:
+            type: object
+      required:
+        - headers
+        - data
   securitySchemes:
     Authorization:
       name: Authorization
