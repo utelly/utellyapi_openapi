@@ -509,6 +509,467 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Data-Browsing-With-Id'
+              examples:
+                '3405012100':
+                  value:
+                    ui_configuration:
+                      tabs:
+                        - title: Details
+                          key: 1xd
+                        - title: Assets
+                          key: 2xd
+                      forms:
+                        1xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                        2xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                    resource:
+                      _embedded:
+                        genres:
+                          - _links:
+                              self:
+                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
+                            created_at: '2020-01-01T00:00:00Z'
+                            guid: 3405012100
+                            identifiers:
+                              - id: '1'
+                                source: gracenote
+                                ArrayItem:
+                                  id: a13
+                                  source: iva
+                            names:
+                              - name: Action
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: official
+                              - name: Action Aventure
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: itunes
+                                  type: official
+                            relationships:
+                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
+                                rel: sibling
+                            updated_at: '2020-01-01T00:00:00Z'
+                      _links:
+                        availabilities:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                        content_ratings:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                        contributors:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                        genres:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
+                        self:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                        tags:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                      artworks:
+                        - height: 879
+                          metadata:
+                            country: GB
+                            language: en
+                            source: amazon
+                            type: poster
+                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
+                          width: 606
+                      created_at: '2020-01-01T00:00:10Z'
+                      descriptions:
+                        - value: "In this modernized version of the Conan Doyle characters, using his detective plots, Sherlock Holmes lives in early 21st century London and acts more cocky towards Scotland Yard's detective inspector Lestrade because he's actually less confident. Doctor Watson is now a fairly young veteran of the Afghan war, less adoring and more active."
+                          metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: full
+                          primary: true
+                        - value: "Dans cette version modernisée des personnages de Conan Doyle, utilisant ses complots de détective, Sherlock Holmes vit au début du 21e siècle à Londres et agit plus arrogant envers l'inspecteur-détective de Scotland Yard Lestrade parce qu'il est en fait moins confiant. Le docteur Watson est maintenant un assez jeune vétéran de la guerre en Afghanistan, moins adorateur et plus actif."
+                          metadata:
+                            country: BE
+                            language: fr
+                            source: iva
+                            type: full
+                          primary: true
+                      guid: 3405012100
+                      identifiers:
+                        - id: '1'
+                          source: gracenote
+                      relationships:
+                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                          rel: parent
+                      titles:
+                        - metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: official
+                          value: Sherlock
+                          primary: true
+                      type: series
+                      updated_at: '2020-01-01T00:00:10Z'
+                      release_year: '2010'
+                    activeTab: 1xd
+                '4068078248':
+                  value:
+                    ui_configuration:
+                      tabs:
+                        - title: Details
+                          key: 1xd
+                        - title: Assets
+                          key: 2xd
+                      forms:
+                        1xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                        2xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                    resource:
+                      _embedded:
+                        genres:
+                          - _links:
+                              self:
+                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
+                            created_at: '2020-01-01T00:00:00Z'
+                            guid: 4068078248
+                            identifiers:
+                              - id: '1'
+                                source: gracenote
+                                ArrayItem:
+                                  id: a13
+                                  source: iva
+                            names:
+                              - name: Action
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: official
+                              - name: Action Aventure
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: itunes
+                                  type: official
+                            relationships:
+                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
+                                rel: sibling
+                            updated_at: '2020-01-01T00:00:00Z'
+                      _links:
+                        availabilities:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                        content_ratings:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                        contributors:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                        genres:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
+                        self:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                        tags:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                      artworks:
+                        - height: 879
+                          metadata:
+                            country: GB
+                            language: en
+                            source: amazon
+                            type: poster
+                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
+                          width: 606
+                      created_at: '2020-01-01T00:00:10Z'
+                      descriptions:
+                        - value: "Thomas Shelby and his brothers return to Birmingham after serving in the British Army during WWI. Shelby and the Peaky Blinders, the gang he is leader of, control the city of Birmingham But as Shelby's ambitions extend beyond Birmingham, he plans to build on the business empire he's created, and stop anyone who gets in his way."
+                          metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: full
+                          primary: true
+                        - value: "Thomas Shelby et ses frères retournent à Birmingham après avoir servi dans l'armée britannique pendant la Première Guerre mondiale. Shelby et les Peaky Blinders, le gang dont il est le chef, contrôlent la ville de Birmingham Mais alors que les ambitions de Shelby s'étendent au-delà de Birmingham, il prévoit de s'appuyer sur l'empire commercial qu'il a créé et d'empêcher quiconque se met en travers de son chemin."
+                          metadata:
+                            country: BE
+                            language: fr
+                            source: iva
+                            type: full
+                          primary: true
+                      guid: 4068078248
+                      identifiers:
+                        - id: '1'
+                          source: gracenote
+                      relationships:
+                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                          rel: parent
+                      titles:
+                        - metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: official
+                          value: Peaky Blinders
+                          primary: true
+                      type: series
+                      updated_at: '2020-01-01T00:00:10Z'
+                      release_year: '2013'
+                    activeTab: 1xd
+                '4697406978':
+                  value:
+                    ui_configuration:
+                      tabs:
+                        - title: Details
+                          key: 1xd
+                        - title: Assets
+                          key: 2xd
+                      forms:
+                        1xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                        2xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                    resource:
+                      _embedded:
+                        genres:
+                          - _links:
+                              self:
+                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
+                            created_at: '2020-01-01T00:00:00Z'
+                            guid: 4697406978
+                            identifiers:
+                              - id: '1'
+                                source: gracenote
+                                ArrayItem:
+                                  id: a13
+                                  source: iva
+                            names:
+                              - name: Action
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: official
+                              - name: Action Aventure
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: itunes
+                                  type: official
+                            relationships:
+                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
+                                rel: sibling
+                            updated_at: '2020-01-01T00:00:00Z'
+                      _links:
+                        availabilities:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                        content_ratings:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                        contributors:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                        genres:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
+                        self:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                        tags:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                      artworks:
+                        - height: 879
+                          metadata:
+                            country: GB
+                            language: en
+                            source: amazon
+                            type: poster
+                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
+                          width: 606
+                      created_at: '2020-01-01T00:00:10Z'
+                      descriptions:
+                        - value: "Game of Thrones is roughly based on the storylines of A Song of Ice and Fire, set in the fictional Seven Kingdoms of Westeros and the continent of Essos. The series follows several simultaneous plot lines. The first story arc follows a dynastic conflict among competing claimants for succession to the Iron Throne of the Seven Kingdoms, with other noble families fighting for independence from the throne. The second covers the exiled scion's actions to reclaim the throne; the third chronicles the threat of the impending winter and the legendary creatures and fierce peoples of the North. Showrunner David Benioff jokingly suggested 'The Sopranos in Middle-earth' as Game of Thrones' tagline, referring to its intrigue-filled plot and dark tone in a fantasy setting of magic and dragons"
+                          metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: full
+                          primary: true
+                        - value: "Game of Thrones est à peu près basé sur les histoires de A Song of Ice and Fire, se déroulant dans les sept royaumes fictifs de Westeros et le continent d'Essos. La série suit plusieurs lignes de tracé simultanées. Le premier arc de l'histoire suit un conflit dynastique entre les prétendants concurrents à la succession au trône de fer des sept royaumes, avec d'autres familles nobles luttant pour l'indépendance du trône. Le second couvre les actions du scion exilé pour reconquérir le trône; le troisième relate la menace de l'hiver imminent et les créatures légendaires et les peuples féroces du Nord. Le showrunner David Benioff a suggéré en plaisantant 'Les Sopranos dans la Terre du Milieu' comme slogan de Game of Thrones, faisant référence à son intrigue remplie d'intrigues et à son ton sombre dans un décor fantastique de magie et de dragons"
+                          metadata:
+                            country: BE
+                            language: fr
+                            source: iva
+                            type: full
+                          primary: true
+                      guid: 27c13eec19014084a0a3173061702b46
+                      identifiers:
+                        - id: '1'
+                          source: gracenote
+                      relationships:
+                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                          rel: parent
+                      titles:
+                        - metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: official
+                          value: Game Of Thrones
+                          primary: true
+                      type: series
+                      updated_at: '2020-01-01T00:00:10Z'
+                      release_year: '2011'
+                    activeTab: 1xd
+                '9444728546':
+                  value:
+                    ui_configuration:
+                      tabs:
+                        - title: Details
+                          key: 1xd
+                        - title: Assets
+                          key: 2xd
+                      forms:
+                        1xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                        2xd:
+                          - title: Type
+                            value: type
+                          - title: Title
+                            value: titles
+                          - title: Release Year
+                            value: release_year
+                          - title: Description
+                            value: descriptions
+                    resource:
+                      _embedded:
+                        genres:
+                          - _links:
+                              self:
+                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
+                            created_at: '2020-01-01T00:00:00Z'
+                            guid: 9444728546
+                            identifiers:
+                              - id: '1'
+                                source: gracenote
+                                ArrayItem:
+                                  id: a13
+                                  source: iva
+                            names:
+                              - name: Action
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: official
+                              - name: Action Aventure
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: itunes
+                                  type: official
+                            relationships:
+                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
+                                rel: sibling
+                            updated_at: '2020-01-01T00:00:00Z'
+                      _links:
+                        availabilities:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                        content_ratings:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                        contributors:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                        genres:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
+                        self:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                        tags:
+                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                      artworks:
+                        - height: 879
+                          metadata:
+                            country: GB
+                            language: en
+                            source: amazon
+                            type: poster
+                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
+                          width: 606
+                      created_at: '2020-01-01T00:00:10Z'
+                      descriptions:
+                        - value: "Nick Fury is the director of S.H.I.E.L.D., an international peace-keeping agency. The agency is a who's who of Marvel Super Heroes, with Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When global security is threatened by Loki and his cohorts, Nick Fury and his team will need all their powers to save the world from disaster which is formed by Loki and his team."
+                          metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: full
+                          primary: true
+                        - value: "Nick Fury est le directeur de S.H.I.E.L.D., une agence internationale de maintien de la paix. L'agence est un who's who de Marvel Super Heroes, avec Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye et Black Widow. Lorsque la sécurité mondiale est menacée par Loki et ses cohortes, Nick Fury et son équipe auront besoin de tous leurs pouvoirs pour sauver le monde d'une catastrophe qui est formée par Loki et son équipe."
+                          metadata:
+                            country: BE
+                            language: fr
+                            source: iva
+                            type: full
+                          primary: true
+                      guid: 9444728546
+                      identifiers:
+                        - id: '1'
+                          source: gracenote
+                      relationships:
+                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                          rel: parent
+                      titles:
+                        - metadata:
+                            country: GB
+                            language: en
+                            source: gracenote
+                            type: official
+                          value: The Avengers
+                          primary: true
+                      type: movie
+                      updated_at: '2020-01-01T00:00:10Z'
+                      release_year: '2012'
+                    activeTab: 1xd
       operationId: get-data-browser-id
       description: 'Retrieve a complex definition of a table entry based on the `id` parameter being passed.  '
 components:
