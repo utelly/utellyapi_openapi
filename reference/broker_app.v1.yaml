@@ -1223,6 +1223,19 @@ paths:
                           apps: []
       operationId: get-data-flow-id
       description: Retrieve the complex definition of a data-flow.
+  /data-source:
+    get:
+      summary: data-source
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data-Browsing'
+      operationId: get-data-source
+      description: Retrieve the base definition of a table containing all the available data-sources.
 components:
   schemas:
     Data-Browsing:
