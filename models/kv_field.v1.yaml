@@ -1,20 +1,22 @@
-title: kv_field
-type: object
+additionalProperties: false
 properties:
   key:
     type: string
   value:
     oneOf:
-      - type: string
-      - type: number
-      - type: integer
-      - type: boolean
-      - type: object
-      - type: array
-        items: {}
+    - type: string
+    - type: number
+    - type: integer
+    - type: boolean
+    - additionalProperties: false
+      type: object
+    - items: {}
+      type: array
+title: kv_field
+type: object
 x-examples:
   '1':
     key: name
     value: keiser
 x-tags:
-  - fields
+- fields

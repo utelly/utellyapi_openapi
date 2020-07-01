@@ -1,372 +1,27 @@
-openapi: 3.0.0
+components:
+  schemas: {}
+  securitySchemes:
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-apikeyInfoFunc: security.check_token
 info:
+  description: Application acting as a broker between the react front-end and a whole bunch of microservices
   title: broker_app
   version: v1
-  description: ''
-servers:
-  - url: 'https://services.utelly.com/broker_app/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/broker_app/v1'
-    description: staging
-  - url: 'https://dev-services.utelly.com/broker_app/v1'
-    description: dev
+  contact:
+    email: developers@utelly.com
+openapi: 3.0.0
 paths:
-  /user/login:
-    post:
-      summary: Login
-      operationId: v1.user.login
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  access_token:
-                    type: string
-                  refresh_token:
-                    type: string
-                required:
-                  - id
-                  - access_token
-                  - refresh_token
-              examples:
-                '1':
-                  value:
-                    id: 9b38b54dd74644db96e772d6076615da
-                    access_token: 9b38b54dd74644db96e772d6076615da
-                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
-      description: ''
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-                - email
-                - password
-            examples:
-              '1':
-                value:
-                  email: hello@utelly.com
-                  password: 3@Ubc1iCYZUKGtAi
-      tags:
-        - User Management
-    parameters: []
-  /user/refresh_jwt_access_token:
-    post:
-      summary: Refresh JWT access_token
-      operationId: v1.user.refresh_jwt_access_token
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  access_token:
-                    type: string
-                required:
-                  - access_token
-              examples:
-                '1':
-                  value:
-                    access_token: f9a664c1ba3f4665aa902ded47edaca9
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                refresh_token:
-                  type: string
-              required:
-                - refresh_token
-            examples:
-              '1':
-                value:
-                  refresh_token: cc53ca4aaf294c489a29c1515cb1f1b3
-      description: ''
-      tags:
-        - User Management
-    parameters: []
-  /user/register:
-    post:
-      summary: Register
-      operationId: v1.user.register
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  access_token:
-                    type: string
-                  refresh_token:
-                    type: string
-                required:
-                  - id
-                  - access_token
-                  - refresh_token
-              examples:
-                '1':
-                  value:
-                    id: 9b38b54dd74644db96e772d6076615da
-                    access_token: 9b38b54dd74644db96e772d6076615da
-                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
-      description: ''
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                last_name:
-                  type: string
-                email:
-                  type: string
-                registration_token:
-                  type: string
-                password:
-                  type: string
-                password_confirm:
-                  type: string
-                destination_url_template:
-                  type: string
-              required:
-                - first_name
-                - last_name
-                - email
-                - registration_token
-                - password
-                - password_confirm
-                - destination_url_template
-            examples:
-              '1':
-                value:
-                  first_name: Keizer
-                  last_name: Söze
-                  email: keizer@email.com
-                  registration_token: 55a68d8af89b4a29a453c9a21b37445f
-                  password: password
-                  password_confirm: password
-                  destination_url_template: 'https://mydomain.com/confirm?user_id={user_id}&code={code}'
-      tags:
-        - User Management
-    parameters: []
-  /user/forgot_password:
-    post:
-      summary: Forgot password
-      operationId: v1.user.forgot_password
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                destination_url_template:
-                  type: string
-              required:
-                - email
-                - destination_url_template
-            examples:
-              '1':
-                value:
-                  email: keizer@email.com
-                  destination_url_template: 'https://mydomain.com/forgot_password_page?email={email}&token={token}'
-      description: sends an email with a authentication token
-      tags:
-        - User Management
-    parameters: []
-  /user/email_confirm:
-    post:
-      summary: Confirm email
-      operationId: v1.user.confirm
-      responses:
-        '200':
-          description: OK
-      description: validates user email
-      parameters: []
-      tags:
-        - User Management
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                user_id:
-                  type: string
-                code:
-                  type: string
-            examples:
-              '1':
-                value:
-                  user_id: 9b38b54dd74644db96e772d6076615da
-                  code: 06ebadbe3bbf4e2798fd421b1346c1ee
-    parameters: []
-  /user/preferences:
-    parameters: []
-    get:
-      summary: Get preferences
-      operationId: v1.user.get_preferences
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  values:
-                    type: array
-                    items:
-                      $ref: ../models/kv_field.v1.yaml
-              examples:
-                '1':
-                  value:
-                    values:
-                      - key: default_env
-                        value: '1'
-                      - key: default_perspective
-                        value: '1'
-                      - key: default_view
-                        value: '1'
-      security:
-        - Authorization: []
-      description: ''
-      tags:
-        - User Management
-  /ui/layout:
-    parameters: []
-    get:
-      summary: Get ui layout
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  layout:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        environments:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              environment:
-                                $ref: ../models/Environment.v1.yaml
-                              perspectives:
-                                type: array
-                                items:
-                                  type: object
-                                  properties:
-                                    perspective:
-                                      $ref: ../models/Perspective.v1.yaml
-                                    views:
-                                      type: array
-                                      items:
-                                        type: object
-                                        properties:
-                                          view:
-                                            $ref: ../models/View.v1.yaml
-                                          permission:
-                                            type: string
-              examples:
-                '1':
-                  value:
-                    layout:
-                      - environments:
-                          - environment:
-                              id: '1'
-                              name:
-                                - locale: en
-                                  value: development
-                                - locale: nl
-                                  value: ontwikkeling
-                              description:
-                                - locale: en
-                                  value: use and make things to break them
-                              tooltip:
-                                - locale: en
-                                  value: this environment gets refreshed daily
-                            perspectives:
-                              - perspective:
-                                  id: '1'
-                                  name:
-                                    - locale: en
-                                      value: architect
-                                    - locale: nl
-                                      value: ontwerp
-                                  description:
-                                    - locale: en
-                                      value: this is where you wire things up
-                                  tooltip:
-                                    - locale: en
-                                      value: 'In this view, we can orchestrate how things are connected'
-                                views:
-                                  - view:
-                                      id: '1'
-                                      name:
-                                        - locale: en
-                                          value: Overview
-                                      resource: data_flows
-                                      renderer: df_overview
-                                      description:
-                                        - locale: en
-                                          value: ''
-                                      tooltip:
-                                        - locale: en
-                                          value: ''
-                                      perspectives_id:
-                                        - '1'
-                                    permission: read
-      operationId: v1.ui.get_layout
-      security:
-        - Authorization: []
-      description: ''
-      tags:
-        - UI
   '/configurations/environment/{environment_id}/view/{view_id}':
     get:
-      summary: Get configurations
+      description: List the configurations available for a given env and a given view
+      operationId: v1.configuration.get
       responses:
         '200':
-          description: OK
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  configurations:
-                    type: array
-                    items:
-                      $ref: ../models/Configuration.v1.yaml
               examples:
                 '1':
                   value:
@@ -381,1125 +36,571 @@ paths:
                           - locale: en
                             value: friendly name of the conf2
                         payload: {}
-      operationId: v1.configuration.get
-      description: ''
+              schema:
+                additionalProperties: false
+                properties:
+                  configurations:
+                    items:
+                      $ref: ../models/Configuration.v1.yaml
+                    type: array
+                type: object
+          description: OK
       security:
         - Authorization: []
+      summary: Get configurations
       tags:
         - Configuration Management
     parameters:
-      - schema:
-          type: string
+      - in: path
         name: environment_id
-        in: path
         required: true
-      - schema:
+        schema:
           type: string
+      - in: path
         name: view_id
-        in: path
         required: true
+        schema:
+          type: string
+  /ui/layout:
+    get:
+      description: Get the metadata about the UI
+      operationId: v1.ui.get_layout
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    layout:
+                      - environments:
+                          - environment:
+                              description:
+                                - locale: en
+                                  value: use and make things to break them
+                              id: '1'
+                              name:
+                                - locale: en
+                                  value: development
+                                - locale: nl
+                                  value: ontwikkeling
+                              tooltip:
+                                - locale: en
+                                  value: this environment gets refreshed daily
+                            perspectives:
+                              - perspective:
+                                  description:
+                                    - locale: en
+                                      value: this is where you wire things up
+                                  id: '1'
+                                  name:
+                                    - locale: en
+                                      value: architect
+                                    - locale: nl
+                                      value: ontwerp
+                                  tooltip:
+                                    - locale: en
+                                      value: 'In this view, we can orchestrate how things are connected'
+                                views:
+                                  - permission: read
+                                    view:
+                                      description:
+                                        - locale: en
+                                          value: ''
+                                      id: '1'
+                                      name:
+                                        - locale: en
+                                          value: Overview
+                                      perspectives_id:
+                                        - '1'
+                                      renderer: df_overview
+                                      resource: data_flows
+                                      tooltip:
+                                        - locale: en
+                                          value: ''
+              schema:
+                additionalProperties: false
+                properties:
+                  layout:
+                    items:
+                      additionalProperties: false
+                      properties:
+                        environments:
+                          items:
+                            additionalProperties: false
+                            properties:
+                              environment:
+                                $ref: ../models/Environment.v1.yaml
+                              perspectives:
+                                items:
+                                  additionalProperties: false
+                                  properties:
+                                    perspective:
+                                      $ref: ../models/Perspective.v1.yaml
+                                    views:
+                                      items:
+                                        additionalProperties: false
+                                        properties:
+                                          permission:
+                                            type: string
+                                          view:
+                                            $ref: ../models/View.v1.yaml
+                                        type: object
+                                      type: array
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                type: object
+          description: OK
+      security:
+        - Authorization: []
+      summary: Get ui layout
+      tags:
+        - UI
+    parameters: []
+  /user/email_confirm:
+    parameters: []
+    post:
+      description: validates user email
+      operationId: v1.user.confirm
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  code: 06ebadbe3bbf4e2798fd421b1346c1ee
+                  user_id: 9b38b54dd74644db96e772d6076615da
+            schema:
+              additionalProperties: false
+              type: object
+              properties:
+                code:
+                  type: string
+                user_id:
+                  type: string
+      responses:
+        '200':
+          description: OK
+      summary: Confirm email
+      tags:
+        - User Management
+  /user/forgot_password:
+    parameters: []
+    post:
+      description: sends an email with a authentication token
+      operationId: v1.user.forgot_password
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  destination_url_template: 'https://mydomain.com/forgot_password_page?email={email}&token={token}'
+                  email: keizer@email.com
+            schema:
+              additionalProperties: false
+              properties:
+                destination_url_template:
+                  type: string
+                email:
+                  type: string
+              required:
+                - email
+                - destination_url_template
+              type: object
+      responses:
+        '200':
+          description: OK
+      summary: Forgot password
+      tags:
+        - User Management
   /user/forgot_password_confirm:
     post:
-      summary: Forgot password confirm
       operationId: v1.user.forgot_password_confirm
       requestBody:
         content:
           application/json:
+            examples:
+              '1':
+                value:
+                  email: keizer@email.com
+                  password: password
+                  password_confirm: password
+                  token: 3c5ace8b39354d54aaefec5c7c35da76
             schema:
-              type: object
+              additionalProperties: false
               properties:
                 email:
-                  type: string
-                token:
                   type: string
                 password:
                   type: string
                 password_confirm:
                   type: string
-            examples:
-              '1':
-                value:
-                  email: keizer@email.com
-                  token: 3c5ace8b39354d54aaefec5c7c35da76
-                  password: password
-                  password_confirm: password
+                token:
+                  type: string
+              type: object
       responses:
         '201':
-          description: Created
           content:
             application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  access_token:
-                    type: string
-                  refresh_token:
-                    type: string
               examples:
                 '1':
                   value:
-                    id: 4546ed7dd9ed477ba368749f0bd8b3a1
                     access_token: eb1b44a9977c44e1a880df4637efec4a
+                    id: 4546ed7dd9ed477ba368749f0bd8b3a1
                     refresh_token: f63034cbebf34f7d852f7ab83a39a1b4
+              schema:
+                additionalProperties: false
+                properties:
+                  access_token:
+                    type: string
+                  id:
+                    type: string
+                  refresh_token:
+                    type: string
+                type: object
+          description: Created
+      summary: Forgot password confirm
       tags:
         - User Management
-  /data-browse:
-    get:
-      summary: Retrieve Browsing Data
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Data-Table'
-              examples:
-                base:
-                  value:
-                    headers:
-                      - value: '#'
-                        key: id
-                      - value: Title
-                        key: title
-                      - value: Type
-                        key: type
-                      - value: Release Year
-                        key: release_year
-                    data:
-                      - id: '4697406978'
-                        title: Game of Thrones
-                        type: Series
-                        release_year: '2011'
-                      - id: '4068078248'
-                        title: Peaky Blinders
-                        type: Series
-                        release_year: '2013'
-                      - id: '3405012100'
-                        title: Sherlock
-                        type: Series
-                        release_year: '2010'
-                      - id: '9444728546'
-                        title: The Avengers
-                        type: Movie
-                        release_year: '2012'
-            application/xml:
-              schema:
-                type: object
-                properties: {}
-      operationId: get-data-browser
-      description: 'Retrieve a simple definition for each table row.  '
+      description: 'Forget password confirmation '
+  /user/login:
     parameters: []
-  '/data-browse/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-    get:
-      summary: Retrieve Specific Browsing Data Id
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Data-Browsing-With-Id'
-              examples:
-                '3405012100':
-                  value:
-                    ui_configuration:
-                      tabs:
-                        - title: Details
-                          key: 1xd
-                        - title: Assets
-                          key: 2xd
-                      forms:
-                        1xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                        2xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                    resource:
-                      _embedded:
-                        genres:
-                          - _links:
-                              self:
-                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
-                            created_at: '2020-01-01T00:00:00Z'
-                            guid: 3405012100
-                            identifiers:
-                              - id: '1'
-                                source: gracenote
-                                ArrayItem:
-                                  id: a13
-                                  source: iva
-                            names:
-                              - name: Action
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: gracenote
-                                  type: official
-                              - name: Action Aventure
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: itunes
-                                  type: official
-                            relationships:
-                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
-                                rel: sibling
-                            updated_at: '2020-01-01T00:00:00Z'
-                      _links:
-                        availabilities:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                        content_ratings:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                        contributors:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                        genres:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
-                        self:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                        tags:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                      artworks:
-                        - height: 879
-                          metadata:
-                            country: GB
-                            language: en
-                            source: amazon
-                            type: poster
-                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
-                          width: 606
-                      created_at: '2020-01-01T00:00:10Z'
-                      descriptions:
-                        - value: "In this modernized version of the Conan Doyle characters, using his detective plots, Sherlock Holmes lives in early 21st century London and acts more cocky towards Scotland Yard's detective inspector Lestrade because he's actually less confident. Doctor Watson is now a fairly young veteran of the Afghan war, less adoring and more active."
-                          metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: full
-                          primary: true
-                        - value: "Dans cette version modernisée des personnages de Conan Doyle, utilisant ses complots de détective, Sherlock Holmes vit au début du 21e siècle à Londres et agit plus arrogant envers l'inspecteur-détective de Scotland Yard Lestrade parce qu'il est en fait moins confiant. Le docteur Watson est maintenant un assez jeune vétéran de la guerre en Afghanistan, moins adorateur et plus actif."
-                          metadata:
-                            country: BE
-                            language: fr
-                            source: iva
-                            type: full
-                          primary: true
-                      guid: 3405012100
-                      identifiers:
-                        - id: '1'
-                          source: gracenote
-                      relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                      titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: official
-                          value: Sherlock
-                          primary: true
-                      type: series
-                      updated_at: '2020-01-01T00:00:10Z'
-                      release_year: '2010'
-                    activeTab: 1xd
-                '4068078248':
-                  value:
-                    ui_configuration:
-                      tabs:
-                        - title: Details
-                          key: 1xd
-                        - title: Assets
-                          key: 2xd
-                      forms:
-                        1xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                        2xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                    resource:
-                      _embedded:
-                        genres:
-                          - _links:
-                              self:
-                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
-                            created_at: '2020-01-01T00:00:00Z'
-                            guid: 4068078248
-                            identifiers:
-                              - id: '1'
-                                source: gracenote
-                                ArrayItem:
-                                  id: a13
-                                  source: iva
-                            names:
-                              - name: Action
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: gracenote
-                                  type: official
-                              - name: Action Aventure
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: itunes
-                                  type: official
-                            relationships:
-                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
-                                rel: sibling
-                            updated_at: '2020-01-01T00:00:00Z'
-                      _links:
-                        availabilities:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                        content_ratings:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                        contributors:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                        genres:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
-                        self:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                        tags:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                      artworks:
-                        - height: 879
-                          metadata:
-                            country: GB
-                            language: en
-                            source: amazon
-                            type: poster
-                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
-                          width: 606
-                      created_at: '2020-01-01T00:00:10Z'
-                      descriptions:
-                        - value: "Thomas Shelby and his brothers return to Birmingham after serving in the British Army during WWI. Shelby and the Peaky Blinders, the gang he is leader of, control the city of Birmingham But as Shelby's ambitions extend beyond Birmingham, he plans to build on the business empire he's created, and stop anyone who gets in his way."
-                          metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: full
-                          primary: true
-                        - value: "Thomas Shelby et ses frères retournent à Birmingham après avoir servi dans l'armée britannique pendant la Première Guerre mondiale. Shelby et les Peaky Blinders, le gang dont il est le chef, contrôlent la ville de Birmingham Mais alors que les ambitions de Shelby s'étendent au-delà de Birmingham, il prévoit de s'appuyer sur l'empire commercial qu'il a créé et d'empêcher quiconque se met en travers de son chemin."
-                          metadata:
-                            country: BE
-                            language: fr
-                            source: iva
-                            type: full
-                          primary: true
-                      guid: 4068078248
-                      identifiers:
-                        - id: '1'
-                          source: gracenote
-                      relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                      titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: official
-                          value: Peaky Blinders
-                          primary: true
-                      type: series
-                      updated_at: '2020-01-01T00:00:10Z'
-                      release_year: '2013'
-                    activeTab: 1xd
-                '4697406978':
-                  value:
-                    ui_configuration:
-                      tabs:
-                        - title: Details
-                          key: 1xd
-                        - title: Assets
-                          key: 2xd
-                      forms:
-                        1xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                        2xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                    resource:
-                      _embedded:
-                        genres:
-                          - _links:
-                              self:
-                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
-                            created_at: '2020-01-01T00:00:00Z'
-                            guid: 4697406978
-                            identifiers:
-                              - id: '1'
-                                source: gracenote
-                                ArrayItem:
-                                  id: a13
-                                  source: iva
-                            names:
-                              - name: Action
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: gracenote
-                                  type: official
-                              - name: Action Aventure
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: itunes
-                                  type: official
-                            relationships:
-                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
-                                rel: sibling
-                            updated_at: '2020-01-01T00:00:00Z'
-                      _links:
-                        availabilities:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                        content_ratings:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                        contributors:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                        genres:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
-                        self:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                        tags:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                      artworks:
-                        - height: 879
-                          metadata:
-                            country: GB
-                            language: en
-                            source: amazon
-                            type: poster
-                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
-                          width: 606
-                      created_at: '2020-01-01T00:00:10Z'
-                      descriptions:
-                        - value: "Game of Thrones is roughly based on the storylines of A Song of Ice and Fire, set in the fictional Seven Kingdoms of Westeros and the continent of Essos. The series follows several simultaneous plot lines. The first story arc follows a dynastic conflict among competing claimants for succession to the Iron Throne of the Seven Kingdoms, with other noble families fighting for independence from the throne. The second covers the exiled scion's actions to reclaim the throne; the third chronicles the threat of the impending winter and the legendary creatures and fierce peoples of the North. Showrunner David Benioff jokingly suggested 'The Sopranos in Middle-earth' as Game of Thrones' tagline, referring to its intrigue-filled plot and dark tone in a fantasy setting of magic and dragons"
-                          metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: full
-                          primary: true
-                        - value: "Game of Thrones est à peu près basé sur les histoires de A Song of Ice and Fire, se déroulant dans les sept royaumes fictifs de Westeros et le continent d'Essos. La série suit plusieurs lignes de tracé simultanées. Le premier arc de l'histoire suit un conflit dynastique entre les prétendants concurrents à la succession au trône de fer des sept royaumes, avec d'autres familles nobles luttant pour l'indépendance du trône. Le second couvre les actions du scion exilé pour reconquérir le trône; le troisième relate la menace de l'hiver imminent et les créatures légendaires et les peuples féroces du Nord. Le showrunner David Benioff a suggéré en plaisantant 'Les Sopranos dans la Terre du Milieu' comme slogan de Game of Thrones, faisant référence à son intrigue remplie d'intrigues et à son ton sombre dans un décor fantastique de magie et de dragons"
-                          metadata:
-                            country: BE
-                            language: fr
-                            source: iva
-                            type: full
-                          primary: true
-                      guid: 27c13eec19014084a0a3173061702b46
-                      identifiers:
-                        - id: '1'
-                          source: gracenote
-                      relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                      titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: official
-                          value: Game Of Thrones
-                          primary: true
-                      type: series
-                      updated_at: '2020-01-01T00:00:10Z'
-                      release_year: '2011'
-                    activeTab: 1xd
-                '9444728546':
-                  value:
-                    ui_configuration:
-                      tabs:
-                        - title: Details
-                          key: 1xd
-                        - title: Assets
-                          key: 2xd
-                      forms:
-                        1xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                        2xd:
-                          - title: Type
-                            value: type
-                          - title: Title
-                            value: titles
-                          - title: Release Year
-                            value: release_year
-                          - title: Description
-                            value: descriptions
-                    resource:
-                      _embedded:
-                        genres:
-                          - _links:
-                              self:
-                                href: /content/genres/9be42f99a8ab420082719d1bafc8e649
-                            created_at: '2020-01-01T00:00:00Z'
-                            guid: 9444728546
-                            identifiers:
-                              - id: '1'
-                                source: gracenote
-                                ArrayItem:
-                                  id: a13
-                                  source: iva
-                            names:
-                              - name: Action
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: gracenote
-                                  type: official
-                              - name: Action Aventure
-                                metadata:
-                                  country: GB
-                                  language: en
-                                  source: itunes
-                                  type: official
-                            relationships:
-                              - href: /content/genres/67903dd1ced974ecea01116f2c0a5a290
-                                rel: sibling
-                            updated_at: '2020-01-01T00:00:00Z'
-                      _links:
-                        availabilities:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                        content_ratings:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                        contributors:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                        genres:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/genres
-                        self:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                        tags:
-                          href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                      artworks:
-                        - height: 879
-                          metadata:
-                            country: GB
-                            language: en
-                            source: amazon
-                            type: poster
-                          url: 'https://images-na.ssl-images-amazon.com/images/I/61CT1JficGL._AC_SY879_.jpg'
-                          width: 606
-                      created_at: '2020-01-01T00:00:10Z'
-                      descriptions:
-                        - value: "Nick Fury is the director of S.H.I.E.L.D., an international peace-keeping agency. The agency is a who's who of Marvel Super Heroes, with Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye and Black Widow. When global security is threatened by Loki and his cohorts, Nick Fury and his team will need all their powers to save the world from disaster which is formed by Loki and his team."
-                          metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: full
-                          primary: true
-                        - value: "Nick Fury est le directeur de S.H.I.E.L.D., une agence internationale de maintien de la paix. L'agence est un who's who de Marvel Super Heroes, avec Iron Man, The Incredible Hulk, Thor, Captain America, Hawkeye et Black Widow. Lorsque la sécurité mondiale est menacée par Loki et ses cohortes, Nick Fury et son équipe auront besoin de tous leurs pouvoirs pour sauver le monde d'une catastrophe qui est formée par Loki et son équipe."
-                          metadata:
-                            country: BE
-                            language: fr
-                            source: iva
-                            type: full
-                          primary: true
-                      guid: 9444728546
-                      identifiers:
-                        - id: '1'
-                          source: gracenote
-                      relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                      titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: gracenote
-                            type: official
-                          value: The Avengers
-                          primary: true
-                      type: movie
-                      updated_at: '2020-01-01T00:00:10Z'
-                      release_year: '2012'
-                    activeTab: 1xd
-      operationId: get-data-browser-id
-      description: 'Retrieve a complex definition of a table entry based on the `id` parameter being passed.  '
-  /data-flow:
-    get:
-      summary: data-flows
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Data-Table'
-              examples:
-                base:
-                  value:
-                    headers:
-                      - value: '#'
-                        key: id
-                      - value: Title
-                        key: title
-                      - value: Created At
-                        key: created_at
-                      - value: Status
-                        key: status
-                    data:
-                      - id: '1710034532'
-                        title: Telenet Data Flow
-                        created_at: '2020-06-10 13:29:23 UTC'
-                        status: Ok
-                      - id: '3818912293'
-                        title: Merging mutliple sources
-                        created_at: '2020-06-08 16:09:18 UTC'
-                        status: Pending
-                      - id: '8150790266'
-                        title: Pending data flow config
-                        created_at: '2020-06-06 11:49:53 UTC'
-                        status: Pending
-                      - id: '7467799651'
-                        title: First data flow
-                        created_at: '2020-06-03 10:21:37 UTC'
-                        status: Pending
-      operationId: get-data-flows
-      description: Retrieve the simplified definition of data-flows in a table format.
-    parameters: []
-  '/data-flow/{id}':
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
-    get:
-      summary: data-flow-id
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Data-Flow'
-              examples:
-                '1710034532':
-                  value:
-                    apps:
-                      - key: 0
-                        title: Data Sources
-                        subitems:
-                          - type: DATA SOURCE
-                            name: Gracenote
-                          - type: DATA SOURCE
-                            name: IVA
-                          - type: DATA SOURCE
-                            name: UCM
-                      - key: 1
-                        title: Data Transformation
-                        subitems:
-                          - type: MUX
-                            name: Data Merger
-                          - type: MODIFIER
-                            name: Data Modifications
-                          - type: ENRICHER
-                            name: Data Enrichments
-                      - key: 2
-                        title: Apps
-                        subitems:
-                          - type: SEARCH
-                            name: Data Search
-                          - type: BROWSE
-                            name: Data Browser
-                          - type: RECOMMEND
-                            name: My Recommendation Engine
-                    flow:
-                      key: 1710034532
-                      type: DATA FLOW BUILDER
-                      name: Telenet Data Flow
-                      buckets:
-                        - type: data_sources
-                          apps:
-                            - type: DATA SOURCE
-                              name: Gracenote
-                              title: Data Sources
-                            - type: DATA SOURCE
-                              name: IVA
-                              title: Data Sources
-                            - type: DATA SOURCE
-                              name: UCM
-                              title: Data Sources
-                        - type: data_transformers
-                          apps:
-                            - type: MUX
-                              name: Telenet Data Merger
-                              title: Data Transformation
-                            - type: ENRICHER
-                              name: Telenet Data Enrichments
-                              title: Data Transformation
-                            - type: MODIFIER
-                              name: Telenet Data Modifications
-                              title: Data Transformation
-                        - type: data_apps
-                          apps:
-                            - type: SEARCH
-                              name: Yelo Play Search
-                              title: Apps
-                            - type: BROWSE
-                              name: Data Browser
-                              title: Apps
-                '3818912293':
-                  value:
-                    apps:
-                      - key: 0
-                        title: Data Sources
-                        subitems:
-                          - type: DATA SOURCE
-                            name: Gracenote
-                          - type: DATA SOURCE
-                            name: IVA
-                          - type: DATA SOURCE
-                            name: UCM
-                      - key: 1
-                        title: Data Transformation
-                        subitems:
-                          - type: MUX
-                            name: Data Merger
-                          - type: MODIFIER
-                            name: Data Modifications
-                          - type: ENRICHER
-                            name: Data Enrichments
-                      - key: 2
-                        title: Apps
-                        subitems:
-                          - type: SEARCH
-                            name: Data Search
-                          - type: BROWSE
-                            name: Data Browser
-                          - type: RECOMMEND
-                            name: My Recommendation Engine
-                    flow:
-                      key: 3818912293
-                      type: DATA FLOW BUILDER
-                      name: Merging mutliple sources
-                      buckets:
-                        - type: data_sources
-                          apps: []
-                        - type: data_transformers
-                          apps: []
-                        - type: data_apps
-                          apps: []
-                '7467799651':
-                  value:
-                    apps:
-                      - key: 0
-                        title: Data Sources
-                        subitems:
-                          - type: DATA SOURCE
-                            name: Gracenote
-                          - type: DATA SOURCE
-                            name: IVA
-                          - type: DATA SOURCE
-                            name: UCM
-                      - key: 1
-                        title: Data Transformation
-                        subitems:
-                          - type: MUX
-                            name: Data Merger
-                          - type: MODIFIER
-                            name: Data Modifications
-                          - type: ENRICHER
-                            name: Data Enrichments
-                      - key: 2
-                        title: Apps
-                        subitems:
-                          - type: SEARCH
-                            name: Data Search
-                          - type: BROWSE
-                            name: Data Browser
-                          - type: RECOMMEND
-                            name: My Recommendation Engine
-                    flow:
-                      key: 7467799651
-                      type: DATA FLOW BUILDER
-                      name: First data flow
-                      buckets:
-                        - type: data_sources
-                          apps: []
-                        - type: data_transformers
-                          apps: []
-                        - type: data_apps
-                          apps: []
-                '8150790266':
-                  value:
-                    apps:
-                      - key: 0
-                        title: Data Sources
-                        subitems:
-                          - type: DATA SOURCE
-                            name: Gracenote
-                          - type: DATA SOURCE
-                            name: IVA
-                          - type: DATA SOURCE
-                            name: UCM
-                      - key: 1
-                        title: Data Transformation
-                        subitems:
-                          - type: MUX
-                            name: Data Merger
-                          - type: MODIFIER
-                            name: Data Modifications
-                          - type: ENRICHER
-                            name: Data Enrichments
-                      - key: 2
-                        title: Apps
-                        subitems:
-                          - type: SEARCH
-                            name: Data Search
-                          - type: BROWSE
-                            name: Data Browser
-                          - type: RECOMMEND
-                            name: My Recommendation Engine
-                    flow:
-                      key: 8150790266
-                      type: DATA FLOW BUILDER
-                      name: Pending data flow config
-                      buckets:
-                        - type: data_sources
-                          apps: []
-                        - type: data_transformers
-                          apps: []
-                        - type: data_apps
-                          apps: []
-      operationId: get-data-flow-id
-      description: Retrieve the complex definition of a data-flow.
-  /data-source:
-    get:
-      summary: data-source
-      tags: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Data-Browsing'
-              examples:
-                base:
-                  value:
-                    headers:
-                      - value: '#'
-                        key: id
-                      - value: Title
-                        key: title
-                      - value: Created At
-                        key: created_at
-                      - value: Status
-                        key: status
-                    data:
-                      - id: '8665594510'
-                        title: Gracenote
-                        created_at: '2020-06-14 12:01:33 UTC'
-                        status: Ok
-                      - id: '1167601297'
-                        title: IVA
-                        created_at: '2020-06-15 13:55:00 UTC'
-                        status: Ok
-                      - id: '3923486757'
-                        title: UCM
-                        created_at: '2020-06-16 12:40:09 UTC'
-                        status: Ok
-      operationId: get-data-source
-      description: Retrieve the base definition of a table containing all the available data-sources.
-components:
-  schemas:
-    Data-Browsing:
-      title: Data-Browsing
-      type: object
-      description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse'
-      properties:
-        headers:
-          type: object
-          properties:
-            id:
-              type: string
-            title:
-              type: string
-            type:
-              type: string
-            release:
-              type: string
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              title:
-                type: string
-              type:
-                type: string
-              release:
-                type: string
-      required:
-        - headers
-        - data
-    Data-Browsing-With-Id:
-      title: Data-Browsing-With-Id
-      type: object
-      description: 'Data to be retrieved on the https://portal2-dev.utelly.com/{perspective}/data-flows/data-builder/data-browse when the user selects an item from the table'
-      properties:
-        resource:
-          type: object
-          properties:
-            genres:
-              type: array
-              items: {}
-            _links:
-              type: object
-            artworks:
-              type: array
-              items:
-                type: object
-                properties:
-                  height:
-                    type: integer
-                  width:
-                    type: integer
-                  url:
-                    type: string
-                  metadata:
-                    $ref: '#/components/schemas/Data-Browsing-Language-Metadata'
-            created_at:
-              type: string
-            descriptions:
-              type: array
-              items:
-                type: object
-                properties:
-                  value:
-                    type: string
-                  metadata:
-                    $ref: ''
-                  primary:
-                    type: boolean
-            guid:
-              type: string
-            identifiers:
-              type: array
-              items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  source:
-                    type: string
-            relationships:
-              type: array
-              items:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  '':
-                    type: string
-            titles:
-              type: array
-              items:
-                type: object
-                properties:
-                  value:
-                    type: string
-                  primary:
-                    type: boolean
-                  metadata:
-                    $ref: '#/components/schemas/Data-Browsing-Language-Metadata'
-            type:
-              type: string
-            updated_at:
-              type: string
-            release_year:
-              type: string
-            _embedded:
-              type: object
+    post:
+      description: User login sequence
+      operationId: v1.user.login
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  email: hello@utelly.com
+                  password: 3@Ubc1iCYZUKGtAi
+            schema:
+              additionalProperties: false
               properties:
-                genres:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      _links:
-                        type: object
-                      created_ad:
-                        type: string
-                      guid:
-                        type: string
-                      identifiers:
-                        type: string
-                      names:
-                        type: string
-                      relationships:
-                        type: string
-                      updated_at:
-                        type: string
-        activeTab:
-          type: string
-        ui_configuration:
-          type: object
-          properties:
-            tabs:
-              type: array
-              items:
-                type: object
-                properties:
-                  title:
-                    type: string
-                  key:
-                    type: string
-            forms:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
               type: object
-    Data-Browsing-Language-Metadata:
-      title: Data-Browsing-Language-Metadata
-      type: object
-      description: Language Metadata
-      properties:
-        country:
-          type: string
-        language:
-          type: string
-        source:
-          type: string
-        type:
-          type: string
-    Data-Table:
-      title: Data-Table
-      type: object
-      description: This model represents the data that can populate a table in the Portal Reloaded Portal.
-      properties:
-        headers:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-              value:
-                type: string
-        data:
-          type: array
-          items:
-            type: object
-      required:
-        - headers
-        - data
-    Data-Flow:
-      title: Data-Flow
-      type: object
-      description: Data definition for a data flow.
-      properties:
-        apps:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type:
-                  - string
-                  - number
-              title:
-                type: string
-              subitems:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                    name:
-                      type: string
-        flow:
-          type: object
-          properties:
-            key:
-              type:
-                - string
-                - number
-            type:
-              type: string
-            name:
-              type: string
-            buckets:
-              type: array
-              items:
-                type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    access_token: 9b38b54dd74644db96e772d6076615da
+                    id: 9b38b54dd74644db96e772d6076615da
+                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
+              schema:
+                additionalProperties: false
                 properties:
-                  type:
+                  access_token:
                     type: string
-                  apps:
-                    type: array
+                  id:
+                    type: string
+                  refresh_token:
+                    type: string
+                required:
+                  - id
+                  - access_token
+                  - refresh_token
+                type: object
+          description: OK
+      summary: Login
+      tags:
+        - User Management
+  /user/preferences:
+    get:
+      description: User prefs
+      operationId: v1.user.get_preferences
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    values:
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_view
+                        value: '1'
+              schema:
+                additionalProperties: false
+                properties:
+                  values:
                     items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        type:
-                          type: string
-                        title:
-                          type: string
-  securitySchemes:
-    Authorization:
-      name: Authorization
-      type: apiKey
-      in: header
-      x-apikeyInfoFunc: security.check_token
+                      $ref: ../models/kv_field.v1.yaml
+                    type: array
+                type: object
+          description: OK
+      security:
+        - Authorization: []
+      summary: Get preferences
+      tags:
+        - User Management
+    parameters: []
+  /user/refresh_jwt_access_token:
+    parameters: []
+    post:
+      description: Security token refresh
+      operationId: v1.user.refresh_jwt_access_token
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  refresh_token: cc53ca4aaf294c489a29c1515cb1f1b3
+            schema:
+              additionalProperties: false
+              properties:
+                refresh_token:
+                  type: string
+              required:
+                - refresh_token
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    access_token: f9a664c1ba3f4665aa902ded47edaca9
+              schema:
+                additionalProperties: false
+                properties:
+                  access_token:
+                    type: string
+                required:
+                  - access_token
+                type: object
+          description: OK
+      summary: Refresh JWT access_token
+      tags:
+        - User Management
+  /user/register:
+    parameters: []
+    post:
+      description: User registration
+      operationId: v1.user.register
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  destination_url_template: 'https://mydomain.com/confirm?user_id={user_id}&code={code}'
+                  email: keizer@email.com
+                  first_name: Keizer
+                  last_name: Söze
+                  password: password
+                  password_confirm: password
+                  registration_token: 55a68d8af89b4a29a453c9a21b37445f
+            schema:
+              additionalProperties: false
+              properties:
+                destination_url_template:
+                  type: string
+                email:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                password:
+                  type: string
+                password_confirm:
+                  type: string
+                registration_token:
+                  type: string
+              required:
+                - first_name
+                - last_name
+                - email
+                - registration_token
+                - password
+                - password_confirm
+                - destination_url_template
+              type: object
+      responses:
+        '201':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    access_token: 9b38b54dd74644db96e772d6076615da
+                    id: 9b38b54dd74644db96e772d6076615da
+                    refresh_token: f9a664c1ba3f4665aa902ded47edaca9
+              schema:
+                additionalProperties: false
+                properties:
+                  access_token:
+                    type: string
+                  id:
+                    type: string
+                  refresh_token:
+                    type: string
+                required:
+                  - id
+                  - access_token
+                  - refresh_token
+                type: object
+          description: Created
+      summary: Register
+      tags:
+        - User Management
+  '/modules/{module_id}/browse':
+    parameters:
+      - schema:
+          type: string
+        name: module_id
+        in: path
+        required: true
+        description: 'guid of the module. implicitely contains the env '
+    get:
+      summary: browse module content
+      tags:
+        - UI
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: './ui_manager.v1.yaml#/components/schemas/UIMA_response'
+              examples:
+                cw_tableview:
+                  value:
+                    payload:
+                      _links:
+                        self:
+                          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=3'
+                        first:
+                          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works'
+                        prev:
+                          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=2'
+                        next:
+                          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=4'
+                        last:
+                          href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=133'
+                      count: 3
+                      total: 498
+                      _embedded:
+                        creative_works:
+                          - _links:
+                              self:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            guid: 27c13eec19014084a0a3173061702b46
+                            release_year: '1998'
+                            created_at: '2020-01-01T00:00:00Z'
+                            updated_at: '2020-01-01T00:10:00Z'
+                            type: movie
+                            titles:
+                              - metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: official
+                                title: The Usual Suspects
+                              - metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: theatrical
+                                title: Usual Suspects (The Movie)
+                          - _links:
+                              self:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b47
+                            guid: 27c13eec19014084a0a3173061702b47
+                            release_year: '2010'
+                            created_at: '2020-01-01T00:00:00Z'
+                            updated_at: '2020-01-01T00:10:00Z'
+                            type: movie
+                            titles:
+                              - metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: official
+                                title: Toy Story
+                              - metadata:
+                                  country: GB
+                                  language: en
+                                  source: gracenote
+                                  type: theatrical
+                                title: Toy Story
+                    ui_configuration:
+                      manifest:
+                        resource: creative_work
+                      columns:
+                        - label: ID
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/guid
+                        - label: Title
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/titles
+                        - label: Type
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/type
+                        - label: Release Year
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/release_year
+                      options:
+                        sorting: false
+                        pagination: true
+                        filter: false
+      operationId: get-modules-module_id-browse
+      security:
+        - Authorization: []
+      description: |-
+        for a given module id, allow to browse its content
+        - support pagination and filering
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: offset
+          description: 'for pagination. default is 0, ie first page'
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: 'for pagination, default is ?'
+        - schema:
+            type: string
+          in: query
+          name: filter
+          description: filters as passed on to the Content API
+        - schema:
+            type: string
+          in: query
+          name: sort
+          description: sort as supported by the Content API
+servers:
+  - description: prod
+    url: 'https://services.utelly.com/broker_app/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/broker_app/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/broker_app/v1'
