@@ -1,0 +1,453 @@
+components:
+  schemas:
+    UIMA_response:
+      title: UIMA_response
+      type: object
+      x-examples:
+        empty_example:
+          payload: {}
+          ui_configuration: {}
+        cw_table_example:
+          payload:
+            _links:
+              self:
+                href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=3'
+              first:
+                href: 'https://services.utelly.com/browse_manager/v1/content/creative_works'
+              prev:
+                href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=2'
+              next:
+                href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=4'
+              last:
+                href: 'https://services.utelly.com/browse_manager/v1/content/creative_works?page=133'
+            count: 3
+            total: 498
+            _embedded:
+              creative_works:
+                - _links:
+                    self:
+                      href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                  guid: 27c13eec19014084a0a3173061702b46
+                  release_year: '1998'
+                  created_at: '2020-01-01T00:00:00Z'
+                  updated_at: '2020-01-01T00:10:00Z'
+                  type: movie
+                  titles:
+                    - metadata:
+                        country: GB
+                        language: en
+                        source: gracenote
+                        type: official
+                      title: The Usual Suspects
+                    - metadata:
+                        country: GB
+                        language: en
+                        source: gracenote
+                        type: theatrical
+                      title: Usual Suspects (The Movie)
+                - _links:
+                    self:
+                      href: /content/creative_works/27c13eec19014084a0a3173061702b47
+                  guid: 27c13eec19014084a0a3173061702b47
+                  release_year: '2010'
+                  created_at: '2020-01-01T00:00:00Z'
+                  updated_at: '2020-01-01T00:10:00Z'
+                  type: movie
+                  titles:
+                    - metadata:
+                        country: GB
+                        language: en
+                        source: gracenote
+                        type: official
+                      title: Toy Story
+                    - metadata:
+                        country: GB
+                        language: en
+                        source: gracenote
+                        type: theatrical
+                      title: Toy Story
+          ui_configuration:
+            columns:
+              - label: ID
+                language: en-gb
+                value_type: text
+                value: creative_work/guid
+              - label: Title
+                language: en-gb
+                value_type: text
+                value: creative_work/titles
+              - label: Type
+                language: en-gb
+                value_type: text
+                value: creative_work/type
+              - label: Release Year
+                language: en-gb
+                value_type: text
+                value: creative_work/release_year
+            options:
+              sorting: false
+              pagination: true
+              filter: false
+      description: Object that mingles the resources returned by the COMA and the presentation info needed for UI
+      x-tags:
+        - Models
+        - UI
+      properties:
+        payload:
+          type: object
+        ui_configuration:
+          oneOf:
+            - title: UIMA_table_renderer
+              x-examples:
+                t1:
+                  columns:
+                    - label: ID
+                      language: en-gb
+                      value_type: text
+                      value: creative_work/guid
+                    - label: Title
+                      language: en-gb
+                      value_type: text
+                      value: creative_work/titles
+                    - label: Type
+                      language: en-gb
+                      value_type: text
+                      value: creative_work/type
+                    - label: Release Year
+                      language: en-gb
+                      value_type: text
+                      value: creative_work/release_year
+                  options:
+                    sorting: false
+                    pagination: true
+                    filter: false
+              description: Describes how to render a table
+              x-tags:
+                - Models
+                - UI
+              properties:
+                columns:
+                  type: array
+                  items:
+                    title: UIMA_table_column
+                    type: object
+                    x-examples:
+                      id_column:
+                        label: ID
+                        language: en-gb
+                        value_type: text
+                        value: creative_work/guid
+                    x-tags:
+                      - Models
+                      - UI
+                    properties:
+                      label:
+                        type: string
+                      language:
+                        type: string
+                      value_type:
+                        type: string
+                      value:
+                        type: string
+                        example: creative_works/release_year
+                    required:
+                      - label
+                      - language
+                      - value_type
+                      - value
+                options:
+                  type: object
+                  properties:
+                    sorting:
+                      type: boolean
+                    fiter:
+                      type: boolean
+                    pagination:
+                      type: boolean
+              required:
+                - columns
+          type: object
+      required:
+        - payload
+        - ui_configuration
+    UIMA_table_renderer:
+      title: UIMA_table_renderer
+      type: object
+      x-examples:
+        t1:
+          columns:
+            - label: ID
+              language: en-gb
+              value_type: text
+              value: creative_work/guid
+            - label: Title
+              language: en-gb
+              value_type: text
+              value: creative_work/titles
+            - label: Type
+              language: en-gb
+              value_type: text
+              value: creative_work/type
+            - label: Release Year
+              language: en-gb
+              value_type: text
+              value: creative_work/release_year
+          options:
+            sorting: false
+            pagination: true
+            filter: false
+      description: Describes how to render a table
+      x-tags:
+        - Models
+        - UI
+      properties:
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/UIMA_table_column'
+        options:
+          type: object
+          properties:
+            sorting:
+              type: boolean
+            fiter:
+              type: boolean
+            pagination:
+              type: boolean
+    UIMA_table_column:
+      title: UIMA_table_column
+      type: object
+      x-examples:
+        id_column:
+          label: ID
+          language: en-gb
+          value_type: text
+          value: creative_work/guid
+      properties:
+        label:
+          type: string
+        language:
+          type: string
+        value_type:
+          type: string
+        value:
+          type: string
+          example: creative_works/release_year
+      required:
+        - label
+        - language
+        - value_type
+        - value
+      x-tags:
+        - Models
+        - UI
+  securitySchemes:
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-apikeyInfoFunc: security.check_token
+info:
+  title: UI Manager
+  version: v1
+  contact:
+    email: developers@utelly.com
+openapi: 3.0.0
+paths:
+  '/environment/{environment_id}/view/{view_id}':
+    get:
+      description: ''
+      operationId: v1.configs.get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    configurations:
+                      - id: '1'
+                        name:
+                          - locale: en
+                            value: friendly name of the conf
+                        payload: {}
+                      - id: '2'
+                        name:
+                          - locale: en
+                            value: friendly name of the conf2
+                        payload: {}
+              schema:
+                additionalProperties: false
+                properties:
+                  configurations:
+                    items:
+                      $ref: ../models/Configuration.v1.yaml
+                    type: array
+                type: object
+          description: OK
+      security:
+        - Authorization: []
+      summary: Get configurations
+      tags:
+        - Configuration Management
+    parameters:
+      - in: path
+        name: environment_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: view_id
+        required: true
+        schema:
+          type: string
+  '/dictionary/{name}':
+    get:
+      description: A dictionnary is a list of reference values
+      operationId: v1.dictionary.get
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    value:
+                      - description:
+                          - locale: en
+                            value: use and make things to break them
+                        id: '1'
+                        name:
+                          - locale: en
+                            value: development
+                          - locale: nl
+                            value: ontwikkeling
+                        tooltip:
+                          - locale: en
+                            value: this environment gets refreshed daily
+                '2':
+                  value:
+                    value:
+                      - description:
+                          - locale: en
+                            value: this is where you wire things up
+                        id: '1'
+                        name:
+                          - locale: en
+                            value: architect
+                          - locale: nl
+                            value: ontwerp
+                        tooltip:
+                          - locale: en
+                            value: 'In this view, we can orchestrate how things are connected'
+                '3':
+                  value:
+                    values:
+                      - description:
+                          - locale: en
+                            value: ''
+                        id: '1'
+                        name:
+                          - locale: en
+                            value: Overview
+                        perspectives_id:
+                          - '1'
+                        renderer: df_overview
+                        resource: data_flows
+                        tooltip:
+                          - locale: en
+                            value: ''
+              schema:
+                additionalProperties: false
+                properties:
+                  value:
+                    items:
+                      anyOf:
+                        - $ref: ../models/Environment.v1.yaml
+                        - $ref: ../models/Perspective.v1.yaml
+                        - $ref: ../models/View.v1.yaml
+                    type: array
+                required:
+                  - value
+                type: object
+          description: OK
+      summary: Get dictionary
+      tags:
+        - Dictionary Management
+    parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          enum:
+            - environments
+            - perspectives
+            - views
+          type: string
+  '/modules/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: GUID of module
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Module.v1.yaml
+              examples:
+                '1':
+                  value:
+                    description:
+                      - locale: en
+                        value: Browser for content
+                    id: '1'
+                    name:
+                      - locale: en
+                        value: Browse
+                    perspectives_id:
+                      - '1'
+                    resource: creative_works
+                    renderer:
+                      columns:
+                        - label: ID
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/guid
+                        - label: Title
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/titles
+                        - label: Type
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/type
+                        - label: Release Year
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/release_year
+                      options:
+                        sorting: false
+                        pagination: true
+                        filter: false
+                    tooltip:
+                      - locale: en
+                        value: ''
+      operationId: get-modules-id
+      security:
+        - Authorization: []
+      description: ''
+servers:
+  - description: prod
+    url: 'https://services.utelly.com/ui_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/ui_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/ui_manager/v1'

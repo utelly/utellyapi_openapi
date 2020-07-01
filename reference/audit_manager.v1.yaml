@@ -1,126 +1,126 @@
-openapi: 3.0.0
+components:
+  schemas: {}
+  securitySchemes:
+    Authorization:
+      description: ''
+      in: header
+      name: Authorization
+      type: apiKey
+      x-apikeyInfoFunc: security.check_token
 info:
+  description: Log manager for the Utelly API platform
   title: audit_manager
   version: v1
-  description: Log manager for the Utelly API platform
-servers:
-  - url: 'https://services.utelly.com/audit_manager/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/audit_manager/v1'
-    description: staging
-  - url: 'https://dev-services.utelly.com/audit_manager/v1'
-    description: dev
+openapi: 3.0.0
 paths:
   /log:
     post:
-      summary: Add a Log entry
+      description: Add a Log entry
       operationId: v1.log.post_log
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  code: pipeline_success
+                  payload:
+                    message: pipeline successfully created
+                  system_name: user_manager
+                  system_version: 2
+                  timestamp: 1583934547
+                  user_id: 4ae0359e57bf4465b79d730d27f84426
+            schema:
+              $ref: ../models/Log.v1.yaml
       responses:
         '200':
-          description: OK
           content:
             application/json:
+              examples:
+                '1':
+                  value:
+                    log:
+                      code: pipeline_success
+                      payload:
+                        message: pipeline successfully created
+                      system_name: user_manager
+                      system_version: 2
+                      timestamp: 1583934547
+                      user_id: 4ae0359e57bf4465b79d730d27f84426
               schema:
-                type: object
                 additionalProperties: false
                 properties:
                   log:
                     $ref: ../models/Log.v1.yaml
                 required:
-                  - log
-              examples:
-                '1':
-                  value:
-                    log:
-                      timestamp: 1583934547
-                      user_id: 4ae0359e57bf4465b79d730d27f84426
-                      system_name: user_manager
-                      system_version: 2
-                      code: pipeline_success
-                      payload:
-                        message: pipeline successfully created
+                - log
+                type: object
+          description: OK
+      security:
+      - Authorization: []
+      summary: Add a Log entry
+      tags:
+      - Audit Management
+  /logs:
+    parameters: []
+    post:
+      description: Batch add Log entries
+      operationId: v1.logs.post_logs
+      parameters: []
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: ../models/Log.v1.yaml
             examples:
               '1':
                 value:
-                  timestamp: 1583934547
-                  user_id: 4ae0359e57bf4465b79d730d27f84426
-                  system_name: user_manager
-                  system_version: 2
-                  code: pipeline_success
+                - code: pipeline_success
                   payload:
                     message: pipeline successfully created
-      security:
-        - Authorization: []
-      description: Add a Log entry
-      tags:
-        - Audit Management
-  /logs:
-    post:
-      summary: Batch add Log entries
-      operationId: v1.logs.post_logs
+                  system_name: user_manager
+                  system_version: 2
+                  timestamp: 1583934547
+                  user_id: 4ae0359e57bf4465b79d730d27f84426
+            schema:
+              items:
+                $ref: ../models/Log.v1.yaml
+              type: array
+              uniqueItems: false
+        description: ''
       responses:
         '200':
-          description: OK
           content:
             application/json:
-              schema:
-                type: object
-                additionalProperties: false
-                properties:
-                  logs:
-                    type: array
-                    items:
-                      $ref: ../models/Log.v1.yaml
-                required:
-                  - logs
               examples:
                 '1':
                   value:
                     logs:
-                      - timestamp: 1583934547
-                        user_id: 4ae0359e57bf4465b79d730d27f84426
-                        system_name: user_manager
-                        system_version: 2
-                        code: pipeline_success
-                        payload:
-                          message: pipeline successfully created
+                    - code: pipeline_success
+                      payload:
+                        message: pipeline successfully created
+                      system_name: user_manager
+                      system_version: 2
+                      timestamp: 1583934547
+                      user_id: 4ae0359e57bf4465b79d730d27f84426
+              schema:
+                additionalProperties: false
+                properties:
+                  logs:
+                    items:
+                      $ref: ../models/Log.v1.yaml
+                    type: array
+                required:
+                - logs
+                type: object
+          description: OK
       security:
-        - Authorization: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              uniqueItems: false
-              items:
-                $ref: ../models/Log.v1.yaml
-            examples:
-              '1':
-                value:
-                  - timestamp: 1583934547
-                    user_id: 4ae0359e57bf4465b79d730d27f84426
-                    system_name: user_manager
-                    system_version: 2
-                    code: pipeline_success
-                    payload:
-                      message: pipeline successfully created
-        description: ''
-      description: Batch add Log entries
-      parameters: []
+      - Authorization: []
+      summary: Batch add Log entries
       tags:
-        - Audit Management
-    parameters: []
-components:
-  schemas: {}
-  securitySchemes:
-    Authorization:
-      name: Authorization
-      type: apiKey
-      in: header
-      description: ''
-      x-apikeyInfoFunc: security.check_token
+      - Audit Management
+servers:
+- description: prod
+  url: https://services.utelly.com/audit_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/audit_manager/v1
+- description: dev
+  url: https://dev-services.utelly.com/audit_manager/v1

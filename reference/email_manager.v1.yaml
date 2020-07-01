@@ -1,67 +1,68 @@
-openapi: 3.0.0
-info:
-  title: email_manager
-  version: v1
-servers:
-  - url: 'https://services.utelly.com/email_manager/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/email_manager/v1'
-    description: staging
-  - url: 'https://dev-services.utelly.com/email_manager/v1'
-    description: dev
-paths:
-  /send_email:
-    post:
-      summary: Send email
-      operationId: v1.email.send
-      responses:
-        '200':
-          description: OK
-      security:
-        - Authorization: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                variables:
-                  type: array
-                  items:
-                    $ref: ../models/kv_field.v1.yaml
-                email_body:
-                  type: string
-                email_to:
-                  type: string
-                email_from:
-                  type: string
-                subject:
-                  type: string
-              required:
-                - variables
-                - email_body
-                - email_to
-                - subject
-            examples:
-              '1':
-                value:
-                  subject: 'Hey! Looks like you forgot your password'
-                  email_from: hello@email.com
-                  email_to: keizer@email.com
-                  email_body: 'Hey {name} !, here is your {token}'
-                  variables:
-                    - key: name
-                      value: Keizer
-                    - key: token
-                      value: token
-        description: ''
-      tags:
-        - Email Management
 components:
   schemas: {}
   securitySchemes:
     Authorization:
+      in: header
       name: Authorization
       type: apiKey
-      in: header
       x-apikeyInfoFunc: security.check_token
+info:
+  title: email_manager
+  version: v1
+openapi: 3.0.0
+paths:
+  /send_email:
+    post:
+      operationId: v1.email.send
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  email_body: Hey {name} !, here is your {token}
+                  email_from: hello@email.com
+                  email_to: keizer@email.com
+                  subject: Hey! Looks like you forgot your password
+                  variables:
+                  - key: name
+                    value: Keizer
+                  - key: token
+                    value: token
+            schema:
+              additionalProperties: false
+              properties:
+                email_body:
+                  type: string
+                email_from:
+                  type: string
+                email_to:
+                  type: string
+                subject:
+                  type: string
+                variables:
+                  items:
+                    $ref: ../models/kv_field.v1.yaml
+                  type: array
+              required:
+              - variables
+              - email_body
+              - email_to
+              - subject
+              type: object
+        description: ''
+      responses:
+        '200':
+          description: OK
+      security:
+      - Authorization: []
+      summary: Send email
+      tags:
+      - Email Management
+servers:
+- description: prod
+  url: https://services.utelly.com/email_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/email_manager/v1
+- description: dev
+  url: https://dev-services.utelly.com/email_manager/v1
