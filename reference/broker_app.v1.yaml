@@ -1282,8 +1282,6 @@ paths:
                         status: Ok
       operationId: get-data-source
       description: Retrieve the base definition of a table containing all the available data-sources.
-components:
-  schemas:
     Data-Browsing:
       title: Data-Browsing
       type: object
