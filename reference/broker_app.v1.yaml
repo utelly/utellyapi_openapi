@@ -586,7 +586,7 @@ paths:
           description: OK
       summary: data-source
       tags: []
-  '/module/{module_id}/browse':
+  '/modules/{module_id}/browse':
     get:
       description: ''
       operationId: v1.content.browse
