@@ -588,6 +588,7 @@ paths:
       tags: []
   '/module/{module_id}/browse':
     get:
+      description: ''
       operationId: v1.content.browse
       parameters:
         - in: query
@@ -919,8 +920,8 @@ paths:
                 type: object
           description: OK
       summary: browse module content
-      tags: []
-      description: ''
+      tags:
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -2062,7 +2063,7 @@ paths:
           description: OK
       summary: Get an availability
       tags:
-        - Availability management
+        - Content Management
     parameters:
       - in: path
         name: availability_guid
@@ -2973,7 +2974,7 @@ paths:
           description: OK
       summary: List content ratings
       tags:
-        - Content rating management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -3778,7 +3779,7 @@ paths:
           description: OK
       summary: Get a content rating
       tags:
-        - Content rating management
+        - Content Management
     parameters:
       - in: path
         name: content_rating_guid
@@ -5071,7 +5072,7 @@ paths:
           description: OK
       summary: Get a Contributor
       tags:
-        - Contributor management
+        - Content Management
     parameters:
       - in: path
         name: contributor_guid
@@ -6990,7 +6991,7 @@ paths:
           description: OK
       summary: List creative works
       tags:
-        - Creative work management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -8830,7 +8831,7 @@ paths:
           description: OK
       summary: Get a creative work
       tags:
-        - Creative work management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -10067,7 +10068,7 @@ paths:
           description: OK
       summary: Get availabilities from creative work
       tags:
-        - Availability management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -10978,7 +10979,7 @@ paths:
           description: OK
       summary: Get content ratings from creative work
       tags:
-        - Content rating management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -12362,7 +12363,7 @@ paths:
           description: OK
       summary: Get crontibutors from creative work
       tags:
-        - Contributor Management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -14281,7 +14282,7 @@ paths:
           description: OK
       summary: Get episodes from creative work
       tags:
-        - Creative work management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -16200,7 +16201,7 @@ paths:
           description: OK
       summary: Get seasons from creative work
       tags:
-        - Creative work management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -17125,7 +17126,7 @@ paths:
           description: OK
       summary: Get tags from creative work
       tags:
-        - Tag management
+        - Content Management
     parameters:
       - in: path
         name: creative_work_guid
@@ -18514,7 +18515,7 @@ paths:
           description: OK
       summary: List locations
       tags:
-        - Location management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -19797,7 +19798,7 @@ paths:
           description: OK
       summary: Get a location
       tags:
-        - Location management
+        - Content Management
     parameters:
       - in: path
         name: location_guid
@@ -21187,7 +21188,7 @@ paths:
           description: OK
       summary: List people
       tags:
-        - People Management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -22471,7 +22472,7 @@ paths:
           description: OK
       summary: Get a person
       tags:
-        - People Management
+        - Content Management
     parameters:
       - in: path
         name: person_guid
@@ -23863,7 +23864,7 @@ paths:
           description: OK
       summary: List platforms
       tags:
-        - Platform management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -25149,7 +25150,7 @@ paths:
           description: OK
       summary: Get a platform
       tags:
-        - Platform management
+        - Content Management
     parameters:
       - in: path
         name: platform_guid
@@ -26541,7 +26542,7 @@ paths:
           description: OK
       summary: List services
       tags:
-        - Service management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -27827,7 +27828,7 @@ paths:
           description: OK
       summary: Get a service
       tags:
-        - Service management
+        - Content Management
     parameters:
       - in: path
         name: service_guid
@@ -28752,7 +28753,7 @@ paths:
           description: OK
       summary: List tags
       tags:
-        - Tag management
+        - Content Management
     parameters:
       - in: path
         name: module_id
@@ -29571,7 +29572,7 @@ paths:
           description: OK
       summary: Get a tag
       tags:
-        - Tag management
+        - Content Management
     parameters:
       - in: path
         name: tag_guid
