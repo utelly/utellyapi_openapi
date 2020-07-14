@@ -734,6 +734,346 @@ paths:
                         status: Ok
       operationId: get-data-source
       description: Retrieve the base definition of a table containing all the available data-sources.
+  '/module/{module_id}/browse':
+    parameters:
+      - schema:
+          type: string
+        name: module_id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payload:
+                    type: object
+                  ui_configuration:
+                    type: object
+              examples:
+                '1':
+                  value:
+                    payload:
+                      _embedded:
+                        creative_works:
+                          - _links:
+                              availabilities:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                              content_ratings:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                              contributors:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                              episodes:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                              seasons:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                              self:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                              tags:
+                                href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                            artworks:
+                              - height: 100
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: mysource
+                                  type: poster
+                                url: 'https://mydomain.com/poster.jpg'
+                                width: 100
+                            created_at: '2020-01-01T00:00:10Z'
+                            deleted: false
+                            descriptions:
+                              - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                                metadata:
+                                  country: GB
+                                  language: en
+                                  source: mysource
+                                  type: full
+                            guid: 27c13eec19014084a0a3173061702b46
+                            identifiers:
+                              - id: '1'
+                                source: mysource
+                            relationships:
+                              - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                                rel: parent
+                            titles:
+                              - metadata:
+                                  country: GB
+                                  language: en
+                                  source: mysource
+                                  type: official
+                                title: The Usual Suspects
+                            type: movie
+                            updated_at: '2020-01-01T00:00:10Z'
+                      _links:
+                        first:
+                          href: /content/creative_works
+                        last:
+                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                        next:
+                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                        prev:
+                          href: /content/creative_works
+                        self:
+                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                    ui_configuration:
+                      manifest:
+                        resource: creative_work
+                      columns:
+                        - label: ID
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/guid
+                        - label: Title
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/titles
+                        - label: Type
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/type
+                        - label: Release Year
+                          language: en-gb
+                          value_type: text
+                          value: creative_work/release_year
+                      options:
+                        sorting: false
+                        pagination: true
+                        filter: false
+      operationId: get-module-module_id-browse
+      parameters:
+      - in: query
+        name: languages
+        schema:
+          items:
+            enum:
+            - ab
+            - aa
+            - af
+            - ak
+            - sq
+            - am
+            - ar
+            - an
+            - hy
+            - as
+            - av
+            - ae
+            - ay
+            - az
+            - bm
+            - ba
+            - eu
+            - be
+            - bn
+            - bh
+            - bi
+            - bs
+            - br
+            - bg
+            - my
+            - ca
+            - ch
+            - ce
+            - ny
+            - zh
+            - cv
+            - kw
+            - co
+            - cr
+            - hr
+            - cs
+            - da
+            - dv
+            - nl
+            - dz
+            - en
+            - eo
+            - et
+            - ee
+            - fo
+            - fj
+            - fi
+            - fr
+            - ff
+            - gl
+            - ka
+            - de
+            - el
+            - gn
+            - gu
+            - ht
+            - ha
+            - he
+            - hz
+            - hi
+            - ho
+            - hu
+            - ia
+            - id
+            - ie
+            - ga
+            - ig
+            - ik
+            - io
+            - is
+            - it
+            - iu
+            - ja
+            - jv
+            - kl
+            - kn
+            - kr
+            - ks
+            - kk
+            - km
+            - ki
+            - rw
+            - ky
+            - kv
+            - kg
+            - ko
+            - ku
+            - kj
+            - la
+            - lb
+            - lg
+            - li
+            - ln
+            - lo
+            - lt
+            - lu
+            - lv
+            - gv
+            - mk
+            - mg
+            - ms
+            - ml
+            - mt
+            - mi
+            - mr
+            - mh
+            - mn
+            - na
+            - nv
+            - nd
+            - ne
+            - ng
+            - nb
+            - nn
+            - 'no'
+            - ii
+            - nr
+            - oc
+            - oj
+            - cu
+            - om
+            - or
+            - os
+            - pa
+            - pi
+            - fa
+            - pl
+            - ps
+            - pt
+            - qu
+            - rm
+            - rn
+            - ro
+            - ru
+            - sa
+            - sc
+            - sd
+            - se
+            - sm
+            - sg
+            - sr
+            - gd
+            - sn
+            - si
+            - sk
+            - sl
+            - so
+            - st
+            - es
+            - su
+            - sw
+            - ss
+            - sv
+            - ta
+            - te
+            - tg
+            - th
+            - ti
+            - bo
+            - tk
+            - tl
+            - tn
+            - to
+            - tr
+            - ts
+            - tt
+            - tw
+            - ty
+            - ug
+            - uk
+            - ur
+            - uz
+            - ve
+            - vi
+            - vo
+            - wa
+            - cy
+            - wo
+            - fy
+            - xh
+            - yi
+            - yo
+            - za
+            - zu
+            - xx
+            title: languages_field
+            type: string
+          type: array
+        style: form
+      - in: query
+        name: fields
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - in: query
+        name: limit
+        schema:
+          maximum: 50
+          type: integer
+      - in: query
+        name: after_guid
+        schema:
+          type: string
+      - in: query
+        name: before_guid
+        schema:
+          type: string
+      - in: query
+        name: sort
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: json value of the Filters object
+        in: query
+        name: filters
+        schema:
+          type: string      
 components:
   schemas:
     Data-Browsing:
