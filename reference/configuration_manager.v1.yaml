@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: configuration_manager
+  version: v1
+servers:
+  - url: 'https://services.utelly.com/configuration_manager/v1'
+    description: prod
+  - url: 'https://dev-services.utelly.com/configuration_manager/v1'
+    description: dev
+  - url: 'https://staging-services.utelly.com/configuration_manager/v1'
+    description: staging
+paths:
+  /configurations:
+    get:
+      summary: Get Configurations
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                '1':
+                  value:
+                    example: example configuration
+      operationId: v1.configuration.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: type
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: identifier
+      description: ''
+components:
+  schemas: {}
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
