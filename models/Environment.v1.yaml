@@ -21,9 +21,9 @@ properties:
   uid:
     type: string
   names:
-    type: object
+    $ref: '../reference/broker_app.v1.yaml#/components/schemas/Languages'
   descriptions:
-    type: string
+    $ref: '../reference/broker_app.v1.yaml#/components/schemas/Languages'
 required:
   - uid
   - names

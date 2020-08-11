@@ -4,14 +4,14 @@ properties:
     type: string
   value:
     oneOf:
-    - type: string
-    - type: number
-    - type: integer
-    - type: boolean
-    - additionalProperties: false
-      type: object
-    - items: {}
-      type: array
+      - type: string
+      - type: number
+      - type: integer
+      - type: boolean
+      - additionalProperties: false
+        type: object
+      - items: {}
+        type: array
 title: kv_field
 type: object
 x-examples:
@@ -19,4 +19,5 @@ x-examples:
     key: name
     value: keiser
 x-tags:
-- fields
+  - fields
+description: ''
