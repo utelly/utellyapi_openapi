@@ -268,6 +268,60 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  enviroments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uid:
+                          type: string
+                        names:
+                          $ref: ../models/ui_languages.v1.yaml
+                        descriptions:
+                          $ref: ../models/ui_languages.v1.yaml
+                      required:
+                        - uid
+                        - names
+                  perspectives:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uid:
+                          type: string
+                        names:
+                          $ref: ../models/ui_languages.v1.yaml
+                        descriptions:
+                          $ref: ../models/ui_languages.v1.yaml
+                        base_url:
+                          type: string
+                        navigation:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uid:
+                                type: string
+                              names:
+                                $ref: ../models/ui_languages.v1.yaml
+                              href:
+                                type: string
+                            required:
+                              - uid
+                              - names
+                              - href
+                      required:
+                        - uid
+                        - names
+                        - base_url
+                        - navigation
+                  preferences:
+                    type: object
+                required:
+                  - enviroments
+                  - perspectives
+                  - preferences
               examples:
                 Default:
                   value:
