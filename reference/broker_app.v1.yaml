@@ -297,6 +297,10 @@ paths:
                                             $ref: ../models/View.v1.yaml
                                           permission:
                                             type: string
+                  enviroments:
+                    type: array
+                    items:
+                      $ref: ../models/Environment.v1.yaml
               examples:
                 '1':
                   value:
