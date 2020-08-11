@@ -225,38 +225,6 @@ paths:
                   user_id: 9b38b54dd74644db96e772d6076615da
                   code: 06ebadbe3bbf4e2798fd421b1346c1ee
     parameters: []
-  /user/preferences:
-    parameters: []
-    get:
-      summary: Get preferences
-      operationId: v1.user.get_preferences
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  values:
-                    type: array
-                    items:
-                      $ref: ../models/kv_field.v1.yaml
-              examples:
-                '1':
-                  value:
-                    values:
-                      - key: default_env
-                        value: '1'
-                      - key: default_perspective
-                        value: '1'
-                      - key: default_view
-                        value: '1'
-      security:
-        - Authorization: []
-      description: ''
-      tags:
-        - User Management
   /ui/layout:
     parameters: []
     get:
