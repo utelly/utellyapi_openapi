@@ -29586,7 +29586,7 @@ paths:
           type: string
   /ui/layout:
     get:
-      description: ''
+      description: Get the preferences of the user in regards to how he / she left the ui
       operationId: v1.ui.get_layout
       responses:
         '200':
@@ -29674,308 +29674,61 @@ paths:
                       default_language: en
                       selected_language: nl
               schema:
-                properties:
-                  layout:
-                    items:
-                      properties:
-                        environments:
-                          items:
-                            properties:
-                              environment:
-                                additionalProperties: false
-                                properties:
-                                  description:
-                                    items:
-                                      additionalProperties: false
-                                      properties:
-                                        locale:
-                                          type: string
-                                        value:
-                                          type: string
-                                      required:
-                                        - value
-                                        - locale
-                                      title: i18n_field
-                                      type: object
-                                      x-examples:
-                                        '1':
-                                          locale: en
-                                          value: my english string
-                                      x-tags:
-                                        - fields
-                                    type: array
-                                  id:
-                                    type: string
-                                  name:
-                                    items:
-                                      additionalProperties: false
-                                      properties:
-                                        locale:
-                                          type: string
-                                        value:
-                                          type: string
-                                      required:
-                                        - value
-                                        - locale
-                                      title: i18n_field
-                                      type: object
-                                      x-examples:
-                                        '1':
-                                          locale: en
-                                          value: my english string
-                                      x-tags:
-                                        - fields
-                                    type: array
-                                  tooltip:
-                                    items:
-                                      additionalProperties: false
-                                      properties:
-                                        locale:
-                                          type: string
-                                        value:
-                                          type: string
-                                      required:
-                                        - value
-                                        - locale
-                                      title: i18n_field
-                                      type: object
-                                      x-examples:
-                                        '1':
-                                          locale: en
-                                          value: my english string
-                                      x-tags:
-                                        - fields
-                                    type: array
-                                required:
-                                  - id
-                                  - name
-                                  - description
-                                  - tooltip
-                                title: Environment
-                                type: object
-                                x-examples:
-                                  '1':
-                                    description:
-                                      - locale: en
-                                        value: use and make things to break them
-                                    id: 1
-                                    name:
-                                      - locale: en
-                                        value: development
-                                      - locale: nl
-                                        value: ontwikkeling
-                                    tooltip:
-                                      - locale: en
-                                        value: this environment gets refreshed daily
-                                x-tags:
-                                  - Models
-                              perspectives:
-                                items:
-                                  properties:
-                                    perspective:
-                                      additionalProperties: false
-                                      properties:
-                                        description:
-                                          items:
-                                            additionalProperties: false
-                                            properties:
-                                              locale:
-                                                type: string
-                                              value:
-                                                type: string
-                                            required:
-                                              - value
-                                              - locale
-                                            title: i18n_field
-                                            type: object
-                                            x-examples:
-                                              '1':
-                                                locale: en
-                                                value: my english string
-                                            x-tags:
-                                              - fields
-                                          type: array
-                                        id:
-                                          type: string
-                                        name:
-                                          items:
-                                            additionalProperties: false
-                                            properties:
-                                              locale:
-                                                type: string
-                                              value:
-                                                type: string
-                                            required:
-                                              - value
-                                              - locale
-                                            title: i18n_field
-                                            type: object
-                                            x-examples:
-                                              '1':
-                                                locale: en
-                                                value: my english string
-                                            x-tags:
-                                              - fields
-                                          type: array
-                                        tooltip:
-                                          items:
-                                            additionalProperties: false
-                                            properties:
-                                              locale:
-                                                type: string
-                                              value:
-                                                type: string
-                                            required:
-                                              - value
-                                              - locale
-                                            title: i18n_field
-                                            type: object
-                                            x-examples:
-                                              '1':
-                                                locale: en
-                                                value: my english string
-                                            x-tags:
-                                              - fields
-                                          type: array
-                                      required:
-                                        - id
-                                        - name
-                                        - description
-                                        - tooltip
-                                      title: Perspective
-                                      type: object
-                                      x-examples:
-                                        '1':
-                                          description:
-                                            - locale: en
-                                              value: use and make things to break them
-                                          id: 1
-                                          name:
-                                            - locale: en
-                                              value: development
-                                            - locale: nl
-                                              value: ontwikkeling
-                                          tooltip:
-                                            - locale: en
-                                              value: this environment gets refreshed daily
-                                      x-tags:
-                                        - Models
-                                    views:
-                                      items:
-                                        properties:
-                                          permission:
-                                            type: string
-                                          view:
-                                            additionalProperties: false
-                                            description: ''
-                                            properties:
-                                              description:
-                                                items:
-                                                  additionalProperties: false
-                                                  properties:
-                                                    locale:
-                                                      type: string
-                                                    value:
-                                                      type: string
-                                                  required:
-                                                    - value
-                                                    - locale
-                                                  title: i18n_field
-                                                  type: object
-                                                  x-examples:
-                                                    '1':
-                                                      locale: en
-                                                      value: my english string
-                                                  x-tags:
-                                                    - fields
-                                                type: array
-                                              id:
-                                                type: string
-                                              name:
-                                                items:
-                                                  additionalProperties: false
-                                                  properties:
-                                                    locale:
-                                                      type: string
-                                                    value:
-                                                      type: string
-                                                  required:
-                                                    - value
-                                                    - locale
-                                                  title: i18n_field
-                                                  type: object
-                                                  x-examples:
-                                                    '1':
-                                                      locale: en
-                                                      value: my english string
-                                                  x-tags:
-                                                    - fields
-                                                type: array
-                                              perspectives_id:
-                                                items:
-                                                  type: string
-                                                type: array
-                                              renderer:
-                                                type: string
-                                              resource:
-                                                type: string
-                                              tooltip:
-                                                items:
-                                                  additionalProperties: false
-                                                  properties:
-                                                    locale:
-                                                      type: string
-                                                    value:
-                                                      type: string
-                                                  required:
-                                                    - value
-                                                    - locale
-                                                  title: i18n_field
-                                                  type: object
-                                                  x-examples:
-                                                    '1':
-                                                      locale: en
-                                                      value: my english string
-                                                  x-tags:
-                                                    - fields
-                                                type: array
-                                            required:
-                                              - id
-                                              - name
-                                              - resource
-                                              - renderer
-                                              - description
-                                              - tooltip
-                                              - perspectives_id
-                                            title: View
-                                            type: object
-                                            x-examples:
-                                              '1':
-                                                description:
-                                                  - locale: en
-                                                    value: ''
-                                                id: 1
-                                                name:
-                                                  - locale: en
-                                                    value: Overview
-                                                perspectives_id:
-                                                  - '1'
-                                                renderer: df_overview
-                                                resource: data_flows
-                                                tooltip:
-                                                  - locale: en
-                                                    value: ''
-                                            x-tags:
-                                              - Models
-                                        type: object
-                                      type: array
-                                  type: object
-                                type: array
-                            type: object
-                          type: array
-                      type: object
-                    type: array
                 type: object
+                properties:
+                  enviroments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uid:
+                          type: string
+                        names:
+                          $ref: ../models/ui_language.v1.yaml
+                        descriptions:
+                          $ref: ../models/ui_language.v1.yaml
+                      required:
+                        - uid
+                        - names
+                  perspectives:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uid:
+                          type: string
+                        names:
+                          $ref: ../models/ui_language.v1.yaml
+                        descriptions:
+                          $ref: ../models/ui_language.v1.yaml
+                        base_url:
+                          type: string
+                        navigation:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uid:
+                                type: string
+                              names:
+                                $ref: ../models/ui_language.v1.yaml
+                              href:
+                                type: string
+                            required:
+                              - uid
+                              - names
+                              - href
+                      required:
+                        - uid
+                        - names
+                        - base_url
+                        - navigation
+                  preferences:
+                    type: object
+                required:
+                  - enviroments
+                  - perspectives
+                  - preferences
           description: OK
       security:
         - Authorization: []
