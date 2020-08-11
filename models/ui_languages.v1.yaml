@@ -1,0 +1,10 @@
+title: Languages
+type: object
+properties:
+  en:
+    type: string
+  nl:
+    type: string
+  de:
+    type: string
+description: Definition to support switching labels to multiple languages
