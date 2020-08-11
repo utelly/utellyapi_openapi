@@ -29593,54 +29593,86 @@ paths:
           content:
             application/json:
               examples:
-                '1':
+                default:
                   value:
-                    layout:
-                      - environments:
-                          - environment:
-                              description:
-                                - locale: en
-                                  value: use and make things to break them
-                              id: '1'
-                              name:
-                                - locale: en
-                                  value: development
-                                - locale: nl
-                                  value: ontwikkeling
-                              tooltip:
-                                - locale: en
-                                  value: this environment gets refreshed daily
-                            perspectives:
-                              - perspective:
-                                  description:
-                                    - locale: en
-                                      value: this is where you wire things up
-                                  id: '1'
-                                  name:
-                                    - locale: en
-                                      value: architect
-                                    - locale: nl
-                                      value: ontwerp
-                                  tooltip:
-                                    - locale: en
-                                      value: 'In this view, we can orchestrate how things are connected'
-                                views:
-                                  - permission: read
-                                    view:
-                                      description:
-                                        - locale: en
-                                          value: ''
-                                      id: '1'
-                                      name:
-                                        - locale: en
-                                          value: Overview
-                                      perspectives_id:
-                                        - '1'
-                                      renderer: df_overview
-                                      resource: data_flows
-                                      tooltip:
-                                        - locale: en
-                                          value: ''
+                    enviroments:
+                      - uid: '1'
+                        names:
+                          en: Development
+                          nl: Ontwikkeling
+                        descriptions:
+                          en: Use and make things to break them
+                          nl: Gebruik en maak dingen om ze te breken
+                      - uid: '2'
+                        names:
+                          en: Staging
+                          nl: Enscenering
+                        descriptions:
+                          en: Use to see if things break
+                          nl: Gebruik om te zien of dingen breken
+                      - uid: '3'
+                        names:
+                          en: Production
+                          nl: Productie
+                        descriptions:
+                          en: Final working version
+                          nl: Definitieve werkende versie
+                    perspectives:
+                      - uid: '1'
+                        names:
+                          en: Architect
+                          nl: Architect
+                        descriptions:
+                          en: Example description
+                          nl: Voorbeeldbeschrijving
+                        base_url: /architect
+                        navigation:
+                          - uid: '1'
+                            names:
+                              en: Data Sources
+                              nl: Data Bronnen
+                            href: /data-sources
+                          - uid: '2'
+                            names:
+                              en: Data Flows
+                              nl: Gegevensstromen
+                            href: /data-flows
+                      - uid: '2'
+                        names:
+                          en: Operate
+                          nl: Bedienen
+                        descriptions:
+                          en: Example description
+                          nl: Voorbeeldbeschrijving
+                        base_url: /operate
+                        navigation: []
+                      - uid: '3'
+                        names:
+                          en: Promote
+                          nl: Promoten
+                        descriptions:
+                          en: Example description
+                          nl: Voorbeeldbeschrijving
+                        base_url: /promote
+                        navigation: []
+                      - uid: '4'
+                        names:
+                          en: Analyse
+                          nl: Analyse
+                        descriptions:
+                          en: Example description
+                          nl: Voorbeeldbeschrijving
+                        base_url: /analyse
+                        navigation: []
+                    preferences:
+                      default_enviroment: '1'
+                      selected_enviroment: '2'
+                      default_perspective: '1'
+                      selected_perspective: '1'
+                      default_perspective_navigation: '1'
+                      selected_perspective_navigation: '1'
+                      default_language: en
+                      selected_language: nl
               schema:
                 properties:
                   layout:
