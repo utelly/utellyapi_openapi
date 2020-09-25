@@ -30265,9 +30265,9 @@ paths:
       summary: Register
       tags:
         - User Management
-  /legacy_api:
+  legacy_search:
     post:
-      summary: Legacy endpoint
+      summary: Legacy search
       operationId: v1.legacy.api_v9
       responses:
         '200':
