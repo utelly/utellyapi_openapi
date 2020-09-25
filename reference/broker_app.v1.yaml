@@ -30277,6 +30277,9 @@ paths:
               schema:
                 type: object
                 properties: {}
+              examples:
+                '1':
+                  value: {}
       requestBody:
         content:
           application/json:
