@@ -30265,7 +30265,6 @@ paths:
       summary: Register
       tags:
         - User Management
-  legacy_search: {}
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
