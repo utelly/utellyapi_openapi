@@ -30268,7 +30268,7 @@ paths:
   /legacy_api:
     post:
       summary: Legacy endpoint
-      operationId: legacy.api_v9
+      operationId: v1.legacy.api_v9
       responses:
         '200':
           description: OK
