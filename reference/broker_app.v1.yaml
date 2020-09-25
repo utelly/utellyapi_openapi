@@ -880,13 +880,13 @@ paths:
                         first:
                           href: /content/creative_works
                         last:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works
                         self:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration:
                       columns:
                         - label: ID
@@ -1241,15 +1241,15 @@ paths:
                               href: /creative_works/34
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       datetime_from:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       datetime_to:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -2044,7 +2044,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -2335,13 +2335,13 @@ paths:
                         first:
                           href: /content/content_ratings
                         last:
-                          href: '/content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/content_ratings
                         self:
-                          href: '/content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -2407,7 +2407,7 @@ paths:
                                         href: /creative_works/34
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -2900,7 +2900,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -3268,7 +3268,7 @@ paths:
                               href: /creative_works/34
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -3761,7 +3761,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -4563,7 +4563,7 @@ paths:
                         type: array
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -5054,7 +5054,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -5378,13 +5378,13 @@ paths:
                         first:
                           href: /content/creative_works
                         last:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works
                         self:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -5928,7 +5928,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -6916,7 +6916,7 @@ paths:
                                   type: string
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -7824,7 +7824,7 @@ paths:
                         type: array
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -8812,7 +8812,7 @@ paths:
                         type: string
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -9115,13 +9115,13 @@ paths:
                         first:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities
                         last:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities
                         self:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -9190,15 +9190,15 @@ paths:
                                         href: /creative_works/34
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 datetime_from:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 datetime_to:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -9993,7 +9993,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -10340,13 +10340,13 @@ paths:
                         first:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings
                         last:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings
                         self:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -10412,7 +10412,7 @@ paths:
                                         href: /creative_works/34
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -10905,7 +10905,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -11256,13 +11256,13 @@ paths:
                         first:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors
                         last:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors
                         self:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -11798,7 +11798,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -12289,7 +12289,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -12669,13 +12669,13 @@ paths:
                         first:
                           href: /content/creative_works
                         last:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works
                         self:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -13219,7 +13219,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -14207,7 +14207,7 @@ paths:
                                   type: string
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -14588,13 +14588,13 @@ paths:
                         first:
                           href: /content/creative_works
                         last:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works
                         self:
-                          href: '/content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -15138,7 +15138,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -16126,7 +16126,7 @@ paths:
                                   type: string
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -16475,13 +16475,13 @@ paths:
                         first:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags
                         last:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags
                         self:
-                          href: '/content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -16547,7 +16547,7 @@ paths:
                                         href: /creative_works/34
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -17053,7 +17053,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -17397,13 +17397,13 @@ paths:
                         first:
                           href: /content/locations
                         last:
-                          href: '/content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/locations
                         self:
-                          href: '/content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -17944,7 +17944,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -18442,7 +18442,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -19283,7 +19283,7 @@ paths:
                         type: array
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -19781,7 +19781,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -20074,13 +20074,13 @@ paths:
                         first:
                           href: /content/people
                         last:
-                          href: '/content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/people
                         self:
-                          href: '/content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -21091,7 +21091,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -21114,7 +21114,7 @@ paths:
                                   type: string
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -22431,7 +22431,7 @@ paths:
                         type: array
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -22454,7 +22454,7 @@ paths:
                         type: string
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -22753,13 +22753,13 @@ paths:
                         first:
                           href: /content/platforms
                         last:
-                          href: '/content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/platforms
                         self:
-                          href: '/content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -23300,7 +23300,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -23791,7 +23791,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -24642,7 +24642,7 @@ paths:
                         type: array
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -25133,7 +25133,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -25431,13 +25431,13 @@ paths:
                         first:
                           href: /content/services
                         last:
-                          href: '/content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/services
                         self:
-                          href: '/content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -25978,7 +25978,7 @@ paths:
                                   type: array
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -26469,7 +26469,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -27320,7 +27320,7 @@ paths:
                         type: array
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -27811,7 +27811,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -28102,13 +28102,13 @@ paths:
                         first:
                           href: /content/tags
                         last:
-                          href: '/content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         next:
-                          href: '/content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                         prev:
                           href: /content/tags
                         self:
-                          href: '/content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50'
+                          href: /content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
                 properties:
@@ -28174,7 +28174,7 @@ paths:
                                         href: /creative_works/34
                                 created_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                                 deleted:
                                   type: boolean
@@ -28680,7 +28680,7 @@ paths:
                                   type: array
                                 updated_at:
                                   format: date-time
-                                  pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                                  pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                                   type: string
                               required:
                                 - _links
@@ -29049,7 +29049,7 @@ paths:
                               href: /creative_works/34
                       created_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                       deleted:
                         type: boolean
@@ -29555,7 +29555,7 @@ paths:
                         type: array
                       updated_at:
                         format: date-time
-                        pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+                        pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
                         type: string
                     required:
                       - _links
@@ -30265,6 +30265,24 @@ paths:
       summary: Register
       tags:
         - User Management
+  /legacy_api:
+    post:
+      summary: Legacy endpoint
+      operationId: legacy_api
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
