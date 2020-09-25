@@ -30268,7 +30268,7 @@ paths:
   /legacy_api:
     post:
       summary: Legacy endpoint
-      operationId: legacy_api
+      operationId: legacy.api_v9
       responses:
         '200':
           description: OK
@@ -30283,6 +30283,8 @@ paths:
             schema:
               type: object
               properties: {}
+      tags:
+        - Legacy
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
@@ -30290,3 +30292,5 @@ servers:
     url: 'https://staging-services.utelly.com/broker_app/v1'
   - description: dev
     url: 'https://dev-services.utelly.com/broker_app/v1'
+tags:
+  - name: Legacy
