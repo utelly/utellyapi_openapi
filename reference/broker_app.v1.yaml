@@ -30265,6 +30265,24 @@ paths:
       summary: Register
       tags:
         - User Management
+  /legacy_search:
+    post:
+      summary: Legacy search
+      operationId: v1.legacy.search_v9
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
