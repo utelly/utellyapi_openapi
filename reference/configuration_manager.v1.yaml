@@ -38,6 +38,18 @@ paths:
           in: query
           name: identifier
       description: ''
+    post:
+      summary: ''
+      operationId: v1.configuration.post
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
 components:
   schemas: {}
   securitySchemes:

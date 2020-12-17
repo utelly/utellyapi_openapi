@@ -26,8 +26,8 @@ paths:
                 password:
                   type: string
               required:
-              - email
-              - password
+                - email
+                - password
               type: object
         description: ''
       responses:
@@ -50,34 +50,34 @@ paths:
                   refresh_token:
                     type: string
                 required:
-                - access_token
-                - refresh_token
-                - id
+                  - access_token
+                  - refresh_token
+                  - id
                 type: object
           description: OK
       summary: Authenticate
       tags:
-      - Authentication Management
+        - Authentication Management
   /confirm:
     post:
       description: validates user email
       operationId: v1.user.confirm
       parameters:
-      - in: query
-        name: code
-        schema:
-          type: string
-      - description: ''
-        in: query
-        name: user_id
-        schema:
-          type: string
+        - in: query
+          name: code
+          schema:
+            type: string
+        - description: ''
+          in: query
+          name: user_id
+          schema:
+            type: string
       responses:
         '200':
           description: OK
       summary: Confirm email
       tags:
-      - Authentication Management
+        - Authentication Management
   /forgot_password:
     post:
       operationId: v1.user.forgot_password
@@ -94,7 +94,7 @@ paths:
                 email:
                   type: string
               required:
-              - email
+                - email
               type: object
       responses:
         '200':
@@ -110,12 +110,12 @@ paths:
                   token:
                     type: string
                 required:
-                - token
+                  - token
                 type: object
           description: OK
       summary: Forgot password
       tags:
-      - Authentication Management
+        - Authentication Management
   /forgot_password_confirm:
     post:
       operationId: v1.user.forgot_password_confirm
@@ -141,17 +141,17 @@ paths:
                 token:
                   type: string
               required:
-              - email
-              - token
-              - password
-              - password_confirm
+                - email
+                - token
+                - password
+                - password_confirm
               type: object
       responses:
         '200':
           description: OK
       summary: Forgot password confirm
       tags:
-      - Authentication Management
+        - Authentication Management
   /refresh_jwt_access_token:
     parameters: []
     post:
@@ -169,7 +169,7 @@ paths:
                 refresh_token:
                   type: string
               required:
-              - refresh_token
+                - refresh_token
               type: object
       responses:
         '200':
@@ -185,7 +185,7 @@ paths:
                   access_token:
                     type: string
                 required:
-                - access_token
+                  - access_token
                 type: object
             application/xml:
               schema:
@@ -195,7 +195,7 @@ paths:
           description: OK
       summary: Refresh jwt access_token
       tags:
-      - Authentication Management
+        - Authentication Management
   /register:
     post:
       operationId: v.user.register
@@ -207,7 +207,7 @@ paths:
                 value:
                   email: keizer@email.com
                   first_name: Keizer
-                  last_name: "S\xF6ze"
+                  last_name: Söze
                   password: password
                   password_confirm: password
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
@@ -227,12 +227,12 @@ paths:
                 registration_token:
                   type: string
               required:
-              - first_name
-              - last_name
-              - email
-              - registration_token
-              - password
-              - password_confirm
+                - first_name
+                - last_name
+                - email
+                - registration_token
+                - password
+                - password_confirm
               type: object
       responses:
         '200':
@@ -254,18 +254,18 @@ paths:
                   refresh_token:
                     type: string
                 required:
-                - id
-                - access_token
-                - refresh_token
+                  - id
+                  - access_token
+                  - refresh_token
                 type: object
           description: OK
       summary: User register
       tags:
-      - Authentication Management
+        - Authentication Management
 servers:
-- description: prod
-  url: https://services.utelly.com/security_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/security_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/security_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/security_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/security_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/security_manager/v1'
