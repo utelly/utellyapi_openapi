@@ -30291,7 +30291,23 @@ paths:
       summary: Get Configuration
       tags:
         - Configuration Management
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                '1':
+                  value:
+                    type: sherlockConfig
+                    config:
+                      languages:
+                        - en
+                        - fr
+                        - gr
       operationId: v1.config.get_config
       parameters:
         - schema:
@@ -30308,6 +30324,20 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                '1':
+                  value:
+                    type: sherlockConfig
+                    config:
+                      languages:
+                        - en
+                        - fr
+                        - gr
       requestBody:
         content:
           application/json:
