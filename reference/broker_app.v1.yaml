@@ -30314,6 +30314,7 @@ paths:
             type: string
           in: query
           name: type
+          required: true
         - schema:
             type: string
           in: query
@@ -30343,7 +30344,17 @@ paths:
           application/json:
             schema:
               type: object
-              properties: {}
+              properties:
+                type:
+                  type: string
+                config:
+                  type: object
+                identifier:
+                  type: string
+                  description: leave blank to create new entry
+              required:
+                - type
+                - config
             examples:
               '1':
                 value:
