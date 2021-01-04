@@ -30286,6 +30286,43 @@ paths:
             schema:
               type: object
               properties: {}
+  /configurations:
+    get:
+      summary: Get Configuration
+      tags:
+        - Configuration Management
+      responses: {}
+      operationId: v1.config.get_config
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: type
+        - schema:
+            type: string
+          in: query
+          name: identifier
+    post:
+      summary: Set Configuration
+      operationId: v1.config.set_config
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples:
+              '1':
+                value:
+                  type: sherlockConfig
+                  config:
+                    languages:
+                      - en
+                      - fr
+                      - gr
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
@@ -30295,3 +30332,4 @@ servers:
     url: 'https://dev-services.utelly.com/broker_app/v1'
 tags:
   - name: Legacy
+  - name: Configuration Management
