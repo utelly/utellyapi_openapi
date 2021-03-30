@@ -62,6 +62,9 @@ paths:
             type: string
             items:
               type: string
+            enum:
+              - topic
+              - entity
           in: query
           name: grouping
           description: grouping of results by sherlock
