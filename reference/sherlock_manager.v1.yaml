@@ -23,7 +23,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      operationId: v1.search.search
+      operationId: v1.search.search.do_search
       parameters:
         - schema:
             type: string
