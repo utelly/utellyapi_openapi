@@ -53,16 +53,17 @@ paths:
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: locales
           description: locales to search on
           style: form
         - schema:
-            type: array
+            type: string
+            items:
+              type: string
           in: query
           name: grouping
-          style: form
           description: grouping of results by sherlock
     parameters:
       - schema:
