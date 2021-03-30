@@ -15,7 +15,14 @@ paths:
     get:
       summary: Sherlock Search
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       operationId: v1.search.search
       parameters:
         - schema:
