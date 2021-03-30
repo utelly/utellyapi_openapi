@@ -52,8 +52,8 @@ paths:
           description: verbose flag
         - schema:
             type: array
-          items:
-            type: string
+            items:
+              type: string            
           in: query
           name: locales
           description: locales to search on
