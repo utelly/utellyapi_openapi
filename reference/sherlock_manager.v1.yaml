@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: sherlock_manager
+  version: v1
+  description: ''
+servers:
+  - url: 'https://services.utelly.com/sherlock_manager/v1'
+    description: prod
+  - url: 'https://dev-services.utelly.com/sherlock_manager/v1'
+    description: dev
+  - url: 'https://staging-services.utelly.com/sherlock_manager/v1'
+    description: staging
+paths:
+  '/search/{config_id}':
+    get:
+      summary: Sherlock Search
+      tags: []
+      responses: {}
+      operationId: v1.search.search
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: query string
+        - schema:
+            type: integer
+          in: query
+          name: size
+          description: number of items to return
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: offset of query
+        - schema:
+            type: boolean
+          in: query
+          name: exact_match
+          description: only return exact matches
+        - schema:
+            type: string
+          in: query
+          name: v
+          description: verbose flag
+        - schema:
+            type: array
+          in: query
+          name: locales
+          description: locales to search on
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: grouping
+          style: form
+          description: grouping of results by sherlock
+    parameters:
+      - schema:
+          type: string
+        name: config_id
+        in: path
+        required: true
+        description: sherlock config id
+components:
+  schemas: {}
