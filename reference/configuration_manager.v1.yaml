@@ -50,10 +50,10 @@ paths:
             schema:
               type: object
               properties:
-                identifier:
-                  type:
-                    - string
-                    - 'null'
+                identifier: 
+                  oneOf:
+                    - type: string
+                      nullable: true
                 type:
                   type: string
                 config:
