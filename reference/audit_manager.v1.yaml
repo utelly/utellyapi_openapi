@@ -30,6 +30,7 @@ components:
           system_version: 2
           timestamp: 1583934547
           user_id: 4ae0359e57bf4465b79d730d27f84426
+      description: ''
   securitySchemes:
     Authorization:
       description: ''

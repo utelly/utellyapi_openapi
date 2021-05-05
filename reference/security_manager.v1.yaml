@@ -234,6 +234,7 @@ paths:
                 - password
                 - password_confirm
               type: object
+        description: ''
       responses:
         '200':
           content:

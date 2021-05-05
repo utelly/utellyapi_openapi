@@ -29597,7 +29597,8 @@ paths:
           type: string
   /ui/layout:
     get:
-      description: Get the preferences of the user in regards to how he / she left the ui
+      description: |
+        Get the preferences of the user in regards to how he / she left the ui
       operationId: v1.ui.get_layout
       responses:
         '200':
