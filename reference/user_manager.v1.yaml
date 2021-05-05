@@ -9,6 +9,7 @@ components:
 info:
   title: user_manager
   version: v1
+  description: ''
 openapi: 3.0.0
 paths:
   /user/preferences:
@@ -22,12 +23,12 @@ paths:
                 '1':
                   value:
                     values:
-                    - key: default_env
-                      value: '1'
-                    - key: default_perspective
-                      value: '1'
-                    - key: default_view
-                      value: '1'
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_view
+                        value: '1'
               schema:
                 additionalProperties: false
                 properties:
@@ -38,14 +39,14 @@ paths:
                     type: array
                     uniqueItems: true
                 required:
-                - values
+                  - values
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get user preferences
       tags:
-      - User Management
+        - User Management
     parameters: []
   /user/roles:
     get:
@@ -59,10 +60,10 @@ paths:
                 '1':
                   value:
                     roles:
-                    - environment_id: '1'
-                      module_id: '1'
-                      permission: read
-                      perspective_id: '1'
+                      - environment_id: '1'
+                        module_id: '1'
+                        permission: read
+                        perspective_id: '1'
               schema:
                 additionalProperties: false
                 properties:
@@ -71,19 +72,19 @@ paths:
                       $ref: ../models/Role.v1.yaml
                     type: array
                 required:
-                - roles
+                  - roles
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get user roles
       tags:
-      - User Management
+        - User Management
     parameters: []
 servers:
-- description: prod
-  url: https://services.utelly.com/user_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/user_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/user_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/user_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/user_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/user_manager/v1'
