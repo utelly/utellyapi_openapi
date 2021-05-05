@@ -6,7 +6,6 @@ components:
         code:
           type: string
         payload:
-          additionalProperties: false
           type: object
         system_name:
           type: string
@@ -60,7 +59,6 @@ paths:
                   system_name: user_manager
                   system_version: 2
                   timestamp: 1583934547
-                  user_id: 4ae0359e57bf4465b79d730d27f84426
             schema:
               $ref: '#/components/schemas/Log'
       responses:
@@ -77,7 +75,6 @@ paths:
                       system_name: user_manager
                       system_version: 2
                       timestamp: 1583934547
-                      user_id: 4ae0359e57bf4465b79d730d27f84426
               schema:
                 additionalProperties: false
                 type: object
@@ -110,7 +107,6 @@ paths:
                     system_name: user_manager
                     system_version: 2
                     timestamp: 1583934547
-                    user_id: 4ae0359e57bf4465b79d730d27f84426
             schema:
               type: array
               uniqueItems: false
@@ -131,7 +127,6 @@ paths:
                         system_name: user_manager
                         system_version: 2
                         timestamp: 1583934547
-                        user_id: 4ae0359e57bf4465b79d730d27f84426
               schema:
                 additionalProperties: false
                 type: object
