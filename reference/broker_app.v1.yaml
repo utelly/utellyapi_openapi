@@ -126,7 +126,7 @@ info:
   version: v1
   contact:
     name: API Support
-    email: developers@utelly.com  
+    email: developers@utelly.com
 openapi: 3.0.0
 paths:
   '/configurations/environment/{environment_id}/view/{view_id}':
@@ -475,32 +475,39 @@ paths:
                       type: DATA FLOW BUILDER
               schema:
                 description: Data definition for a data flow.
+                title: Data-Flow
+                type: object
                 properties:
                   apps:
+                    type: array
                     items:
+                      type: object
                       properties:
                         key:
-                          type: string
+                          type: integer
                         subitems:
+                          type: array
                           items:
+                            type: object
                             properties:
                               name:
                                 type: string
                               type:
                                 type: string
-                            type: object
-                          type: array
                         title:
                           type: string
-                      type: object
-                    type: array
                   flow:
+                    type: object
                     properties:
                       buckets:
+                        type: array
                         items:
+                          type: object
                           properties:
                             apps:
+                              type: array
                               items:
+                                type: object
                                 properties:
                                   name:
                                     type: string
@@ -508,21 +515,14 @@ paths:
                                     type: string
                                   type:
                                     type: string
-                                type: object
-                              type: array
                             type:
                               type: string
-                          type: object
-                        type: array
                       key:
-                        type: string
+                        type: integer
                       name:
                         type: string
                       type:
                         type: string
-                    type: object
-                title: Data-Flow
-                type: object
           description: OK
       summary: data-flow-id
       tags: []
@@ -567,9 +567,13 @@ paths:
                         value: Status
               schema:
                 description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse'
+                title: Data-Browsing
+                type: object
                 properties:
                   data:
+                    type: array
                     items:
+                      type: object
                       properties:
                         id:
                           type: string
@@ -579,24 +583,18 @@ paths:
                           type: string
                         type:
                           type: string
-                      type: object
-                    type: array
                   headers:
-                    properties:
-                      id:
-                        type: string
-                      release:
-                        type: string
-                      title:
-                        type: string
-                      type:
-                        type: string
-                    type: object
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: string
                 required:
-                  - headers
                   - data
-                title: Data-Browsing
-                type: object
+                  - headers
           description: OK
       summary: data-source
       tags: []
@@ -30086,6 +30084,8 @@ paths:
             schema:
               type: object
               properties: {}
+      tags:
+        - Legacy
   /configurations:
     get:
       summary: Get Configuration
@@ -30164,6 +30164,8 @@ paths:
                       - en
                       - fr
                       - gr
+      tags:
+        - Configuration Management
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
