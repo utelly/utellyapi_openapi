@@ -588,6 +588,9 @@ components:
 info:
   title: browse_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com      
 openapi: 3.0.0
 paths:
   '/content/availabilities/{availability_guid}':
