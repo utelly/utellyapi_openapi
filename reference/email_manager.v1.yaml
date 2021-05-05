@@ -9,6 +9,9 @@ components:
 info:
   title: email_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com    
 openapi: 3.0.0
 paths:
   /send_email:
@@ -67,3 +70,5 @@ servers:
     url: 'https://staging-services.utelly.com/email_manager/v1'
   - description: dev
     url: 'https://dev-services.utelly.com/email_manager/v1'
+tags:
+  - name: utelly_services

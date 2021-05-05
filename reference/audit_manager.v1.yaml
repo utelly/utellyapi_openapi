@@ -42,6 +42,9 @@ info:
   description: Log manager for the Utelly API platform
   title: audit_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com  
 openapi: 3.0.0
 paths:
   /log:
@@ -151,3 +154,5 @@ servers:
     url: 'https://staging-services.utelly.com/audit_manager/v1'
   - description: dev
     url: 'https://dev-services.utelly.com/audit_manager/v1'
+tags:
+  - name: utelly_services

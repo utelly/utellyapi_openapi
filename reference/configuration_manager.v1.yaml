@@ -2,6 +2,9 @@ openapi: 3.0.0
 info:
   title: configuration_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com    
 servers:
   - url: 'https://services.utelly.com/configuration_manager/v1'
     description: prod
@@ -50,7 +53,7 @@ paths:
             schema:
               type: object
               properties:
-                identifier: 
+                identifier:
                   oneOf:
                     - type: string
                       nullable: true
@@ -93,3 +96,5 @@ components:
       name: Authorization
       type: apiKey
       in: header
+tags:
+  - name: utelly_services

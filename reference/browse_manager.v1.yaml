@@ -2679,3 +2679,5 @@ servers:
     url: 'https://staging-services.utelly.com/browse_manager/v1'
   - description: dev
     url: 'https://dev-services.utelly.com/browse_manager/v1'
+tags:
+  - name: utelly_services

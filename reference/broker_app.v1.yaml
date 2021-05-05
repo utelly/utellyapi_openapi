@@ -124,6 +124,9 @@ info:
   description: ''
   title: broker_app
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com  
 openapi: 3.0.0
 paths:
   '/configurations/environment/{environment_id}/view/{view_id}':
@@ -30169,5 +30172,4 @@ servers:
   - description: dev
     url: 'https://dev-services.utelly.com/broker_app/v1'
 tags:
-  - name: Legacy
-  - name: Configuration Management
+  - name: utelly_services

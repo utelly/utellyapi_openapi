@@ -3,6 +3,9 @@ info:
   title: sherlock_manager
   version: v1
   description: ''
+  contact:
+    name: API Support
+    email: developers@utelly.com    
 servers:
   - url: 'https://services.utelly.com/sherlock_manager/v1'
     description: prod
@@ -82,3 +85,5 @@ paths:
         description: sherlock config id
 components:
   schemas: {}
+tags:
+  - name: utelly_services

@@ -3,6 +3,9 @@ info:
   title: dm0
   version: v1
   description: Api to manage DM0 entities
+  contact:
+    name: API Support
+    email: developers@utelly.com    
 servers:
   - url: 'https://dev-services.utelly.com/dm0_manager/v1'
     description: dev
@@ -285,3 +288,5 @@ paths:
                   deleted: true
 components:
   schemas: {}
+tags:
+  - name: utelly_services
