@@ -39,12 +39,12 @@ components:
       type: apiKey
       x-apikeyInfoFunc: security.check_token
 info:
-  description: Log manager for the Utelly API platform
+  description: ''
   title: audit_manager
   version: v1
   contact:
     name: API Support
-    email: developers@utelly.com  
+    email: developers@utelly.com
 openapi: 3.0.0
 paths:
   /log:
