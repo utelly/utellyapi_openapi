@@ -5,7 +5,7 @@ info:
   description: Api to manage DM0 entities
   contact:
     name: API Support
-    email: developers@utelly.com    
+    email: developers@utelly.com
 servers:
   - url: 'https://dev-services.utelly.com/dm0_manager/v1'
     description: dev
@@ -23,7 +23,8 @@ paths:
         required: true
     get:
       summary: Get show
-      tags: []
+      tags:
+        - dm0-management
       responses:
         '200':
           description: OK
@@ -91,7 +92,8 @@ paths:
         required: true
     get:
       summary: Get person
-      tags: []
+      tags:
+        - dm0-management
       responses:
         '200':
           description: OK
@@ -211,6 +213,8 @@ paths:
           in: query
           name: source
           required: true
+      tags:
+        - dm0-management
     post:
       summary: Create new data match
       operationId: v1.data_matches.post
@@ -286,6 +290,8 @@ paths:
                   destination_name: gracenote_gracenote
                   destination_uid: '3232'
                   deleted: true
+      tags:
+        - dm0-management
 components:
   schemas: {}
 tags:

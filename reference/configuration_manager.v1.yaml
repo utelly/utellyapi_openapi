@@ -4,7 +4,7 @@ info:
   version: v1
   contact:
     name: API Support
-    email: developers@utelly.com    
+    email: developers@utelly.com
 servers:
   - url: 'https://services.utelly.com/configuration_manager/v1'
     description: prod
@@ -16,7 +16,8 @@ paths:
   /configurations:
     get:
       summary: Get Configurations
-      tags: []
+      tags:
+        - configuration-management
       responses:
         '200':
           description: OK
@@ -89,6 +90,8 @@ paths:
                     SHERLOCK_READ_INDEX: sherlock_iva_iva_read
                     depth: '2'
       description: ''
+      tags:
+        - configuration-management
 components:
   schemas: {}
   securitySchemes:
