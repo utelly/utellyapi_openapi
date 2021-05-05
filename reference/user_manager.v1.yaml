@@ -1,5 +1,32 @@
 components:
-  schemas: {}
+  schemas:
+    Role:
+      additionalProperties: false
+      properties:
+        environment_id:
+          type: string
+        module_id:
+          type: string
+        permission:
+          enum:
+            - read
+            - write
+          type: string
+        perspective_id:
+          type: string
+      required:
+        - environment_id
+        - perspective_id
+        - module_id
+        - permission
+      title: Role
+      type: object
+      x-examples:
+        '1':
+          environment_id: '1'
+          module_id: '1'
+          permission: read
+          perspective_id: '1'
   securitySchemes:
     Authorization:
       in: header
@@ -66,14 +93,14 @@ paths:
                         perspective_id: '1'
               schema:
                 additionalProperties: false
+                type: object
                 properties:
                   roles:
-                    items:
-                      $ref: ../models/Role.v1.yaml
                     type: array
+                    items:
+                      $ref: '#/components/schemas/Role'
                 required:
                   - roles
-                type: object
           description: OK
       security:
         - Authorization: []
