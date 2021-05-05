@@ -39,7 +39,7 @@ paths:
           name: identifier
       description: ''
     post:
-      summary: ''
+      summary: Create Config
       operationId: v1.configuration.post
       responses:
         '200':
@@ -49,7 +49,43 @@ paths:
           application/json:
             schema:
               type: object
-              properties: {}
+              properties:
+                identifier:
+                  type:
+                    - string
+                    - 'null'
+                type:
+                  type: string
+                config:
+                  type: object
+            examples:
+              '1':
+                value:
+                  identifier: null
+                  type: sherlockConfig
+                  config:
+                    display_name: LG Demo
+                    languages:
+                      - en
+                    entities:
+                      - topic
+                      - genre
+                      - mood
+                      - actor
+                      - director
+                    enrichments: []
+                    options:
+                      - phonetic
+                      - qualifiers
+                      - rest
+                    ids_fields:
+                      - source_id
+                    default_size: 20
+                    grouping: entity
+                    source: iva_iva
+                    SHERLOCK_READ_INDEX: sherlock_iva_iva_read
+                    depth: '2'
+      description: ''
 components:
   schemas: {}
   securitySchemes:
