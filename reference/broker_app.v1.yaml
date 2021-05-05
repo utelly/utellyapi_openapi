@@ -103,6 +103,17 @@ components:
         - data
       title: Data-Table
       type: object
+    ui_language:
+      title: Ui Language
+      type: object
+      properties:
+        en:
+          type: string
+        nl:
+          type: string
+        de:
+          type: string
+      description: Language support for different ui labels
   securitySchemes:
     Authorization:
       in: header
@@ -29684,9 +29695,9 @@ paths:
                         uid:
                           type: string
                         names:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                         descriptions:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                       required:
                         - uid
                         - names
@@ -29698,9 +29709,9 @@ paths:
                         uid:
                           type: string
                         names:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                         descriptions:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                         base_url:
                           type: string
                         navigation:
@@ -29711,7 +29722,7 @@ paths:
                               uid:
                                 type: string
                               names:
-                                $ref: ../models/ui_language.v1.yaml
+                                $ref: '#/components/schemas/ui_language'
                               href:
                                 type: string
                             required:
