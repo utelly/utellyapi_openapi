@@ -7,7 +7,7 @@ components:
       type: object
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
@@ -35,9 +35,9 @@ components:
             type: object
             properties:
               currency:
-                $ref: '#/components/schemas/currency_field'
+                $ref: ../models/currency_field.v1.yaml
               metadata:
-                $ref: '#/components/schemas/currency_field'
+                $ref: '#/components/schemas/metadata_field'
               ownership:
                 enum:
                   - Rent
@@ -92,43 +92,6 @@ components:
         - guid
         - identifiers
         - updated_at
-    HalLinks:
-      additionalProperties:
-        $ref: '#/components/schemas/hal_link_field'
-      title: HalLinks
-      type: object
-      x-examples:
-        '1':
-          first:
-            href: /creative_works/1
-          last:
-            href: /creative_works/190
-          next:
-            href: /creative_works/35
-          prev:
-            href: /creative_works/33
-          self:
-            href: /creative_works/34
-      properties:
-        self:
-          $ref: '#/components/schemas/hal_link_field'
-    hal_link_field:
-      title: hal_link_field
-      anyOf:
-        - type: object
-          properties:
-            href:
-              type: string
-          required:
-            - href
-        - type: array
-          items:
-            type: object
-            properties:
-              href:
-                type: string
-            required:
-              - href
     identifier_field:
       additionalProperties: false
       properties:
@@ -140,472 +103,13 @@ components:
         - source
       title: identifier_field
       type: object
-    currency_field:
-      type: string
-      title: currency_field
-      enum:
-        - AFN
-        - ALL
-        - DZD
-        - USD
-        - EUR
-        - AOA
-        - XCD
-        - XCD
-        - ARS
-        - AMD
-        - AWG
-        - AUD
-        - EUR
-        - AZN
-        - BSD
-        - BHD
-        - BDT
-        - BBD
-        - BYN
-        - EUR
-        - BZD
-        - XOF
-        - BMD
-        - BTN
-        - INR
-        - BOB
-        - BOV
-        - USD
-        - BAM
-        - BWP
-        - NOK
-        - BRL
-        - USD
-        - BND
-        - BGN
-        - XOF
-        - BIF
-        - CVE
-        - KHR
-        - XAF
-        - CAD
-        - KYD
-        - XAF
-        - XAF
-        - CLF
-        - CLP
-        - CNY
-        - AUD
-        - AUD
-        - COP
-        - COU
-        - KMF
-        - CDF
-        - XAF
-        - NZD
-        - CRC
-        - HRK
-        - CUC
-        - CUP
-        - ANG
-        - EUR
-        - CZK
-        - XOF
-        - DKK
-        - DJF
-        - XCD
-        - DOP
-        - USD
-        - EGP
-        - SVC
-        - USD
-        - XAF
-        - ERN
-        - EUR
-        - ETB
-        - EUR
-        - FKP
-        - DKK
-        - FJD
-        - EUR
-        - EUR
-        - EUR
-        - XPF
-        - EUR
-        - XAF
-        - GMD
-        - GEL
-        - EUR
-        - GHS
-        - GIP
-        - EUR
-        - DKK
-        - XCD
-        - EUR
-        - USD
-        - GTQ
-        - GBP
-        - GNF
-        - XOF
-        - GYD
-        - HTG
-        - USD
-        - AUD
-        - EUR
-        - HNL
-        - HKD
-        - HUF
-        - ISK
-        - INR
-        - IDR
-        - XDR
-        - IRR
-        - IQD
-        - EUR
-        - GBP
-        - ILS
-        - EUR
-        - JMD
-        - JPY
-        - GBP
-        - JOD
-        - KZT
-        - KES
-        - AUD
-        - KPW
-        - KRW
-        - KWD
-        - KGS
-        - LAK
-        - EUR
-        - LBP
-        - LSL
-        - ZAR
-        - LRD
-        - LYD
-        - CHF
-        - EUR
-        - EUR
-        - MOP
-        - MGA
-        - MWK
-        - MYR
-        - MVR
-        - XOF
-        - EUR
-        - USD
-        - EUR
-        - MRU
-        - MUR
-        - EUR
-        - XUA
-        - MXN
-        - MXV
-        - USD
-        - MDL
-        - EUR
-        - MNT
-        - EUR
-        - XCD
-        - MAD
-        - MZN
-        - MMK
-        - NAD
-        - ZAR
-        - AUD
-        - NPR
-        - EUR
-        - XPF
-        - NZD
-        - NIO
-        - XOF
-        - NGN
-        - NZD
-        - AUD
-        - USD
-        - NOK
-        - OMR
-        - PKR
-        - USD
-        - PAB
-        - USD
-        - PGK
-        - PYG
-        - PEN
-        - PHP
-        - NZD
-        - PLN
-        - EUR
-        - USD
-        - QAR
-        - MKD
-        - RON
-        - RUB
-        - RWF
-        - EUR
-        - EUR
-        - SHP
-        - XCD
-        - XCD
-        - EUR
-        - EUR
-        - XCD
-        - WST
-        - EUR
-        - STN
-        - SAR
-        - XOF
-        - RSD
-        - SCR
-        - SLL
-        - SGD
-        - ANG
-        - XSU
-        - EUR
-        - EUR
-        - SBD
-        - SOS
-        - ZAR
-        - SSP
-        - EUR
-        - LKR
-        - SDG
-        - SRD
-        - NOK
-        - SZL
-        - SEK
-        - CHE
-        - CHF
-        - CHW
-        - SYP
-        - TWD
-        - TJS
-        - TZS
-        - THB
-        - USD
-        - XOF
-        - NZD
-        - TOP
-        - TTD
-        - TND
-        - TRY
-        - TMT
-        - USD
-        - AUD
-        - UGX
-        - UAH
-        - AED
-        - GBP
-        - USD
-        - USD
-        - USN
-        - UYI
-        - UYU
-        - UZS
-        - VUV
-        - VEF
-        - VND
-        - USD
-        - USD
-        - XPF
-        - MAD
-        - YER
-        - ZMW
-        - ZWL
-        - EUR
-        - XXX
-    language_field:
-      type: string
-      title: language_field
-      enum:
-        - ab
-        - aa
-        - af
-        - ak
-        - sq
-        - am
-        - ar
-        - an
-        - hy
-        - as
-        - av
-        - ae
-        - ay
-        - az
-        - bm
-        - ba
-        - eu
-        - be
-        - bn
-        - bh
-        - bi
-        - bs
-        - br
-        - bg
-        - my
-        - ca
-        - ch
-        - ce
-        - ny
-        - zh
-        - cv
-        - kw
-        - co
-        - cr
-        - hr
-        - cs
-        - da
-        - dv
-        - nl
-        - dz
-        - en
-        - eo
-        - et
-        - ee
-        - fo
-        - fj
-        - fi
-        - fr
-        - ff
-        - gl
-        - ka
-        - de
-        - el
-        - gn
-        - gu
-        - ht
-        - ha
-        - he
-        - hz
-        - hi
-        - ho
-        - hu
-        - ia
-        - id
-        - ie
-        - ga
-        - ig
-        - ik
-        - io
-        - is
-        - it
-        - iu
-        - ja
-        - jv
-        - kl
-        - kn
-        - kr
-        - ks
-        - kk
-        - km
-        - ki
-        - rw
-        - ky
-        - kv
-        - kg
-        - ko
-        - ku
-        - kj
-        - la
-        - lb
-        - lg
-        - li
-        - ln
-        - lo
-        - lt
-        - lu
-        - lv
-        - gv
-        - mk
-        - mg
-        - ms
-        - ml
-        - mt
-        - mi
-        - mr
-        - mh
-        - mn
-        - na
-        - nv
-        - nd
-        - ne
-        - ng
-        - nb
-        - nn
-        - 'no'
-        - ii
-        - nr
-        - oc
-        - oj
-        - cu
-        - om
-        - or
-        - os
-        - pa
-        - pi
-        - fa
-        - pl
-        - ps
-        - pt
-        - qu
-        - rm
-        - rn
-        - ro
-        - ru
-        - sa
-        - sc
-        - sd
-        - se
-        - sm
-        - sg
-        - sr
-        - gd
-        - sn
-        - si
-        - sk
-        - sl
-        - so
-        - st
-        - es
-        - su
-        - sw
-        - ss
-        - sv
-        - ta
-        - te
-        - tg
-        - th
-        - ti
-        - bo
-        - tk
-        - tl
-        - tn
-        - to
-        - tr
-        - ts
-        - tt
-        - tw
-        - ty
-        - ug
-        - uk
-        - ur
-        - uz
-        - ve
-        - vi
-        - vo
-        - wa
-        - cy
-        - wo
-        - fy
-        - xh
-        - yi
-        - yo
-        - za
-        - zu
-        - xx
     ContentRating:
       additionalProperties: false
       title: ContentRating
       type: object
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -650,9 +154,9 @@ components:
       description: ''
       properties:
         country:
-          $ref: '#/components/schemas/country_field'
+          $ref: ../models/country_field.v1.yaml
         language:
-          $ref: '#/components/schemas/language_field'
+          $ref: ../models/language_field.v1.yaml
         source:
           type: string
         type:
@@ -665,267 +169,13 @@ components:
           language: en
           source: gracenote
           type: official
-    country_field:
-      type: string
-      title: country_field
-      enum:
-        - AD
-        - AE
-        - AF
-        - AG
-        - AI
-        - AL
-        - AM
-        - AO
-        - AQ
-        - AR
-        - AS
-        - AT
-        - AU
-        - AW
-        - AX
-        - AZ
-        - BA
-        - BB
-        - BD
-        - BE
-        - BF
-        - BG
-        - BH
-        - BI
-        - BJ
-        - BL
-        - BM
-        - BN
-        - BO
-        - BQ
-        - BR
-        - BS
-        - BT
-        - BV
-        - BW
-        - BY
-        - BZ
-        - CA
-        - CC
-        - CD
-        - CF
-        - CG
-        - CH
-        - CI
-        - CK
-        - CL
-        - CM
-        - CN
-        - CO
-        - CR
-        - CU
-        - CV
-        - CW
-        - CX
-        - CY
-        - CZ
-        - DE
-        - DJ
-        - DK
-        - DM
-        - DO
-        - DZ
-        - EC
-        - EE
-        - EG
-        - EH
-        - ER
-        - ES
-        - ET
-        - FI
-        - FJ
-        - FK
-        - FM
-        - FO
-        - FR
-        - GA
-        - GB
-        - GD
-        - GE
-        - GF
-        - GG
-        - GH
-        - GI
-        - GL
-        - GM
-        - GN
-        - GP
-        - GQ
-        - GR
-        - GS
-        - GT
-        - GU
-        - GW
-        - GY
-        - HK
-        - HM
-        - HN
-        - HR
-        - HT
-        - HU
-        - ID
-        - IE
-        - IL
-        - IM
-        - IN
-        - IO
-        - IQ
-        - IR
-        - IS
-        - IT
-        - JE
-        - JM
-        - JO
-        - JP
-        - KE
-        - KG
-        - KH
-        - KI
-        - KM
-        - KN
-        - KP
-        - KR
-        - KW
-        - KY
-        - KZ
-        - LA
-        - LB
-        - LC
-        - LI
-        - LK
-        - LR
-        - LS
-        - LT
-        - LU
-        - LV
-        - LY
-        - MA
-        - MC
-        - MD
-        - ME
-        - MF
-        - MG
-        - MH
-        - MK
-        - ML
-        - MM
-        - MN
-        - MO
-        - MP
-        - MQ
-        - MR
-        - MS
-        - MT
-        - MU
-        - MV
-        - MW
-        - MX
-        - MY
-        - MZ
-        - NA
-        - NC
-        - NE
-        - NF
-        - NG
-        - NI
-        - NL
-        - 'NO'
-        - NP
-        - NR
-        - NU
-        - NZ
-        - OM
-        - PA
-        - PE
-        - PF
-        - PG
-        - PH
-        - PK
-        - PL
-        - PM
-        - PN
-        - PR
-        - PS
-        - PT
-        - PW
-        - PY
-        - QA
-        - RE
-        - RO
-        - RS
-        - RU
-        - RW
-        - SA
-        - SB
-        - SC
-        - SD
-        - SE
-        - SG
-        - SH
-        - SI
-        - SJ
-        - SK
-        - SL
-        - SM
-        - SN
-        - SO
-        - SR
-        - SS
-        - ST
-        - SV
-        - SX
-        - SY
-        - SZ
-        - TC
-        - TD
-        - TF
-        - TG
-        - TH
-        - TJ
-        - TK
-        - TL
-        - TM
-        - TN
-        - TO
-        - TR
-        - TT
-        - TV
-        - TW
-        - TZ
-        - UA
-        - UG
-        - UM
-        - US
-        - UY
-        - UZ
-        - VA
-        - VC
-        - VE
-        - VG
-        - VI
-        - VN
-        - VU
-        - WF
-        - WS
-        - YE
-        - YT
-        - ZA
-        - ZM
-        - ZW
-        - XX
     Contributor:
       additionalProperties: false
       title: Contributor
       type: object
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         character_names:
           type: array
           items:
@@ -984,7 +234,7 @@ components:
       x-examples: {}
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
@@ -1090,7 +340,7 @@ components:
       additionalProperties: false
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           items:
             $ref: '#/components/schemas/picture_field'
@@ -1144,7 +394,7 @@ components:
       additionalProperties: false
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           items:
             $ref: '#/components/schemas/picture_field'
@@ -1194,7 +444,7 @@ components:
       additionalProperties: false
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           items:
             $ref: '#/components/schemas/picture_field'
@@ -1241,7 +491,7 @@ components:
       additionalProperties: false
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           items:
             $ref: '#/components/schemas/picture_field'
@@ -1288,10 +538,10 @@ components:
       additionalProperties: false
       properties:
         _links:
-          $ref: '#/components/schemas/HalLinks'
+          $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: (\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -1310,23 +560,23 @@ components:
               name:
                 type: string
             required:
-            - metadata
-            - name
+              - metadata
+              - name
             type: object
           type: array
         relationships:
           $ref: '#/components/schemas/Relationships'
         updated_at:
           format: date-time
-          pattern: (\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
       required:
-      - _links
-      - created_at
-      - deleted
-      - guid
-      - identifiers
-      - updated_at
+        - _links
+        - created_at
+        - deleted
+        - guid
+        - identifiers
+        - updated_at
       title: Tag
       type: object
   securitySchemes:
@@ -1349,7 +599,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1425,7 +675,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1507,7 +757,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -1525,7 +775,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1578,7 +828,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1646,7 +896,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1762,7 +1012,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -1780,7 +1030,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1894,7 +1144,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2011,7 +1261,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/CreativeWork'
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _embedded
                   - _links
@@ -2034,7 +1284,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2151,7 +1401,7 @@ paths:
                         items:
                           $ref: '#/components/schemas/CreativeWork'
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _embedded
                   - _links
@@ -2174,7 +1424,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2268,7 +1518,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -2292,7 +1542,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2374,7 +1624,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _embedded
                   - _links
@@ -2398,7 +1648,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2485,7 +1735,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _embedded
                   - _links
@@ -2509,7 +1759,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2593,7 +1843,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -2617,7 +1867,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2698,7 +1948,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -2716,7 +1966,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2768,7 +2018,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2854,7 +2104,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _embedded
                   - _links
@@ -2873,7 +2123,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -2930,7 +2180,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -3021,7 +2271,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -3039,7 +2289,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -3101,7 +2351,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -3192,7 +2442,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -3210,7 +2460,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -3272,7 +2522,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -3356,7 +2606,7 @@ paths:
                         type: array
                     type: object
                   _links:
-                    $ref: '#/components/schemas/HalLinks'
+                    $ref: ../models/HalLinks.v1.yaml
                 required:
                   - _links
                   - _embedded
@@ -3374,7 +2624,7 @@ paths:
           name: languages
           schema:
             items:
-              $ref: '#/components/schemas/language_field'
+              $ref: ../models/language_field.v1.yaml
             type: array
           style: form
         - in: query

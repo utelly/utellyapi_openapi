@@ -1,0 +1,16 @@
+title: hal_link_field
+anyOf:
+  - type: object
+    properties:
+      href:
+        type: string
+    required:
+      - href
+  - type: array
+    items:
+      type: object
+      properties:
+        href:
+          type: string
+      required:
+      - href
