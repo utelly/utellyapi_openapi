@@ -16,8 +16,6 @@ paths:
   /configurations:
     get:
       summary: Get Configurations
-      tags:
-        - configuration-management
       responses:
         '200':
           description: OK
@@ -42,6 +40,8 @@ paths:
           in: query
           name: identifier
       description: ''
+      tags:
+        - Configuration Management
     post:
       summary: Create Config
       operationId: v1.configuration.post
@@ -91,7 +91,7 @@ paths:
                     depth: '2'
       description: ''
       tags:
-        - configuration-management
+        - Configuration Management
 components:
   schemas: {}
   securitySchemes:

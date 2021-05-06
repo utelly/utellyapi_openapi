@@ -214,7 +214,7 @@ paths:
           name: source
           required: true
       tags:
-        - dm0-management
+        - Dm0 Management
     post:
       summary: Create new data match
       operationId: v1.data_matches.post
@@ -291,7 +291,7 @@ paths:
                   destination_uid: '3232'
                   deleted: true
       tags:
-        - dm0-management
+        - Dm0 Management
 components:
   schemas: {}
 tags:
