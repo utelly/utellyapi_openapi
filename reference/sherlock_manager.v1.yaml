@@ -9,10 +9,10 @@ info:
 servers:
   - url: 'https://services.utelly.com/sherlock_manager/v1'
     description: prod
+  - url: 'https://staging-services.utelly.com/sherlock_manager/v1'
+    description: staging    
   - url: 'https://dev-services.utelly.com/sherlock_manager/v1'
     description: dev
-  - url: 'https://staging-services.utelly.com/sherlock_manager/v1'
-    description: staging
 paths:
   '/search/{config_id}':
     get:

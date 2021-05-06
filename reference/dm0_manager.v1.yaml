@@ -7,12 +7,12 @@ info:
     name: API Support
     email: developers@utelly.com
 servers:
-  - url: 'https://dev-services.utelly.com/dm0_manager/v1'
-    description: dev
+  - url: 'https://services.utelly.com/dm0_manager/v1'
+    description: prod  
   - url: 'https://staging-services.utelly.com/dm0_manager/v1'
     description: staging
-  - url: 'https://services.utelly.com/dm0_manager/v1'
-    description: prod
+  - url: 'https://dev-services.utelly.com/dm0_manager/v1'
+    description: dev    
 paths:
   '/shows/{uid}':
     parameters:
