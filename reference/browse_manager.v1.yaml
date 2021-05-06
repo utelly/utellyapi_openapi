@@ -10,15 +10,15 @@ components:
           $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         datetime_from:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         datetime_to:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
@@ -79,10 +79,12 @@ components:
               - url
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         _embedded:
           type: object
+        s:
+          type: string
       required:
         - _links
         - created_at
@@ -92,8 +94,6 @@ components:
         - guid
         - identifiers
         - updated_at
-      x-tags:
-        - Model
     identifier_field:
       additionalProperties: false
       properties:
@@ -102,7 +102,7 @@ components:
         source:
           type: string
       required:
-        - source
+      - source
       title: identifier_field
       type: object
     ContentRating:
@@ -111,7 +111,7 @@ components:
       type: object
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -129,7 +129,7 @@ components:
               - organization
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
@@ -141,7 +141,9 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          type: string
+        s:
           type: string
       required:
         - _links
@@ -151,8 +153,6 @@ components:
         - guid
         - identifiers
         - updated_at
-      x-tags:
-        - Model
     metadata_field:
       additionalProperties: false
       description: ''
@@ -179,7 +179,7 @@ components:
       type: object
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         character_names:
           type: array
           items:
@@ -222,6 +222,17 @@ components:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
+        s:
+          type: string
+        sequences:
+          type: array
+          items:
+            type: object
+            properties:
+              sequence:
+                type: integer
+              metadata:
+                $ref: '#/components/schemas/metadata_field'
       required:
         - _links
         - created_at
@@ -230,8 +241,6 @@ components:
         - identifiers
         - roles
         - updated_at
-      x-tags:
-        - Model
     CreativeWork:
       additionalProperties: false
       description: ''
@@ -240,7 +249,7 @@ components:
       x-examples: {}
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
@@ -261,6 +270,8 @@ components:
                 type: string
               metadata:
                 $ref: '#/components/schemas/metadata_field'
+              attribution:
+                type: string
             required:
               - description
               - metadata
@@ -303,6 +314,46 @@ components:
           type: string
         _embedded:
           type: object
+        release_year:
+          type: string
+        number:
+          type: integer
+        duration:
+          type: string
+        external_references:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              organization:
+                type: string
+              identifier:
+                type: string
+              metadata:
+                $ref: '#/components/schemas/metadata_field'
+        trailers:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              name:
+                type: string
+              locale_video:
+                $ref: ../models/language_field.v1.yaml
+              locale_subtitle:
+                $ref: ../models/language_field.v1.yaml
+              duration:
+                type: string
+              width:
+                type: integer
+              height:
+                type: integer
+        s:
+          type: string
       required:
         - _links
         - created_at
@@ -311,11 +362,12 @@ components:
         - identifiers
         - type
         - updated_at
-      x-tags:
-        - Model
     Relationships:
+      title: Relationships
+      type: array
       items:
         additionalProperties: false
+        type: object
         properties:
           href:
             type: string
@@ -325,11 +377,6 @@ components:
               - sibling
               - child
             type: string
-        type: object
-      title: Relationships
-      type: array
-      x-tags:
-        - Model
     picture_field:
       additionalProperties: false
       title: picture_field
@@ -348,16 +395,18 @@ components:
         - url
     Location:
       additionalProperties: false
+      title: Location
+      type: object
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         artworks:
+          type: array
           items:
             $ref: '#/components/schemas/picture_field'
-          type: array
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
@@ -366,16 +415,18 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         latitude:
           type: number
         longitude:
           type: number
         names:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               country_code:
                 type: string
@@ -385,11 +436,11 @@ components:
                 type: string
             required:
               - metadata
-            type: object
-          type: array
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          type: string
+        s:
           type: string
       required:
         - _links
@@ -398,22 +449,22 @@ components:
         - guid
         - identifiers
         - updated_at
-      title: Location
-      type: object
-      x-tags:
-        - Model
     Person:
       additionalProperties: false
+      title: Person
+      type: object
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         artworks:
+          type: array
           items:
             $ref: '#/components/schemas/picture_field'
-          type: array
         biographies:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               biography:
                 type: string
@@ -422,25 +473,25 @@ components:
             required:
               - biography
               - metadata
-            type: object
-          type: array
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         name:
           type: string
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          type: string
+        s:
           type: string
       required:
         - _links
@@ -450,83 +501,34 @@ components:
         - identifiers
         - name
         - updated_at
-      title: Person
-      type: object
-      x-tags:
-        - Model
     Platform:
       additionalProperties: false
-      properties:
-        _links:
-          $ref: ../models/HalLinks.v1.yaml
-        artworks:
-          items:
-            $ref: '#/components/schemas/picture_field'
-          type: array
-        created_at:
-          format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
-          type: string
-        deleted:
-          type: boolean
-        guid:
-          type: string
-        identifiers:
-          items:
-            $ref: '#/components/schemas/identifier_field'
-          type: array
-        names:
-          items:
-            additionalProperties: false
-            properties:
-              metadata:
-                $ref: '#/components/schemas/metadata_field'
-              name:
-                type: string
-            required:
-              - metadata
-              - name
-            type: object
-          type: array
-        updated_at:
-          format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
-          type: string
-      required:
-        - _links
-        - created_at
-        - deleted
-        - guid
-        - identifiers
-        - updated_at
       title: Platform
       type: object
-      x-tags:
-        - Model
-    Service:
-      additionalProperties: false
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         artworks:
+          type: array
           items:
             $ref: '#/components/schemas/picture_field'
-          type: array
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         names:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
@@ -535,11 +537,11 @@ components:
             required:
               - metadata
               - name
-            type: object
-          type: array
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          type: string
+        s:
           type: string
       required:
         - _links
@@ -548,23 +550,65 @@ components:
         - guid
         - identifiers
         - updated_at
+    Service:
+      additionalProperties: false
       title: Service
       type: object
-      x-tags:
-        - Model
+      properties:
+        _links:
+          $ref:  ../models/HalLinks.v1.yaml
+        artworks:
+          type: array
+          items:
+            $ref: '#/components/schemas/picture_field'
+        created_at:
+          format: date-time
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          type: string
+        deleted:
+          type: boolean
+        guid:
+          type: string
+        identifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/identifier_field'
+        names:
+          type: array
+          items:
+            additionalProperties: false
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/metadata_field'
+              name:
+                type: string
+            required:
+              - metadata
+              - name
+        updated_at:
+          format: date-time
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          type: string
+        s:
+          type: string
+      required:
+        - _links
+        - created_at
+        - deleted
+        - guid
+        - identifiers
+        - updated_at
     Tag:
       additionalProperties: false
       title: Tag
       type: object
-      x-tags:
-        - Model
-      description: ''
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
@@ -591,7 +635,7 @@ components:
           $ref: '#/components/schemas/Relationships'
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         type:
           type: string
@@ -610,7 +654,7 @@ components:
       type: object
       properties:
         _links:
-          $ref: ../models/HalLinks.v1.yaml
+          $ref:  ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -631,7 +675,7 @@ components:
               - type
         created_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         deleted:
           type: boolean
@@ -643,7 +687,7 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
           type: string
         s:
           type: string
@@ -767,7 +811,7 @@ components:
               - operator
               - property
               - value
-        type: object
+        type: object      
   securitySchemes:
     Authorization:
       in: header
