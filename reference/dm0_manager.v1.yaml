@@ -23,8 +23,6 @@ paths:
         required: true
     get:
       summary: Get show
-      tags:
-        - dm0-management
       responses:
         '200':
           description: OK
@@ -83,6 +81,8 @@ paths:
           in: query
           name: source
           required: true
+      tags:
+        - Dm0 Management
   '/people/{uid}':
     parameters:
       - schema:
@@ -92,8 +92,6 @@ paths:
         required: true
     get:
       summary: Get person
-      tags:
-        - dm0-management
       responses:
         '200':
           description: OK
@@ -139,6 +137,8 @@ paths:
           in: query
           name: source
           required: true
+      tags:
+        - Dm0 Management
   '/data_matches/{type}':
     parameters:
       - schema:
