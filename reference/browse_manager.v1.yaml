@@ -2585,6 +2585,10 @@ paths:
           schema:
             type: string
           description: json value of the Filters object
+        - schema:
+            type: integer
+          in: query
+          name: skip
       responses:
         '200':
           content:
