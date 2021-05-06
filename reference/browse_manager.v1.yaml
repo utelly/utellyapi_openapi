@@ -554,6 +554,11 @@ components:
         - Model
     Tag:
       additionalProperties: false
+      title: Tag
+      type: object
+      x-tags:
+        - Model
+      description: ''
       properties:
         _links:
           $ref: ../models/HalLinks.v1.yaml
@@ -566,12 +571,14 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         names:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
@@ -580,13 +587,15 @@ components:
             required:
               - metadata
               - name
-            type: object
-          type: array
         relationships:
           $ref: '#/components/schemas/Relationships'
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          type: string
+        type:
+          type: string
+        s:
           type: string
       required:
         - _links
@@ -595,11 +604,6 @@ components:
         - guid
         - identifiers
         - updated_at
-      title: Tag
-      type: object
-      x-tags:
-        - Model
-      description: ''
   securitySchemes:
     Authorization:
       in: header
