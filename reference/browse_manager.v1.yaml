@@ -92,6 +92,8 @@ components:
         - guid
         - identifiers
         - updated_at
+      x-tags:
+        - Model
     identifier_field:
       additionalProperties: false
       properties:
@@ -149,6 +151,8 @@ components:
         - guid
         - identifiers
         - updated_at
+      x-tags:
+        - Model
     metadata_field:
       additionalProperties: false
       description: ''
@@ -226,6 +230,8 @@ components:
         - identifiers
         - roles
         - updated_at
+      x-tags:
+        - Model
     CreativeWork:
       additionalProperties: false
       description: ''
@@ -305,6 +311,8 @@ components:
         - identifiers
         - type
         - updated_at
+      x-tags:
+        - Model
     Relationships:
       items:
         additionalProperties: false
@@ -320,6 +328,8 @@ components:
         type: object
       title: Relationships
       type: array
+      x-tags:
+        - Model
     picture_field:
       additionalProperties: false
       title: picture_field
@@ -390,6 +400,8 @@ components:
         - updated_at
       title: Location
       type: object
+      x-tags:
+        - Model
     Person:
       additionalProperties: false
       properties:
@@ -440,6 +452,8 @@ components:
         - updated_at
       title: Person
       type: object
+      x-tags:
+        - Model
     Platform:
       additionalProperties: false
       properties:
@@ -487,6 +501,8 @@ components:
         - updated_at
       title: Platform
       type: object
+      x-tags:
+        - Model
     Service:
       additionalProperties: false
       properties:
@@ -534,6 +550,8 @@ components:
         - updated_at
       title: Service
       type: object
+      x-tags:
+        - Model
     Tag:
       additionalProperties: false
       properties:
@@ -579,6 +597,9 @@ components:
         - updated_at
       title: Tag
       type: object
+      x-tags:
+        - Model
+      description: ''
   securitySchemes:
     Authorization:
       in: header
@@ -590,7 +611,7 @@ info:
   version: v1
   contact:
     name: API Support
-    email: developers@utelly.com      
+    email: developers@utelly.com
 openapi: 3.0.0
 paths:
   '/content/availabilities/{availability_guid}':
