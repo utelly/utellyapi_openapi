@@ -605,7 +605,7 @@ components:
       in: header
       name: Authorization
       type: apiKey
-  x-apikeyInfoFunc: security.check_token
+      x-apikeyInfoFunc: security.check_token
 info:
   title: browse_manager
   version: v1
