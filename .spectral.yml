@@ -1,0 +1,11 @@
+extends: [[spectral:oas, all]]
+rules:
+ info-description: off
+ tag-description: off
+ operation-tag-defined: off
+ info-license: off
+ license-url: off
+ contact-properties: off
+ operation-default-response: off
+ operation-description: off
+ oas3-parameter-description: off

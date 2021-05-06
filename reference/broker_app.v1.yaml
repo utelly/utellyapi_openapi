@@ -103,6 +103,17 @@ components:
         - data
       title: Data-Table
       type: object
+    ui_language:
+      title: Ui Language
+      type: object
+      properties:
+        en:
+          type: string
+        nl:
+          type: string
+        de:
+          type: string
+      description: Language support for different ui labels
   securitySchemes:
     Authorization:
       in: header
@@ -113,6 +124,9 @@ info:
   description: ''
   title: broker_app
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com
 openapi: 3.0.0
 paths:
   '/configurations/environment/{environment_id}/view/{view_id}':
@@ -461,32 +475,39 @@ paths:
                       type: DATA FLOW BUILDER
               schema:
                 description: Data definition for a data flow.
+                title: Data-Flow
+                type: object
                 properties:
                   apps:
+                    type: array
                     items:
+                      type: object
                       properties:
                         key:
-                          type: string
+                          type: integer
                         subitems:
+                          type: array
                           items:
+                            type: object
                             properties:
                               name:
                                 type: string
                               type:
                                 type: string
-                            type: object
-                          type: array
                         title:
                           type: string
-                      type: object
-                    type: array
                   flow:
+                    type: object
                     properties:
                       buckets:
+                        type: array
                         items:
+                          type: object
                           properties:
                             apps:
+                              type: array
                               items:
+                                type: object
                                 properties:
                                   name:
                                     type: string
@@ -494,21 +515,14 @@ paths:
                                     type: string
                                   type:
                                     type: string
-                                type: object
-                              type: array
                             type:
                               type: string
-                          type: object
-                        type: array
                       key:
-                        type: string
+                        type: integer
                       name:
                         type: string
                       type:
                         type: string
-                    type: object
-                title: Data-Flow
-                type: object
           description: OK
       summary: data-flow-id
       tags: []
@@ -553,9 +567,13 @@ paths:
                         value: Status
               schema:
                 description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse'
+                title: Data-Browsing
+                type: object
                 properties:
                   data:
+                    type: array
                     items:
+                      type: object
                       properties:
                         id:
                           type: string
@@ -565,24 +583,18 @@ paths:
                           type: string
                         type:
                           type: string
-                      type: object
-                    type: array
                   headers:
-                    properties:
-                      id:
-                        type: string
-                      release:
-                        type: string
-                      title:
-                        type: string
-                      type:
-                        type: string
-                    type: object
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: string
                 required:
-                  - headers
                   - data
-                title: Data-Browsing
-                type: object
+                  - headers
           description: OK
       summary: data-source
       tags: []
@@ -29586,7 +29598,8 @@ paths:
           type: string
   /ui/layout:
     get:
-      description: Get the preferences of the user in regards to how he / she left the ui
+      description: |
+        Get the preferences of the user in regards to how he / she left the ui
       operationId: v1.ui.get_layout
       responses:
         '200':
@@ -29684,9 +29697,9 @@ paths:
                         uid:
                           type: string
                         names:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                         descriptions:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                       required:
                         - uid
                         - names
@@ -29698,9 +29711,9 @@ paths:
                         uid:
                           type: string
                         names:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                         descriptions:
-                          $ref: ../models/ui_language.v1.yaml
+                          $ref: '#/components/schemas/ui_language'
                         base_url:
                           type: string
                         navigation:
@@ -29711,7 +29724,7 @@ paths:
                               uid:
                                 type: string
                               names:
-                                $ref: ../models/ui_language.v1.yaml
+                                $ref: '#/components/schemas/ui_language'
                               href:
                                 type: string
                             required:
@@ -30071,6 +30084,8 @@ paths:
             schema:
               type: object
               properties: {}
+      tags:
+        - Legacy
   /configurations:
     get:
       summary: Get Configuration
@@ -30149,6 +30164,8 @@ paths:
                       - en
                       - fr
                       - gr
+      tags:
+        - Configuration Management
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
@@ -30157,5 +30174,4 @@ servers:
   - description: dev
     url: 'https://dev-services.utelly.com/broker_app/v1'
 tags:
-  - name: Legacy
-  - name: Configuration Management
+  - name: utelly_services

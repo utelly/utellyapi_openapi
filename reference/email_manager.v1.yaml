@@ -9,6 +9,9 @@ components:
 info:
   title: email_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com    
 openapi: 3.0.0
 paths:
   /send_email:
@@ -20,15 +23,15 @@ paths:
             examples:
               '1':
                 value:
-                  email_body: Hey {name} !, here is your {token}
+                  email_body: 'Hey {name} !, here is your {token}'
                   email_from: hello@email.com
                   email_to: keizer@email.com
                   subject: Hey! Looks like you forgot your password
                   variables:
-                  - key: name
-                    value: Keizer
-                  - key: token
-                    value: token
+                    - key: name
+                      value: Keizer
+                    - key: token
+                      value: token
             schema:
               additionalProperties: false
               properties:
@@ -45,24 +48,27 @@ paths:
                     $ref: ../models/kv_field.v1.yaml
                   type: array
               required:
-              - variables
-              - email_body
-              - email_to
-              - subject
+                - variables
+                - email_body
+                - email_to
+                - subject
               type: object
         description: ''
       responses:
         '200':
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Send email
       tags:
-      - Email Management
+        - Email Management
+      description: ''
 servers:
-- description: prod
-  url: https://services.utelly.com/email_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/email_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/email_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/email_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/email_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/email_manager/v1'
+tags:
+  - name: utelly_services

@@ -2,6 +2,9 @@ openapi: 3.0.0
 info:
   title: configuration_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com
 servers:
   - url: 'https://services.utelly.com/configuration_manager/v1'
     description: prod
@@ -13,7 +16,8 @@ paths:
   /configurations:
     get:
       summary: Get Configurations
-      tags: []
+      tags:
+        - configuration-management
       responses:
         '200':
           description: OK
@@ -51,9 +55,9 @@ paths:
               type: object
               properties:
                 identifier:
-                  type:
-                    - string
-                    - 'null'
+                  oneOf:
+                    - type: string
+                      nullable: true
                 type:
                   type: string
                 config:
@@ -86,6 +90,8 @@ paths:
                     SHERLOCK_READ_INDEX: sherlock_iva_iva_read
                     depth: '2'
       description: ''
+      tags:
+        - configuration-management
 components:
   schemas: {}
   securitySchemes:
@@ -93,3 +99,5 @@ components:
       name: Authorization
       type: apiKey
       in: header
+tags:
+  - name: utelly_services

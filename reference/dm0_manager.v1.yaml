@@ -1,0 +1,298 @@
+openapi: 3.0.0
+info:
+  title: dm0
+  version: v1
+  description: Api to manage DM0 entities
+  contact:
+    name: API Support
+    email: developers@utelly.com
+servers:
+  - url: 'https://dev-services.utelly.com/dm0_manager/v1'
+    description: dev
+  - url: 'https://staging-services.utelly.com/dm0_manager/v1'
+    description: staging
+  - url: 'https://services.utelly.com/dm0_manager/v1'
+    description: prod
+paths:
+  '/shows/{uid}':
+    parameters:
+      - schema:
+          type: string
+        name: uid
+        in: path
+        required: true
+    get:
+      summary: Get show
+      tags:
+        - dm0-management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  primary_name:
+                    type: string
+                    minLength: 1
+                  pictures:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          minLength: 1
+                      required:
+                        - url
+                  uid:
+                    type: string
+                  release_year:
+                    type: integer
+                  actors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        full_name:
+                          type: string
+                      required:
+                        - full_name
+                required:
+                  - primary_name
+                  - pictures
+                  - uid
+                  - actors
+              examples:
+                '1':
+                  value:
+                    uid: '23232'
+                    primary_name: hello
+                    actors:
+                      - full_name: Leonardo
+                    pictures:
+                      - url: 'https://mydomain.com/image.jpg'
+      operationId: v1.show.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: source
+          required: true
+  '/people/{uid}':
+    parameters:
+      - schema:
+          type: string
+        name: uid
+        in: path
+        required: true
+    get:
+      summary: Get person
+      tags:
+        - dm0-management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  uid:
+                    type: string
+                    minLength: 1
+                  full_name:
+                    type: string
+                    minLength: 1
+                  pictures:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          minLength: 1
+                      required:
+                        - url
+                required:
+                  - uid
+                  - full_name
+                  - pictures
+              examples:
+                '1':
+                  value:
+                    uid: '23232'
+                    full_name: hello
+                    pictures:
+                      - url: 'https://mydomain.com/image.jpg'
+      operationId: v1.person.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: source
+          required: true
+  '/data_matches/{type}':
+    parameters:
+      - schema:
+          type: string
+          enum:
+            - people
+            - shows
+        name: type
+        in: path
+        required: true
+    get:
+      summary: Get data matches
+      operationId: v1.data_matches.get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  items:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        source_name:
+                          type: string
+                          minLength: 1
+                        source_uid:
+                          type: string
+                          minLength: 1
+                        destination_name:
+                          type: string
+                          minLength: 1
+                        destination_uid:
+                          type: string
+                          minLength: 1
+                        deleted:
+                          type: boolean
+                        matcher:
+                          type: string
+                      required:
+                        - source_name
+                        - source_uid
+                        - destination_name
+                        - destination_uid
+                        - deleted
+                required:
+                  - items
+              examples:
+                '1':
+                  value:
+                    items:
+                      - source_name: iva_iva
+                        source_uid: '123'
+                        destination_name: gracenote_gracenote
+                        destination_uid: '3232'
+                        deleted: true
+                        matcher: ManualMatcher
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: group_uid
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: source
+          required: true
+      tags:
+        - dm0-management
+    post:
+      summary: Create new data match
+      operationId: v1.data_matches.post
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  source_name:
+                    type: string
+                    minLength: 1
+                  source_uid:
+                    type: string
+                    minLength: 1
+                  destination_name:
+                    type: string
+                    minLength: 1
+                  destination_uid:
+                    type: string
+                    minLength: 1
+                  deleted:
+                    type: boolean
+                required:
+                  - source_name
+                  - source_uid
+                  - destination_name
+                  - destination_uid
+                  - deleted
+              examples:
+                '1':
+                  value:
+                    source_name: iva_iva
+                    source_uid: '123'
+                    destination_name: gracenote_gracenote
+                    destination_uid: '3232'
+                    deleted: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                source_name:
+                  type: string
+                  minLength: 1
+                source_uid:
+                  type: string
+                  minLength: 1
+                destination_name:
+                  type: string
+                  minLength: 1
+                destination_uid:
+                  type: string
+                  minLength: 1
+                deleted:
+                  type: boolean
+              required:
+                - source_name
+                - source_uid
+                - destination_name
+                - destination_uid
+                - deleted
+            examples:
+              '1':
+                value:
+                  source_name: iva_iva
+                  source_uid: '123'
+                  destination_name: gracenote_gracenote
+                  destination_uid: '3232'
+                  deleted: true
+      tags:
+        - dm0-management
+components:
+  schemas: {}
+tags:
+  - name: utelly_services

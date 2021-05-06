@@ -1,5 +1,36 @@
 components:
-  schemas: {}
+  schemas:
+    Log:
+      additionalProperties: false
+      properties:
+        code:
+          type: string
+        payload:
+          type: object
+        system_name:
+          type: string
+        system_version:
+          type: number
+        timestamp:
+          type: integer
+      required:
+        - timestamp
+        - system_name
+        - system_version
+        - code
+        - payload
+      title: Log
+      type: object
+      x-examples:
+        '1':
+          code: pipeline_success
+          payload:
+            message: pipeline successfully created
+          system_name: user_manager
+          system_version: 2
+          timestamp: 1583934547
+          user_id: 4ae0359e57bf4465b79d730d27f84426
+      description: ''
   securitySchemes:
     Authorization:
       description: ''
@@ -8,9 +39,12 @@ components:
       type: apiKey
       x-apikeyInfoFunc: security.check_token
 info:
-  description: Log manager for the Utelly API platform
+  description: ''
   title: audit_manager
   version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com
 openapi: 3.0.0
 paths:
   /log:
@@ -29,9 +63,8 @@ paths:
                   system_name: user_manager
                   system_version: 2
                   timestamp: 1583934547
-                  user_id: 4ae0359e57bf4465b79d730d27f84426
             schema:
-              $ref: ../models/Log.v1.yaml
+              $ref: '#/components/schemas/Log'
       responses:
         '200':
           content:
@@ -46,21 +79,20 @@ paths:
                       system_name: user_manager
                       system_version: 2
                       timestamp: 1583934547
-                      user_id: 4ae0359e57bf4465b79d730d27f84426
               schema:
                 additionalProperties: false
+                type: object
                 properties:
                   log:
-                    $ref: ../models/Log.v1.yaml
+                    $ref: '#/components/schemas/Log'
                 required:
-                - log
-                type: object
+                  - log
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Add a Log entry
       tags:
-      - Audit Management
+        - Audit Management
   /logs:
     parameters: []
     post:
@@ -73,18 +105,17 @@ paths:
             examples:
               '1':
                 value:
-                - code: pipeline_success
-                  payload:
-                    message: pipeline successfully created
-                  system_name: user_manager
-                  system_version: 2
-                  timestamp: 1583934547
-                  user_id: 4ae0359e57bf4465b79d730d27f84426
+                  - code: pipeline_success
+                    payload:
+                      message: pipeline successfully created
+                    system_name: user_manager
+                    system_version: 2
+                    timestamp: 1583934547
             schema:
-              items:
-                $ref: ../models/Log.v1.yaml
               type: array
               uniqueItems: false
+              items:
+                $ref: '#/components/schemas/Log'
         description: ''
       responses:
         '200':
@@ -94,33 +125,34 @@ paths:
                 '1':
                   value:
                     logs:
-                    - code: pipeline_success
-                      payload:
-                        message: pipeline successfully created
-                      system_name: user_manager
-                      system_version: 2
-                      timestamp: 1583934547
-                      user_id: 4ae0359e57bf4465b79d730d27f84426
+                      - code: pipeline_success
+                        payload:
+                          message: pipeline successfully created
+                        system_name: user_manager
+                        system_version: 2
+                        timestamp: 1583934547
               schema:
                 additionalProperties: false
+                type: object
                 properties:
                   logs:
-                    items:
-                      $ref: ../models/Log.v1.yaml
                     type: array
+                    items:
+                      $ref: '#/components/schemas/Log'
                 required:
-                - logs
-                type: object
+                  - logs
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Batch add Log entries
       tags:
-      - Audit Management
+        - Audit Management
 servers:
-- description: prod
-  url: https://services.utelly.com/audit_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/audit_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/audit_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/audit_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/audit_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/audit_manager/v1'
+tags:
+  - name: utelly_services
