@@ -631,7 +631,7 @@ components:
               - type
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -643,7 +643,7 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -655,6 +655,119 @@ components:
         - guid
         - identifiers
         - updated_at
+    Filter:
+      description: ''
+      title: Filters
+      type: array
+      x-examples:
+        '1':
+          - operator: eq
+            property: titles.title
+            value: The Usual Suspects
+          - operator: regex
+            property: contributors.names.name
+            value: kevin*
+          - operator: eq
+            property: availabilities.services.names.name
+            value: Netflix
+          - operator: gte
+            property: created_at
+            value: '2020-04-03T23:01:06Z'
+          - operator: in
+            property: genres.genre.names.name
+            value:
+              - Action
+              - Comedy
+      items:
+        anyOf:
+          - properties:
+              operator:
+                type: string
+                enum:
+                  - eq
+              property:
+                type: string
+              value:
+                type: string
+            required:
+              - operator
+              - property
+              - value
+          - properties:
+              operator:
+                enum:
+                  - in
+                type: string
+              property:
+                type: string
+              value:
+                type: array
+                items:
+                  type: string
+            required:
+              - operator
+              - property
+              - value
+          - properties:
+              operator:
+                enum:
+                  - contains
+                type: string
+              property:
+                type: string
+                enum:
+                  - titles.title
+              value:
+                type: string
+            required:
+              - operator
+              - property
+              - value
+          - properties:
+              operator:
+                type: string
+                enum:
+                  - startswith
+              property:
+                type: string
+              value:
+                type: string
+                example: Kevin
+            required:
+              - operator
+              - property
+              - value
+          - properties:
+              operator:
+                enum:
+                  - lte
+                  - gte
+                type: string
+              property:
+                type: string
+              value:
+                type: number
+            required:
+              - operator
+              - property
+              - value
+          - properties:
+              operator:
+                enum:
+                  - lte
+                  - gte
+                type: string
+              property:
+                type: string
+              value:
+                format: date-time
+                pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+                type: string
+            required:
+              - operator
+              - property
+              - value
+        type: object
   securitySchemes:
     Authorization:
       in: header
