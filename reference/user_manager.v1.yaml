@@ -27,6 +27,8 @@ components:
           module_id: '1'
           permission: read
           perspective_id: '1'
+      x-tags:
+        - Model
   securitySchemes:
     Authorization:
       in: header

@@ -31,6 +31,8 @@ components:
           timestamp: 1583934547
           user_id: 4ae0359e57bf4465b79d730d27f84426
       description: ''
+      x-tags:
+        - Model
   securitySchemes:
     Authorization:
       description: ''
