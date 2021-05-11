@@ -149,5 +149,24 @@ paths:
               - rating
           in: query
           name: order_by
+        - schema:
+            type: integer
+          in: query
+          name: refresh_rate
+        - schema:
+            type: array
+          in: query
+          name: title_shuffle_set
+          style: form
+        - schema:
+            type: integer
+          in: query
+          name: shuffle_rate
+        - schema:
+            type: integer
+            minimum: 0
+            maximum: 50
+          in: query
+          name: limit
 components:
   schemas: {}
