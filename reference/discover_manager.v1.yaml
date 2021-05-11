@@ -170,5 +170,11 @@ paths:
             maximum: 50
           in: query
           name: limit
-components:
-  schemas: {}
+        - schema:
+            type: array
+            items:
+              $ref: ../models/integer_range_field.v1.yaml
+          in: query
+          name: durations
+          style: form
+
