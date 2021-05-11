@@ -65,6 +65,16 @@ paths:
           name: types
           style: form
         - schema:
+            type: array
+          in: query
+          name: guids
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: titles
+          style: form
+        - schema:
             type: string
             enum:
               - popularity
@@ -73,6 +83,6 @@ paths:
               - recommendation
               - rating
           in: query
-          name: order_by
+          name: order_by          
 components:
   schemas: {}
