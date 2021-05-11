@@ -155,6 +155,8 @@ paths:
           name: refresh_rate
         - schema:
             type: array
+            items:
+              type: integer
           in: query
           name: title_shuffle_set
           style: form
