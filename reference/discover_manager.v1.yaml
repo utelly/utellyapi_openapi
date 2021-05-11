@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: discover_manager
+  version: v1
+  description: ''
+servers:
+  - url: 'https://services.utelly.com/discover_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/discover_manager/v1'
+    description: staging
+  - url: 'https://services-dev.utelly.com/discover_manager/v1'
+    description: dev
+paths:
+  /creative_works/discover:
+    get:
+      summary: Discover Creative Works
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                additionalProperties: false
+                type: object
+                properties:
+                  _embedded:
+                    additionalProperties: false
+                    type: object
+                    properties:
+                      creative_works:
+                        type: array
+                        items:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+      operationId: v1.discover.creative_works.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: titles
+        - schema:
+            type: string
+          in: query
+          name: people
+        - schema:
+            type: string
+          in: query
+          name: channels
+        - schema:
+            type: string
+          in: query
+          name: release_years
+components:
+  schemas: {}
