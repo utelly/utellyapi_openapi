@@ -40,20 +40,33 @@ paths:
       operationId: v1.discover.creative_works.get
       parameters:
         - schema:
-            type: string
-          in: query
-          name: titles
-        - schema:
-            type: string
-          in: query
-          name: people
-        - schema:
-            type: string
+            type: array
           in: query
           name: channels
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: release_years
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: content_ratings
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: genres
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: types
+          style: form
         - schema:
             type: string
           in: query
-          name: release_years
+          name: order_by
 components:
   schemas: {}
