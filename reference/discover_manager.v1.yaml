@@ -66,6 +66,12 @@ paths:
           style: form
         - schema:
             type: string
+            enum:
+              - popularity
+              - relevancy
+              - release_year
+              - recommendation
+              - rating
           in: query
           name: order_by
 components:
