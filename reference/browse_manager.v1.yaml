@@ -2033,7 +2033,7 @@ paths:
                   - _links
                 type: object
           description: OK
-      summary: Get crontibutors from creative work
+      summary: Get contributors from creative work
       tags:
         - Contributor Management
     parameters:
@@ -2158,6 +2158,83 @@ paths:
         required: true
         schema:
           type: string
+  '/content/creative_works/{creative_work_guid}/related':
+    parameters:
+      - schema:
+          type: string
+        name: creative_work_guid
+        in: path
+        required: true
+    get:
+      operationId: v1.content.creative_work.get_related
+      summary: Get items related to a creative work
+      tags: []
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - schema:
+            type: integer
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+        - schema:
+            type: boolean
+          in: query
+          name: embed
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              examples: {}
+              schema:
+                additionalProperties: false
+                type: object
+                properties:
+                  _embedded:
+                    oneOf:
+                      - properties:
+                          creative_works:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/CreativeWork'
+                      - properties:
+                          tags:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/Tag'
+                      - properties:
+                          people:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/Person'
+                    type: object
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
   /content/locations:
     get:
       description: ''
