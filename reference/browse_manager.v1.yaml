@@ -2166,7 +2166,7 @@ paths:
         in: path
         required: true
     get:
-      operationId: v1.content.creative_work.get_related
+      operationId: v1.content.related.get_list_from_creative_work
       summary: Get items related to a creative work
       tags: []
       parameters:
