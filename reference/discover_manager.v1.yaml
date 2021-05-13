@@ -134,6 +134,8 @@ paths:
           style: form
         - schema:
             type: array
+            items:
+              type: string            
           in: query
           name: types
           style: form
