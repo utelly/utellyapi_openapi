@@ -102,7 +102,7 @@ paths:
                         href: /content/creative_works
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
-      operationId: v1.discover.creative_works.get
+      operationId: v1.discover.creative_work.get
       parameters:
         - schema:
             type: array
@@ -135,7 +135,7 @@ paths:
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: types
           style: form
