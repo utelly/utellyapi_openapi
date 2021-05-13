@@ -121,14 +121,14 @@ paths:
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: content_ratings
           style: form
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: genres
           style: form
@@ -140,14 +140,14 @@ paths:
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: guids
           style: form
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: titles
           style: form
@@ -189,4 +189,4 @@ paths:
           in: query
           name: durations
           style: form
-
+      description: ''
