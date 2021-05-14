@@ -134,14 +134,12 @@ paths:
               type: string
           in: query
           name: types
-
         - schema:
             type: array
             items:
               type: string
           in: query
           name: guids
-
         - schema:
             type: array
             items:
