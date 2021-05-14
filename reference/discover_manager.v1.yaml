@@ -110,49 +110,44 @@ paths:
               type: string
           in: query
           name: channels
-          style: pipeDelimited
         - schema:
             type: array
             items:
               type: integer
           in: query
           name: release_years
-          style: pipeDelimited
         - schema:
             type: array
             items:
               type: string
           in: query
           name: content_ratings
-          style: pipeDelimited
         - schema:
             type: array
             items:
               type: string
           in: query
           name: genres
-          style: pipeDelimited
         - schema:
             type: array
             items:
               type: string
           in: query
           name: types
-          style: pipeDelimited
+
         - schema:
             type: array
             items:
               type: string
           in: query
           name: guids
-          style: pipeDelimited
+
         - schema:
             type: array
             items:
               type: string
           in: query
           name: titles
-          style: pipeDelimited
         - schema:
             type: string
             enum:
@@ -173,7 +168,6 @@ paths:
               type: integer
           in: query
           name: title_shuffle_set
-          style: pipeDelimited
         - schema:
             type: integer
           in: query
@@ -190,5 +184,4 @@ paths:
               $ref: ../models/integer_range_field.v1.yaml
           in: query
           name: durations
-          style: pipeDelimited
       description: ''
