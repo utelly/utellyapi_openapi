@@ -2217,14 +2217,17 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
-        - schema:
-            type: array
-            enum:
-              - creative_works
-              - people
-              - tags
-          in: query
+        - in: query
           name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
+              type: string
+            type: array
+          style: form
         - schema:
             type: array
           in: query
@@ -3285,7 +3288,7 @@ paths:
                 required:
                   - _embedded
                   - _links
-              examples: null
+              examples: {}
       operationId: v1.content.related.get_list
       parameters:
         - in: query
@@ -3323,14 +3326,17 @@ paths:
             type: integer
           in: query
           name: skip
-        - schema:
-            type: array
-            enum:
-              - creative_works
-              - tags
-              - people
-          in: query
+        - in: query
           name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
+              type: string
+            type: array
+          style: form
   '/content/related/{related_guid}':
     parameters:
       - schema:
@@ -3348,7 +3354,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Related'
-              examples: null
+              examples: {}
       operationId: v1.content.related.get_one
       parameters:
         - in: query
@@ -3358,14 +3364,17 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-        - schema:
-            type: array
-            enum:
-              - creative_works
-              - tags
-              - people
-          in: query
+        - in: query
           name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
+              type: string
+            type: array
+          style: form
 security:
   - Authorization: []
 servers:
