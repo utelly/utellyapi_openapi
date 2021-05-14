@@ -111,6 +111,7 @@ paths:
           in: query
           name: channels
           style: pipeDelimited
+          explode: true
         - schema:
             type: array
             items:
@@ -118,6 +119,7 @@ paths:
           in: query
           name: release_years
           style: pipeDelimited
+          explode: true
         - schema:
             type: array
             items:
@@ -125,6 +127,7 @@ paths:
           in: query
           name: content_ratings
           style: pipeDelimited
+          explode: true
         - schema:
             type: array
             items:
@@ -132,6 +135,7 @@ paths:
           in: query
           name: genres
           style: pipeDelimited
+          explode: true
         - schema:
             type: array
             items:
@@ -139,6 +143,7 @@ paths:
           in: query
           name: types
           style: pipeDelimited
+          explode: true
         - schema:
             type: array
             items:
@@ -146,6 +151,7 @@ paths:
           in: query
           name: guids
           style: pipeDelimited
+          explode: true
         - schema:
             type: array
             items:
@@ -175,6 +181,7 @@ paths:
           in: query
           name: title_shuffle_set
           style: pipeDelimited
+          explode: true
         - schema:
             type: integer
           in: query
@@ -192,4 +199,5 @@ paths:
           in: query
           name: durations
           style: pipeDelimited
+          explode: true
       description: ''
