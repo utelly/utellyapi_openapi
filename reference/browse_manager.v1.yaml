@@ -10,15 +10,15 @@ components:
           $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         datetime_from:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         datetime_to:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -79,7 +79,7 @@ components:
               - url
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         _embedded:
           type: object
@@ -102,7 +102,7 @@ components:
         source:
           type: string
       required:
-      - source
+        - source
       title: identifier_field
       type: object
     ContentRating:
@@ -111,7 +111,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -129,7 +129,7 @@ components:
               - organization
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -141,7 +141,7 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -179,7 +179,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         character_names:
           type: array
           items:
@@ -249,7 +249,7 @@ components:
       x-examples: {}
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
@@ -399,14 +399,14 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
             $ref: '#/components/schemas/picture_field'
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -438,7 +438,7 @@ components:
               - metadata
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -455,7 +455,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
@@ -475,7 +475,7 @@ components:
               - metadata
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -489,7 +489,7 @@ components:
           type: string
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -507,14 +507,14 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
             $ref: '#/components/schemas/picture_field'
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -539,7 +539,7 @@ components:
               - name
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -556,14 +556,14 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
             $ref: '#/components/schemas/picture_field'
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -588,7 +588,7 @@ components:
               - name
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -605,10 +605,10 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -635,7 +635,7 @@ components:
           $ref: '#/components/schemas/Relationships'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         type:
           type: string
@@ -654,7 +654,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -675,7 +675,7 @@ components:
               - type
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -687,7 +687,7 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -811,7 +811,26 @@ components:
               - operator
               - property
               - value
-        type: object      
+        type: object
+    Related:
+      title: Related
+      type: object
+      properties:
+        _links:
+          type: object
+          properties:
+            creative_works:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreativeWork'
+            people:
+              type: array
+              items:
+                $ref: '#/components/schemas/Person'
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tag'
   securitySchemes:
     Authorization:
       in: header
@@ -953,7 +972,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1182,7 +1201,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1438,7 +1457,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1586,7 +1605,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1734,7 +1753,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1860,7 +1879,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1974,7 +1993,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2093,7 +2112,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2199,9 +2218,17 @@ paths:
           in: query
           name: before_or_eq_guid
         - schema:
-            type: boolean
+            type: array
+            enum:
+              - creative_works
+              - people
+              - tags
           in: query
           name: embed
+        - schema:
+            type: array
+          in: query
+          name: sort
       responses:
         '200':
           description: OK
@@ -2213,23 +2240,12 @@ paths:
                 type: object
                 properties:
                   _embedded:
-                    oneOf:
-                      - properties:
-                          creative_works:
-                            type: array
-                            items:
-                              $ref: '#/components/schemas/CreativeWork'
-                      - properties:
-                          tags:
-                            type: array
-                            items:
-                              $ref: '#/components/schemas/Tag'
-                      - properties:
-                          people:
-                            type: array
-                            items:
-                              $ref: '#/components/schemas/Person'
                     type: object
+                    required:
+                      - related_items
+                    properties:
+                      related_items:
+                        $ref: '#/components/schemas/Related'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
                 required:
@@ -2286,7 +2302,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2445,7 +2461,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2615,7 +2631,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2794,7 +2810,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2973,7 +2989,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid                       
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -3245,6 +3261,111 @@ paths:
               type: string
             type: array
           style: form
+  /content/related:
+    get:
+      summary: List related
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      ratings:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Related'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+              examples: null
+      operationId: v1.content.related.get_list
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - in: query
+          name: before_or_eq_guid
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - schema:
+            type: integer
+          in: query
+          name: skip
+        - schema:
+            type: array
+            enum:
+              - creative_works
+              - tags
+              - people
+          in: query
+          name: embed
+  '/content/related/{related_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: related_guid
+        in: path
+        required: true
+    get:
+      summary: Get a relationship
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Related'
+              examples: null
+      operationId: v1.content.related.get_one
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - schema:
+            type: array
+            enum:
+              - creative_works
+              - tags
+              - people
+          in: query
+          name: embed
 security:
   - Authorization: []
 servers:
