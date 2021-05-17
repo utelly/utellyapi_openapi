@@ -8,7 +8,7 @@ servers:
     description: prod
   - url: 'https://staging-services.utelly.com/discover_manager/v1'
     description: staging
-  - url: 'https://services-dev.utelly.com/discover_manager/v1'
+  - url: 'https://dev-services.utelly.com/discover_manager/v1'
     description: dev
 paths:
   /creative_works/discover:
@@ -109,17 +109,55 @@ paths:
             items:
               type: string
           in: query
-          name: channels
+          name: services
           style: pipeDelimited
           explode: true
+          description: Has one or more of the listed service ids as an availability.
+        - schema:
+            type: array
+          in: query
+          name: 'services[excl]'
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed service ids as an availability.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: locations
+          style: pipeDelimited
+          explode: true
+          description: Has availability for one or more of the listed location ids.
         - schema:
             type: array
             items:
               type: integer
           in: query
-          name: release_years
+          name: release_year
           style: pipeDelimited
           explode: true
+          description: Has one of the listed release years
+        - schema:
+            type: integer
+            items:
+              type: integer
+            minimum: 1900
+          in: query
+          name: 'release_year[gte]'
+          style: pipeDelimited
+          explode: true
+          description: Has a release year greater than or equal to values
+        - schema:
+            type: integer
+            items:
+              type: integer
+            minimum: 1900
+          in: query
+          name: 'release_year[lte]'
+          style: pipeDelimited
+          explode: true
+          description: Has a release year less than or equal to values
         - schema:
             type: array
             items:
@@ -128,22 +166,53 @@ paths:
           name: content_ratings
           style: pipeDelimited
           explode: true
+          description: Has one or more of the listed content rating ids
         - schema:
             type: array
             items:
               type: string
           in: query
-          name: genres
+          name: 'content_ratings[excl]'
           style: pipeDelimited
           explode: true
+          description: Has none of the listed content rating ids
         - schema:
             type: array
             items:
               type: string
+          in: query
+          name: tags
+          style: pipeDelimited
+          explode: true
+          description: Has one of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: 'tags[all]'
+          style: pipeDelimited
+          explode: true
+          description: Has all of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: 'tags[excl]'
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+            example: '[movie|series]'
           in: query
           name: types
           style: pipeDelimited
           explode: true
+          description: Is one of the listed types
         - schema:
             type: array
             items:
@@ -152,6 +221,16 @@ paths:
           name: guids
           style: pipeDelimited
           explode: true
+          description: Includes creative works
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: 'guids[excl]'
+          style: pipeDelimited
+          explode: true
+          description: Excludes creative works
         - schema:
             type: array
             items:
@@ -193,11 +272,80 @@ paths:
           in: query
           name: limit
         - schema:
-            type: array
+            type: integer
             items:
               $ref: ../models/integer_range_field.v1.yaml
           in: query
-          name: durations
+          name: 'duration[gte]'
           style: pipeDelimited
           explode: true
+          description: Has duration greater than or equal to.
+        - schema:
+            type: integer
+            items:
+              $ref: ../models/integer_range_field.v1.yaml
+          in: query
+          name: 'duration[lte]'
+          style: pipeDelimited
+          explode: true
+          description: Has duration less than or equal to.
+        - schema:
+            type: array
+            example: '[actor:eb4aaa3de91242ba82ad48bee0b48996]'
+          in: query
+          name: people
+          style: pipeDelimited
+          explode: true
+          description: Has one or more of the listed people ids as a contributor - optional role flag.
+        - schema:
+            type: array
+          in: query
+          name: 'people[all]'
+          style: pipeDelimited
+          explode: true
+          description: Has all of the listed people ids as a contributor - optional role flag.
+        - schema:
+            type: array
+          in: query
+          name: 'people[excl]'
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed people ids as a contributor - optional role flag.
+        - schema:
+            type: array
+            example: '[imdb:80|tmdb:75]'
+          in: query
+          name: 'rating[gte]'
+          style: pipeDelimited
+          description: Has rating greater than or equal to. List of ratings values with source flag
+        - schema:
+            type: array
+            example: '[imdb:80|tmdb:75]'
+          in: query
+          name: 'rating[lte]'
+          style: pipeDelimited
+          description: Has rating less than or equal to. List of ratings values with source flag
+        - schema:
+            type: string
+          in: header
+          name: Content-Language
+          description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
+        - schema:
+            type: array
+          in: query
+          name: artworks_type
+          description: List of artwork types to be included in the response.
+        - schema:
+            type: array
+          in: query
+          name: fields
+          description: List of resource fields to be including in the response.
+          style: pipeDelimited
+        - schema:
+            type: array
+            example: '[availabilities|tags]'
+          in: query
+          name: embed
+          description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
+          style: pipeDelimited
       description: ''
