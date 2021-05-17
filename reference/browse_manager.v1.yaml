@@ -817,16 +817,29 @@ components:
       type: object
       properties:
         _links:
-          oneOf:
-            - properties:
-                creative_works:
-                  oneOf:
-                    - items:
-                        $ref: '#/components/schemas/CreativeWork'
-                    - items:
-                        $ref: ../models/hal_link_field.v1.yaml
-                  type: array
           type: object
+          properties:
+            creative_works:
+              oneOf:
+                - items:
+                    $ref: '#/components/schemas/CreativeWork'
+                - items:
+                    $ref: ../models/hal_link_field.v1.yaml
+              type: array
+            people:
+              oneOf:
+                - items:
+                    $ref: '#/components/schemas/Person'
+                - items:
+                    $ref: ../models/hal_link_field.v1.yaml
+              type: array
+            tags:
+              oneOf:
+                - items:
+                    $ref: '#/components/schemas/Tag'
+                - items:
+                    $ref: ../models/hal_link_field.v1.yaml
+              type: array
   securitySchemes:
     Authorization:
       in: header
