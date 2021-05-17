@@ -820,26 +820,32 @@ components:
           type: object
           properties:
             creative_works:
-              oneOf:
-                - items:
-                    $ref: '#/components/schemas/CreativeWork'
-                - items:
-                    $ref: ../models/hal_link_field.v1.yaml
               type: array
+              items:
+                $ref: ../models/hal_link_field.v1.yaml
             people:
-              oneOf:
-                - items:
-                    $ref: '#/components/schemas/Person'
-                - items:
-                    $ref: ../models/hal_link_field.v1.yaml
               type: array
+              items:
+                $ref: ../models/hal_link_field.v1.yaml
             tags:
-              oneOf:
-                - items:
-                    $ref: '#/components/schemas/Tag'
-                - items:
-                    $ref: ../models/hal_link_field.v1.yaml
               type: array
+              items:
+                $ref: ../models/hal_link_field.v1.yaml
+        _embedded:
+          type: object
+          properties:
+            creative_works:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreativeWork'
+            people:
+              type: array
+              items:
+                $ref: '#/components/schemas/Person'
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tag'
   securitySchemes:
     Authorization:
       in: header
@@ -3315,7 +3321,7 @@ paths:
                   _embedded:
                     type: object
                     properties:
-                      ratings:
+                      related:
                         type: array
                         items:
                           $ref: '#/components/schemas/Related'
