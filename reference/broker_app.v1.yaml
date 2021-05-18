@@ -3599,7 +3599,7 @@ paths:
                   ui_configuration:
                     type: object
           description: OK
-      summary: Get crontibutors from creative work
+      summary: Get contributors from creative work
       tags:
         - Content Management
     parameters:

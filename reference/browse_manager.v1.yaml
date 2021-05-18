@@ -10,15 +10,15 @@ components:
           $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         datetime_from:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         datetime_to:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -79,7 +79,7 @@ components:
               - url
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         _embedded:
           type: object
@@ -102,7 +102,7 @@ components:
         source:
           type: string
       required:
-      - source
+        - source
       title: identifier_field
       type: object
     ContentRating:
@@ -111,7 +111,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -129,7 +129,7 @@ components:
               - organization
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -141,7 +141,7 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -179,7 +179,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         character_names:
           type: array
           items:
@@ -249,7 +249,7 @@ components:
       x-examples: {}
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
@@ -399,14 +399,14 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
             $ref: '#/components/schemas/picture_field'
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -438,7 +438,7 @@ components:
               - metadata
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -455,7 +455,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
@@ -475,7 +475,7 @@ components:
               - metadata
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -489,7 +489,7 @@ components:
           type: string
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -507,14 +507,14 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
             $ref: '#/components/schemas/picture_field'
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -539,7 +539,7 @@ components:
               - name
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -556,14 +556,14 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         artworks:
           type: array
           items:
             $ref: '#/components/schemas/picture_field'
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -588,7 +588,7 @@ components:
               - name
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -605,10 +605,10 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -635,7 +635,7 @@ components:
           $ref: '#/components/schemas/Relationships'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         type:
           type: string
@@ -654,7 +654,7 @@ components:
       type: object
       properties:
         _links:
-          $ref:  ../models/HalLinks.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         ratings:
           type: array
           items:
@@ -675,7 +675,7 @@ components:
               - type
         created_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         deleted:
           type: boolean
@@ -687,7 +687,7 @@ components:
             $ref: '#/components/schemas/identifier_field'
         updated_at:
           format: date-time
-          pattern: "(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})Z"
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
         s:
           type: string
@@ -811,7 +811,41 @@ components:
               - operator
               - property
               - value
-        type: object      
+        type: object
+    Related:
+      title: Related
+      type: object
+      properties:
+        _links:
+          type: object
+          properties:
+            creative_works:
+              type: array
+              items:
+                $ref: ../models/hal_link_field.v1.yaml
+            people:
+              type: array
+              items:
+                $ref: ../models/hal_link_field.v1.yaml
+            tags:
+              type: array
+              items:
+                $ref: ../models/hal_link_field.v1.yaml
+        _embedded:
+          type: object
+          properties:
+            creative_works:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreativeWork'
+            people:
+              type: array
+              items:
+                $ref: '#/components/schemas/Person'
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tag'
   securitySchemes:
     Authorization:
       in: header
@@ -953,7 +987,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1182,7 +1216,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1438,7 +1472,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1586,7 +1620,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1734,7 +1768,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1860,7 +1894,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -1974,7 +2008,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2033,7 +2067,7 @@ paths:
                   - _links
                 type: object
           description: OK
-      summary: Get crontibutors from creative work
+      summary: Get contributors from creative work
       tags:
         - Contributor Management
     parameters:
@@ -2093,7 +2127,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2158,6 +2192,110 @@ paths:
         required: true
         schema:
           type: string
+  '/content/creative_works/{creative_work_guid}/related':
+    parameters:
+      - schema:
+          type: string
+        name: creative_work_guid
+        in: path
+        required: true
+    get:
+      operationId: v1.content.related.get_list_from_creative_work
+      summary: Get items related to a creative work
+      tags: []
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - schema:
+            type: integer
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
+              type: string
+            type: array
+          style: form
+        - schema:
+            type: array
+          in: query
+          name: sort
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      related:
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
+                          guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
+                          params:
+                            strength: 0.22
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/e7a123e5dbea8e04ed0bdc38d937c4829a694ce1
+                          guid: 562a8fe82fda00ab55f2869077bacb7bfb7d2269
+                          params:
+                            strength: 0.89
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                    _links:
+                      last:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&before_or_eq_guid=c3ed729405bd71d20f34f60a771103b19d7a280e
+                      next:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&after_guid=562a8fe82fda00ab55f2869077bacb7bfb7d2269
+                      self:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2
+              schema:
+                additionalProperties: false
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    required:
+                      - related
+                    properties:
+                      related:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Related'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
   /content/locations:
     get:
       description: ''
@@ -2209,7 +2347,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2368,7 +2506,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2538,7 +2676,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2717,7 +2855,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid            
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -2896,7 +3034,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: before_or_eq_guid                       
+          name: before_or_eq_guid
       responses:
         '200':
           content:
@@ -3165,6 +3303,156 @@ paths:
           name: fields
           schema:
             items:
+              type: string
+            type: array
+          style: form
+  /content/related:
+    get:
+      summary: List related
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      related:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Related'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      related:
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
+                          guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
+                          params:
+                            strength: 0.22
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/e7a123e5dbea8e04ed0bdc38d937c4829a694ce1
+                          guid: 562a8fe82fda00ab55f2869077bacb7bfb7d2269
+                          params:
+                            strength: 0.89
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                    _links:
+                      last:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&before_or_eq_guid=c3ed729405bd71d20f34f60a771103b19d7a280e
+                      next:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&after_guid=562a8fe82fda00ab55f2869077bacb7bfb7d2269
+                      self:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2
+      operationId: v1.content.related.get_list
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - in: query
+          name: before_or_eq_guid
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - schema:
+            type: integer
+          in: query
+          name: skip
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
+              type: string
+            type: array
+          style: form
+  '/content/related/{related_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: related_guid
+        in: path
+        required: true
+    get:
+      summary: Get a relationship
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Related'
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      related:
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
+                          guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
+                          params:
+                            strength: 0.22
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                    _links:
+                      self:
+                        href: /content/related/4f15360894320c853e9e2b3c0875dbf15fa15c90?
+      operationId: v1.content.related.get_one
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
               type: string
             type: array
           style: form
