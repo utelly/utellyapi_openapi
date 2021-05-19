@@ -1,42 +1,114 @@
-openapi: 3.0.0
 info:
+  description: ''
   title: discover_manager
   version: v1
-  description: ''
-servers:
-  - url: 'https://services.utelly.com/discover_manager/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/discover_manager/v1'
-    description: staging
-  - url: 'https://services-dev.utelly.com/discover_manager/v1'
-    description: dev
+openapi: 3.0.0
 paths:
   /creative_works/discover:
     get:
-      summary: Discover Creative Works
-      tags: []
+      description: ''
+      operationId: v1.discover.creative_work.get
+      parameters:
+        - explode: true
+          in: query
+          name: channels
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: release_years
+          schema:
+            items:
+              type: integer
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: content_ratings
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: genres
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: types
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: guids
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: titles
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - in: query
+          name: order_by
+          schema:
+            enum:
+              - popularity
+              - relevancy
+              - release_year
+              - recommendation
+              - rating
+            type: string
+        - in: query
+          name: refresh_rate
+          schema:
+            type: integer
+        - explode: true
+          in: query
+          name: title_shuffle_set
+          schema:
+            items:
+              type: integer
+            type: array
+          style: pipeDelimited
+        - in: query
+          name: shuffle_rate
+          schema:
+            type: integer
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            minimum: 0
+            type: integer
+        - explode: true
+          in: query
+          name: durations
+          schema:
+            items:
+              $ref: ../models/integer_range_field.v1.yaml
+            type: array
+          style: pipeDelimited
       responses:
         '200':
-          description: OK
           content:
             application/json:
-              schema:
-                additionalProperties: false
-                type: object
-                properties:
-                  _embedded:
-                    additionalProperties: false
-                    type: object
-                    properties:
-                      creative_works:
-                        type: array
-                        items:
-                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
-                  _links:
-                    $ref: ../models/HalLinks.v1.yaml
-                required:
-                  - _embedded
-                  - _links
               examples:
                 '1':
                   value:
@@ -102,102 +174,30 @@ paths:
                         href: /content/creative_works
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
-      operationId: v1.discover.creative_work.get
-      parameters:
-        - schema:
-            type: array
-            items:
-              type: string
-          in: query
-          name: channels
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: array
-            items:
-              type: integer
-          in: query
-          name: release_years
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: array
-            items:
-              type: string
-          in: query
-          name: content_ratings
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: array
-            items:
-              type: string
-          in: query
-          name: genres
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: array
-            items:
-              type: string
-          in: query
-          name: types
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: array
-            items:
-              type: string
-          in: query
-          name: guids
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: array
-            items:
-              type: string
-          in: query
-          name: titles
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: string
-            enum:
-              - popularity
-              - relevancy
-              - release_year
-              - recommendation
-              - rating
-          in: query
-          name: order_by
-        - schema:
-            type: integer
-          in: query
-          name: refresh_rate
-        - schema:
-            type: array
-            items:
-              type: integer
-          in: query
-          name: title_shuffle_set
-          style: pipeDelimited
-          explode: true
-        - schema:
-            type: integer
-          in: query
-          name: shuffle_rate
-        - schema:
-            type: integer
-            minimum: 0
-            maximum: 50
-          in: query
-          name: limit
-        - schema:
-            type: array
-            items:
-              $ref: ../models/integer_range_field.v1.yaml
-          in: query
-          name: durations
-          style: pipeDelimited
-          explode: true
-      description: ''
+              schema:
+                additionalProperties: false
+                properties:
+                  _embedded:
+                    additionalProperties: false
+                    properties:
+                      creative_works:
+                        items:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                        type: array
+                    type: object
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+                type: object
+          description: OK
+      summary: Discover Creative Works
+      tags: []
+servers:
+  - description: prod
+    url: 'https://services.utelly.com/discover_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/discover_manager/v1'
+  - description: dev
+    url: 'https://dev-servicesutelly.com/discover_manager/v1'

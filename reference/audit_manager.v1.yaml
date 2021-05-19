@@ -2,6 +2,7 @@ components:
   schemas:
     Log:
       additionalProperties: false
+      description: ''
       properties:
         code:
           type: string
@@ -14,11 +15,11 @@ components:
         timestamp:
           type: integer
       required:
-        - timestamp
-        - system_name
-        - system_version
-        - code
-        - payload
+      - timestamp
+      - system_name
+      - system_version
+      - code
+      - payload
       title: Log
       type: object
       x-examples:
@@ -30,9 +31,8 @@ components:
           system_version: 2
           timestamp: 1583934547
           user_id: 4ae0359e57bf4465b79d730d27f84426
-      description: ''
       x-tags:
-        - Model
+      - Model
   securitySchemes:
     Authorization:
       description: ''
@@ -41,12 +41,12 @@ components:
       type: apiKey
       x-apikeyInfoFunc: security.check_token
 info:
+  contact:
+    email: developers@utelly.com
+    name: API Support
   description: ''
   title: audit_manager
   version: v1
-  contact:
-    name: API Support
-    email: developers@utelly.com
 openapi: 3.0.0
 paths:
   /log:
@@ -83,18 +83,18 @@ paths:
                       timestamp: 1583934547
               schema:
                 additionalProperties: false
-                type: object
                 properties:
                   log:
                     $ref: '#/components/schemas/Log'
                 required:
-                  - log
+                - log
+                type: object
           description: OK
       security:
-        - Authorization: []
+      - Authorization: []
       summary: Add a Log entry
       tags:
-        - Audit Management
+      - Audit Management
   /logs:
     parameters: []
     post:
@@ -107,17 +107,17 @@ paths:
             examples:
               '1':
                 value:
-                  - code: pipeline_success
-                    payload:
-                      message: pipeline successfully created
-                    system_name: user_manager
-                    system_version: 2
-                    timestamp: 1583934547
+                - code: pipeline_success
+                  payload:
+                    message: pipeline successfully created
+                  system_name: user_manager
+                  system_version: 2
+                  timestamp: 1583934547
             schema:
-              type: array
-              uniqueItems: false
               items:
                 $ref: '#/components/schemas/Log'
+              type: array
+              uniqueItems: false
         description: ''
       responses:
         '200':
@@ -127,35 +127,34 @@ paths:
                 '1':
                   value:
                     logs:
-                      - code: pipeline_success
-                        payload:
-                          message: pipeline successfully created
-                        system_name: user_manager
-                        system_version: 2
-                        timestamp: 1583934547
+                    - code: pipeline_success
+                      payload:
+                        message: pipeline successfully created
+                      system_name: user_manager
+                      system_version: 2
+                      timestamp: 1583934547
               schema:
                 additionalProperties: false
-                type: object
                 properties:
                   logs:
-                    type: array
                     items:
                       $ref: '#/components/schemas/Log'
+                    type: array
                 required:
-                  - logs
+                - logs
+                type: object
           description: OK
       security:
-        - Authorization: []
+      - Authorization: []
       summary: Batch add Log entries
       tags:
-        - Audit Management
+      - Audit Management
 servers:
-  - description: prod
-    url: 'https://services.utelly.com/audit_manager/v1'  
-  - description: staging
-    url: 'https://staging-services.utelly.com/audit_manager/v1'        
-  - description: dev
-    url: 'https://dev-services.utelly.com/audit_manager/v1'  
-
+- description: prod
+  url: https://services.utelly.com/audit_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/audit_manager/v1
+- description: dev
+  url: https://dev-services.utelly.com/audit_manager/v1
 tags:
-  - name: utelly_services
+- name: utelly_services

@@ -1,103 +1,104 @@
-openapi: 3.0.0
-info:
-  title: configuration_manager
-  version: v1
-  contact:
-    name: API Support
-    email: developers@utelly.com
-servers:
-  - url: 'https://services.utelly.com/configuration_manager/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/configuration_manager/v1'
-    description: staging    
-  - url: 'https://dev-services.utelly.com/configuration_manager/v1'
-    description: dev
-paths:
-  /configurations:
-    get:
-      summary: Get Configurations
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-              examples:
-                '1':
-                  value:
-                    example: example configuration
-      operationId: v1.configuration.get
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: type
-          required: true
-        - schema:
-            type: string
-          in: query
-          name: identifier
-      description: ''
-      tags:
-        - Configuration Management
-    post:
-      summary: Create Config
-      operationId: v1.configuration.post
-      responses:
-        '200':
-          description: OK
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                identifier:
-                  oneOf:
-                    - type: string
-                      nullable: true
-                type:
-                  type: string
-                config:
-                  type: object
-            examples:
-              '1':
-                value:
-                  identifier: null
-                  type: sherlockConfig
-                  config:
-                    display_name: LG Demo
-                    languages:
-                      - en
-                    entities:
-                      - topic
-                      - genre
-                      - mood
-                      - actor
-                      - director
-                    enrichments: []
-                    options:
-                      - phonetic
-                      - qualifiers
-                      - rest
-                    ids_fields:
-                      - source_id
-                    default_size: 20
-                    grouping: entity
-                    source: iva_iva
-                    SHERLOCK_READ_INDEX: sherlock_iva_iva_read
-                    depth: '2'
-      description: ''
-      tags:
-        - Configuration Management
 components:
   schemas: {}
   securitySchemes:
     Authorization:
+      in: header
       name: Authorization
       type: apiKey
-      in: header
+info:
+  contact:
+    email: developers@utelly.com
+    name: API Support
+  title: configuration_manager
+  version: v1
+openapi: 3.0.0
+paths:
+  /configurations:
+    get:
+      description: ''
+      operationId: v1.configuration.get
+      parameters:
+      - in: query
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    example: example configuration
+              schema:
+                properties: {}
+                type: object
+          description: OK
+      summary: Get Configurations
+      tags:
+      - Configuration Management
+    post:
+      description: ''
+      operationId: v1.configuration.post
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  config:
+                    SHERLOCK_READ_INDEX: sherlock_iva_iva_read
+                    default_size: 20
+                    depth: '2'
+                    display_name: LG Demo
+                    enrichments: []
+                    entities:
+                    - topic
+                    - genre
+                    - mood
+                    - actor
+                    - director
+                    grouping: entity
+                    ids_fields:
+                    - source_id
+                    languages:
+                    - en
+                    options:
+                    - phonetic
+                    - qualifiers
+                    - rest
+                    source: iva_iva
+                  identifier: null
+                  type: sherlockConfig
+            schema:
+              additionalProperties: false
+              properties:
+                config:
+                  type: object
+                identifier:
+                  oneOf:
+                  - nullable: true
+                    type: string
+                type:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: OK
+      summary: Create Config
+      tags:
+      - Configuration Management
+servers:
+- description: prod
+  url: https://services.utelly.com/configuration_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/configuration_manager/v1
+- description: dev
+  url: https://dev-services.utelly.com/configuration_manager/v1
 tags:
-  - name: utelly_services
+- name: utelly_services
