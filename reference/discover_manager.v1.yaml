@@ -200,4 +200,4 @@ servers:
   - description: staging
     url: 'https://staging-services.utelly.com/discover_manager/v1'
   - description: dev
-    url: 'https://dev-servicesutelly.com/discover_manager/v1'
+    url: 'https://dev-services.utelly.com/discover_manager/v1'
