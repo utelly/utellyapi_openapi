@@ -9,102 +9,102 @@ paths:
       description: ''
       operationId: v1.discover.creative_work.get
       parameters:
-      - explode: true
-        in: query
-        name: channels
-        schema:
-          items:
+        - explode: true
+          in: query
+          name: channels
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: release_years
+          schema:
+            items:
+              type: integer
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: content_ratings
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: genres
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: types
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: guids
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - explode: true
+          in: query
+          name: titles
+          schema:
+            items:
+              type: string
+            type: array
+          style: pipeDelimited
+        - in: query
+          name: order_by
+          schema:
+            enum:
+              - popularity
+              - relevancy
+              - release_year
+              - recommendation
+              - rating
             type: string
-          type: array
-        style: pipeDelimited
-      - explode: true
-        in: query
-        name: release_years
-        schema:
-          items:
+        - in: query
+          name: refresh_rate
+          schema:
             type: integer
-          type: array
-        style: pipeDelimited
-      - explode: true
-        in: query
-        name: content_ratings
-        schema:
-          items:
-            type: string
-          type: array
-        style: pipeDelimited
-      - explode: true
-        in: query
-        name: genres
-        schema:
-          items:
-            type: string
-          type: array
-        style: pipeDelimited
-      - explode: true
-        in: query
-        name: types
-        schema:
-          items:
-            type: string
-          type: array
-        style: pipeDelimited
-      - explode: true
-        in: query
-        name: guids
-        schema:
-          items:
-            type: string
-          type: array
-        style: pipeDelimited
-      - explode: true
-        in: query
-        name: titles
-        schema:
-          items:
-            type: string
-          type: array
-        style: pipeDelimited
-      - in: query
-        name: order_by
-        schema:
-          enum:
-          - popularity
-          - relevancy
-          - release_year
-          - recommendation
-          - rating
-          type: string
-      - in: query
-        name: refresh_rate
-        schema:
-          type: integer
-      - explode: true
-        in: query
-        name: title_shuffle_set
-        schema:
-          items:
+        - explode: true
+          in: query
+          name: title_shuffle_set
+          schema:
+            items:
+              type: integer
+            type: array
+          style: pipeDelimited
+        - in: query
+          name: shuffle_rate
+          schema:
             type: integer
-          type: array
-        style: pipeDelimited
-      - in: query
-        name: shuffle_rate
-        schema:
-          type: integer
-      - in: query
-        name: limit
-        schema:
-          maximum: 50
-          minimum: 0
-          type: integer
-      - explode: true
-        in: query
-        name: durations
-        schema:
-          items:
-            $ref: ../models/integer_range_field.v1.yaml
-          type: array
-        style: pipeDelimited
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            minimum: 0
+            type: integer
+        - explode: true
+          in: query
+          name: durations
+          schema:
+            items:
+              $ref: ../models/integer_range_field.v1.yaml
+            type: array
+          style: pipeDelimited
       responses:
         '200':
           content:
@@ -114,57 +114,55 @@ paths:
                   value:
                     _embedded:
                       creative_works:
-                      - _links:
-                          availabilities:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                          content_ratings:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                          contributors:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                          episodes:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
-                          seasons:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
-                          self:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                          tags:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                        artworks:
-                        - height: 100
-                          metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: poster
-                          url: https://mydomain.com/poster.jpg
-                          width: 100
-                        created_at: '2020-01-01T00:00:10Z'
-                        deleted: false
-                        descriptions:
-                        - description: A sole survivor tells of the twisty events
-                            leading up to a horrific gun battle on a boat, which began
-                            when five criminals met at a seemingly random police lineup.
-                          metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: full
-                        guid: 27c13eec19014084a0a3173061702b46
-                        identifiers:
-                        - id: '1'
-                          source: mysource
-                        relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                        titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: official
-                          title: The Usual Suspects
-                        type: movie
-                        updated_at: '2020-01-01T00:00:10Z'
+                        - _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
                     _links:
                       first:
                         href: /content/creative_works
@@ -190,16 +188,16 @@ paths:
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
                 required:
-                - _embedded
-                - _links
+                  - _embedded
+                  - _links
                 type: object
           description: OK
       summary: Discover Creative Works
       tags: []
 servers:
-- description: prod
-  url: https://services.utelly.com/discover_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/discover_manager/v1
-- description: dev
-  url: https://services-dev.utelly.com/discover_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/discover_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/discover_manager/v1'
+  - description: dev
+    url: 'https://dev-servicesutelly.com/discover_manager/v1'
