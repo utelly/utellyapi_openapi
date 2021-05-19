@@ -1,305 +1,314 @@
-openapi: 3.0.0
+components:
+  schemas: {}
 info:
+  contact:
+    email: developers@utelly.com
+    name: API Support
+  description: Api to manage DM0 entities
   title: dm0
   version: v1
-  description: Api to manage DM0 entities
-  contact:
-    name: API Support
-    email: developers@utelly.com
-servers:
-  - url: 'https://services.utelly.com/dm0_manager/v1'
-    description: prod
-  - url: 'https://staging-services.utelly.com/dm0_manager/v1'
-    description: staging
-  - url: 'https://dev-services.utelly.com/dm0_manager/v1'
-    description: dev
+openapi: 3.0.0
 paths:
-  '/shows/{uid}':
-    parameters:
-      - schema:
-          type: string
-        name: uid
-        in: path
-        required: true
+  /data_matches/{type}:
     get:
-      summary: Get show
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                properties:
-                  primary_name:
-                    type: string
-                    minLength: 1
-                  pictures:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          minLength: 1
-                      required:
-                        - url
-                  uid:
-                    type: string
-                  release_year:
-                    type: integer
-                  actors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        full_name:
-                          type: string
-                      required:
-                        - full_name
-                required:
-                  - primary_name
-                  - pictures
-                  - uid
-                  - actors
-              examples:
-                '1':
-                  value:
-                    uid: '23232'
-                    primary_name: hello
-                    actors:
-                      - full_name: Leonardo
-                    pictures:
-                      - url: 'https://mydomain.com/image.jpg'
-      operationId: v1.show.get
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: source
-          required: true
-      tags:
-        - Dm0 Management
-  '/people/{uid}':
-    parameters:
-      - schema:
-          type: string
-        name: uid
-        in: path
-        required: true
-    get:
-      summary: Get person
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                properties:
-                  uid:
-                    type: string
-                    minLength: 1
-                  full_name:
-                    type: string
-                    minLength: 1
-                  pictures:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          minLength: 1
-                      required:
-                        - url
-                required:
-                  - uid
-                  - full_name
-                  - pictures
-              examples:
-                '1':
-                  value:
-                    uid: '23232'
-                    full_name: hello
-                    pictures:
-                      - url: 'https://mydomain.com/image.jpg'
-      operationId: v1.person.get
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: source
-          required: true
-      tags:
-        - Dm0 Management
-  '/data_matches/{type}':
-    parameters:
-      - schema:
-          type: string
-          enum:
-            - people
-            - shows
-        name: type
-        in: path
-        required: true
-    get:
-      summary: Get data matches
       operationId: v1.data_matches.get
+      parameters:
+      - in: query
+        name: group_uid
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: source
+        required: true
+        schema:
+          type: string
       responses:
         '200':
-          description: OK
           content:
             application/json:
+              examples:
+                '1':
+                  value:
+                    items:
+                    - deleted: true
+                      destination_name: gracenote_gracenote
+                      destination_uid: '3232'
+                      matcher: ManualMatcher
+                      source_name: iva_iva
+                      source_uid: '123'
               schema:
+                additionalProperties: false
                 description: ''
-                type: object
                 properties:
                   items:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
                     items:
-                      type: object
+                      additionalProperties: false
                       properties:
-                        source_name:
-                          type: string
-                          minLength: 1
-                        source_uid:
-                          type: string
-                          minLength: 1
-                        destination_name:
-                          type: string
-                          minLength: 1
-                        destination_uid:
-                          type: string
-                          minLength: 1
                         deleted:
                           type: boolean
+                        destination_name:
+                          minLength: 1
+                          type: string
+                        destination_uid:
+                          minLength: 1
+                          type: string
                         matcher:
                           type: string
+                        source_name:
+                          minLength: 1
+                          type: string
+                        source_uid:
+                          minLength: 1
+                          type: string
                       required:
-                        - source_name
-                        - source_uid
-                        - destination_name
-                        - destination_uid
-                        - deleted
+                      - source_name
+                      - source_uid
+                      - destination_name
+                      - destination_uid
+                      - deleted
+                      type: object
+                    minItems: 1
+                    type: array
+                    uniqueItems: true
                 required:
-                  - items
-              examples:
-                '1':
-                  value:
-                    items:
-                      - source_name: iva_iva
-                        source_uid: '123'
-                        destination_name: gracenote_gracenote
-                        destination_uid: '3232'
-                        deleted: true
-                        matcher: ManualMatcher
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: group_uid
-          required: true
-        - schema:
-            type: string
-          in: query
-          name: source
-          required: true
-      tags:
-        - Dm0 Management
-    post:
-      summary: Create new data match
-      operationId: v1.data_matches.post
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                description: ''
+                - items
                 type: object
-                properties:
-                  source_name:
-                    type: string
-                    minLength: 1
-                  source_uid:
-                    type: string
-                    minLength: 1
-                  destination_name:
-                    type: string
-                    minLength: 1
-                  destination_uid:
-                    type: string
-                    minLength: 1
-                  deleted:
-                    type: boolean
-                  matcher:
-                    type: string
-                required:
-                  - source_name
-                  - source_uid
-                  - destination_name
-                  - destination_uid
-                  - deleted
-              examples:
-                '1':
-                  value:
-                    source_name: iva_iva
-                    source_uid: '123'
-                    destination_name: gracenote_gracenote
-                    destination_uid: '3232'
-                    deleted: true
-                    matcher: ManualMatcher
+          description: OK
+      summary: Get data matches
+      tags:
+      - Dm0 Management
+    parameters:
+    - in: path
+      name: type
+      required: true
+      schema:
+        enum:
+        - people
+        - shows
+        type: string
+    post:
+      operationId: v1.data_matches.post
       requestBody:
         content:
           application/json:
+            examples:
+              '1':
+                value:
+                  deleted: true
+                  destination_name: gracenote_gracenote
+                  destination_uid: '3232'
+                  matcher: ManualMatcher
+                  source_name: iva_iva
+                  source_uid: '123'
             schema:
+              additionalProperties: false
               description: ''
-              type: object
               properties:
-                source_name:
-                  type: string
-                  minLength: 1
-                source_uid:
-                  type: string
-                  minLength: 1
-                destination_name:
-                  type: string
-                  minLength: 1
-                destination_uid:
-                  type: string
-                  minLength: 1
                 deleted:
                   type: boolean
+                destination_name:
+                  minLength: 1
+                  type: string
+                destination_uid:
+                  minLength: 1
+                  type: string
                 matcher:
                   type: string
+                source_name:
+                  minLength: 1
+                  type: string
+                source_uid:
+                  minLength: 1
+                  type: string
               required:
+              - source_name
+              - source_uid
+              - destination_name
+              - destination_uid
+              - deleted
+              - matcher
+              type: object
+      responses:
+        '201':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    deleted: true
+                    destination_name: gracenote_gracenote
+                    destination_uid: '3232'
+                    matcher: ManualMatcher
+                    source_name: iva_iva
+                    source_uid: '123'
+              schema:
+                additionalProperties: false
+                description: ''
+                properties:
+                  deleted:
+                    type: boolean
+                  destination_name:
+                    minLength: 1
+                    type: string
+                  destination_uid:
+                    minLength: 1
+                    type: string
+                  matcher:
+                    type: string
+                  source_name:
+                    minLength: 1
+                    type: string
+                  source_uid:
+                    minLength: 1
+                    type: string
+                required:
                 - source_name
                 - source_uid
                 - destination_name
                 - destination_uid
                 - deleted
-                - matcher
-            examples:
-              '1':
-                value:
-                  source_name: iva_iva
-                  matcher: ManualMatcher
-                  source_uid: '123'
-                  destination_name: gracenote_gracenote
-                  destination_uid: '3232'
-                  deleted: true
+                type: object
+          description: Created
+      summary: Create new data match
       tags:
-        - Dm0 Management
-components:
-  schemas: {}
+      - Dm0 Management
+  /people/{uid}:
+    get:
+      operationId: v1.person.get
+      parameters:
+      - in: query
+        name: source
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    full_name: hello
+                    pictures:
+                    - url: https://mydomain.com/image.jpg
+                    uid: '23232'
+              schema:
+                additionalProperties: false
+                description: ''
+                properties:
+                  full_name:
+                    minLength: 1
+                    type: string
+                  pictures:
+                    items:
+                      additionalProperties: false
+                      properties:
+                        url:
+                          minLength: 1
+                          type: string
+                      required:
+                      - url
+                      type: object
+                    minItems: 1
+                    type: array
+                    uniqueItems: true
+                  uid:
+                    minLength: 1
+                    type: string
+                required:
+                - uid
+                - full_name
+                - pictures
+                type: object
+          description: OK
+      summary: Get person
+      tags:
+      - Dm0 Management
+    parameters:
+    - in: path
+      name: uid
+      required: true
+      schema:
+        type: string
+  /shows/{uid}:
+    get:
+      operationId: v1.show.get
+      parameters:
+      - in: query
+        name: source
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    actors:
+                    - full_name: Leonardo
+                    pictures:
+                    - url: https://mydomain.com/image.jpg
+                    primary_name: hello
+                    uid: '23232'
+              schema:
+                additionalProperties: false
+                description: ''
+                properties:
+                  actors:
+                    items:
+                      additionalProperties: false
+                      properties:
+                        full_name:
+                          type: string
+                      required:
+                      - full_name
+                      type: object
+                    type: array
+                  pictures:
+                    items:
+                      additionalProperties: false
+                      properties:
+                        url:
+                          minLength: 1
+                          type: string
+                      required:
+                      - url
+                      type: object
+                    minItems: 1
+                    type: array
+                    uniqueItems: true
+                  primary_name:
+                    minLength: 1
+                    type: string
+                  release_year:
+                    type: integer
+                  uid:
+                    type: string
+                required:
+                - primary_name
+                - pictures
+                - uid
+                - actors
+                type: object
+          description: OK
+      summary: Get show
+      tags:
+      - Dm0 Management
+    parameters:
+    - in: path
+      name: uid
+      required: true
+      schema:
+        type: string
+servers:
+- description: prod
+  url: https://services.utelly.com/dm0_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/dm0_manager/v1
+- description: dev
+  url: https://dev-services.utelly.com/dm0_manager/v1
 tags:
-  - name: utelly_services
+- name: utelly_services
