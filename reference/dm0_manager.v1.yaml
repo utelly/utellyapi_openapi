@@ -241,7 +241,7 @@ paths:
                     minLength: 1
                   deleted:
                     type: boolean
-                  matcher_name:
+                  matcher:
                     type: string
                 required:
                   - source_name
@@ -257,7 +257,7 @@ paths:
                     destination_name: gracenote_gracenote
                     destination_uid: '3232'
                     deleted: true
-                    matcher_name: ManualMatcher
+                    matcher: ManualMatcher
       requestBody:
         content:
           application/json:
@@ -279,7 +279,7 @@ paths:
                   minLength: 1
                 deleted:
                   type: boolean
-                matcher_name:
+                matcher:
                   type: string
               required:
                 - source_name
@@ -287,11 +287,12 @@ paths:
                 - destination_name
                 - destination_uid
                 - deleted
-                - matcher_name
+                - matcher
             examples:
               '1':
                 value:
                   source_name: iva_iva
+                  matcher: ManualMatcher
                   source_uid: '123'
                   destination_name: gracenote_gracenote
                   destination_uid: '3232'
