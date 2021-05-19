@@ -8,11 +8,11 @@ info:
     email: developers@utelly.com
 servers:
   - url: 'https://services.utelly.com/dm0_manager/v1'
-    description: prod  
+    description: prod
   - url: 'https://staging-services.utelly.com/dm0_manager/v1'
     description: staging
   - url: 'https://dev-services.utelly.com/dm0_manager/v1'
-    description: dev    
+    description: dev
 paths:
   '/shows/{uid}':
     parameters:
@@ -241,6 +241,8 @@ paths:
                     minLength: 1
                   deleted:
                     type: boolean
+                  matcher_name:
+                    type: string
                 required:
                   - source_name
                   - source_uid
@@ -255,6 +257,7 @@ paths:
                     destination_name: gracenote_gracenote
                     destination_uid: '3232'
                     deleted: true
+                    matcher_name: ManualMatcher
       requestBody:
         content:
           application/json:
@@ -276,12 +279,15 @@ paths:
                   minLength: 1
                 deleted:
                   type: boolean
+                matcher_name:
+                  type: string
               required:
                 - source_name
                 - source_uid
                 - destination_name
                 - destination_uid
                 - deleted
+                - matcher_name
             examples:
               '1':
                 value:
