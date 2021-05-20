@@ -20,27 +20,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Interaction'
-              examples:
-                example-1:
-                  value:
-                    - type: watch
-                      cascade_create: false
-                      created_at: '2019-08-24T14:15:22Z'
-                      target_guid: string
-                      context:
-                        platform: ios
-                        duration: 0
-                        price: 0
-                        rating: -1
-                        session_guid: string
-                        portion: 0
-        '201':
-          description: Created
-        '400':
-          description: Bad Request
+              examples: {}
       operationId: get-users-user_id-interactions
+      parameters:
+        - $ref: '#/components/parameters/user_param'
+        - $ref: '#/components/parameters/entity_param'
     post:
-      summary: ''
+      summary: Create an interaction
       operationId: post-users-user_id-interactions
       responses:
         '200':
@@ -50,20 +36,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Interaction'
-            examples:
-              example-1:
-                value:
-                  type: watch
-                  cascade_create: false
-                  created_at: '2019-08-24T14:15:22Z'
-                  target_guid: string
-                  context:
-                    platform: ios
-                    duration: 0
-                    price: 0
-                    rating: -1
-                    session_guid: string
-                    portion: 0
+            examples: {}
 components:
   schemas:
     Interaction:
@@ -74,16 +47,7 @@ components:
           discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
           type: bookmark
           created_at: '2019-08-24T14:15:22Z'
-          id: string
-          source: string
         example-2:
-          platform: ios
-          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-          type: bookmark
-          created_at: '2019-08-24T14:15:22Z'
-          id: string
-          source: string
-        example-3:
           platform: ios
           discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
           type: bookmark
@@ -109,9 +73,9 @@ components:
               type: string
               format: date-time
             user:
-              $ref: '#/components/schemas/user'
+              $ref: '#/components/schemas/user_object'
             entity:
-              $ref: '#/components/schemas/entity'
+              $ref: '#/components/schemas/entity_object'
     entity_type:
       type: string
       enum:
@@ -120,10 +84,13 @@ components:
         - tv program
         - podcast
         - website
-        - article
         - person
         - location
         - tag
+        - other
+        - trailer
+        - video
+        - page
       title: entity type
     interaction_type:
       type: string
@@ -135,8 +102,7 @@ components:
         - buy
         - rent
         - play
-      x-examples:
-        example-1: bookmark
+      x-examples: {}
     interaction_bookmark:
       title: interaction_bookmark
       type: object
@@ -163,7 +129,7 @@ components:
           $ref: '#/components/schemas/platform_type'
         rating:
           type: number
-          multipleOf: 0
+          multipleOf: 0.1
           minimum: -1
           maximum: 1
           format: float
@@ -271,7 +237,7 @@ components:
         - stv_sky
         - stb_freeview
         - stb_freesat
-    user:
+    user_object:
       title: user
       type: object
       properties:
@@ -279,9 +245,13 @@ components:
           type: string
         source:
           type: string
-    entity:
+      required:
+        - id
+        - source
+    entity_object:
       title: entity
       type: object
+      x-examples: {}
       properties:
         id:
           type: string
@@ -289,10 +259,26 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/entity_type'
+      required:
+        - id
+        - source
+        - type
   securitySchemes:
     Authorization:
       name: Authorization
       type: apiKey
       in: header
+  parameters:
+    user_param:
+      name: user
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/user_object'
+    entity_param:
+      name: entity
+      in: query
+      schema:
+        $ref: '#/components/schemas/entity_object'
 security:
   - Authorization: []
