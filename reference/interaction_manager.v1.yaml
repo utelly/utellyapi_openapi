@@ -71,30 +71,48 @@ components:
       x-examples:
         example-1:
           platform: ios
-          duration_secs: 0
-          value: 0
-          rating: 0
           discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-          portion: 0
-          quantity: 0
+          type: bookmark
           created_at: '2019-08-24T14:15:22Z'
+          id: string
+          source: string
+        example-2:
+          platform: ios
+          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+          type: bookmark
+          created_at: '2019-08-24T14:15:22Z'
+          id: string
+          source: string
+        example-3:
+          platform: ios
+          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+          type: bookmark
+          created_at: '2019-08-24T14:15:22Z'
+          user:
+            id: string
+            source: string
+          entity:
+            id: string
+            source: string
+            type: movie
       description: 'This model represents the interaction between a user and an object (creative works, people, tags, etc...).'
       allOf:
         - anyOf:
             - $ref: '#/components/schemas/interaction_bookmark'
             - $ref: '#/components/schemas/interaction_play'
             - $ref: '#/components/schemas/interaction_view'
-            - $ref: '#/components/schemas/interaction_buy'
+            - $ref: '#/components/schemas/interaction_buy_rent'
             - $ref: '#/components/schemas/interaction_rate'
-            - $ref: '#/components/schemas/interaction_rent'
-        - type: string
         - type: object
           properties:
             created_at:
               type: string
               format: date-time
-        - type: object
-    entity_type_field:
+            user:
+              $ref: '#/components/schemas/user'
+            entity:
+              $ref: '#/components/schemas/entity'
+    entity_type:
       type: string
       enum:
         - movie
@@ -103,9 +121,13 @@ components:
         - podcast
         - website
         - article
-    interaction_type_field:
+        - person
+        - location
+        - tag
+      title: entity type
+    interaction_type:
       type: string
-      title: interaction_type_field
+      title: interaction_type
       enum:
         - bookmark
         - rate
@@ -123,39 +145,14 @@ components:
       properties:
         platform:
           $ref: '#/components/schemas/platform_type'
-        duration_secs:
-          type: integer
-          minimum: 0
-          format: int64
-          description: 'How long did the interaction last, in seconds?'
-        value:
-          type: number
-          format: float
-          minimum: 0
-          description: A value associated with the interaction.
-        rating:
-          type: number
-          multipleOf: 0
-          minimum: -1
-          maximum: 1
-          format: float
-          description: A rating associated with the interaction
-          example: 0
         discover_guid:
           type: string
           description: A guid to tie back the interaction to recommended content
           example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
-        quantity:
-          type: number
-          format: float
-          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+        type:
+          type: string
+          enum:
+            - bookmark
     interaction_rate:
       title: interaction_rate
       type: object
@@ -164,16 +161,6 @@ components:
       properties:
         platform:
           $ref: '#/components/schemas/platform_type'
-        duration_secs:
-          type: integer
-          minimum: 0
-          format: int64
-          description: 'How long did the interaction last, in seconds?'
-        value:
-          type: number
-          format: float
-          minimum: 0
-          description: A value associated with the interaction.
         rating:
           type: number
           multipleOf: 0
@@ -186,17 +173,10 @@ components:
           type: string
           description: A guid to tie back the interaction to recommended content
           example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
-        quantity:
-          type: number
-          format: float
-          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+        type:
+          type: string
+          enum:
+            - rate
     interaction_view:
       title: interaction_view
       type: object
@@ -205,39 +185,14 @@ components:
       properties:
         platform:
           $ref: '#/components/schemas/platform_type'
-        duration_secs:
-          type: integer
-          minimum: 0
-          format: int64
-          description: 'How long did the interaction last, in seconds?'
-        value:
-          type: number
-          format: float
-          minimum: 0
-          description: A value associated with the interaction.
-        rating:
-          type: number
-          multipleOf: 0
-          minimum: -1
-          maximum: 1
-          format: float
-          description: A rating associated with the interaction
-          example: 0
         discover_guid:
           type: string
           description: A guid to tie back the interaction to recommended content
           example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
-        quantity:
-          type: number
-          format: float
-          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+        type:
+          type: string
+          enum:
+            - view
     interaction_play:
       title: interaction_play
       type: object
@@ -251,19 +206,6 @@ components:
           minimum: 0
           format: int64
           description: 'How long did the interaction last, in seconds?'
-        value:
-          type: number
-          format: float
-          minimum: 0
-          description: A value associated with the interaction.
-        rating:
-          type: number
-          multipleOf: 0
-          minimum: -1
-          maximum: 1
-          format: float
-          description: A rating associated with the interaction
-          example: 0
         discover_guid:
           type: string
           description: A guid to tie back the interaction to recommended content
@@ -275,87 +217,36 @@ components:
           maximum: 1
           default: 0
           description: '% of the target object interacted with. Can be the length of the content watched'
-        quantity:
-          type: number
-          format: float
-          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
-    interaction_buy:
-      title: interaction_buy
+        type:
+          type: string
+          enum:
+            - play
+    interaction_buy_rent:
+      title: interaction_buy_rent
       type: object
       description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
       x-examples: {}
       properties:
         platform:
           $ref: '#/components/schemas/platform_type'
-        duration_secs:
-          type: integer
-          minimum: 0
-          format: int64
-          description: 'How long did the interaction last, in seconds?'
         value:
           type: number
           format: float
           minimum: 0
           description: A value associated with the interaction.
-        rating:
-          type: number
-          multipleOf: 0
-          minimum: -1
-          maximum: 1
-          format: float
-          description: A rating associated with the interaction
-          example: 0
         discover_guid:
           type: string
           description: A guid to tie back the interaction to recommended content
           example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
         quantity:
           type: number
           format: float
           description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
-    interaction_rent:
-      title: interaction_rent
-      type: object
-      description: 'General purpose object to collect info that is very context dependant, esp of the type of interaction we record'
-      x-examples: {}
-      properties:
-        platform:
-          $ref: '#/components/schemas/platform_type'
-        value:
-          type: number
-          format: float
-          minimum: 0
-          description: A value associated with the interaction.
-        rating:
-          type: number
-          multipleOf: 0
-          minimum: -1
-          maximum: 1
-          format: float
-          description: A rating associated with the interaction
-          example: 0
-        discover_guid:
+        type:
           type: string
-          description: A guid to tie back the interaction to recommended content
-          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
-        quantity:
-          type: number
-          format: float
-          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+          enum:
+            - buy
+            - rent
     platform_type:
       type: string
       title: platform_type
@@ -380,6 +271,24 @@ components:
         - stv_sky
         - stb_freeview
         - stb_freesat
+    user:
+      title: user
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+    entity:
+      title: entity
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+        type:
+          $ref: '#/components/schemas/entity_type'
   securitySchemes:
     Authorization:
       name: Authorization
