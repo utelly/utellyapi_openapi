@@ -67,7 +67,33 @@ paths:
 components:
   schemas:
     Interaction:
-      anyOf: []
+      title: Interaction
+      x-examples:
+        example-1:
+          platform: ios
+          duration_secs: 0
+          value: 0
+          rating: 0
+          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+          portion: 0
+          quantity: 0
+          created_at: '2019-08-24T14:15:22Z'
+      description: 'This model represents the interaction between a user and an object (creative works, people, tags, etc...).'
+      allOf:
+        - anyOf:
+            - $ref: '#/components/schemas/interaction_bookmark'
+            - $ref: '#/components/schemas/interaction_play'
+            - $ref: '#/components/schemas/interaction_view'
+            - $ref: '#/components/schemas/interaction_buy'
+            - $ref: '#/components/schemas/interaction_rate'
+            - $ref: '#/components/schemas/interaction_rent'
+        - type: string
+        - type: object
+          properties:
+            created_at:
+              type: string
+              format: date-time
+        - type: object
     entity_type_field:
       type: string
       enum:
@@ -92,33 +118,11 @@ components:
     interaction_bookmark:
       title: interaction_bookmark
       type: object
-      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      description: 'General purpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
       properties:
         platform:
-          type: string
-          enum:
-            - ios
-            - android
-            - web
-            - chromecast
-            - firetv
-            - roku
-            - ctv_samsung
-            - ctv_lg
-            - ctv_sony
-            - ctv_philips
-            - ctv_panasonic
-            - ctv_hisense
-            - ctv_xiaomi
-            - ctv_other
-            - stb_other
-            - stb_youview
-            - stb_virginmedia
-            - stv_sky
-            - stb_freeview
-            - stb_freesat
-          description: Which platform did the interaction take place on?
-          default: web
+          $ref: '#/components/schemas/platform_type'
         duration_secs:
           type: integer
           minimum: 0
@@ -152,16 +156,230 @@ components:
           type: number
           format: float
           description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
-      x-examples:
-        example-1: {}
-        example-2:
-          platform: web
-          duration_secs: 0
-          value: 0
-          rating: 0
-          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-          portion: 0
-          quantity: 0
+    interaction_rate:
+      title: interaction_rate
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        duration_secs:
+          type: integer
+          minimum: 0
+          format: int64
+          description: 'How long did the interaction last, in seconds?'
+        value:
+          type: number
+          format: float
+          minimum: 0
+          description: A value associated with the interaction.
+        rating:
+          type: number
+          multipleOf: 0
+          minimum: -1
+          maximum: 1
+          format: float
+          description: A rating associated with the interaction
+          example: 0
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        portion:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: '% of the target object interacted with. Can be the length of the content watched'
+        quantity:
+          type: number
+          format: float
+          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+    interaction_view:
+      title: interaction_view
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        duration_secs:
+          type: integer
+          minimum: 0
+          format: int64
+          description: 'How long did the interaction last, in seconds?'
+        value:
+          type: number
+          format: float
+          minimum: 0
+          description: A value associated with the interaction.
+        rating:
+          type: number
+          multipleOf: 0
+          minimum: -1
+          maximum: 1
+          format: float
+          description: A rating associated with the interaction
+          example: 0
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        portion:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: '% of the target object interacted with. Can be the length of the content watched'
+        quantity:
+          type: number
+          format: float
+          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+    interaction_play:
+      title: interaction_play
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        duration_secs:
+          type: integer
+          minimum: 0
+          format: int64
+          description: 'How long did the interaction last, in seconds?'
+        value:
+          type: number
+          format: float
+          minimum: 0
+          description: A value associated with the interaction.
+        rating:
+          type: number
+          multipleOf: 0
+          minimum: -1
+          maximum: 1
+          format: float
+          description: A rating associated with the interaction
+          example: 0
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        portion:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: '% of the target object interacted with. Can be the length of the content watched'
+        quantity:
+          type: number
+          format: float
+          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+    interaction_buy:
+      title: interaction_buy
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        duration_secs:
+          type: integer
+          minimum: 0
+          format: int64
+          description: 'How long did the interaction last, in seconds?'
+        value:
+          type: number
+          format: float
+          minimum: 0
+          description: A value associated with the interaction.
+        rating:
+          type: number
+          multipleOf: 0
+          minimum: -1
+          maximum: 1
+          format: float
+          description: A rating associated with the interaction
+          example: 0
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        portion:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: '% of the target object interacted with. Can be the length of the content watched'
+        quantity:
+          type: number
+          format: float
+          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+    interaction_rent:
+      title: interaction_rent
+      type: object
+      description: 'General purpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        value:
+          type: number
+          format: float
+          minimum: 0
+          description: A value associated with the interaction.
+        rating:
+          type: number
+          multipleOf: 0
+          minimum: -1
+          maximum: 1
+          format: float
+          description: A rating associated with the interaction
+          example: 0
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        portion:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: '% of the target object interacted with. Can be the length of the content watched'
+        quantity:
+          type: number
+          format: float
+          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+    platform_type:
+      type: string
+      title: platform_type
+      enum:
+        - ios
+        - android
+        - web
+        - chromecast
+        - firetv
+        - roku
+        - ctv_samsung
+        - ctv_lg
+        - ctv_sony
+        - ctv_philips
+        - ctv_panasonic
+        - ctv_hisense
+        - ctv_xiaomi
+        - ctv_other
+        - stb_other
+        - stb_youview
+        - stb_virginmedia
+        - stv_sky
+        - stb_freeview
+        - stb_freesat
   securitySchemes:
     Authorization:
       name: Authorization
