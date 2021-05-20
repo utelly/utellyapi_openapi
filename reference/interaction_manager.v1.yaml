@@ -279,10 +279,14 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/user_object'
+      style: deepObject
+      explode: true        
     entity_param:
       name: entity
       in: query
       schema:
         $ref: '#/components/schemas/entity_object'
+      style: deepObject
+      explode: true              
 security:
   - Authorization: []
