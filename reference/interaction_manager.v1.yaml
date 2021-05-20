@@ -26,7 +26,7 @@ paths:
         - $ref: '#/components/parameters/user_param'
         - $ref: '#/components/parameters/entity_param'
     post:
-      summary: Create an interaction
+      summary: Create one or more interactions
       operationId: post-users-user_id-interactions
       responses:
         '200':
@@ -35,30 +35,34 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Interaction'
+              type: array
+              items:
+                $ref: '#/components/schemas/Interaction'
+            examples:
+              example-1:
+                value:
+                  - platform: ios
+                    discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+                    type: bookmark
+                    created_at: '2019-08-24T14:15:22Z'
+                    user:
+                      id: string
+                      source: string
+                    entity:
+                      id: string
+                      source: string
+                      type: movie
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Interaction'
             examples: {}
 components:
   schemas:
     Interaction:
       title: Interaction
-      x-examples:
-        example-1:
-          platform: ios
-          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-          type: bookmark
-          created_at: '2019-08-24T14:15:22Z'
-        example-2:
-          platform: ios
-          discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-          type: bookmark
-          created_at: '2019-08-24T14:15:22Z'
-          user:
-            id: string
-            source: string
-          entity:
-            id: string
-            source: string
-            type: movie
+      x-examples: {}
       description: 'This model represents the interaction between a user and an object (creative works, people, tags, etc...).'
       allOf:
         - anyOf:
