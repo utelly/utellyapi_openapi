@@ -40,6 +40,7 @@ paths:
                 required:
                   - _embedded
                   - _links
+                  - guid
               examples:
                 '1':
                   value:
