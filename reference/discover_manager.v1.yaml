@@ -353,4 +353,14 @@ paths:
           name: embed
           description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
           style: pipeDelimited
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: Natural language query string. Will be interpreted by NLU component. Other content filters will be ignored.
+        - schema:
+            type: string
+          in: query
+          name: user_id
+          description: User for personalisation.
       description: ''
