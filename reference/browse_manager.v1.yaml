@@ -49,6 +49,7 @@ components:
                 - android
                 - ios
                 - tv
+                - native_hbbtv
                 type: string
               price:
                 type: number
