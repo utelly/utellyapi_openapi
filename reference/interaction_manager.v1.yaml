@@ -20,8 +20,23 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Interaction'
-              examples: {}
-      operationId: get-users-user_id-interactions
+              examples:
+                '1':
+                  value:
+                    - platform: ios
+                      discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+                      type: bookmark
+                      created_at: '2019-08-24T14:15:22Z'
+                      user:
+                        id: string
+                        source: string
+                      entity:
+                        id: string
+                        source: string
+                        type: movie
+        '201':
+          description: Created
+      operationId: v1.discover.creative_work.get
       parameters:
         - $ref: '#/components/parameters/user_param'
         - $ref: '#/components/parameters/entity_param'
@@ -272,6 +287,7 @@ components:
       name: Authorization
       type: apiKey
       in: header
+      x-apikeyInfoFunc: security.check_token
   parameters:
     user_param:
       name: user
@@ -280,7 +296,7 @@ components:
       schema:
         $ref: '#/components/schemas/user_object'
       style: deepObject
-      explode: true  
+      explode: true
     entity_param:
       name: entity
       in: query
