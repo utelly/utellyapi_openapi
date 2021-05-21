@@ -34,7 +34,9 @@ paths:
                         id: string
                         source: string
                         type: movie
-      operationId: get-users-user_id-interactions
+        '201':
+          description: Created
+      operationId: v1.discover.creative_work.get
       parameters:
         - $ref: '#/components/parameters/user_param'
         - $ref: '#/components/parameters/entity_param'
