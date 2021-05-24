@@ -375,5 +375,4 @@ components:
       name: user_param
       in: query
       required: false
-      schema:
-        type: string
+      schema: {}
