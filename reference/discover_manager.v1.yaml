@@ -377,3 +377,4 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/user_object'
+      description: Allows for results to be personalised based on historic user interactions
