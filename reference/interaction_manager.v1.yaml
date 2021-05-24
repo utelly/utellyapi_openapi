@@ -1,0 +1,309 @@
+openapi: 3.0.0
+info:
+  title: interaction_manager
+  version: '1.0'
+  description: Interactions base API
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /interactions:
+    parameters: []
+    get:
+      summary: List all Interactions
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Interaction'
+              examples:
+                '1':
+                  value:
+                    - platform: ios
+                      discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+                      type: bookmark
+                      created_at: '2019-08-24T14:15:22Z'
+                      user:
+                        id: string
+                        source: string
+                      entity:
+                        id: string
+                        source: string
+                        type: movie
+        '201':
+          description: Created
+      operationId: v1.discover.creative_work.get
+      parameters:
+        - $ref: '#/components/parameters/user_param'
+        - $ref: '#/components/parameters/entity_param'
+    post:
+      summary: Create one or more interactions
+      operationId: post-users-user_id-interactions
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Interaction'
+            examples:
+              example-1:
+                value:
+                  - platform: ios
+                    discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+                    type: bookmark
+                    created_at: '2019-08-24T14:15:22Z'
+                    user:
+                      id: string
+                      source: string
+                    entity:
+                      id: string
+                      source: string
+                      type: movie
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Interaction'
+            examples: {}
+components:
+  schemas:
+    Interaction:
+      title: Interaction
+      x-examples: {}
+      description: 'This model represents the interaction between a user and an object (creative works, people, tags, etc...).'
+      allOf:
+        - anyOf:
+            - $ref: '#/components/schemas/interaction_bookmark'
+            - $ref: '#/components/schemas/interaction_play'
+            - $ref: '#/components/schemas/interaction_view'
+            - $ref: '#/components/schemas/interaction_buy_rent'
+            - $ref: '#/components/schemas/interaction_rate'
+        - type: object
+          properties:
+            created_at:
+              type: string
+              format: date-time
+            user:
+              $ref: '#/components/schemas/user_object'
+            entity:
+              $ref: '#/components/schemas/entity_object'
+    entity_type:
+      type: string
+      enum:
+        - movie
+        - series
+        - tv program
+        - podcast
+        - website
+        - person
+        - location
+        - tag
+        - other
+        - trailer
+        - video
+        - page
+      title: entity type
+    interaction_type:
+      type: string
+      title: interaction_type
+      enum:
+        - bookmark
+        - rate
+        - view
+        - buy
+        - rent
+        - play
+      x-examples: {}
+    interaction_bookmark:
+      title: interaction_bookmark
+      type: object
+      description: 'General purpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        type:
+          type: string
+          enum:
+            - bookmark
+    interaction_rate:
+      title: interaction_rate
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        rating:
+          type: number
+          multipleOf: 0.1
+          minimum: -1
+          maximum: 1
+          format: float
+          description: A rating associated with the interaction
+          example: 0
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        type:
+          type: string
+          enum:
+            - rate
+    interaction_view:
+      title: interaction_view
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        type:
+          type: string
+          enum:
+            - view
+    interaction_play:
+      title: interaction_play
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        duration_secs:
+          type: integer
+          minimum: 0
+          format: int64
+          description: 'How long did the interaction last, in seconds?'
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        portion:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: '% of the target object interacted with. Can be the length of the content watched'
+        type:
+          type: string
+          enum:
+            - play
+    interaction_buy_rent:
+      title: interaction_buy_rent
+      type: object
+      description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
+      x-examples: {}
+      properties:
+        platform:
+          $ref: '#/components/schemas/platform_type'
+        value:
+          type: number
+          format: float
+          minimum: 0
+          description: A value associated with the interaction.
+        discover_guid:
+          type: string
+          description: A guid to tie back the interaction to recommended content
+          example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+        quantity:
+          type: number
+          format: float
+          description: 'quantity of object(s) interacted with. For instance, user bought 2 tickets for a movie.'
+        type:
+          type: string
+          enum:
+            - buy
+            - rent
+    platform_type:
+      type: string
+      title: platform_type
+      enum:
+        - ios
+        - android
+        - web
+        - chromecast
+        - firetv
+        - roku
+        - ctv_samsung
+        - ctv_lg
+        - ctv_sony
+        - ctv_philips
+        - ctv_panasonic
+        - ctv_hisense
+        - ctv_xiaomi
+        - ctv_other
+        - stb_other
+        - stb_youview
+        - stb_virginmedia
+        - stv_sky
+        - stb_freeview
+        - stb_freesat
+    user_object:
+      title: user
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+      required:
+        - id
+        - source
+    entity_object:
+      title: entity
+      type: object
+      x-examples: {}
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+        type:
+          $ref: '#/components/schemas/entity_type'
+      required:
+        - id
+        - source
+        - type
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
+      x-apikeyInfoFunc: security.check_token
+  parameters:
+    user_param:
+      name: user
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/user_object'
+      style: deepObject
+      explode: true
+    entity_param:
+      name: entity
+      in: query
+      schema:
+        $ref: '#/components/schemas/entity_object'
+      style: deepObject
+      explode: true
+      required: false
+security:
+  - Authorization: []
