@@ -358,10 +358,7 @@ paths:
           in: query
           name: q
           description: Natural language query string. Will be interpreted by NLU component. Other content filters will be ignored.
-        - schema: {}
-          in: query
-          name: user
-          description: User for personalisation.
+        - $ref: '#/components/parameters/user_param'
       description: ''
 components:
   schemas:
@@ -373,3 +370,10 @@ components:
           type: string
         source:
           type: string
+  parameters:
+    user_param:
+      name: user_param
+      in: query
+      required: false
+      schema:
+        type: string
