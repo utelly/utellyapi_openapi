@@ -378,3 +378,8 @@ components:
       schema:
         $ref: '#/components/schemas/user_object'
       description: Allows for results to be personalised based on historic user interactions
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
