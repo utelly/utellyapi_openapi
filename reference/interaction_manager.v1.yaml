@@ -41,13 +41,13 @@ paths:
                         type: movie
         '201':
           description: Created
-      operationId: v1.discover.creative_work.get
+      operationId: v1.interaction.get
       parameters:
         - $ref: '#/components/parameters/user_param'
         - $ref: '#/components/parameters/entity_param'
     post:
       summary: Create one or more interactions
-      operationId: post-users-user_id-interactions
+      operationId: v1.interaction.port
       responses:
         '200':
           description: OK
