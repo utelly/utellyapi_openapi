@@ -47,7 +47,7 @@ paths:
         - $ref: '#/components/parameters/entity_param'
     post:
       summary: Create one or more interactions
-      operationId: v1.interaction.port
+      operationId: v1.interaction.post
       responses:
         '200':
           description: OK
