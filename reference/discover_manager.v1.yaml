@@ -372,7 +372,8 @@ components:
           type: string
   parameters:
     user_param:
-      name: user_param
+      name: user
       in: query
       required: false
-      schema: {}
+      schema:
+        $ref: '#/components/schemas/user_object'
