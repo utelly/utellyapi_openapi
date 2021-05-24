@@ -57,7 +57,7 @@ paths:
               items:
                 $ref: '#/components/schemas/Interaction'
             examples:
-              example-1:
+              '1':
                 value:
                   - platform: ios
                     discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
