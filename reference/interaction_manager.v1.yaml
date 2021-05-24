@@ -1,10 +1,15 @@
 openapi: 3.0.0
 info:
   title: interaction_manager
-  version: '1.0'
+  version: v1
   description: Interactions base API
 servers:
-  - url: 'http://localhost:3000'
+  - description: prod
+    url: 'https://services.utelly.com/interaction_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/interaction_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/interaction_manager/v1'
 paths:
   /interactions:
     parameters: []
