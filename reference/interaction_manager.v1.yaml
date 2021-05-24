@@ -39,8 +39,6 @@ paths:
                         id: string
                         source: string
                         type: movie
-        '201':
-          description: Created
       operationId: v1.interaction.get
       parameters:
         - $ref: '#/components/parameters/user_param'
