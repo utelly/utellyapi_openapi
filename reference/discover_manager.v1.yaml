@@ -358,9 +358,18 @@ paths:
           in: query
           name: q
           description: Natural language query string. Will be interpreted by NLU component. Other content filters will be ignored.
-        - schema:
-            type: string
+        - schema: {}
           in: query
-          name: user_id
+          name: user
           description: User for personalisation.
       description: ''
+components:
+  schemas:
+    user_object:
+      title: user_object
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
