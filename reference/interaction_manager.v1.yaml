@@ -70,12 +70,6 @@ paths:
                       id: string
                       source: string
                       type: movie
-          application/xml:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Interaction'
-            examples: {}
 components:
   schemas:
     Interaction:
