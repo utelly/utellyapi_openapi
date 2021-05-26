@@ -98,6 +98,10 @@ components:
               $ref: '#/components/schemas/user_object'
             entity:
               $ref: '#/components/schemas/entity_object'
+          required:
+            - created_at
+            - user
+            - entity
     entity_type:
       type: string
       enum:
@@ -141,6 +145,10 @@ components:
           type: string
           enum:
             - bookmark
+      required:
+        - platform
+        - discover_guid
+        - type
     interaction_rate:
       title: interaction_rate
       type: object
@@ -165,6 +173,11 @@ components:
           type: string
           enum:
             - rate
+      required:
+        - platform
+        - rating
+        - discover_guid
+        - type
     interaction_view:
       title: interaction_view
       type: object
@@ -181,6 +194,10 @@ components:
           type: string
           enum:
             - view
+      required:
+        - platform
+        - discover_guid
+        - type
     interaction_play:
       title: interaction_play
       type: object
@@ -209,6 +226,12 @@ components:
           type: string
           enum:
             - play
+      required:
+        - platform
+        - duration_secs
+        - discover_guid
+        - portion
+        - type
     interaction_buy_rent:
       title: interaction_buy_rent
       type: object
