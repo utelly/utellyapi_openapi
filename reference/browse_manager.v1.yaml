@@ -692,6 +692,39 @@ components:
           type: object
       title: Related
       type: object
+      properties:
+        _embedded:
+          additionalProperties: false
+          type: object
+          properties:
+            creative_works:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreativeWork'
+            people:
+              type: array
+              items:
+                $ref: '#/components/schemas/Person'
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tag'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+        guid:
+          type: string
+        seed_guid:
+          type: string
+        params:
+          type: object
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        deleted:
+          type: boolean
+        s:
+          type: string
     Relationships:
       items:
         additionalProperties: false
@@ -3121,7 +3154,17 @@ paths:
                       self:
                         href: /content/related/4f15360894320c853e9e2b3c0875dbf15fa15c90?
               schema:
-                $ref: '#/components/schemas/Related'
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      related:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Related'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
           description: OK
       summary: Get a relationship
       tags: []
