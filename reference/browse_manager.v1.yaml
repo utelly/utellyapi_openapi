@@ -659,39 +659,6 @@ components:
       type: object
     Related:
       additionalProperties: false
-      properties:
-        _embedded:
-          additionalProperties: false
-          properties:
-            creative_works:
-              items:
-                $ref: '#/components/schemas/CreativeWork'
-              type: array
-            people:
-              items:
-                $ref: '#/components/schemas/Person'
-              type: array
-            tags:
-              items:
-                $ref: '#/components/schemas/Tag'
-              type: array
-          type: object
-        _links:
-          additionalProperties: false
-          properties:
-            creative_works:
-              items:
-                $ref: ../models/hal_link_field.v1.yaml
-              type: array
-            people:
-              items:
-                $ref: ../models/hal_link_field.v1.yaml
-              type: array
-            tags:
-              items:
-                $ref: ../models/hal_link_field.v1.yaml
-              type: array
-          type: object
       title: Related
       type: object
       properties:
