@@ -3,6 +3,9 @@ info:
   title: discover_manager
   version: v1
   description: ''
+  contact:
+    email: developers@utelly.com
+    name: API Support
 servers:
   - url: 'https://services.utelly.com/discover_manager/v1'
     description: prod
@@ -212,7 +215,9 @@ paths:
             type: array
             items:
               type: string
-            example: '[movie|series]'
+            example:
+              - movie
+              - series
           in: query
           name: types
           style: pipeDelimited
@@ -296,7 +301,8 @@ paths:
           description: Has duration less than or equal to.
         - schema:
             type: array
-            example: '[actor:eb4aaa3de91242ba82ad48bee0b48996]'
+            example:
+              - 'actor:eb4aaa3de91242ba82ad48bee0b48996'
           in: query
           name: people
           style: pipeDelimited
@@ -318,14 +324,18 @@ paths:
           description: Has none of the listed people ids as a contributor - optional role flag.
         - schema:
             type: array
-            example: '[imdb:80|tmdb:75]'
+            example:
+              - 'imdb:80'
+              - 'tmdb:75'
           in: query
           name: 'rating[gte]'
           style: pipeDelimited
           description: Has rating greater than or equal to. List of ratings values with source flag
         - schema:
             type: array
-            example: '[imdb:80|tmdb:75]'
+            example:
+              - 'imdb:80'
+              - 'tmdb:75'
           in: query
           name: 'rating[lte]'
           style: pipeDelimited
@@ -348,7 +358,9 @@ paths:
           style: pipeDelimited
         - schema:
             type: array
-            example: '[availabilities|tags]'
+            example:
+              - availabilities
+              - tags
           in: query
           name: embed
           description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
@@ -359,7 +371,161 @@ paths:
           name: q
           description: Natural language query string. Will be interpreted by NLU component. Other content filters will be ignored.
         - $ref: '#/components/parameters/user_param'
+        - schema:
+            type: integer
+          in: query
+          name: skip
       description: ''
+  /creative_works/related:
+    get:
+      summary: related
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      creative_works:
+                        type: array
+                        items:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  total_count:
+                    type: integer
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      creative_works:
+                        - _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
+                    _links:
+                      first:
+                        href: /content/creative_works
+                      last:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      next:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      prev:
+                        href: /content/creative_works
+                      self:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                    guid: 8703dd1ced974ecea01116f2c0a5a282
+      operationId: get-creative_works-related
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: seed_source_id
+          description: Id of the item to which items should be related
+        - schema:
+            type: string
+          in: query
+          name: seed_source
+          description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid
+        - schema:
+            type: string
+          in: header
+          name: Content-Language
+          description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Max items to be included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: 'Number of items to skip, can be used with limit to page'
+        - schema:
+            type: string
+          in: query
+          name: embed
+          description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
+        - schema:
+            type: string
+          in: query
+          name: fields
+          description: List of resource fields to be including in the response.
+        - schema:
+            type: string
+          in: query
+          description: Has availability for one or more of the listed location ids.
+          name: locations
+        - schema: {}
+          in: query
+          name: user
+          description: Allows for results to be personalised based on historic user interactions
+        - schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/service_name'
+          in: query
+          name: services
+          description: Has one or more of the listed service ids as an availability.
+        - schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/service_name'
+          in: query
+          name: 'services[excl]'
+          description: Has none of the listed service ids as an availability.
+    parameters: []
 components:
   schemas:
     user_object:
@@ -370,6 +536,13 @@ components:
           type: string
         source:
           type: string
+    service_name:
+      type: string
+      title: service_name
+      enum:
+        - primevideo
+        - netflix
+        - disneyplus
   parameters:
     user_param:
       name: user
