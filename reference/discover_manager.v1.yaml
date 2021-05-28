@@ -40,10 +40,14 @@ paths:
                   discover_guid:
                     type: string
                     description: Discover GUID used for interactions context
+                  total_count:
+                    type: integer
+                    description: Total number of results
                 required:
                   - _embedded
                   - _links
                   - discover_guid
+                  - total_count
               examples:
                 '1':
                   value:
@@ -397,8 +401,17 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                  discover_guid:
+                    type: string
+                    description: Discover GUID used for interactions context
                   total_count:
                     type: integer
+                    description: Total number of results
+                required:
+                  - _embedded
+                  - _links
+                  - discover_guid
+                  - total_count
               examples:
                 '1':
                   value:
