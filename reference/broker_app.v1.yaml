@@ -1,10 +1,12 @@
 components:
   schemas:
     Data-Browsing:
+      additionalProperties: false
       description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse'
       properties:
         data:
           items:
+            additionalProperties: false
             properties:
               id:
                 type: string
@@ -17,6 +19,7 @@ components:
             type: object
           type: array
         headers:
+          additionalProperties: false
           properties:
             id:
               type: string
@@ -33,15 +36,18 @@ components:
       title: Data-Browsing
       type: object
     Data-Flow:
+      additionalProperties: false
       description: Data definition for a data flow.
       properties:
         apps:
           items:
+            additionalProperties: false
             properties:
               key:
                 type: string
               subitems:
                 items:
+                  additionalProperties: false
                   properties:
                     name:
                       type: string
@@ -54,12 +60,15 @@ components:
             type: object
           type: array
         flow:
+          additionalProperties: false
           properties:
             buckets:
               items:
+                additionalProperties: false
                 properties:
                   apps:
                     items:
+                      additionalProperties: false
                       properties:
                         name:
                           type: string
@@ -83,6 +92,7 @@ components:
       title: Data-Flow
       type: object
     Data-Table:
+      additionalProperties: false
       description: This model represents the data that can populate a table in the Portal Reloaded Portal.
       properties:
         data:
@@ -91,6 +101,7 @@ components:
           type: array
         headers:
           items:
+            additionalProperties: false
             properties:
               key:
                 type: string
@@ -104,16 +115,17 @@ components:
       title: Data-Table
       type: object
     ui_language:
-      title: Ui Language
-      type: object
+      additionalProperties: false
+      description: Language support for different ui labels
       properties:
+        de:
+          type: string
         en:
           type: string
         nl:
           type: string
-        de:
-          type: string
-      description: Language support for different ui labels
+      title: Ui Language
+      type: object
   securitySchemes:
     Authorization:
       in: header
@@ -121,14 +133,95 @@ components:
       type: apiKey
       x-apikeyInfoFunc: security.check_token
 info:
+  contact:
+    email: developers@utelly.com
+    name: API Support
   description: ''
   title: broker_app
   version: v1
-  contact:
-    name: API Support
-    email: developers@utelly.com
 openapi: 3.0.0
 paths:
+  /configurations:
+    get:
+      operationId: v1.config.get_config
+      parameters:
+        - in: query
+          name: type
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    config:
+                      languages:
+                        - en
+                        - fr
+                        - gr
+                    type: sherlockConfig
+              schema:
+                properties: {}
+                type: object
+          description: OK
+      summary: Get Configuration
+      tags:
+        - Configuration Management
+    post:
+      operationId: v1.config.set_config
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  config:
+                    languages:
+                      - en
+                      - fr
+                      - gr
+                  type: sherlockConfig
+            schema:
+              additionalProperties: false
+              properties:
+                config:
+                  type: object
+                identifier:
+                  description: leave blank to create new entry
+                  type: string
+                type:
+                  type: string
+              required:
+                - type
+                - config
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    config:
+                      languages:
+                        - en
+                        - fr
+                        - gr
+                    type: sherlockConfig
+              schema:
+                properties: {}
+                type: object
+          description: OK
+      summary: Set Configuration
+      tags:
+        - Configuration Management
   '/configurations/environment/{environment_id}/view/{view_id}':
     get:
       description: ''
@@ -152,6 +245,7 @@ paths:
                             value: friendly name of the conf2
                         payload: {}
               schema:
+                additionalProperties: false
                 properties:
                   configurations:
                     items:
@@ -252,6 +346,7 @@ paths:
                       - key: status
                         value: Status
               schema:
+                additionalProperties: false
                 description: This model represents the data that can populate a table in the Portal Reloaded Portal.
                 properties:
                   data:
@@ -260,6 +355,7 @@ paths:
                     type: array
                   headers:
                     items:
+                      additionalProperties: false
                       properties:
                         key:
                           type: string
@@ -474,40 +570,39 @@ paths:
                       name: Pending data flow config
                       type: DATA FLOW BUILDER
               schema:
+                additionalProperties: false
                 description: Data definition for a data flow.
-                title: Data-Flow
-                type: object
                 properties:
                   apps:
-                    type: array
                     items:
-                      type: object
+                      additionalProperties: false
                       properties:
                         key:
                           type: integer
                         subitems:
-                          type: array
                           items:
-                            type: object
+                            additionalProperties: false
                             properties:
                               name:
                                 type: string
                               type:
                                 type: string
+                            type: object
+                          type: array
                         title:
                           type: string
+                      type: object
+                    type: array
                   flow:
-                    type: object
+                    additionalProperties: false
                     properties:
                       buckets:
-                        type: array
                         items:
-                          type: object
+                          additionalProperties: false
                           properties:
                             apps:
-                              type: array
                               items:
-                                type: object
+                                additionalProperties: false
                                 properties:
                                   name:
                                     type: string
@@ -515,14 +610,21 @@ paths:
                                     type: string
                                   type:
                                     type: string
+                                type: object
+                              type: array
                             type:
                               type: string
+                          type: object
+                        type: array
                       key:
                         type: integer
                       name:
                         type: string
                       type:
                         type: string
+                    type: object
+                title: Data-Flow
+                type: object
           description: OK
       summary: data-flow-id
       tags: []
@@ -566,6 +668,7 @@ paths:
                       - key: status
                         value: Status
               schema:
+                additionalProperties: false
                 description: 'Data to be retrieved on the https://portal2-dev.utelly.com/ARCHITECT/data-flows/data-builder/data-browse'
                 title: Data-Browsing
                 type: object
@@ -573,6 +676,7 @@ paths:
                   data:
                     type: array
                     items:
+                      additionalProperties: false
                       type: object
                       properties:
                         id:
@@ -583,9 +687,14 @@ paths:
                           type: string
                         type:
                           type: string
+                        created_at:
+                          type: string
+                        status:
+                          type: string
                   headers:
                     type: array
                     items:
+                      additionalProperties: false
                       type: object
                       properties:
                         key:
@@ -598,6 +707,29 @@ paths:
           description: OK
       summary: data-source
       tags: []
+  /legacy_search:
+    post:
+      operationId: v1.legacy.search_v9
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value: {}
+              schema:
+                properties: {}
+                type: object
+          description: OK
+      summary: Legacy search
+      tags:
+        - Legacy
   '/modules/{module_id}/browse':
     get:
       description: ''
@@ -924,6 +1056,7 @@ paths:
                         pagination: true
                         sorting: false
               schema:
+                additionalProperties: false
                 properties:
                   payload:
                     type: object
@@ -1194,12 +1327,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Availability
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get an availability
       tags:
@@ -1484,27 +1618,28 @@ paths:
                           href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           content_ratings:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/ContentRating
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List content ratings
       tags:
@@ -1746,12 +1881,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/ContentRating
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a content rating
       tags:
@@ -2013,12 +2149,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Contributor
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a Contributor
       tags:
@@ -2337,27 +2474,28 @@ paths:
                           href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           creative_works:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List creative works
       tags:
@@ -2660,12 +2798,13 @@ paths:
                       updated_at: '2020-01-01T00:00:10Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a creative work
       tags:
@@ -2962,27 +3101,28 @@ paths:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/availabilities?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           availabilities:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Availability
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get availabilities from creative work
       tags:
@@ -3267,27 +3407,28 @@ paths:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           content_ratings:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/ContentRating
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get content ratings from creative work
       tags:
@@ -3577,29 +3718,30 @@ paths:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/contributors?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           contributors:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Contributor
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
-      summary: Get crontibutors from creative work
+      summary: Get contributors from creative work
       tags:
         - Content Management
     parameters:
@@ -3916,27 +4058,28 @@ paths:
                           href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           creative_works:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get episodes from creative work
       tags:
@@ -4255,27 +4398,28 @@ paths:
                           href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           creative_works:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get seasons from creative work
       tags:
@@ -4562,27 +4706,28 @@ paths:
                           href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           tags:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Tag
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get tags from creative work
       tags:
@@ -4866,27 +5011,28 @@ paths:
                           href: /content/locations?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           locations:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Location
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List locations
       tags:
@@ -5127,12 +5273,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Location
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a location
       tags:
@@ -5421,27 +5568,28 @@ paths:
                           href: /content/people?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           people:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Person
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List people
       tags:
@@ -5687,12 +5835,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Person
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a person
       tags:
@@ -5986,27 +6135,28 @@ paths:
                           href: /content/platforms?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           platforms:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Platform
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List platforms
       tags:
@@ -6257,12 +6407,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Platform
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a platform
       tags:
@@ -6556,27 +6707,28 @@ paths:
                           href: /content/services?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           services:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Service
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List services
       tags:
@@ -6827,12 +6979,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Service
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a service
       tags:
@@ -7119,27 +7272,28 @@ paths:
                           href: /content/tags?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     additionalProperties: false
-                    type: object
                     properties:
                       _embedded:
                         additionalProperties: false
-                        type: object
                         properties:
                           tags:
-                            type: array
                             items:
                               $ref: ./browse_manager.v1.yaml#/components/schemas/Tag
+                            type: array
+                        type: object
                       _links:
                         $ref: ../models/HalLinks.v1.yaml
                     required:
                       - _embedded
                       - _links
+                    type: object
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: List tags
       tags:
@@ -7383,12 +7537,13 @@ paths:
                       updated_at: '2020-01-01T00:00:00Z'
                     ui_configuration: {}
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   payload:
                     $ref: ./browse_manager.v1.yaml#/components/schemas/Tag
                   ui_configuration:
                     type: object
+                type: object
           description: OK
       summary: Get a tag
       tags:
@@ -7417,139 +7572,143 @@ paths:
                 default:
                   value:
                     enviroments:
-                      - uid: '1'
+                      - descriptions:
+                          en: Use and make things to break them
+                          nl: Gebruik en maak dingen om ze te breken
                         names:
                           en: Development
                           nl: Ontwikkeling
-                        descriptions:
-                          en: Use and make things to break them
-                          nl: Gebruik en maak dingen om ze te breken
-                      - uid: '2'
+                        uid: '1'
+                      - descriptions:
+                          en: Use to see if things break
+                          nl: Gebruik om te zien of dingen breken
                         names:
                           en: Staging
                           nl: Enscenering
-                        descriptions:
-                          en: Use to see if things break
-                          nl: Gebruik om te zien of dingen breken
-                      - uid: '3'
+                        uid: '2'
+                      - descriptions:
+                          en: Final working version
+                          nl: Definitieve werkende versie
                         names:
                           en: Production
                           nl: Productie
-                        descriptions:
-                          en: Final working version
-                          nl: Definitieve werkende versie
+                        uid: '3'
                     perspectives:
-                      - uid: '1'
+                      - base_url: /architect
+                        descriptions:
+                          en: Example description
+                          nl: Voorbeeldbeschrijving
                         names:
                           en: Architect
                           nl: Architect
-                        descriptions:
-                          en: Example description
-                          nl: Voorbeeldbeschrijving
-                        base_url: /architect
                         navigation:
-                          - uid: '1'
+                          - href: /data-sources
                             names:
                               en: Data Sources
                               nl: Data Bronnen
-                            href: /data-sources
-                          - uid: '2'
+                            uid: '1'
+                          - href: /data-flows
                             names:
                               en: Data Flows
                               nl: Gegevensstromen
-                            href: /data-flows
-                      - uid: '2'
+                            uid: '2'
+                        uid: '1'
+                      - base_url: /operate
+                        descriptions:
+                          en: Example description
+                          nl: Voorbeeldbeschrijving
                         names:
                           en: Operate
                           nl: Bedienen
+                        navigation: []
+                        uid: '2'
+                      - base_url: /promote
                         descriptions:
                           en: Example description
                           nl: Voorbeeldbeschrijving
-                        base_url: /operate
-                        navigation: []
-                      - uid: '3'
                         names:
                           en: Promote
                           nl: Promoten
+                        navigation: []
+                        uid: '3'
+                      - base_url: /analyse
                         descriptions:
                           en: Example description
                           nl: Voorbeeldbeschrijving
-                        base_url: /promote
-                        navigation: []
-                      - uid: '4'
                         names:
                           en: Analyse
                           nl: Analyse
-                        descriptions:
-                          en: Example description
-                          nl: Voorbeeldbeschrijving
-                        base_url: /analyse
                         navigation: []
+                        uid: '4'
                     preferences:
                       default_enviroment: '1'
-                      selected_enviroment: '2'
-                      default_perspective: '1'
-                      selected_perspective: '1'
-                      default_perspective_navigation: '1'
-                      selected_perspective_navigation: '1'
                       default_language: en
+                      default_perspective: '1'
+                      default_perspective_navigation: '1'
+                      selected_enviroment: '2'
                       selected_language: nl
+                      selected_perspective: '1'
+                      selected_perspective_navigation: '1'
               schema:
-                type: object
+                additionalProperties: false
                 properties:
                   enviroments:
-                    type: array
                     items:
-                      type: object
+                      additionalProperties: false
                       properties:
-                        uid:
-                          type: string
-                        names:
-                          $ref: '#/components/schemas/ui_language'
                         descriptions:
                           $ref: '#/components/schemas/ui_language'
+                        names:
+                          $ref: '#/components/schemas/ui_language'
+                        uid:
+                          type: string
                       required:
                         - uid
                         - names
-                  perspectives:
-                    type: array
-                    items:
                       type: object
+                    type: array
+                  perspectives:
+                    items:
+                      additionalProperties: false
                       properties:
-                        uid:
-                          type: string
-                        names:
-                          $ref: '#/components/schemas/ui_language'
-                        descriptions:
-                          $ref: '#/components/schemas/ui_language'
                         base_url:
                           type: string
+                        descriptions:
+                          $ref: '#/components/schemas/ui_language'
+                        names:
+                          $ref: '#/components/schemas/ui_language'
                         navigation:
-                          type: array
                           items:
-                            type: object
+                            additionalProperties: false
                             properties:
-                              uid:
+                              href:
                                 type: string
                               names:
                                 $ref: '#/components/schemas/ui_language'
-                              href:
+                              uid:
                                 type: string
                             required:
                               - uid
                               - names
                               - href
+                            type: object
+                          type: array
+                        uid:
+                          type: string
                       required:
                         - uid
                         - names
                         - base_url
                         - navigation
+                      type: object
+                    type: array
                   preferences:
                     type: object
                 required:
                   - enviroments
                   - perspectives
                   - preferences
+                type: object
           description: OK
       security:
         - Authorization: []
@@ -7572,6 +7731,7 @@ paths:
                   code: 06ebadbe3bbf4e2798fd421b1346c1ee
                   user_id: 9b38b54dd74644db96e772d6076615da
             schema:
+              additionalProperties: false
               properties:
                 code:
                   type: string
@@ -7598,6 +7758,7 @@ paths:
                   destination_url_template: 'https://mydomain.com/forgot_password_page?email={email}&token={token}'
                   email: keizer@email.com
             schema:
+              additionalProperties: false
               properties:
                 destination_url_template:
                   type: string
@@ -7627,6 +7788,7 @@ paths:
                   password_confirm: password
                   token: 3c5ace8b39354d54aaefec5c7c35da76
             schema:
+              additionalProperties: false
               properties:
                 email:
                   type: string
@@ -7648,6 +7810,7 @@ paths:
                     id: 4546ed7dd9ed477ba368749f0bd8b3a1
                     refresh_token: f63034cbebf34f7d852f7ab83a39a1b4
               schema:
+                additionalProperties: false
                 properties:
                   access_token:
                     type: string
@@ -7674,6 +7837,7 @@ paths:
                   email: hello@utelly.com
                   password: 3@Ubc1iCYZUKGtAi
             schema:
+              additionalProperties: false
               properties:
                 email:
                   type: string
@@ -7694,6 +7858,7 @@ paths:
                     id: 9b38b54dd74644db96e772d6076615da
                     refresh_token: f9a664c1ba3f4665aa902ded47edaca9
               schema:
+                additionalProperties: false
                 properties:
                   access_token:
                     type: string
@@ -7729,6 +7894,7 @@ paths:
                       - key: default_view
                         value: '1'
               schema:
+                additionalProperties: false
                 properties:
                   values:
                     items:
@@ -7776,6 +7942,7 @@ paths:
                 value:
                   refresh_token: cc53ca4aaf294c489a29c1515cb1f1b3
             schema:
+              additionalProperties: false
               properties:
                 refresh_token:
                   type: string
@@ -7791,6 +7958,7 @@ paths:
                   value:
                     access_token: f9a664c1ba3f4665aa902ded47edaca9
               schema:
+                additionalProperties: false
                 properties:
                   access_token:
                     type: string
@@ -7820,6 +7988,7 @@ paths:
                   password_confirm: password
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
             schema:
+              additionalProperties: false
               properties:
                 destination_url_template:
                   type: string
@@ -7855,6 +8024,7 @@ paths:
                     id: 9b38b54dd74644db96e772d6076615da
                     refresh_token: f9a664c1ba3f4665aa902ded47edaca9
               schema:
+                additionalProperties: false
                 properties:
                   access_token:
                     type: string
@@ -7871,109 +8041,6 @@ paths:
       summary: Register
       tags:
         - User Management
-  /legacy_search:
-    post:
-      summary: Legacy search
-      operationId: v1.legacy.search_v9
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-              examples:
-                '1':
-                  value: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: {}
-      tags:
-        - Legacy
-  /configurations:
-    get:
-      summary: Get Configuration
-      tags:
-        - Configuration Management
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-              examples:
-                '1':
-                  value:
-                    type: sherlockConfig
-                    config:
-                      languages:
-                        - en
-                        - fr
-                        - gr
-      operationId: v1.config.get_config
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: type
-          required: true
-        - schema:
-            type: string
-          in: query
-          name: identifier
-    post:
-      summary: Set Configuration
-      operationId: v1.config.set_config
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-              examples:
-                '1':
-                  value:
-                    type: sherlockConfig
-                    config:
-                      languages:
-                        - en
-                        - fr
-                        - gr
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  type: string
-                config:
-                  type: object
-                identifier:
-                  type: string
-                  description: leave blank to create new entry
-              required:
-                - type
-                - config
-            examples:
-              '1':
-                value:
-                  type: sherlockConfig
-                  config:
-                    languages:
-                      - en
-                      - fr
-                      - gr
-      tags:
-        - Configuration Management
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'

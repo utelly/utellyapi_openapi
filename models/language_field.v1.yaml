@@ -1,5 +1,3 @@
-type: string
-title: language_field
 enum:
 - ab
 - aa
@@ -186,3 +184,5 @@ enum:
 - za
 - zu
 - xx
+title: language_field
+type: string

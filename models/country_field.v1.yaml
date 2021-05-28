@@ -1,5 +1,3 @@
-type: string
-title: country_field
 enum:
 - AD
 - AE
@@ -251,3 +249,5 @@ enum:
 - ZM
 - ZW
 - XX
+title: country_field
+type: string
