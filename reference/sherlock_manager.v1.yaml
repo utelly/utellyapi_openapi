@@ -5,6 +5,7 @@ components:
       name: API Key
       type: apiKey
       in: query
+      x-apikeyInfoFunc: security.check_token
 info:
   contact:
     email: developers@utelly.com
