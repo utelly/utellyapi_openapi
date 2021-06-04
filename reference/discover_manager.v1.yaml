@@ -306,7 +306,9 @@ paths:
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/person'
+              type: string
+              example:
+              - 'actor:eb4aaa3de91242ba82ad48bee0b48996'
           in: query
           name: people
           style: pipeDelimited
@@ -315,7 +317,7 @@ paths:
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/person'
+              type: string
           in: query
           name: 'people.all'
           style: pipeDelimited
@@ -324,7 +326,7 @@ paths:
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/person'
+              type: string
           in: query
           name: 'people.excl'
           style: pipeDelimited
@@ -333,7 +335,10 @@ paths:
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/rating'
+              type: string
+              example:
+              - 'imdb:80'
+              - 'tmdb:75'
           in: query
           name: 'rating.gte'
           style: pipeDelimited
@@ -341,7 +346,10 @@ paths:
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/rating'
+              type: string
+              example:
+              - 'imdb:80'
+              - 'tmdb:75'
           in: query
           name: 'rating.lte'
           style: pipeDelimited
