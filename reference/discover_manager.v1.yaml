@@ -307,8 +307,6 @@ paths:
             type: array
             items:
               $ref: '#/components/schemas/person'
-            example:
-              - 'actor:eb4aaa3de91242ba82ad48bee0b48996'
           in: query
           name: people
           style: pipeDelimited
@@ -336,9 +334,6 @@ paths:
             type: array
             items:
               $ref: '#/components/schemas/rating'
-            example:
-              - 'imdb:80'
-              - 'tmdb:75'
           in: query
           name: 'rating.gte'
           style: pipeDelimited
@@ -347,9 +342,6 @@ paths:
             type: array
             items:
               $ref: '#/components/schemas/rating'
-            example:
-              - 'imdb:80'
-              - 'tmdb:75'
           in: query
           name: 'rating.lte'
           style: pipeDelimited
