@@ -5,6 +5,7 @@ components:
       in: header
       name: Authorization
       type: apiKey
+      x-apikeyInfoFunc: security.check_token
 info:
   contact:
     email: developers@utelly.com
