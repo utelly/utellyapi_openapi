@@ -564,7 +564,7 @@ components:
       properties:
         role:
           type: string
-          enums:
+          enum:
             - actor
             - director
         uid:
@@ -584,7 +584,6 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/user_object'
-      description: Allows for results to be personalised based on historic user interactions
   securitySchemes:
     Authorization:
       name: Authorization
