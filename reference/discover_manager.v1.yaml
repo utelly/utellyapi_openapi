@@ -128,7 +128,7 @@ paths:
         - schema:
             type: array
           in: query
-          name: 'services[excl]'
+          name: 'services.excl'
           style: pipeDelimited
           explode: true
           description: Has none of the listed service ids as an availability.
@@ -156,7 +156,7 @@ paths:
               type: integer
             minimum: 1900
           in: query
-          name: 'release_year[gte]'
+          name: 'release_year.gte'
           style: pipeDelimited
           explode: true
           description: Has a release year greater than or equal to values
@@ -166,7 +166,7 @@ paths:
               type: integer
             minimum: 1900
           in: query
-          name: 'release_year[lte]'
+          name: 'release_year.lte'
           style: pipeDelimited
           explode: true
           description: Has a release year less than or equal to values
@@ -184,7 +184,7 @@ paths:
             items:
               type: string
           in: query
-          name: 'content_ratings[excl]'
+          name: 'content_ratings.excl'
           style: pipeDelimited
           explode: true
           description: Has none of the listed content rating ids
@@ -202,7 +202,7 @@ paths:
             items:
               type: string
           in: query
-          name: 'tags[all]'
+          name: 'tags.all'
           style: pipeDelimited
           explode: true
           description: Has all of the listed tag ids.
@@ -211,7 +211,7 @@ paths:
             items:
               type: string
           in: query
-          name: 'tags[excl]'
+          name: 'tags.excl'
           style: pipeDelimited
           explode: true
           description: Has none of the listed tag ids.
@@ -241,7 +241,7 @@ paths:
             items:
               type: string
           in: query
-          name: 'guids[excl]'
+          name: 'guids.excl'
           style: pipeDelimited
           explode: true
           description: Excludes creative works
@@ -290,7 +290,7 @@ paths:
             items:
               $ref: ../models/integer_range_field.v1.yaml
           in: query
-          name: 'duration[gte]'
+          name: 'duration.gte'
           style: pipeDelimited
           explode: true
           description: Has duration greater than or equal to.
@@ -299,12 +299,14 @@ paths:
             items:
               $ref: ../models/integer_range_field.v1.yaml
           in: query
-          name: 'duration[lte]'
+          name: 'duration.lte'
           style: pipeDelimited
           explode: true
           description: Has duration less than or equal to.
         - schema:
             type: array
+            items:
+              $ref: '#/components/schemas/person'
             example:
               - 'actor:eb4aaa3de91242ba82ad48bee0b48996'
           in: query
@@ -314,34 +316,42 @@ paths:
           description: Has one or more of the listed people ids as a contributor - optional role flag.
         - schema:
             type: array
+            items:
+              $ref: '#/components/schemas/person'
           in: query
-          name: 'people[all]'
+          name: 'people.all'
           style: pipeDelimited
           explode: true
           description: Has all of the listed people ids as a contributor - optional role flag.
         - schema:
             type: array
+            items:
+              $ref: '#/components/schemas/person'
           in: query
-          name: 'people[excl]'
+          name: 'people.excl'
           style: pipeDelimited
           explode: true
           description: Has none of the listed people ids as a contributor - optional role flag.
         - schema:
             type: array
+            items:
+              $ref: '#/components/schemas/rating'
             example:
               - 'imdb:80'
               - 'tmdb:75'
           in: query
-          name: 'rating[gte]'
+          name: 'rating.gte'
           style: pipeDelimited
           description: Has rating greater than or equal to. List of ratings values with source flag
         - schema:
             type: array
+            items:
+              $ref: '#/components/schemas/rating'
             example:
               - 'imdb:80'
               - 'tmdb:75'
           in: query
-          name: 'rating[lte]'
+          name: 'rating.lte'
           style: pipeDelimited
           description: Has rating less than or equal to. List of ratings values with source flag
         - schema:
@@ -556,6 +566,25 @@ components:
         - primevideo
         - netflix
         - disneyplus
+    person:
+      title: person
+      type: object
+      properties:
+        role:
+          type: string
+          enums:
+            - actor
+            - director
+        uid:
+          type: string
+    rating:
+      title: rating
+      type: object
+      properties:
+        source:
+          type: string
+        rating:
+          type: integer
   parameters:
     user_param:
       name: user
