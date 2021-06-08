@@ -194,6 +194,97 @@ paths:
           description: OK
       summary: Discover Creative Works
       tags: []
+  /pages:
+    get:
+      summary: List pages
+      tags:
+        - Discovery Pages
+      responses: {}
+      operationId: get-pages
+      description: ''
+  '/pages/{page_slug}':
+    get:
+      summary: Get a page
+      tags:
+        - Discovery Pages
+      responses: {}
+      operationId: get-pages
+      description: ''
+    parameters:
+      - schema:
+          type: string
+        name: page_slug
+        in: path
+        required: true
+  '/pages/{page_slug}/collections':
+    parameters:
+      - schema:
+          type: string
+        name: page_slug
+        in: path
+        required: true
+    get:
+      summary: Get collections from a page
+      responses: {}
+      operationId: get-pages-page_slug-collections
+      tags:
+        - Discovery Collections
+  /collections:
+    get:
+      summary: List collections
+      tags:
+        - Discovery Collections
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: object
+                    properties:
+                      collections:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Collection'
+      operationId: get-collections
+      description: ''
+  '/collections/{collection_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: collection_guid
+        in: path
+        required: true
+    get:
+      summary: Get a collection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+      operationId: get-collections-collection_guid
+      tags:
+        - Discovery Collections
+  '/collections/{collection_guid}/creative_works':
+    parameters:
+      - schema:
+          type: string
+        name: collection_guid
+        in: path
+        required: true
+    get:
+      summary: Get creative works from a collection
+      tags: []
+      responses: {}
+      operationId: get-collections-collection_guid-creative_works
+      description: ''
 servers:
   - description: prod
     url: 'https://services.utelly.com/discover_manager/v1'
@@ -201,3 +292,137 @@ servers:
     url: 'https://staging-services.utelly.com/discover_manager/v1'
   - description: dev
     url: 'https://dev-services.utelly.com/discover_manager/v1'
+components:
+  schemas:
+    Page:
+      description: A page is a grouping of collections. Indended to be rendered as a single view in an application.
+      type: object
+      x-examples:
+        example-1:
+          _links:
+            collections:
+              href: '/discover_manager/v1/page/{page_slug}/collections'
+            self:
+              href: '/discover_manager/v1/page/{page_slug}'
+          names:
+            - name: Home Page
+              metadata:
+                type: ''
+                language: en
+                country: GB
+          descriptions:
+            - description: Discover great content
+              metadata:
+                type: ''
+                language: en
+                country: GB
+          artworks: []
+          version: ''
+          slug: page_slug
+      title: Page
+      properties:
+        _links:
+          type: object
+          required:
+            - collections
+            - self
+          properties:
+            collections:
+              $ref: ../models/hal_link_field.v1.yaml
+            self:
+              $ref: ../models/hal_link_field.v1.yaml
+        names:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+              metadata:
+                $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+            required:
+              - name
+        descriptions:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                minLength: 1
+              metadata:
+                $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+            required:
+              - description
+        artworks:
+          $ref: ./browse_manager.v1.yaml#/components/schemas/picture_field
+        version:
+          type: string
+        slug:
+          type: string
+          minLength: 1
+      required:
+        - _links
+        - names
+        - descriptions
+        - artworks
+        - version
+        - slug
+    Collection:
+      description: 'A collection is a grouping of content for browsing based discovery '
+      type: object
+      x-examples: {}
+      properties:
+        _links:
+          type: object
+          required:
+            - creative_works
+            - self
+          properties:
+            creative_works:
+              $ref: ../models/hal_link_field.v1.yaml
+            self:
+              $ref: ../models/hal_link_field.v1.yaml
+        names:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+              metadata:
+                $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+            required:
+              - name
+        descriptions:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                minLength: 1
+              metadata:
+                $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+            required:
+              - description
+        hero:
+          type: string
+        guid:
+          type: string
+      required:
+        - _links
+        - names
+        - descriptions
+        - hero
+      title: Collection
