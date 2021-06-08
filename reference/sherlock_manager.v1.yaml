@@ -1,5 +1,11 @@
 components:
   schemas: {}
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
+      x-apikeyInfoFunc: security.check_token
 info:
   contact:
     email: developers@utelly.com
@@ -9,54 +15,54 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /search/{config_id}:
+  '/search/{config_id}':
     get:
       description: ''
       operationId: v1.search.search.do_search
       parameters:
-      - description: query string
-        in: query
-        name: q
-        schema:
-          type: string
-      - description: number of items to return
-        in: query
-        name: size
-        schema:
-          type: integer
-      - description: offset of query
-        in: query
-        name: offset
-        schema:
-          type: integer
-      - description: only return exact matches
-        in: query
-        name: exact_match
-        schema:
-          type: boolean
-      - description: verbose flag
-        in: query
-        name: v
-        schema:
-          type: string
-      - description: locales to search on
-        in: query
-        name: locales
-        schema:
-          items:
+        - description: query string
+          in: query
+          name: q
+          schema:
             type: string
-          type: array
-        style: form
-      - description: grouping of results by sherlock
-        in: query
-        name: grouping
-        schema:
-          enum:
-          - topic
-          - entity
-          items:
+        - description: number of items to return
+          in: query
+          name: size
+          schema:
+            type: integer
+        - description: offset of query
+          in: query
+          name: offset
+          schema:
+            type: integer
+        - description: only return exact matches
+          in: query
+          name: exact_match
+          schema:
+            type: boolean
+        - description: verbose flag
+          in: query
+          name: v
+          schema:
             type: string
-          type: string
+        - description: locales to search on
+          in: query
+          name: locales
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: grouping of results by sherlock
+          in: query
+          name: grouping
+          schema:
+            enum:
+              - topic
+              - entity
+            items:
+              type: string
+            type: string
       responses:
         '200':
           content:
@@ -72,18 +78,20 @@ paths:
       summary: Sherlock Search
       tags: []
     parameters:
-    - description: sherlock config id
-      in: path
-      name: config_id
-      required: true
-      schema:
-        type: string
+      - description: sherlock config id
+        in: path
+        name: config_id
+        required: true
+        schema:
+          type: string
 servers:
-- description: prod
-  url: https://services.utelly.com/sherlock_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/sherlock_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/sherlock_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/sherlock_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/sherlock_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/sherlock_manager/v1'
 tags:
-- name: utelly_services
+  - name: utelly_services
+security:
+  - Authorization: []
