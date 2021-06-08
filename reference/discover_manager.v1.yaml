@@ -37,7 +37,7 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-                  discover_guid:
+                  guid:
                     type: string
                     description: Discover GUID used for interactions context
                   total_count:
@@ -46,7 +46,7 @@ paths:
                 required:
                   - _embedded
                   - _links
-                  - discover_guid
+                  - guid
                   - total_count
               examples:
                 '1':
@@ -113,7 +113,8 @@ paths:
                         href: /content/creative_works
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
-                    discover_guid: 8703dd1ced974ecea01116f2c0a5a282
+                    guid: 8703dd1ced974ecea01116f2c0a5a282
+                    total_count: 1
       operationId: v1.discover.creative_work.get
       parameters:
         - schema:
@@ -401,7 +402,7 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-                  discover_guid:
+                  guid:
                     type: string
                     description: Discover GUID used for interactions context
                   total_count:
@@ -410,7 +411,7 @@ paths:
                 required:
                   - _embedded
                   - _links
-                  - discover_guid
+                  - guid
                   - total_count
               examples:
                 '1':
@@ -478,17 +479,18 @@ paths:
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     guid: 8703dd1ced974ecea01116f2c0a5a282
+                    total_count: 1
       operationId: get-creative_works-related
       parameters:
         - schema:
             type: string
           in: query
-          name: seed_source_id
+          name: content.id
           description: Id of the item to which items should be related
         - schema:
             type: string
           in: query
-          name: seed_source
+          name: content.source
           description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid
         - schema:
             type: string
