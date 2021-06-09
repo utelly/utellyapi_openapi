@@ -199,7 +199,21 @@ paths:
       summary: List pages
       tags:
         - Discovery Pages
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: object
+                    properties:
+                      pages:
+                        $ref: '#/components/schemas/Page'
       operationId: get-pages
       description: ''
   '/pages/{page_slug}':
@@ -207,9 +221,25 @@ paths:
       summary: Get a page
       tags:
         - Discovery Pages
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
       operationId: get-pages
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user
+          description: 'TODO: add ref to user obj'
+        - schema:
+            type: string
+          in: query
+          name: embed
     parameters:
       - schema:
           type: string
@@ -225,10 +255,32 @@ paths:
         required: true
     get:
       summary: Get collections from a page
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: object
+                    properties:
+                      collections:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Collection'
       operationId: get-pages-page_slug-collections
       tags:
         - Discovery Collections
+      parameters:
+        - schema:
+            type: string
+          in: query
+          description: 'TODO: add ref to user obj'
+          name: user
   /collections:
     get:
       summary: List collections
@@ -272,6 +324,12 @@ paths:
       operationId: get-collections-collection_guid
       tags:
         - Discovery Collections
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user
+          description: 'TODO: add ref to user obj'
   '/collections/{collection_guid}/creative_works':
     parameters:
       - schema:
@@ -282,9 +340,28 @@ paths:
     get:
       summary: Get creative works from a collection
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: array
+                    items:
+                      $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
       operationId: get-collections-collection_guid-creative_works
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user
+          description: 'TODO: add ref to user obj'
 servers:
   - description: prod
     url: 'https://services.utelly.com/discover_manager/v1'
@@ -366,6 +443,8 @@ components:
         slug:
           type: string
           minLength: 1
+        guid:
+          type: string
       required:
         - _links
         - names

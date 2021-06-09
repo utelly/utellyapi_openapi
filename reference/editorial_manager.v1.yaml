@@ -3,186 +3,363 @@ info:
   title: editorial_manager.v1
   version: '1.0'
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'https://services.utelly.com/editorial_manager/v1'
+    description: Production
+  - url: 'https://staging-services.utelly.com/discover_manager/v1'
+    description: Staging
+  - url: 'https://dev-services.utelly.com/discover_manager/v1'
+    description: Development
 paths:
-  '/users/{userId}':
+  /pages:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-pages
+    post:
+      summary: ''
+      operationId: post-pages
+      responses:
+        '200':
+          description: OK
+  '/pages/{page_guid}':
     parameters:
       - schema:
-          type: integer
-        name: userId
+          type: string
+        name: page_guid
         in: path
         required: true
-        description: Id of an existing user.
     get:
-      summary: Get User Info by User ID
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-pages-page_guid
+    delete:
+      summary: ''
+      operationId: delete-pages-page_guid
+      responses:
+        '200':
+          description: OK
+  '/pages/{page_guid}/configs':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-pages-page_guid-configs
+    post:
+      summary: ''
+      operationId: post-pages-page_guid-configs
+      responses:
+        '200':
+          description: OK
+  '/pages/{page_guid}/configs/{config_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: config_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-pages-page_guid-configs-config_guid
+    put:
+      summary: ''
+      operationId: put-pages-page_guid-configs-config_guid
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: ''
+      operationId: delete-pages-page_guid-configs-config_guid
+      responses:
+        '200':
+          description: OK
+  /collections:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-collections
+    post:
+      summary: ''
+      operationId: post-collections
+      responses:
+        '200':
+          description: OK
+  '/collections/{collection_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: collection_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-collections-collection_guid
+    put:
+      summary: ''
+      operationId: put-collections-collection_guid
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: ''
+      operationId: delete-collections-collection_guid
+      responses:
+        '200':
+          description: OK
+  '/pages/{page_guid}/notes':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
       tags: []
       responses:
         '200':
-          description: User Found
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-              examples:
-                Get User Alice Smith:
-                  value:
-                    id: 142
-                    firstName: Alice
-                    lastName: Smith
-                    email: alice.smith@gmail.com
-                    dateOfBirth: '1997-10-31'
-                    emailVerified: true
-                    signUpDate: '2019-08-24'
-        '404':
-          description: User Not Found
-      operationId: get-users-userId
-      description: Retrieve the information of the user with the matching user ID.
-    patch:
-      summary: Update User Information
-      operationId: patch-users-userId
-      responses:
-        '200':
-          description: User Updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-              examples:
-                Updated User Rebecca Baker:
-                  value:
-                    id: 13
-                    firstName: Rebecca
-                    lastName: Baker
-                    email: rebecca@gmail.com
-                    dateOfBirth: '1985-10-02'
-                    emailVerified: false
-                    createDate: '2019-08-24'
-        '404':
-          description: User Not Found
-        '409':
-          description: Email Already Taken
-      description: Update the information of an existing user.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                email:
-                  type: string
-                  description: 'If a new email is given, the user''s email verified property will be set to false.'
-                dateOfBirth:
-                  type: string
-            examples:
-              Update First Name:
-                value:
-                  firstName: Rebecca
-              Update Email:
-                value:
-                  email: rebecca@gmail.com
-              Update Last Name & Date of Birth:
-                value:
-                  lastName: Baker
-                  dateOfBirth: '1985-10-02'
-        description: Patch user properties to update.
-  /user:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Note'
+      operationId: get-pages-page_guid-notes
     post:
-      summary: Create New User
-      operationId: post-user
+      summary: ''
+      operationId: post-pages-page_guid-notes
       responses:
         '200':
-          description: User Created
+          description: OK
+  '/pages/{page_guid}/notes/{note_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: note_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-              examples:
-                New User Bob Fellow:
-                  value:
-                    id: 12
-                    firstName: Bob
-                    lastName: Fellow
-                    email: bob.fellow@gmail.com
-                    dateOfBirth: '1996-08-24'
-                    emailVerified: false
-                    createDate: '2020-11-18'
-        '400':
-          description: Missing Required Information
-        '409':
-          description: Email Already Taken
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                email:
-                  type: string
-                dateOfBirth:
-                  type: string
-                  format: date
-              required:
-                - firstName
-                - lastName
-                - email
-                - dateOfBirth
-            examples:
-              Create User Bob Fellow:
-                value:
-                  firstName: Bob
-                  lastName: Fellow
-                  email: bob.fellow@gmail.com
-                  dateOfBirth: '1996-08-24'
-        description: Post the necessary fields for the API to create a new user.
-      description: Create a new user.
+                $ref: '#/components/schemas/Note'
+      operationId: get-pages-page_guid-notes-note_guid
+    delete:
+      summary: ''
+      operationId: delete-pages-page_guid-notes-note_guid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
 components:
   schemas:
-    User:
-      title: User
+    Page:
       type: object
-      description: ''
-      x-examples:
-        Alice Smith:
-          id: 142
-          firstName: Alice
-          lastName: Smith
-          email: alice.smith@gmail.com
-          dateOfBirth: '1997-10-31'
-          emailVerified: true
-          signUpDate: '2019-08-24'
+      title: Page
       properties:
-        id:
-          type: integer
-          description: Unique identifier for the given user.
-        firstName:
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+        slug:
           type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        dateOfBirth:
-          type: string
-          format: date
-          example: '1997-10-31'
-        emailVerified:
+        config:
+          $ref: '#/components/schemas/Config'
+        active:
           type: boolean
-          description: Set to true if the user's email has been verified.
-        createDate:
+        expiry_warning:
+          type: boolean
+        guid:
           type: string
-          format: date
-          description: The date that the user was created.
-      required:
-        - id
-        - firstName
-        - lastName
-        - email
-        - emailVerified
+    Config:
+      title: Config
+      type: object
+      properties:
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+        guid:
+          type: string
+        version:
+          type: string
+        collection_guids:
+          type: array
+          items:
+            type: string
+        valid_from:
+          type: string
+        valid_to:
+          type: string
+        hero:
+          type: string
+        unique_content:
+          type: boolean
+        merchandise:
+          type: boolean
+        enable_promotion:
+          type: boolean
+        exclude:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              guid:
+                type: string
+    Collection:
+      title: Collection
+      type: object
+      properties:
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+        guid:
+          type: string
+        type:
+          type: string
+          enum:
+            - programmatic
+            - editorial
+            - hybrid
+        names:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              metadata:
+                $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+        descriptions:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+              metadata:
+                $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+        display:
+          type: object
+          properties:
+            artwork_type:
+              type: string
+            allow_pagination:
+              type:
+                - string
+                - boolean
+            refresh:
+              type: integer
+        content:
+          type: object
+          properties:
+            creative_work_type:
+              type: array
+              items:
+                type: string
+                enum:
+                  - movie
+                  - series
+                  - tv
+                  - season
+                  - episode
+            tag_guids:
+              type: array
+              items:
+                type: string
+            service_guids:
+              type: array
+              items:
+                type: string
+            content_rating_guids:
+              type: array
+              items:
+                type: string
+            duration:
+              type: object
+              properties:
+                min:
+                  type: integer
+                max:
+                  type: integer
+            release_year:
+              type: object
+              properties:
+                from:
+                  type: integer
+                to:
+                  type: integer
+            kids:
+              type: boolean
+            creative_work_guids:
+              type: array
+              items:
+                type: string
+        exclude:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              guid:
+                type: string
+        limit:
+          type: integer
+        order:
+          type: string
+          enum:
+            - recommend
+            - trending
+            - rating
+            - manual
+            - release
+        hero:
+          type: string
+        '':
+          type: string
+    Note:
+      title: Note
+      type: object
+      properties:
+        guid:
+          type: string
+        note:
+          type: string
+        user_guid:
+          type: string
+        timstamp:
+          type: string
