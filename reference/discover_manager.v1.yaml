@@ -480,7 +480,7 @@ paths:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                     discover_guid: 8b63dd1ced974ecea01116f2c0a5a282
                     total_count: 1
-      operationId: get-creative_works-related
+      operationId: v1.discover.related.get
       parameters:
         - schema:
             type: string
