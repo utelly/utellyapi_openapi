@@ -203,7 +203,6 @@ components:
         duration_secs:
           type: integer
           minimum: 0
-          format: int64
           description: 'How long did the interaction last, in seconds?'
         discover_guid:
           type: string
