@@ -4,12 +4,12 @@ info:
   version: v1
   description: Interactions base API
 servers:
-- description: prod
-  url: 'https://services.utelly.com/interaction_manager/v1'
-- description: staging
-  url: 'https://staging-services.utelly.com/interaction_manager/v1'
-- description: dev
-  url: 'https://dev-services.utelly.com/interaction_manager/v1'
+  - description: prod
+    url: 'https://services.utelly.com/interaction_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/interaction_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/interaction_manager/v1'
 paths:
   /interactions:
     parameters: []
@@ -28,21 +28,21 @@ paths:
               examples:
                 '1':
                   value:
-                  - platform: ios
-                    discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-                    type: bookmark
-                    created_at: '2019-08-24T14:15:22Z'
-                    user:
-                      id: string
-                      source: string
-                    entity:
-                      id: string
-                      source: string
-                      type: movie
+                    - platform: ios
+                      discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+                      type: bookmark
+                      created_at: '2019-08-24T14:15:22Z'
+                      user:
+                        id: string
+                        source: string
+                      entity:
+                        id: string
+                        source: string
+                        type: movie
       operationId: v1.interaction.get
       parameters:
-      - $ref: '#/components/parameters/user_param'
-      - $ref: '#/components/parameters/entity_param'
+        - $ref: '#/components/parameters/user_param'
+        - $ref: '#/components/parameters/entity_param'
     post:
       summary: Create one or more interactions
       operationId: v1.interaction.post
@@ -59,17 +59,17 @@ paths:
             examples:
               '1':
                 value:
-                - platform: ios
-                  discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-                  type: bookmark
-                  created_at: '2019-08-24T14:15:22Z'
-                  user:
-                    id: string
-                    source: string
-                  entity:
-                    id: string
-                    source: string
-                    type: movie
+                  - platform: ios
+                    discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
+                    type: bookmark
+                    created_at: '2019-08-24T14:15:22Z'
+                    user:
+                      id: string
+                      source: string
+                    entity:
+                      id: string
+                      source: string
+                      type: movie
 components:
   schemas:
     Interaction:
@@ -77,53 +77,53 @@ components:
       x-examples: {}
       description: 'This model represents the interaction between a user and an object (creative works, people, tags, etc...).'
       allOf:
-      - anyOf:
-        - $ref: '#/components/schemas/interaction_bookmark'
-        - $ref: '#/components/schemas/interaction_play'
-        - $ref: '#/components/schemas/interaction_view'
-        - $ref: '#/components/schemas/interaction_buy_rent'
-        - $ref: '#/components/schemas/interaction_rate'
-      - type: object
-        additionalProperties: false
-        properties:
-          created_at:
-            type: string
-            pattern: (\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z
-            format: date-time
-          user:
-            $ref: '#/components/schemas/user_object'
-          entity:
-            $ref: '#/components/schemas/entity_object'
-        required:
-        - created_at
-        - user
-        - entity
+        - anyOf:
+            - $ref: '#/components/schemas/interaction_bookmark'
+            - $ref: '#/components/schemas/interaction_play'
+            - $ref: '#/components/schemas/interaction_view'
+            - $ref: '#/components/schemas/interaction_buy_rent'
+            - $ref: '#/components/schemas/interaction_rate'
+        - type: object
+          additionalProperties: false
+          properties:
+            created_at:
+              type: string
+              pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+              format: date-time
+            user:
+              $ref: '#/components/schemas/user_object'
+            entity:
+              $ref: '#/components/schemas/entity_object'
+          required:
+            - created_at
+            - user
+            - entity
     entity_type:
       type: string
       enum:
-      - movie
-      - series
-      - tv program
-      - podcast
-      - website
-      - person
-      - location
-      - tag
-      - other
-      - trailer
-      - video
-      - page
+        - movie
+        - series
+        - tv program
+        - podcast
+        - website
+        - person
+        - location
+        - tag
+        - other
+        - trailer
+        - video
+        - page
       title: entity type
     interaction_type:
       type: string
       title: interaction_type
       enum:
-      - bookmark
-      - rate
-      - view
-      - buy
-      - rent
-      - play
+        - bookmark
+        - rate
+        - view
+        - buy
+        - rent
+        - play
       x-examples: {}
     interaction_bookmark:
       title: interaction_bookmark
@@ -141,11 +141,11 @@ components:
         type:
           type: string
           enum:
-          - bookmark
+            - bookmark
       required:
-      - platform
-      - discover_guid
-      - type
+        - platform
+        - discover_guid
+        - type
     interaction_rate:
       title: interaction_rate
       type: object
@@ -170,12 +170,12 @@ components:
         type:
           type: string
           enum:
-          - rate
+            - rate
       required:
-      - platform
-      - rating
-      - discover_guid
-      - type
+        - platform
+        - rating
+        - discover_guid
+        - type
     interaction_view:
       title: interaction_view
       type: object
@@ -192,11 +192,11 @@ components:
         type:
           type: string
           enum:
-          - view
+            - view
       required:
-      - platform
-      - discover_guid
-      - type
+        - platform
+        - discover_guid
+        - type
     interaction_play:
       title: interaction_play
       type: object
@@ -224,13 +224,13 @@ components:
         type:
           type: string
           enum:
-          - play
+            - play
       required:
-      - platform
-      - duration_secs
-      - discover_guid
-      - portion
-      - type
+        - platform
+        - duration_secs
+        - discover_guid
+        - portion
+        - type
     interaction_buy_rent:
       title: interaction_buy_rent
       type: object
@@ -256,44 +256,44 @@ components:
         type:
           type: string
           enum:
-          - buy
-          - rent
+            - buy
+            - rent
     platform_type:
       type: string
       title: platform_type
       enum:
-      - ios
-      - android
-      - web
-      - chromecast
-      - firetv
-      - roku
-      - ctv_samsung
-      - ctv_lg
-      - ctv_sony
-      - ctv_philips
-      - ctv_panasonic
-      - ctv_hisense
-      - ctv_xiaomi
-      - ctv_other
-      - stb_other
-      - stb_youview
-      - stb_virginmedia
-      - stv_sky
-      - stb_freeview
-      - stb_freesat
+        - ios
+        - android
+        - web
+        - chromecast
+        - firetv
+        - roku
+        - ctv_samsung
+        - ctv_lg
+        - ctv_sony
+        - ctv_philips
+        - ctv_panasonic
+        - ctv_hisense
+        - ctv_xiaomi
+        - ctv_other
+        - stb_other
+        - stb_youview
+        - stb_virginmedia
+        - stv_sky
+        - stb_freeview
+        - stb_freesat
     user_object:
-      title: user
+      additionalProperties: true
       type: object
-      additionalProperties: false
+      title: user
       properties:
         id:
           type: string
         source:
           type: string
       required:
-      - id
-      - source
+        - id
+        - source
     entity_object:
       title: entity
       type: object
@@ -307,9 +307,9 @@ components:
         type:
           $ref: '#/components/schemas/entity_type'
       required:
-      - id
-      - source
-      - type
+        - id
+        - source
+        - type
   securitySchemes:
     Authorization:
       name: Authorization
@@ -334,4 +334,4 @@ components:
       explode: true
       required: false
 security:
-- Authorization: []
+  - Authorization: []
