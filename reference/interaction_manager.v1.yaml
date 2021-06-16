@@ -143,8 +143,6 @@ components:
           enum:
             - bookmark
       required:
-        - platform
-        - discover_guid
         - type
     interaction_rate:
       title: interaction_rate
@@ -173,8 +171,6 @@ components:
             - rate
       required:
         - platform
-        - rating
-        - discover_guid
         - type
     interaction_view:
       title: interaction_view
@@ -194,8 +190,6 @@ components:
           enum:
             - view
       required:
-        - platform
-        - discover_guid
         - type
     interaction_play:
       title: interaction_play
@@ -226,10 +220,6 @@ components:
           enum:
             - play
       required:
-        - platform
-        - duration_secs
-        - discover_guid
-        - portion
         - type
     interaction_buy_rent:
       title: interaction_buy_rent
@@ -258,6 +248,8 @@ components:
           enum:
             - buy
             - rent
+      required:
+        - type
     platform_type:
       type: string
       title: platform_type
