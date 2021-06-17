@@ -127,6 +127,8 @@ paths:
           description: Has one or more of the listed service ids as an availability.
         - schema:
             type: array
+            items:
+              type: string
           in: query
           name: 'services.excl'
           style: pipeDelimited
