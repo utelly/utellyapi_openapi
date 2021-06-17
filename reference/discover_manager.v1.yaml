@@ -386,7 +386,14 @@ paths:
           in: query
           name: q
           description: Natural language query string. Will be interpreted by NLU component. Other content filters will be ignored.
-        - $ref: '#/components/parameters/user_param'
+        - schema:
+            type: string
+          in: query
+          name: user.id
+        - schema:
+            type: string
+          in: query
+          name: user.source
         - schema:
             type: integer
           in: query
