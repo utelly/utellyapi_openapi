@@ -13,6 +13,8 @@ servers:
     description: staging
   - url: 'https://dev-services.utelly.com/discover_manager/v1'
     description: dev
+security:
+  - Authorization: []
 paths:
   /creative_works/discover:
     get:
@@ -588,6 +590,7 @@ components:
       description: Allows for results to be personalised based on historic user interactions
   securitySchemes:
     Authorization:
+      in: header
       name: Authorization
       type: apiKey
-      in: header
+      x-apikeyInfoFunc: security.check_token
