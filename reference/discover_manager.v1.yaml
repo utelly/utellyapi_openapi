@@ -586,8 +586,8 @@ components:
         $ref: '#/components/schemas/user_object'
       description: Allows for results to be personalised based on historic user interactions
   securitySchemes:
-      Authorization:
-          in: header
-          name: Authorization
-          type: apiKey
-          x-apikeyInfoFunc: security.check_token
+    Authorization:
+        in: header
+        name: Authorization
+        type: apiKey
+        x-apikeyInfoFunc: security.check_token
