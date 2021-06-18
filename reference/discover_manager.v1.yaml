@@ -575,25 +575,6 @@ components:
         - primevideo
         - netflix
         - disneyplus
-    person:
-      title: person
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-            - actor
-            - director
-        uid:
-          type: string
-    rating:
-      title: rating
-      type: object
-      properties:
-        source:
-          type: string
-        rating:
-          type: integer
   parameters:
     user_param:
       name: user
