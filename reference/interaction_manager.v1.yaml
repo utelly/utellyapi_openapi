@@ -208,13 +208,6 @@ components:
           type: string
           description: A guid to tie back the interaction to recommended content
           example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
         type:
           type: string
           enum:
