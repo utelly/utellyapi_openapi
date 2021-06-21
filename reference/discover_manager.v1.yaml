@@ -383,7 +383,7 @@ paths:
       description: ''
   /creative_works/related:
     get:
-      summary: related
+      summary: Related Creative Works
       tags: []
       responses:
         '200':
@@ -409,7 +409,6 @@ paths:
                     type: integer
                     description: Total number of results
                 required:
-                  - _embedded
                   - _links
                   - discover_guid
                   - total_count
@@ -508,17 +507,28 @@ paths:
           name: skip
           description: 'Number of items to skip, can be used with limit to page'
         - schema:
-            type: string
+            items:
+              enum:
+                - creative_works
+              type: string
+            type: array
+            example:
+              - creative_works
           in: query
           name: embed
           description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
+          style: pipeDelimited
         - schema:
-            type: string
+            items:
+              type: string
+            type: array
           in: query
           name: fields
           description: List of resource fields to be including in the response.
         - schema:
-            type: string
+            items:
+              type: string
+            type: array
           in: query
           description: Has availability for one or more of the listed location ids.
           name: locations
@@ -529,16 +539,16 @@ paths:
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/service_name'
+              type: string
           in: query
           name: services
           description: Has one or more of the listed service ids as an availability.
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/service_name'
+              type: string
           in: query
-          name: 'services[excl]'
+          name: services.excl
           description: Has none of the listed service ids as an availability.
       description: ''
     parameters: []
