@@ -1982,7 +1982,13 @@ paths:
         - in: query
           name: sort
           schema:
+            items:
+              type: string
             type: array
+        - schema:
+            type: string
+          in: query
+          name: content.source
       responses:
         '200':
           content:
