@@ -305,6 +305,10 @@ paths:
                           $ref: '#/components/schemas/Collection'
       operationId: get-collections
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
   '/collections/{collection_guid}':
     parameters:
       - schema:
@@ -436,8 +440,6 @@ components:
                 $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
             required:
               - description
-        artworks:
-          $ref: ./browse_manager.v1.yaml#/components/schemas/picture_field
         version:
           type: string
         slug:
@@ -445,11 +447,12 @@ components:
           minLength: 1
         guid:
           type: string
+        hero:
+          type: string
       required:
         - _links
         - names
         - descriptions
-        - artworks
         - version
         - slug
     Collection:

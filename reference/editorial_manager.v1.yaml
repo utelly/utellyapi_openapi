@@ -14,14 +14,39 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: object
+                    properties:
+                      pages:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Page'
       operationId: get-pages
     post:
       summary: ''
       operationId: post-pages
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Page'
   '/pages/{page_guid}':
     parameters:
       - schema:
@@ -32,14 +57,20 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
       operationId: get-pages-page_guid
     delete:
       summary: ''
       operationId: delete-pages-page_guid
       responses:
-        '200':
-          description: OK
+        '202':
+          description: Accepted
   '/pages/{page_guid}/configs':
     parameters:
       - schema:
@@ -50,7 +81,23 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: object
+                    properties:
+                      configs:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Config'
       operationId: get-pages-page_guid-configs
     post:
       summary: ''
@@ -58,6 +105,15 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
   '/pages/{page_guid}/configs/{config_guid}':
     parameters:
       - schema:
@@ -73,7 +129,13 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Config'
       operationId: get-pages-page_guid-configs-config_guid
     put:
       summary: ''
@@ -81,24 +143,54 @@ paths:
       responses:
         '200':
           description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Config'
     delete:
       summary: ''
       operationId: delete-pages-page_guid-configs-config_guid
       responses:
-        '200':
-          description: OK
+        '202':
+          description: Accepted
   /collections:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: object
+                    properties:
+                      collections:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Collection'
       operationId: get-collections
     post:
       summary: ''
       operationId: post-collections
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
   '/collections/{collection_guid}':
     parameters:
       - schema:
@@ -109,7 +201,13 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
       operationId: get-collections-collection_guid
     put:
       summary: ''
@@ -117,12 +215,17 @@ paths:
       responses:
         '200':
           description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
     delete:
       summary: ''
       operationId: delete-collections-collection_guid
       responses:
-        '200':
-          description: OK
+        '202':
+          description: Accepted
   '/pages/{page_guid}/notes':
     parameters:
       - schema:
@@ -152,8 +255,17 @@ paths:
       summary: ''
       operationId: post-pages-page_guid-notes
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Note'
   '/pages/{page_guid}/notes/{note_guid}':
     parameters:
       - schema:
@@ -181,12 +293,33 @@ paths:
       summary: ''
       operationId: delete-pages-page_guid-notes-note_guid
       responses:
+        '202':
+          description: Accepted
+  '/pages/{page_guid}/collections':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Note'
+                type: object
+                properties:
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  _embedded:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Collection'
+      operationId: get-pages-page_guid-collections
 components:
   schemas:
     Page:
@@ -205,6 +338,9 @@ components:
           type: boolean
         guid:
           type: string
+        deleted:
+          type: boolean
+          readOnly: true
     Config:
       title: Config
       type: object
@@ -213,12 +349,14 @@ components:
           $ref: ../models/HalLinks.v1.yaml
         guid:
           type: string
+          readOnly: true
         version:
           type: string
         collection_guids:
           type: array
           items:
             type: string
+          writeOnly: true
         valid_from:
           type: string
         valid_to:
@@ -248,6 +386,7 @@ components:
           $ref: ../models/HalLinks.v1.yaml
         guid:
           type: string
+          readOnly: true
         type:
           type: string
           enum:
@@ -278,10 +417,8 @@ components:
             artwork_type:
               type: string
             allow_pagination:
-              type:
-                - string
-                - boolean
-            refresh:
+              type: boolean
+            refresh_rate:
               type: integer
         content:
           type: object
@@ -339,7 +476,8 @@ components:
                 type: string
         limit:
           type: integer
-        order:
+          default: 25
+        order_by:
           type: string
           enum:
             - recommend
@@ -347,13 +485,20 @@ components:
             - rating
             - manual
             - release
+          default: recommend
         hero:
           type: string
-        '':
-          type: string
+        shuffle_rate:
+          type: integer
+        title_shuffle_set:
+          type: array
+          items: {}
+        deleted:
+          type: boolean
+          readOnly: true
     Note:
-      title: Note
       type: object
+      title: Note
       properties:
         guid:
           type: string
@@ -363,3 +508,4 @@ components:
           type: string
         timstamp:
           type: string
+      readOnly: true
