@@ -84,9 +84,11 @@ components:
             - $ref: '#/components/schemas/interaction_buy_rent'
             - $ref: '#/components/schemas/interaction_rate'
         - type: object
+          additionalProperties: false
           properties:
             created_at:
               type: string
+              pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
               format: date-time
             user:
               $ref: '#/components/schemas/user_object'
@@ -126,6 +128,7 @@ components:
     interaction_bookmark:
       title: interaction_bookmark
       type: object
+      additionalProperties: false
       description: 'General purpose object to collect info that is very context dependant, esp of the type of interaction we record'
       x-examples: {}
       properties:
@@ -140,12 +143,11 @@ components:
           enum:
             - bookmark
       required:
-        - platform
-        - discover_guid
         - type
     interaction_rate:
       title: interaction_rate
       type: object
+      additionalProperties: false
       description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
       x-examples: {}
       properties:
@@ -169,12 +171,11 @@ components:
             - rate
       required:
         - platform
-        - rating
-        - discover_guid
         - type
     interaction_view:
       title: interaction_view
       type: object
+      additionalProperties: false
       description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
       x-examples: {}
       properties:
@@ -189,12 +190,11 @@ components:
           enum:
             - view
       required:
-        - platform
-        - discover_guid
         - type
     interaction_play:
       title: interaction_play
       type: object
+      additionalProperties: false
       description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
       x-examples: {}
       properties:
@@ -208,26 +208,16 @@ components:
           type: string
           description: A guid to tie back the interaction to recommended content
           example: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
-        portion:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          default: 0
-          description: '% of the target object interacted with. Can be the length of the content watched'
         type:
           type: string
           enum:
             - play
       required:
-        - platform
-        - duration_secs
-        - discover_guid
-        - portion
         - type
     interaction_buy_rent:
       title: interaction_buy_rent
       type: object
+      additionalProperties: false
       description: 'Generalpurpose object to collect info that is very context dependant, esp of the type of interaction we record'
       x-examples: {}
       properties:
@@ -251,6 +241,8 @@ components:
           enum:
             - buy
             - rent
+      required:
+        - type
     platform_type:
       type: string
       title: platform_type
@@ -276,8 +268,9 @@ components:
         - stb_freeview
         - stb_freesat
     user_object:
-      title: user
+      additionalProperties: true
       type: object
+      title: user
       properties:
         id:
           type: string
@@ -289,6 +282,7 @@ components:
     entity_object:
       title: entity
       type: object
+      additionalProperties: false
       x-examples: {}
       properties:
         id:
@@ -300,7 +294,6 @@ components:
       required:
         - id
         - source
-        - type
   securitySchemes:
     Authorization:
       name: Authorization
