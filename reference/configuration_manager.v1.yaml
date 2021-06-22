@@ -74,7 +74,7 @@ paths:
                     - qualifiers
                     - rest
                     source: iva_iva
-                  identifier:
+                  identifier: "my identifier"
                   type: sherlockConfig
             schema:
               additionalProperties: false
