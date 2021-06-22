@@ -210,7 +210,7 @@ paths:
                 value:
                   email: keizer@email.com
                   first_name: Keizer
-                  last_name: "S\xF6ze"
+                  last_name: "Söze"
                   password: password
                   password_confirm: password
                   registration_token: 55a68d8af89b4a29a453c9a21b37445f
