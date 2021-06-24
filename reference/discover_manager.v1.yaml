@@ -511,11 +511,6 @@ paths:
           name: content.source
           description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid
         - schema:
-            type: string
-          in: header
-          name: Content-Language
-          description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
-        - schema:
             type: integer
           in: query
           name: limit
@@ -574,6 +569,13 @@ paths:
           in: query
           name: user.source
           description: Namespace of user.id
+        - schema:
+            type: array
+            items:
+              $ref: ../models/language_field.v1.yaml
+          in: query
+          name: languages
+          description: 'Used to remove unnecessary titles, descriptions and artworks.'
       description: ''
     parameters: []
 components:
