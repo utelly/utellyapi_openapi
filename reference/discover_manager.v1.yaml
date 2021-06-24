@@ -399,7 +399,7 @@ paths:
       description: ''
   /creative_works/related:
     get:
-      summary: related
+      summary: Related Creative Works
       tags: []
       responses:
         '200':
@@ -427,7 +427,6 @@ paths:
                     type: integer
                     description: Total number of results
                 required:
-                  - _embedded
                   - _links
                   - discover_guid
                   - total_count
@@ -505,6 +504,7 @@ paths:
           in: query
           name: content.id
           description: Id of the item to which items should be related
+          required: true
         - schema:
             type: string
           in: query
@@ -526,38 +526,54 @@ paths:
           name: skip
           description: 'Number of items to skip, can be used with limit to page'
         - schema:
-            type: string
+            items:
+              enum:
+                - creative_works
+              type: string
+            type: array
+            example:
+              - creative_works
           in: query
           name: embed
           description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
         - schema:
-            type: string
+            items:
+              type: string
+            type: array
           in: query
           name: fields
           description: List of resource fields to be including in the response.
         - schema:
-            type: string
+            items:
+              type: string
+            type: array
           in: query
           description: Has availability for one or more of the listed location ids.
           name: locations
-        - schema: {}
-          in: query
-          name: user
-          description: Allows for results to be personalised based on historic user interactions
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/service_name'
+              type: string
           in: query
           name: services
           description: Has one or more of the listed service ids as an availability.
         - schema:
             type: array
             items:
-              $ref: '#/components/schemas/service_name'
+              type: string
           in: query
-          name: 'services[excl]'
+          name: services.excl
           description: Has none of the listed service ids as an availability.
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
       description: ''
     parameters: []
 components:
@@ -571,13 +587,6 @@ components:
           type: string
         source:
           type: string
-    service_name:
-      type: string
-      title: service_name
-      enum:
-        - primevideo
-        - netflix
-        - disneyplus
   parameters:
     user_param:
       name: user
