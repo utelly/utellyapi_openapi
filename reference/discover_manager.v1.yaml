@@ -361,17 +361,23 @@ paths:
         description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
       - schema:
           type: array
+          items:
+            type: string
         in: query
         name: artworks_type
         description: List of artwork types to be included in the response.
       - schema:
           type: array
+          items:
+            type: string
         in: query
         name: fields
         description: List of resource fields to be including in the response.
         style: pipeDelimited
       - schema:
           type: array
+          items:
+            type: string
           example:
           - availabilities
           - tags
@@ -396,6 +402,15 @@ paths:
           type: integer
         in: query
         name: skip
+      - schema:
+          type: array
+          items:
+            $ref: ../models/language_field.v1.yaml
+        in: query
+        name: languages
+        style: pipeDelimited
+        explode: true
+        description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
       description: ''
   /creative_works/related:
     get:
