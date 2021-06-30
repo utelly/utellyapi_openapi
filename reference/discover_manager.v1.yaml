@@ -7,14 +7,14 @@ info:
     email: developers@utelly.com
     name: API Support
 servers:
-- url: 'https://services.utelly.com/discover_manager/v1'
-  description: prod
-- url: 'https://staging-services.utelly.com/discover_manager/v1'
-  description: staging
-- url: 'https://dev-services.utelly.com/discover_manager/v1'
-  description: dev
+  - url: 'https://services.utelly.com/discover_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/discover_manager/v1'
+    description: staging
+  - url: 'https://dev-services.utelly.com/discover_manager/v1'
+    description: dev
 security:
-- Authorization: []
+  - Authorization: []
 paths:
   /creative_works/discover:
     get:
@@ -46,64 +46,64 @@ paths:
                     type: integer
                     description: Total number of results
                 required:
-                - _embedded
-                - _links
-                - discover_guid
-                - total_count
+                  - _embedded
+                  - _links
+                  - discover_guid
+                  - total_count
               examples:
                 '1':
                   value:
                     _embedded:
                       creative_works:
-                      - _links:
-                          availabilities:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                          content_ratings:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                          contributors:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                          episodes:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
-                          seasons:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
-                          self:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                          tags:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                        artworks:
-                        - height: 100
-                          metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: poster
-                          url: 'https://mydomain.com/poster.jpg'
-                          width: 100
-                        created_at: '2020-01-01T00:00:10Z'
-                        deleted: false
-                        descriptions:
-                        - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
-                          metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: full
-                        guid: 27c13eec19014084a0a3173061702b46
-                        identifiers:
-                        - id: '1'
-                          source: mysource
-                        relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                        titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: official
-                          title: The Usual Suspects
-                        type: movie
-                        updated_at: '2020-01-01T00:00:10Z'
+                        - _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
                     _links:
                       first:
                         href: /content/creative_works
@@ -415,7 +415,7 @@ paths:
       description: ''
   /creative_works/related:
     get:
-      summary: related
+      summary: Related Creative Works
       tags: []
       responses:
         '200':
@@ -443,64 +443,63 @@ paths:
                     type: integer
                     description: Total number of results
                 required:
-                - _embedded
-                - _links
-                - discover_guid
-                - total_count
+                  - _links
+                  - discover_guid
+                  - total_count
               examples:
                 '1':
                   value:
                     _embedded:
                       creative_works:
-                      - _links:
-                          availabilities:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
-                          content_ratings:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
-                          contributors:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
-                          episodes:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
-                          seasons:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
-                          self:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46
-                          tags:
-                            href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
-                        artworks:
-                        - height: 100
-                          metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: poster
-                          url: 'https://mydomain.com/poster.jpg'
-                          width: 100
-                        created_at: '2020-01-01T00:00:10Z'
-                        deleted: false
-                        descriptions:
-                        - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
-                          metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: full
-                        guid: 27c13eec19014084a0a3173061702b46
-                        identifiers:
-                        - id: '1'
-                          source: mysource
-                        relationships:
-                        - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
-                          rel: parent
-                        titles:
-                        - metadata:
-                            country: GB
-                            language: en
-                            source: mysource
-                            type: official
-                          title: The Usual Suspects
-                        type: movie
-                        updated_at: '2020-01-01T00:00:10Z'
+                        - _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
                     _links:
                       first:
                         href: /content/creative_works
@@ -516,64 +515,83 @@ paths:
                     total_count: 1
       operationId: v1.discover.related.get
       parameters:
-      - schema:
-          type: string
-        in: query
-        name: content.id
-        description: Id of the item to which items should be related
-      - schema:
-          type: string
-        in: query
-        name: content.source
-        description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid
-      - schema:
-          type: string
-        in: header
-        name: Content-Language
-        description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
-      - schema:
-          type: integer
-        in: query
-        name: limit
-        description: Max items to be included in response
-      - schema:
-          type: integer
-        in: query
-        name: skip
-        description: 'Number of items to skip, can be used with limit to page'
-      - schema:
-          type: string
-        in: query
-        name: embed
-        description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
-      - schema:
-          type: string
-        in: query
-        name: fields
-        description: List of resource fields to be including in the response.
-      - schema:
-          type: string
-        in: query
-        description: Has availability for one or more of the listed location ids.
-        name: locations
-      - schema: {}
-        in: query
-        name: user
-        description: Allows for results to be personalised based on historic user interactions
-      - schema:
-          type: array
-          items:
-            $ref: '#/components/schemas/service_name'
-        in: query
-        name: services
-        description: Has one or more of the listed service ids as an availability.
-      - schema:
-          type: array
-          items:
-            $ref: '#/components/schemas/service_name'
-        in: query
-        name: 'services[excl]'
-        description: Has none of the listed service ids as an availability.
+        - schema:
+            type: string
+          in: query
+          name: content.id
+          description: Id of the item to which items should be related
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: content.source
+          description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Max items to be included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: 'Number of items to skip, can be used with limit to page'
+        - schema:
+            items:
+              enum:
+                - creative_works
+              type: string
+            type: array
+            example:
+              - creative_works
+          in: query
+          name: embed
+          description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
+        - schema:
+            items:
+              type: string
+            type: array
+          in: query
+          name: fields
+          description: List of resource fields to be including in the response.
+        - schema:
+            items:
+              type: string
+            type: array
+          in: query
+          description: Has availability for one or more of the listed location ids.
+          name: locations
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: services
+          description: Has one or more of the listed service ids as an availability.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: services.excl
+          description: Has none of the listed service ids as an availability.
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: array
+            items:
+              $ref: ../models/language_field.v1.yaml
+          in: query
+          name: languages
+          description: 'Used to remove unnecessary titles, descriptions and artworks.'
       description: ''
     parameters: []
 components:
@@ -587,13 +605,6 @@ components:
           type: string
         source:
           type: string
-    service_name:
-      type: string
-      title: service_name
-      enum:
-      - primevideo
-      - netflix
-      - disneyplus
   parameters:
     user_param:
       name: user

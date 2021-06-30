@@ -1982,6 +1982,8 @@ paths:
       - in: query
         name: sort
         schema:
+          items:
+            type: string
           type: array
       responses:
         '200':
