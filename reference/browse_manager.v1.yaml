@@ -3,6 +3,8 @@ components:
     Availability:
       additionalProperties: false
       description: ''
+      title: Availability
+      type: object
       properties:
         _embedded:
           type: object
@@ -25,14 +27,16 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         s:
           type: string
         targets:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               currency:
                 $ref: ../models/currency_field.v1.yaml
@@ -44,11 +48,6 @@ components:
                   - Buy
                 type: string
               platform:
-                enum:
-                  - web
-                  - android
-                  - ios
-                  - tv
                 type: string
               price:
                 type: number
@@ -77,8 +76,6 @@ components:
               - provider
               - quality
               - url
-            type: object
-          type: array
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
@@ -92,8 +89,6 @@ components:
         - guid
         - identifiers
         - updated_at
-      title: Availability
-      type: object
     ContentRating:
       additionalProperties: false
       properties:
