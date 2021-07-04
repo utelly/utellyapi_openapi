@@ -141,6 +141,36 @@ paths:
           type: array
           items:
             type: string
+            enum:
+            - web
+            - android
+            - ios
+            - tv
+            - native_hbbtv
+        in: query
+        name: platform
+        style: pipeDelimited
+        explode: true
+        description: Has one or more of the listed platforms as an availability.
+      - schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - web
+            - android
+            - ios
+            - tv
+            - native_hbbtv
+        in: query
+        name: platform.excl
+        style: pipeDelimited
+        explode: true
+        description: Has none of the listed platforms as an availability.
+      - schema:
+          type: array
+          items:
+            type: string
         in: query
         name: locations
         style: pipeDelimited
