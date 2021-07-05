@@ -2031,7 +2031,8 @@ paths:
                 type: object
           description: OK
       summary: Get items related to a creative work
-      tags: []
+      tags:
+        - Related management
     parameters:
       - in: path
         name: creative_work_guid
@@ -3069,7 +3070,8 @@ paths:
                 type: object
           description: OK
       summary: List related
-      tags: []
+      tags:
+        - Related management
   '/content/related/{related_guid}':
     get:
       operationId: v1.content.related.get_one
@@ -3099,35 +3101,19 @@ paths:
               examples:
                 '1':
                   value:
-                    _embedded:
-                      related:
-                        - _links:
-                            creative_works:
-                              - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
-                          guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
-                          params:
-                            strength: 0.22
-                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
                     _links:
-                      self:
-                        href: /content/related/4f15360894320c853e9e2b3c0875dbf15fa15c90?
+                      creative_works:
+                        - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
+                    guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
+                    params:
+                      strength: 0.22
+                    seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
               schema:
-                type: object
-                additionalProperties: false
-                properties:
-                  _embedded:
-                    type: object
-                    additionalProperties: false
-                    properties:
-                      related:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Related'
-                  _links:
-                    $ref: ../models/HalLinks.v1.yaml
+                $ref: '#/components/schemas/Related'
           description: OK
       summary: Get a relationship
-      tags: []
+      tags:
+        - Related management
     parameters:
       - in: path
         name: related_guid
