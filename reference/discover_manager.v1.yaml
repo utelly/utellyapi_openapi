@@ -558,6 +558,8 @@ paths:
           description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid
         - schema:
             type: integer
+            minimum: 0
+            maximum: 50
           in: query
           name: limit
           description: Max items to be included in response
