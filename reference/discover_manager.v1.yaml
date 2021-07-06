@@ -569,16 +569,16 @@ paths:
           name: skip
           description: 'Number of items to skip, can be used with limit to page'
         - schema:
-            items:
-              enum:
-                - creative_works
-              type: string
             type: array
+            items:
+              type: string
             example:
-              - creative_works
+            - availabilities
+            - tags
           in: query
           name: embed
           description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
+          style: pipeDelimited
         - schema:
             items:
               type: string
@@ -586,6 +586,7 @@ paths:
           in: query
           name: fields
           description: List of resource fields to be including in the response.
+          style: pipeDelimited
         - schema:
             type: array
             items:
@@ -621,6 +622,7 @@ paths:
               type: string
             type: array
           in: query
+          style: pipeDelimited
           description: Has availability for one or more of the listed location ids.
           name: locations
         - schema:
@@ -629,6 +631,7 @@ paths:
               type: string
           in: query
           name: services
+          style: pipeDelimited
           description: Has one or more of the listed service ids as an availability.
         - schema:
             type: array
@@ -636,6 +639,7 @@ paths:
               type: string
           in: query
           name: services.excl
+          style: pipeDelimited
           description: Has none of the listed service ids as an availability.
         - schema:
             type: string
@@ -652,6 +656,7 @@ paths:
             items:
               $ref: ../models/language_field.v1.yaml
           in: query
+          style: pipeDelimited
           name: languages
           description: 'Used to remove unnecessary titles, descriptions and artworks.'
       description: ''
