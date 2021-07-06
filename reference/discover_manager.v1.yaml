@@ -585,6 +585,36 @@ paths:
           name: fields
           description: List of resource fields to be including in the response.
         - schema:
+            type: array
+            items:
+              type: string
+              enum:
+              - web
+              - android
+              - ios
+              - tv
+              - native_hbbtv
+          in: query
+          name: platform
+          style: pipeDelimited
+          explode: true
+          description: Has one or more of the listed platforms as an availability.
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+              - web
+              - android
+              - ios
+              - tv
+              - native_hbbtv
+          in: query
+          name: platform.excl
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed platforms as an availability.
+        - schema:
             items:
               type: string
             type: array
