@@ -1,0 +1,511 @@
+openapi: 3.1.0
+info:
+  title: editorial_manager
+  version: v1
+  contact:
+    name: API Support
+    email: developers@utelly.com
+servers:
+  - url: 'https://services.utelly.com/editorial_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/editorial_manager/v1'
+    description: staging
+  - url: 'https://dev-services.utelly.com/editorial_manager/v1'
+    description: dev
+paths:
+  /collections:
+    post:
+      summary: ''
+      operationId: v1.editorial.collections.create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection_guid:
+                    type: string
+      description: ''
+      tags:
+        - collection_management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  title: Mark's Top Picks
+                  description: Curated by Mark
+                  definition:
+                    base_url: 'https://dev-services.utelly.com/content/creative_works'
+                    parameters:
+                      languages: en
+                      filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
+                  refresh_timeout: 3600
+                  shuffle_set: []
+                  shuffle_rate: 3
+                  promotions:
+                    - fake_promotion_guid
+                  pinned_items:
+                    - d34a6096a8f9760c7c39676572f00cfd709790ff
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                definition:
+                  type: object
+                  properties:
+                    base_url:
+                      type: string
+                      minLength: 1
+                    parameters:
+                      type: object
+                refresh_timeout:
+                  type: number
+                shuffle_set:
+                  type: array
+                  items:
+                    type: integer
+                shuffle_rate:
+                  type: number
+                promotions:
+                  type: array
+                  items:
+                    type: string
+                pinned_items:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - definition
+            examples: {}
+    get:
+      summary: ''
+      operationId: v1.editorial.collections.get_list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      collections:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/collection'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      tags:
+        - collection_management
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of collections to include in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of collections to skip
+  '/collections/{collection_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: collection_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - collection_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collection'
+      operationId: v1.editorial.collections.get_one
+      description: ''
+    put:
+      summary: ''
+      operationId: v1.editorial.collections.update
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection_guid:
+                    type: string
+      tags:
+        - collection_management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  title: Mark's Top Picks
+                  description: Curated by Mark
+                  definition:
+                    base_url: 'https://dev-services.utelly.com/content/creative_works'
+                    parameters:
+                      languages: en
+                      filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
+                  refresh_timeout: 3600
+                  shuffle_set: []
+                  shuffle_rate: 3
+                  promotions:
+                    - fake_promotion_guid
+                  pinned_items:
+                    - d34a6096a8f9760c7c39676572f00cfd709790ff
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                definition:
+                  type: object
+                  properties:
+                    base_url:
+                      type: string
+                      minLength: 1
+                    parameters:
+                      type: object
+                refresh_timeout:
+                  type: number
+                shuffle_set:
+                  type: array
+                  items:
+                    type: integer
+                shuffle_rate:
+                  type: number
+                promotions:
+                  type: array
+                  items:
+                    type: string
+                pinned_items:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - definition
+    delete:
+      summary: ''
+      operationId: v1.editorial.collections.delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collection_guid:
+                    type: string
+      tags:
+        - collection_management
+  /pages:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - page_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      pages:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/page'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.editorial.pages.get_list
+      description: ''
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of pages to include in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of pages to skip
+    post:
+      summary: ''
+      operationId: post-pages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_guid:
+                    type: string
+      tags:
+        - page_management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  title: Homepage
+                  description: Typical homepage
+                  definition:
+                    collections:
+                      - collection_guid: abc123
+                      - collection_guid: abc123
+                        title: Mark's Top French Picks
+                        definition:
+                          parameters:
+                            languages: fr
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                definition:
+                  type: object
+                  required:
+                    - collections
+                  properties:
+                    collections:
+                      type: array
+                      uniqueItems: true
+                      minItems: 1
+                      items:
+                        type: object
+                        properties:
+                          collection_guid:
+                            type: string
+                            minLength: 1
+                          title:
+                            type: string
+                            minLength: 1
+                          definition:
+                            type: object
+                            properties:
+                              parameters:
+                                type: object
+                                required:
+                                  - languages
+                                properties:
+                                  languages:
+                                    type: string
+                                    minLength: 1
+              required:
+                - definition
+  '/pages/{page_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - page_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/page'
+      operationId: v1.editorial.pages.get_one
+    put:
+      summary: ''
+      operationId: v1.editorial.pages.update
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_guid:
+                    type: string
+      tags:
+        - page_management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              x-examples:
+                example-1:
+                  title: Homepage
+                  description: Typical homepage
+                  definition:
+                    collections:
+                      - collection_guid: abc123
+                      - collection_guid: abc123
+                        title: Mark's Top French Picks
+                        definition:
+                          parameters:
+                            languages: fr
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                description:
+                  type: string
+                  minLength: 1
+                definition:
+                  type: object
+                  required:
+                    - collections
+                  properties:
+                    collections:
+                      type: array
+                      uniqueItems: true
+                      minItems: 1
+                      items:
+                        type: object
+                        properties:
+                          collection_guid:
+                            type: string
+                            minLength: 1
+                          title:
+                            type: string
+                            minLength: 1
+                          definition:
+                            type: object
+                            properties:
+                              parameters:
+                                type: object
+                                required:
+                                  - languages
+                                properties:
+                                  languages:
+                                    type: string
+                                    minLength: 1
+              required:
+                - definition
+    delete:
+      summary: ''
+      operationId: v1.editorial.pages.delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_guid:
+                    type: string
+      tags:
+        - page_management
+components:
+  schemas:
+    collection:
+      title: collection_definition
+      type: object
+      properties:
+        collection_guid:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        definition:
+          type: object
+          properties:
+            base_url:
+              type: string
+            parameters:
+              type: object
+        refresh_timeout:
+          type: integer
+        shuffle_set:
+          type: array
+          items:
+            type: integer
+        shuffle_rate:
+          type: integer
+        promotions:
+          type: array
+          items:
+            type: string
+        pinned_items:
+          type: array
+          items:
+            type: string
+      required:
+        - collection_guid
+        - definition
+    page:
+      title: page_definition
+      type: object
+      properties:
+        page_guid:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        definition:
+          type: object
+          properties:
+            collections:
+              type: array
+              items:
+                type: object
+                properties:
+                  collection_guid:
+                    type: string
+                  title:
+                    type: string
+                  definition:
+                    type: object
+                    properties:
+                      parameters:
+                        type: object
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
+security:
+  - Authorization: []
+tags:
+  - name: utelly_services

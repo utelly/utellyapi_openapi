@@ -1,0 +1,289 @@
+openapi: 3.1.0
+info:
+  title: content_manager
+  version: '1.0'
+  contact:
+    name: API Support
+    email: developers@utelly.com
+servers:
+  - url: 'https://services.utelly.com/content_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/content_manager/v1'
+    description: staging
+  - url: 'https://dev-services.utelly.com/content_manager/v1'
+    description: dev
+paths:
+  /collections:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      collections:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/collection'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.content.collections.get_list
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of collections to include in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of collections to skip
+  '/collections/{collection_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: collection_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collection'
+      operationId: v1.content.collections.get_one
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+  /pages:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      pages:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/page'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.content.pages.get_list
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of pages to include in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of pages to skip
+  '/pages/{page_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/page'
+      operationId: v1.content.pages.get_one
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+  '/content/collections/{collection_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: collection_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      creative_works:
+                        type: array
+                        items:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.content.get_list
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: string
+          in: query
+          name: page_guid
+          description: Guid for page on which this collection is appearing
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of items included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of items to skip
+        - schema:
+            type: array
+          in: query
+          name: fields
+          description: Specifies properties to include in response
+  '/content/pages/{page_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: page_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '':
+                    type: string
+      operationId: get-content-pages-page_guid
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+components:
+  schemas:
+    collection:
+      title: collection
+      type: object
+      properties:
+        collection_guid:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        refresh_timeout:
+          type: integer
+    page:
+      title: page
+      type: object
+      properties:
+        page_guid:
+          type: string
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/collection'
+        title:
+          type: string
+        description:
+          type: string
+        refresh_timeout:
+          type: integer
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
+tags:
+  - name: utelly_services
+security:
+  - Authorization: []
