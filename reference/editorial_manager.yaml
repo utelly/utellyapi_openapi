@@ -500,6 +500,18 @@ components:
                     properties:
                       parameters:
                         type: object
+        enforce_uniqueness:
+          type: boolean
+        refresh_timeout:
+          type: integer
+        valid_from:
+          type: string
+        valid_to:
+          type: string
+        editorial_state:
+          type: string
+        audience:
+          type: object
   securitySchemes:
     Authorization:
       name: Authorization
