@@ -256,7 +256,10 @@ paths:
             type: string
           example:
           - movie
+          - tv
           - series
+          - season
+          - episode
         in: query
         name: types
         style: pipeDelimited
@@ -384,11 +387,6 @@ paths:
         name: rating.lte
         style: pipeDelimited
         description: Has rating less than or equal to. List of ratings values with source flag
-      - schema:
-          type: string
-        in: header
-        name: Content-Language
-        description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
       - schema:
           type: array
           items:
