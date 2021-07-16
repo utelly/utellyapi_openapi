@@ -255,8 +255,8 @@ paths:
           items:
             type: string
           example:
-          - movie
           - tv
+          - movie
           - series
           - season
           - episode
