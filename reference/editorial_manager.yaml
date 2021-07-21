@@ -23,10 +23,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  collection_guid:
-                    type: string
+                $ref: '#/components/schemas/collection'
       description: ''
       tags:
         - collection_management
@@ -53,38 +50,10 @@ paths:
                   pinned_items:
                     - d34a6096a8f9760c7c39676572f00cfd709790ff
               properties:
-                title:
-                  type: string
-                  minLength: 1
-                description:
-                  type: string
-                  minLength: 1
-                definition:
-                  type: object
-                  properties:
-                    base_url:
-                      type: string
-                      minLength: 1
-                    parameters:
-                      type: object
-                refresh_timeout:
-                  type: number
-                shuffle_set:
-                  type: array
-                  items:
-                    type: integer
-                shuffle_rate:
-                  type: number
-                promotions:
-                  type: array
-                  items:
-                    type: string
-                pinned_items:
-                  type: array
-                  items:
-                    type: string
-              required:
-                - definition
+                collection:
+                  $ref: '#/components/schemas/collection'
+                audit_entry:
+                  $ref: '#/components/schemas/audit_entry'
             examples: {}
     get:
       summary: ''
@@ -148,10 +117,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  collection_guid:
-                    type: string
+                $ref: '#/components/schemas/collection'
       tags:
         - collection_management
       requestBody:
@@ -177,53 +143,10 @@ paths:
                   pinned_items:
                     - d34a6096a8f9760c7c39676572f00cfd709790ff
               properties:
-                title:
-                  type: string
-                  minLength: 1
-                description:
-                  type: string
-                  minLength: 1
-                definition:
-                  type: object
-                  properties:
-                    base_url:
-                      type: string
-                      minLength: 1
-                    parameters:
-                      type: object
-                refresh_timeout:
-                  type: number
-                shuffle_set:
-                  type: array
-                  items:
-                    type: integer
-                shuffle_rate:
-                  type: number
-                promotions:
-                  type: array
-                  items:
-                    type: string
-                pinned_items:
-                  type: array
-                  items:
-                    type: string
-              required:
-                - definition
-    delete:
-      summary: ''
-      operationId: v1.editorial.collections.delete
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  collection_guid:
-                    type: string
-      tags:
-        - collection_management
+                collection:
+                  $ref: '#/components/schemas/collection'
+                audit_entry:
+                  $ref: '#/components/schemas/audit_entry'
   /pages:
     get:
       summary: Your GET endpoint
@@ -268,10 +191,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  page_guid:
-                    type: string
+                $ref: '#/components/schemas/page'
       tags:
         - page_management
       requestBody:
@@ -279,7 +199,6 @@ paths:
           application/json:
             schema:
               description: ''
-              type: object
               x-examples:
                 example-1:
                   title: Homepage
@@ -292,44 +211,12 @@ paths:
                         definition:
                           parameters:
                             languages: fr
+              type: object
               properties:
-                title:
-                  type: string
-                  minLength: 1
-                description:
-                  type: string
-                  minLength: 1
-                definition:
-                  type: object
-                  required:
-                    - collections
-                  properties:
-                    collections:
-                      type: array
-                      uniqueItems: true
-                      minItems: 1
-                      items:
-                        type: object
-                        properties:
-                          collection_guid:
-                            type: string
-                            minLength: 1
-                          title:
-                            type: string
-                            minLength: 1
-                          definition:
-                            type: object
-                            properties:
-                              parameters:
-                                type: object
-                                required:
-                                  - languages
-                                properties:
-                                  languages:
-                                    type: string
-                                    minLength: 1
-              required:
-                - definition
+                page:
+                  $ref: '#/components/schemas/page'
+                audit_entry:
+                  $ref: '#/components/schemas/audit_entry'
   '/pages/{page_guid}':
     parameters:
       - schema:
@@ -358,10 +245,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  page_guid:
-                    type: string
+                $ref: '#/components/schemas/page'
       tags:
         - page_management
       requestBody:
@@ -383,46 +267,15 @@ paths:
                           parameters:
                             languages: fr
               properties:
-                title:
-                  type: string
-                  minLength: 1
-                description:
-                  type: string
-                  minLength: 1
-                definition:
-                  type: object
-                  required:
-                    - collections
-                  properties:
-                    collections:
-                      type: array
-                      uniqueItems: true
-                      minItems: 1
-                      items:
-                        type: object
-                        properties:
-                          collection_guid:
-                            type: string
-                            minLength: 1
-                          title:
-                            type: string
-                            minLength: 1
-                          definition:
-                            type: object
-                            properties:
-                              parameters:
-                                type: object
-                                required:
-                                  - languages
-                                properties:
-                                  languages:
-                                    type: string
-                                    minLength: 1
-              required:
-                - definition
-    delete:
-      summary: ''
-      operationId: v1.editorial.pages.delete
+                page:
+                  $ref: '#/components/schemas/page'
+                audit_entry:
+                  $ref: '#/components/schemas/audit_entry'
+  /slugs:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - slug_management
       responses:
         '200':
           description: OK
@@ -431,26 +284,102 @@ paths:
               schema:
                 type: object
                 properties:
-                  page_guid:
-                    type: string
+                  _embedded:
+                    type: object
+                    properties:
+                      slugs:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/slug'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.editorial.slugs.get_list
+      description: ''
+    post:
+      summary: ''
+      operationId: v1.editorial.slugs.create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/slug'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  $ref: '#/components/schemas/slug'
+                audit_entry:
+                  $ref: '#/components/schemas/audit_entry'
       tags:
-        - page_management
+        - slug_management
+  '/slugs/{slug_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: slug_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - slug_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/slug'
+      operationId: v1.editorial.slugs.get_one
+    put:
+      summary: ''
+      operationId: v1.editorial.slugs.update
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/slug'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  $ref: '#/components/schemas/slug'
+                audit_entry:
+                  $ref: '#/components/schemas/audit_entry'
+      tags:
+        - slug_management
 components:
   schemas:
     collection:
-      title: collection_definition
+      title: collection
       type: object
+      x-tags:
+        - collection_management
       properties:
         collection_guid:
           type: string
-        title:
-          type: string
+        titles:
+          type: array
+          items:
+            $ref: '#/components/schemas/title'
         description:
-          type: string
-        definition:
+          type: array
+          items:
+            $ref: '#/components/schemas/description'
+        content_definition:
           type: object
           properties:
-            base_url:
+            endpoint:
               type: string
             parameters:
               type: object
@@ -462,28 +391,49 @@ components:
             type: integer
         shuffle_rate:
           type: integer
-        promotions:
-          type: array
-          items:
-            type: string
         pinned_items:
           type: array
           items:
             type: string
+        status:
+          $ref: '#/components/schemas/publishing_status'
+        audience:
+          $ref: '#/components/schemas/audience'
+        interaction_guid:
+          type: string
+        ui_configuration:
+          type: object
+          properties:
+            image_type:
+              type: string
+            hero_image:
+              type: string
+            item_count:
+              type: integer
+            max_count:
+              type: integer
+        audit_log:
+          $ref: '#/components/schemas/audit_log'
       required:
         - collection_guid
-        - definition
     page:
-      title: page_definition
+      title: page
       type: object
+      x-tags:
+        - page_management
+      description: ''
       properties:
         page_guid:
           type: string
         title:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/title'
         description:
-          type: string
-        definition:
+          type: array
+          items:
+            $ref: '#/components/schemas/description'
+        content_definition:
           type: object
           properties:
             collections:
@@ -491,15 +441,25 @@ components:
               items:
                 type: object
                 properties:
-                  collection_guid:
+                  _links:
+                    $ref: ../models/hal_link_field.v1.yaml
+                  override_settings:
+                    $ref: '#/components/schemas/collection'
+            exclusion_rules:
+              type: object
+              properties:
+                creative_works:
+                  type: array
+                  items:
                     type: string
-                  title:
+                tags:
+                  type: array
+                  items:
                     type: string
-                  definition:
-                    type: object
-                    properties:
-                      parameters:
-                        type: object
+                people:
+                  type: array
+                  items:
+                    type: string
         enforce_uniqueness:
           type: boolean
         refresh_timeout:
@@ -508,10 +468,112 @@ components:
           type: string
         valid_to:
           type: string
-        editorial_state:
+        status:
+          $ref: '#/components/schemas/publishing_status'
+        merchandising_enabled:
+          type: string
+        interaction_guid:
           type: string
         audience:
+          $ref: '#/components/schemas/audience'
+        audit_log:
+          $ref: '#/components/schemas/audit_log'
+    publishing_status:
+      type: string
+      enum:
+        - draft
+        - published
+        - archived
+      title: ''
+    audit_entry:
+      title: audit_entry
+      type: object
+      properties:
+        audit_guid:
+          type: string
+        author:
+          type: string
+        description:
+          type: string
+        current_status:
+          $ref: '#/components/schemas/publishing_status'
+        previous_status:
+          $ref: '#/components/schemas/publishing_status'
+        content:
+          type: string
+        date:
+          type: string
+    audit_log:
+      title: audit_log
+      type: object
+      properties:
+        _embedded:
           type: object
+          properties:
+            audit_entries:
+              type: array
+              items:
+                $ref: '#/components/schemas/audit_entry'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+    audience:
+      title: audience
+      type: object
+      properties:
+        user.sources:
+          type: array
+          items:
+            type: string
+        users.excl:
+          type: array
+          items:
+            type: string
+        platforms:
+          type: array
+          items:
+            $ref: ./interaction_manager.v1.yaml#/components/schemas/platform_type
+        languages:
+          type: array
+          items:
+            $ref: ../models/language_field.v1.yaml
+        countries:
+          type: array
+          items:
+            $ref: ../models/country_field.v1.yaml
+    title:
+      title: title
+      type: object
+      properties:
+        title:
+          type: string
+        metadata:
+          $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+    description:
+      title: description
+      type: object
+      properties:
+        description:
+          type: string
+        metadata:
+          $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
+    slug:
+      title: slug
+      type: object
+      properties:
+        slug_guid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        page_mapping:
+          type: object
+        status:
+          type: string
+        interaction_guid:
+          type: string
+        audit_log:
+          $ref: '#/components/schemas/audit_log'
   securitySchemes:
     Authorization:
       name: Authorization
