@@ -106,6 +106,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/collection'
+              examples:
+                '1':
+                  value:
+                    collection_guid: bd4a6096a8f976931c39676572f00cfd709790aa
+                    titles:
+                      - title: Top Picks
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Curated by Utelly
+                        metadata:
+                          language: en
+                    content_definition:
+                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      parameters:
+                        languages: en
+                        filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
+                    refresh_timeout: 3600
+                    shuffle_set: []
+                    shuffle_rate: 3
+                    pinned_items:
+                      - d34a6096a8f9760c7c39676572f00cfd709790ff
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    ui_configuration:
+                      image_type: poster
+                      item_count: 10
+                      max_count: 25
       operationId: v1.editorial.collections.get_one
       description: ''
     put:
@@ -235,6 +263,53 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/page'
+              examples:
+                '1':
+                  value:
+                    page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    titles:
+                      - title: Homepage
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Typical homepage
+                        metadata:
+                          language: en
+                    content_definition:
+                      collections:
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                            titles:
+                              - title: Change language
+                            content_definition:
+                              languages: fr
+                    enforce_uniqueness: false
+                    refresh_timeout: 3600
+                    valid_from: 20210716T161521Z
+                    valid_to: 20210716T161521Z
+                    status: published
+                    merchandising_enabled: true
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    audience:
+                      users.sources:
+                        - utelly
+                      users.excl: []
+                      platforms:
+                        - ios
+                        - web
+                      languages:
+                        - en
+                        - fr
+                      countries:
+                        - FR
       operationId: v1.editorial.pages.get_one
     put:
       summary: ''
@@ -335,6 +410,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/slug'
+              examples:
+                '1':
+                  value:
+                    slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
+                    name: homepage1
+                    type: static
+                    page_mapping:
+                      page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                '2':
+                  value:
+                    slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
+                    name: homepage1
+                    type: scheduled
+                    page_mapping:
+                      schedule:
+                        - active_date: 20210716T161521Z
+                          page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
+                        - active_date: 20210716T161521Z
+                          page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       operationId: v1.editorial.slugs.get_one
     put:
       summary: ''
@@ -442,8 +540,8 @@ components:
                 type: object
                 properties:
                   _links:
-                    $ref: ../models/hal_link_field.v1.yaml
-                  override_settings:
+                    $ref: ../models/HalLinks.v1.yaml
+                  collection:
                     $ref: '#/components/schemas/collection'
             exclusion_rules:
               type: object
@@ -471,7 +569,7 @@ components:
         status:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
-          type: string
+          type: boolean
         interaction_guid:
           type: string
         audience:
