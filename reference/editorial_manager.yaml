@@ -212,7 +212,7 @@ paths:
           description: Number of pages to skip
     post:
       summary: ''
-      operationId: post-pages
+      operationId: v1.editorial.pages.create
       responses:
         '200':
           description: OK
