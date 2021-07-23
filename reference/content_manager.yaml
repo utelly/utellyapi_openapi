@@ -13,9 +13,9 @@ servers:
   - url: 'https://dev-services.utelly.com/content_manager/v1'
     description: dev
 paths:
-  /collections:
+  /content/collections:
     get:
-      summary: Your GET endpoint
+      summary: List collections
       tags: []
       responses:
         '200':
@@ -71,15 +71,16 @@ paths:
           in: query
           name: country
           description: User country
-  '/collections/{collection_guid}':
+    parameters: []
+  '/editorial/collections/{slug_name}':
     parameters:
       - schema:
           type: string
-        name: collection_guid
+        name: slug_name
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get a collection
       tags: []
       responses:
         '200':
@@ -115,9 +116,10 @@ paths:
           in: query
           name: country
           description: User country
-  /pages:
+      description: ''
+  /editorial/pages:
     get:
-      summary: Your GET endpoint
+      summary: List pages
       tags: []
       responses:
         '200':
@@ -173,7 +175,8 @@ paths:
           in: query
           name: country
           description: User country
-  '/pages/{slug_name}':
+    parameters: []
+  '/editorial/pages/{slug_name}':
     parameters:
       - schema:
           type: string
@@ -181,7 +184,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get a page
       tags: []
       responses:
         '200':
@@ -225,7 +228,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get content of collection
       tags: []
       responses:
         '200':
@@ -302,11 +305,11 @@ components:
         titles:
           type: array
           items:
-            $ref: ./editorial_manager.yaml#/components/schemas/title
+            $ref: ./editorial_manager.v1.yaml#/components/schemas/title
         descriptions:
           type: array
           items:
-            $ref: ./editorial_manager.yaml#/components/schemas/description
+            $ref: ./editorial_manager.v1.yaml#/components/schemas/description
         refresh_timeout:
           type: integer
         interaction_guid:
@@ -335,11 +338,11 @@ components:
         titles:
           type: array
           items:
-            $ref: ./editorial_manager.yaml#/components/schemas/title
+            $ref: ./editorial_manager.v1.yaml#/components/schemas/title
         descriptions:
           type: array
           items:
-            $ref: ./editorial_manager.yaml#/components/schemas/description
+            $ref: ./editorial_manager.v1.yaml#/components/schemas/description
         refresh_timeout:
           type: integer
         interaction_guid:
