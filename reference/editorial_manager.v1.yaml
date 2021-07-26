@@ -59,8 +59,8 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
+              description: ''
               x-examples:
                 example-1:
                   title: Mark's Top Picks
@@ -77,12 +77,17 @@ paths:
                     - fake_promotion_guid
                   pinned_items:
                     - d34a6096a8f9760c7c39676572f00cfd709790ff
+              additionalProperties: false
               properties:
                 collection:
                   $ref: '#/components/schemas/collection'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - collection
+                - audit_entry
             examples: {}
+      parameters: []
     get:
       summary: List collections
       operationId: v1.editorial.collections.get_list
@@ -93,9 +98,13 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   _embedded:
                     type: object
+                    additionalProperties: false
+                    required:
+                      - collections
                     properties:
                       collections:
                         type: array
@@ -103,6 +112,9 @@ paths:
                           $ref: '#/components/schemas/collection'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
               examples:
                 '1':
                   value:
@@ -242,8 +254,8 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
+              description: ''
               x-examples:
                 example-1:
                   title: Mark's Top Picks
@@ -260,11 +272,15 @@ paths:
                     - fake_promotion_guid
                   pinned_items:
                     - d34a6096a8f9760c7c39676572f00cfd709790ff
+              additionalProperties: false
               properties:
                 collection:
                   $ref: '#/components/schemas/collection'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - collection
+                - audit_entry
       description: ''
   /editorial/pages:
     get:
@@ -278,9 +294,13 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   _embedded:
                     type: object
+                    additionalProperties: false
+                    required:
+                      - pages
                     properties:
                       pages:
                         type: array
@@ -288,11 +308,14 @@ paths:
                           $ref: '#/components/schemas/page'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
               examples:
                 '1':
                   value:
                     _embedded:
-                      collections:
+                      pages:
                         - page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                           titles:
                             - title: Homepage
@@ -326,9 +349,9 @@ paths:
                           merchandising_enabled: true
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                           audience:
-                            users.sources:
+                            user.sources:
                               - utelly
-                            users.excl: []
+                            user.excls: []
                             platforms:
                               - ios
                               - web
@@ -399,9 +422,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      users.sources:
+                      user.sources:
                         - utelly
-                      users.excl: []
+                      user.excls: []
                       platforms:
                         - ios
                         - web
@@ -416,6 +439,7 @@ paths:
         content:
           application/json:
             schema:
+              type: object
               description: ''
               x-examples:
                 example-1:
@@ -429,12 +453,15 @@ paths:
                         definition:
                           parameters:
                             languages: fr
-              type: object
+              additionalProperties: false
               properties:
                 page:
                   $ref: '#/components/schemas/page'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - page
+                - audit_entry
     parameters: []
   '/editorial/pages/{page_guid}':
     parameters:
@@ -490,9 +517,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      users.sources:
+                      user.sources:
                         - utelly
-                      users.excl: []
+                      user.excls: []
                       platforms:
                         - ios
                         - web
@@ -548,9 +575,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      users.sources:
+                      user.sources:
                         - utelly
-                      users.excl: []
+                      user.excls: []
                       platforms:
                         - ios
                         - web
@@ -565,8 +592,8 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
+              description: ''
               x-examples:
                 example-1:
                   title: Homepage
@@ -579,11 +606,15 @@ paths:
                         definition:
                           parameters:
                             languages: fr
+              additionalProperties: false
               properties:
                 page:
                   $ref: '#/components/schemas/page'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - page
+                - audit_entry
       description: ''
   /editorial/slugs:
     get:
@@ -597,9 +628,13 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   _embedded:
                     type: object
+                    additionalProperties: false
+                    required:
+                      - slugs
                     properties:
                       slugs:
                         type: array
@@ -607,6 +642,9 @@ paths:
                           $ref: '#/components/schemas/slug'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
               examples:
                 '1':
                   value:
@@ -651,11 +689,15 @@ paths:
           application/json:
             schema:
               type: object
+              additionalProperties: false
               properties:
                 slug:
                   $ref: '#/components/schemas/slug'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - slug
+                - audit_entry
       tags:
         - slug_management
     parameters: []
@@ -730,21 +772,26 @@ paths:
           application/json:
             schema:
               type: object
+              additionalProperties: false
               properties:
                 slug:
                   $ref: '#/components/schemas/slug'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - slug
+                - audit_entry
       tags:
         - slug_management
       description: ''
 components:
   schemas:
     collection:
-      title: collection
       type: object
+      title: collection
       x-tags:
         - collection_management
+      additionalProperties: false
       properties:
         collection_guid:
           type: string
@@ -752,7 +799,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/title'
-        description:
+        descriptions:
           type: array
           items:
             $ref: '#/components/schemas/description'
@@ -794,22 +841,21 @@ components:
               type: integer
         audit_log:
           $ref: '#/components/schemas/audit_log'
-      required:
-        - collection_guid
     page:
-      title: page
       type: object
+      title: page
       x-tags:
         - page_management
       description: ''
+      additionalProperties: false
       properties:
         page_guid:
           type: string
-        title:
+        titles:
           type: array
           items:
             $ref: '#/components/schemas/title'
-        description:
+        descriptions:
           type: array
           items:
             $ref: '#/components/schemas/description'
@@ -866,8 +912,9 @@ components:
         - archived
       title: ''
     audit_entry:
-      title: audit_entry
       type: object
+      title: audit_entry
+      additionalProperties: false
       properties:
         audit_guid:
           type: string
@@ -884,8 +931,9 @@ components:
         date:
           type: string
     audit_log:
-      title: audit_log
       type: object
+      title: audit_log
+      additionalProperties: false
       properties:
         _embedded:
           type: object
@@ -897,14 +945,15 @@ components:
         _links:
           $ref: ../models/HalLinks.v1.yaml
     audience:
-      title: audience
       type: object
+      title: audience
+      additionalProperties: false
       properties:
         user.sources:
           type: array
           items:
             type: string
-        users.excl:
+        user.excls:
           type: array
           items:
             type: string
@@ -921,24 +970,27 @@ components:
           items:
             $ref: ../models/country_field.v1.yaml
     title:
-      title: title
       type: object
+      title: title
+      additionalProperties: false
       properties:
         title:
           type: string
         metadata:
           $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
     description:
-      title: description
       type: object
+      title: description
+      additionalProperties: false
       properties:
         description:
           type: string
         metadata:
           $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
     slug:
-      title: slug
       type: object
+      title: slug
+      additionalProperties: false
       properties:
         slug_guid:
           type: string
