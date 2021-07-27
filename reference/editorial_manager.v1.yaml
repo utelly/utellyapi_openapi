@@ -841,8 +841,6 @@ components:
               type: integer
         audit_log:
           $ref: '#/components/schemas/audit_log'
-      required:
-        - content_definition
     page:
       type: object
       title: page
