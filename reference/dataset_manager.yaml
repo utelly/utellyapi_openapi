@@ -29,12 +29,14 @@ paths:
                   properties:
                     config:
                       type: object
-                      required:
-                        - dataset
                       properties:
                         dataset:
                           type: string
                           minLength: 1
+                        roles:
+                          type: array
+                          items:
+                            type: string
                     identifier:
                       type: string
                       minLength: 1
@@ -98,6 +100,7 @@ paths:
                 '1':
                   value:
                     - config:
+                        dataset: netflix
                         role:
                           - admin
                       identifier: 6a82cb4732634a5a81d9ac1b94d45ea2
