@@ -37,7 +37,7 @@ paths:
                         metadata:
                           language: en
                     content_definition:
-                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      endpoint: v1.content.creative_work.get_list
                       parameters:
                         languages: en
                         filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -52,6 +52,9 @@ paths:
                       image_type: poster
                       item_count: 10
                       max_count: 25
+                    _links:
+                      self:
+                        href: /editorial/collections/bd4a6096a8f976931c39676572f00cfd709790aa
       description: ''
       tags:
         - collection_management
@@ -130,7 +133,7 @@ paths:
                               metadata:
                                 language: en
                           content_definition:
-                            endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                            endpoint: v1.content.creative_work.get_list
                             parameters:
                               languages: en
                               filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -161,6 +164,18 @@ paths:
           in: query
           name: skip
           description: Number of collections to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -193,7 +208,7 @@ paths:
                         metadata:
                           language: en
                     content_definition:
-                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      endpoint: v1.content.creative_work.get_list
                       parameters:
                         languages: en
                         filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -210,6 +225,11 @@ paths:
                       max_count: 25
       operationId: v1.editorial.collections.get_one
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: embed
     put:
       summary: Update a collection
       operationId: v1.editorial.collections.update
@@ -233,7 +253,7 @@ paths:
                         metadata:
                           language: en
                     content_definition:
-                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      endpoint: v1.content.creative_work.get_list
                       parameters:
                         languages: en
                         filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -376,6 +396,18 @@ paths:
           in: query
           name: skip
           description: Number of pages to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -529,6 +561,11 @@ paths:
                       countries:
                         - FR
       operationId: v1.editorial.pages.get_one
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: embed
     put:
       summary: Update a page
       operationId: v1.editorial.pages.update
@@ -663,6 +700,27 @@ paths:
                         href: /editorial/slugs/984a6096a8f32c9139676573200cfd70979bc5
       operationId: v1.editorial.slugs.get_list
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -746,6 +804,11 @@ paths:
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       operationId: v1.editorial.slugs.get_one
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: embed
     put:
       summary: Update a slug
       operationId: v1.editorial.slugs.update
@@ -784,6 +847,78 @@ paths:
       tags:
         - slug_management
       description: ''
+  /editorial/audit_entries:
+    get:
+      summary: List audit_entries
+      tags:
+        - audit_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      audit_entries:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/audit_entry'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.editorial.audit_entries.get_list
+      description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+  '/editorial/audit_entries/{audit_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: audit_guid
+        in: path
+        required: true
+    get:
+      summary: Get an audit_entry
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/audit_entry'
+      operationId: v1.editorial.audit_entries.get_one
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: integer
+          in: query
+          name: skip
 components:
   schemas:
     collection:
@@ -839,8 +974,8 @@ components:
               type: integer
             max_count:
               type: integer
-        audit_log:
-          $ref: '#/components/schemas/audit_log'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
     page:
       type: object
       title: page
@@ -902,8 +1037,8 @@ components:
           type: string
         audience:
           $ref: '#/components/schemas/audience'
-        audit_log:
-          $ref: '#/components/schemas/audit_log'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
     publishing_status:
       type: string
       enum:
@@ -930,20 +1065,9 @@ components:
           type: string
         date:
           type: string
-    audit_log:
-      type: object
-      title: audit_log
-      additionalProperties: false
-      properties:
-        _embedded:
-          type: object
-          properties:
-            audit_entries:
-              type: array
-              items:
-                $ref: '#/components/schemas/audit_entry'
-        _links:
-          $ref: ../models/HalLinks.v1.yaml
+      required:
+        - author
+        - description
     audience:
       type: object
       title: audience
@@ -1004,8 +1128,8 @@ components:
           type: string
         interaction_guid:
           type: string
-        audit_log:
-          $ref: '#/components/schemas/audit_log'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
   securitySchemes:
     Authorization:
       name: Authorization
