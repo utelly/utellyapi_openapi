@@ -64,22 +64,6 @@ paths:
             schema:
               type: object
               description: ''
-              x-examples:
-                example-1:
-                  title: Mark's Top Picks
-                  description: Curated by Mark
-                  definition:
-                    base_url: 'https://dev-services.utelly.com/content/creative_works'
-                    parameters:
-                      languages: en
-                      filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
-                  refresh_timeout: 3600
-                  shuffle_set: []
-                  shuffle_rate: 3
-                  promotions:
-                    - fake_promotion_guid
-                  pinned_items:
-                    - d34a6096a8f9760c7c39676572f00cfd709790ff
               additionalProperties: false
               properties:
                 collection:
@@ -89,7 +73,36 @@ paths:
               required:
                 - collection
                 - audit_entry
-            examples: {}
+            examples:
+              '1':
+                value:
+                  collection:
+                    titles:
+                      - title: Top Picks
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Curated by Utelly
+                        metadata:
+                          language: en
+                    content_definition:
+                      endpoint: v1.content.creative_work.get_list
+                      parameters:
+                        languages:
+                          - en
+                    refresh_timeout: 3600
+                    shuffle_set: []
+                    shuffle_rate: 3
+                    pinned_items: []
+                    status: draft
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    ui_configuration:
+                      image_type: poster
+                      item_count: 10
+                      max_count: 25
+                  audit_entry:
+                    author: Jessy Green
+                    description: New Top picks collection
       parameters: []
     get:
       summary: List collections
@@ -198,7 +211,6 @@ paths:
               examples:
                 '1':
                   value:
-                    collection_guid: bd4a6096a8f976931c39676572f00cfd709790aa
                     titles:
                       - title: Top Picks
                         metadata:
@@ -210,14 +222,13 @@ paths:
                     content_definition:
                       endpoint: v1.content.creative_work.get_list
                       parameters:
-                        languages: en
-                        filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
+                        languages:
+                          - en
                     refresh_timeout: 3600
                     shuffle_set: []
                     shuffle_rate: 3
-                    pinned_items:
-                      - d34a6096a8f9760c7c39676572f00cfd709790ff
-                    status: published
+                    pinned_items: []
+                    status: draft
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
@@ -276,22 +287,6 @@ paths:
             schema:
               type: object
               description: ''
-              x-examples:
-                example-1:
-                  title: Mark's Top Picks
-                  description: Curated by Mark
-                  definition:
-                    base_url: 'https://dev-services.utelly.com/content/creative_works'
-                    parameters:
-                      languages: en
-                      filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
-                  refresh_timeout: 3600
-                  shuffle_set: []
-                  shuffle_rate: 3
-                  promotions:
-                    - fake_promotion_guid
-                  pinned_items:
-                    - d34a6096a8f9760c7c39676572f00cfd709790ff
               additionalProperties: false
               properties:
                 collection:
@@ -301,6 +296,36 @@ paths:
               required:
                 - collection
                 - audit_entry
+            examples:
+              '1':
+                value:
+                  collection:
+                    titles:
+                      - title: Top Picks
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Curated by Utelly
+                        metadata:
+                          language: en
+                    content_definition:
+                      endpoint: v1.content.creative_work.get_list
+                      parameters:
+                        languages:
+                          - en
+                    refresh_timeout: 3600
+                    shuffle_set: []
+                    shuffle_rate: 3
+                    pinned_items: []
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    ui_configuration:
+                      image_type: poster
+                      item_count: 10
+                      max_count: 25
+                  audit_entry:
+                    author: Jessy Green
+                    description: Updated title and published Top picks collection
       description: ''
   /editorial/pages:
     get:
@@ -473,18 +498,6 @@ paths:
             schema:
               type: object
               description: ''
-              x-examples:
-                example-1:
-                  title: Homepage
-                  description: Typical homepage
-                  definition:
-                    collections:
-                      - collection_guid: abc123
-                      - collection_guid: abc123
-                        title: Mark's Top French Picks
-                        definition:
-                          parameters:
-                            languages: fr
               additionalProperties: false
               properties:
                 page:
@@ -494,6 +507,56 @@ paths:
               required:
                 - page
                 - audit_entry
+            examples:
+              '1':
+                value:
+                  page:
+                    titles:
+                      - title: Homepage
+                        metadata:
+                          language: fr
+                    descriptions:
+                      - description: Typical homepage
+                        metadata:
+                          language: fr
+                    content_definition:
+                      collections:
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                            titles:
+                              - title: Change language
+                            content_definition:
+                              languages: fr
+                    enforce_uniqueness: false
+                    refresh_timeout: 3600
+                    valid_from: 20210716T161521Z
+                    valid_to: 20210716T161521Z
+                    status: draft
+                    merchandising_enabled: true
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    audience:
+                      user.sources:
+                        - utelly
+                      user.excls: []
+                      platforms:
+                        - ios
+                        - web
+                      languages:
+                        - en
+                        - fr
+                      countries:
+                        - FR
+                  audit_entry:
+                    author: ''
+                    description: New homepage
     parameters: []
   '/editorial/pages/{page_guid}':
     parameters:
@@ -516,50 +579,14 @@ paths:
               examples:
                 '1':
                   value:
-                    page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     titles:
-                      - title: Homepage
+                      - title: Top Picks
                         metadata:
                           language: en
                     descriptions:
-                      - description: Typical homepage
+                      - description: Curated by Utelly
                         metadata:
                           language: en
-                    content_definition:
-                      collections:
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
-                            titles:
-                              - title: Change language
-                            content_definition:
-                              languages: fr
-                    enforce_uniqueness: false
-                    refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
-                    status: published
-                    merchandising_enabled: true
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user.sources:
-                        - utelly
-                      user.excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
       operationId: v1.editorial.pages.get_one
       parameters:
         - schema:
@@ -631,18 +658,6 @@ paths:
             schema:
               type: object
               description: ''
-              x-examples:
-                example-1:
-                  title: Homepage
-                  description: Typical homepage
-                  definition:
-                    collections:
-                      - collection_guid: abc123
-                      - collection_guid: abc123
-                        title: Mark's Top French Picks
-                        definition:
-                          parameters:
-                            languages: fr
               additionalProperties: false
               properties:
                 page:
@@ -652,6 +667,56 @@ paths:
               required:
                 - page
                 - audit_entry
+            examples:
+              '1':
+                value:
+                  page:
+                    titles:
+                      - title: Homepage
+                        metadata:
+                          language: fr
+                    descriptions:
+                      - description: Typical homepage
+                        metadata:
+                          language: fr
+                    content_definition:
+                      collections:
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                            titles:
+                              - title: Change language
+                            content_definition:
+                              languages: fr
+                    enforce_uniqueness: false
+                    refresh_timeout: 3600
+                    valid_from: 20210716T161521Z
+                    valid_to: 20210716T161521Z
+                    status: published
+                    merchandising_enabled: true
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    audience:
+                      user.sources:
+                        - utelly
+                      user.excls: []
+                      platforms:
+                        - ios
+                        - web
+                      languages:
+                        - en
+                        - fr
+                      countries:
+                        - FR
+                  audit_entry:
+                    author: ''
+                    description: Updated homepage
       description: ''
   /editorial/slugs:
     get:
@@ -756,6 +821,20 @@ paths:
               required:
                 - slug
                 - audit_entry
+            examples:
+              '1':
+                value:
+                  slug:
+                    name: homepage1
+                    type: static
+                    mapping:
+                      _links:
+                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                  audit_entry:
+                    author: Jack Tester
+                    description: New slug
       tags:
         - slug_management
     parameters: []
@@ -844,6 +923,20 @@ paths:
               required:
                 - slug
                 - audit_entry
+            examples:
+              '1':
+                value:
+                  slug:
+                    name: homepage1
+                    type: static
+                    mapping:
+                      _links:
+                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                  audit_entry:
+                    author: Jack Tester
+                    description: Updated slug
       tags:
         - slug_management
       description: ''
@@ -869,6 +962,35 @@ paths:
                           $ref: '#/components/schemas/audit_entry'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      audit_entries:
+                        - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                          author: Joe Tester
+                          description: First draft
+                          previous_status: draft
+                          current_status: draft
+                          content: ''
+                          date: '2021-08-04T12:56:44Z'
+                        - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                          author: Joe Tester
+                          description: First draft
+                          previous_status: draft
+                          current_status: draft
+                          content: ''
+                          date: '2021-08-04T12:56:44Z'
+                        - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                          author: Joe Tester
+                          description: First draft
+                          previous_status: draft
+                          current_status: draft
+                          content: ''
+                          date: '2021-08-04T12:56:44Z'
+                    _links:
+                      self:
+                        href: /editorial/audit_entries/26355f455be5f1e07e7d00f4680b7d1abe847c8a
       operationId: v1.editorial.audit_entries.get_list
       description: ''
       parameters:
@@ -901,7 +1023,8 @@ paths:
         required: true
     get:
       summary: Get an audit_entry
-      tags: []
+      tags:
+        - audit_management
       responses:
         '200':
           description: OK
@@ -909,6 +1032,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/audit_entry'
+              examples:
+                '1':
+                  value:
+                    audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                    author: Joe Tester
+                    description: First draft
+                    previous_status: draft
+                    current_status: draft
+                    content: ''
+                    date: '2021-08-04T12:56:44Z'
       operationId: v1.editorial.audit_entries.get_one
       parameters:
         - schema:
