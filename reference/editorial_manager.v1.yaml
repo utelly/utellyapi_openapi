@@ -753,7 +753,7 @@ paths:
                     _embedded:
                       slugs:
                         - slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
-                          name: homepage1
+                          page_name: homepage1
                           type: static
                           mapping:
                             _links:
@@ -800,7 +800,7 @@ paths:
                 '1':
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
-                    name: homepage1
+                    page_name: homepage1
                     type: static
                     mapping:
                       _links:
@@ -825,7 +825,7 @@ paths:
               '1':
                 value:
                   slug:
-                    name: homepage1
+                    page_name: homepage1
                     type: static
                     mapping:
                       _links:
@@ -860,7 +860,7 @@ paths:
                 '1':
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
-                    name: homepage1
+                    page_name: homepage1
                     type: static
                     mapping:
                       _links:
@@ -870,7 +870,7 @@ paths:
                 '2':
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
-                    name: homepage1
+                    page_name: homepage1
                     type: scheduled
                     mapping:
                       schedule:
@@ -902,7 +902,7 @@ paths:
                 '1':
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
-                    name: homepage1
+                    page_name: homepage1
                     type: static
                     mapping:
                       _links:
@@ -927,7 +927,7 @@ paths:
               '1':
                 value:
                   slug:
-                    name: homepage1
+                    page_name: homepage1
                     type: static
                     mapping:
                       _links:
@@ -1052,6 +1052,296 @@ paths:
             type: integer
           in: query
           name: skip
+  /content/page:
+    parameters: []
+    get:
+      summary: Get a page
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/page'
+              examples:
+                '1':
+                  value:
+                    page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    titles:
+                      - title: Homepage
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Typical homepage
+                        metadata:
+                          language: en
+                    refresh_timeout: 3600
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+      operationId: v1.content.page.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: page_name
+          required: true
+          description: Name of page (slug that will be mapped to page_guid)
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: string
+          in: query
+          name: platform
+          description: IOS/Android/Web/STB etc
+        - schema:
+            type: string
+          in: query
+          name: language
+          description: User language
+        - schema:
+            type: string
+          in: query
+          name: country
+          description: User country
+  /content/collection:
+    parameters: []
+    get:
+      summary: Get content of collection
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      creative_works:
+                        type: array
+                        items:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      creative_works:
+                        - _embedded:
+                            tags:
+                              - _links:
+                                  self:
+                                    href: /content/tags/adfd3023c701a44c3154a61b5d89213931d2d4c7
+                                created_at: '2021-06-17T10:39:52Z'
+                                deleted: false
+                                guid: adfd3023c701a44c3154a61b5d89213931d2d4c7
+                                identifiers:
+                                  - source: test_discover_test_discover
+                                names:
+                                  - metadata:
+                                      country: US
+                                      language: en
+                                      source: test_discover_test_discover
+                                    name: moody
+                                s: d633aa3d6869525a6e25c3ca224a9487
+                                type: tag
+                                updated_at: '2021-06-17T14:22:13Z'
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/030739ffe7f620c00f694068784f18e81057bc62/availabilities
+                            content_ratings:
+                              href: /content/content_ratings/39cfdb3d56d865c394dccb62ead86fd6c3829fa5
+                            contributors:
+                              href: /content/creative_works/030739ffe7f620c00f694068784f18e81057bc62/contributors
+                            parent:
+                              href: /content/creative_works/af2da64090a6e8f143f724dbbb0cea0863beb87f
+                            self:
+                              href: /content/creative_works/030739ffe7f620c00f694068784f18e81057bc62
+                            tags:
+                              href: /content/tags/adfd3023c701a44c3154a61b5d89213931d2d4c7
+                          created_at: '2021-06-17T10:39:52Z'
+                          deleted: false
+                          guid: 030739ffe7f620c00f694068784f18e81057bc62
+                          identifiers:
+                            - id: AMD1036308
+                              source: test_discover_test_discover
+                          release_year: '2018'
+                          s: f7b67f00b7c3b81fa82b2e387674d514
+                          titles:
+                            - metadata:
+                                country: AS
+                                language: en
+                                source: test_discover_test_discover
+                              title: Commitments
+                          type: episode
+                          updated_at: '2021-06-17T14:22:13Z'
+                        - _embedded:
+                            tags:
+                              - _links:
+                                  self:
+                                    href: /content/tags/45d4c6dde29f02b58855c24c665db7076c88b869
+                                created_at: '2021-06-17T10:39:52Z'
+                                deleted: false
+                                guid: 45d4c6dde29f02b58855c24c665db7076c88b869
+                                identifiers:
+                                  - source: test_discover_test_discover
+                                names:
+                                  - metadata:
+                                      country: US
+                                      language: en
+                                      source: test_discover_test_discover
+                                    name: comedy
+                                s: 3ac248a6806ba17edc2bbc14b499c4d4
+                                type: genre
+                                updated_at: '2021-06-17T14:22:13Z'
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/054db892cc5df72c209afded2828aab0c6b0480f/availabilities
+                            content_ratings:
+                              href: /content/content_ratings/39cfdb3d56d865c394dccb62ead86fd6c3829fa5
+                            contributors:
+                              href: /content/creative_works/054db892cc5df72c209afded2828aab0c6b0480f/contributors
+                            parent:
+                              href: /content/creative_works/af2da64090a6e8f143f724dbbb0cea0863beb87f
+                            self:
+                              href: /content/creative_works/054db892cc5df72c209afded2828aab0c6b0480f
+                            tags:
+                              href: /content/tags/45d4c6dde29f02b58855c24c665db7076c88b869
+                          created_at: '2021-06-17T10:39:52Z'
+                          deleted: false
+                          guid: 054db892cc5df72c209afded2828aab0c6b0480f
+                          identifiers:
+                            - id: AMD1036307
+                              source: test_discover_test_discover
+                          release_year: '2018'
+                          s: e748456375c1e39023bcfc3f8cf3628f
+                          titles:
+                            - metadata:
+                                country: AS
+                                language: en
+                                source: test_discover_test_discover
+                              title: Baby Shower Blues
+                          type: episode
+                          updated_at: '2021-06-17T14:22:13Z'
+                        - _embedded:
+                            tags:
+                              - _links:
+                                  self:
+                                    href: /content/tags/eb19d63d3cacdd2803961ea60f1d92c142b615ec
+                                created_at: '2021-06-17T10:39:52Z'
+                                deleted: false
+                                guid: eb19d63d3cacdd2803961ea60f1d92c142b615ec
+                                identifiers:
+                                  - source: test_discover_test_discover
+                                names:
+                                  - metadata:
+                                      country: US
+                                      language: en
+                                      source: test_discover_test_discover
+                                    name: drama
+                                s: c4dab555a5fa9c554d39f04fa9a98671
+                                type: genre
+                                updated_at: '2021-06-17T14:22:13Z'
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/06d6f3a30f8b1883ea4267c1d55d0afc435bf703/availabilities
+                            content_ratings:
+                              href: /content/content_ratings/03ebbe6b30a6ad3ad90641c4e2b136180aaa0f4d
+                            contributors:
+                              href: /content/creative_works/06d6f3a30f8b1883ea4267c1d55d0afc435bf703/contributors
+                            episodes:
+                              href: /content/creative_works/06d6f3a30f8b1883ea4267c1d55d0afc435bf703/episodes
+                            parent:
+                              href: /content/creative_works/3eef7fd1082cd26a07ff2b72f169f7be477c601e
+                            self:
+                              href: /content/creative_works/06d6f3a30f8b1883ea4267c1d55d0afc435bf703
+                            tags:
+                              href: /content/tags/eb19d63d3cacdd2803961ea60f1d92c142b615ec
+                          created_at: '2021-06-17T10:39:52Z'
+                          deleted: false
+                          guid: 06d6f3a30f8b1883ea4267c1d55d0afc435bf703
+                          identifiers:
+                            - id: bombgirls01
+                              source: test_discover_test_discover
+                          number: 1
+                          release_year: '2020'
+                          s: fee31ed4c4821c2bae0e2e15a4ac87b0
+                          titles:
+                            - metadata:
+                                country: AS
+                                language: en
+                                source: test_discover_test_discover
+                              title: Series 1
+                          type: season
+                          updated_at: '2021-06-17T14:22:13Z'
+                    _links:
+                      self:
+                        href: /content/collections/87d6f3a30f8b1883ea4267c1d55d0afc435bfb33
+      operationId: v1.content.collection.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: collection_guid
+          description: Collection identifier
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: page_guid
+          description: Guid for page on which this collection is appearing
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of items included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of items to skip
+        - schema:
+            type: array
+          in: query
+          name: fields
+          description: Specifies properties to include in response
+        - schema:
+            type: string
+          in: query
+          name: platform
+          description: IOS/Android/Web/STB etc
+        - schema:
+            type: string
+          in: query
+          name: language
+          description: User language
+        - schema:
+            type: string
+          in: query
+          name: country
+          description: User country
+      description: ''
 components:
   schemas:
     collection:
@@ -1251,7 +1541,7 @@ components:
       properties:
         slug_guid:
           type: string
-        name:
+        page_name:
           type: string
         type:
           type: string
@@ -1263,6 +1553,8 @@ components:
           type: string
         _links:
           $ref: ../models/HalLinks.v1.yaml
+      required:
+        - page_name
   securitySchemes:
     Authorization:
       name: Authorization
