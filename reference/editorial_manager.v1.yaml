@@ -37,7 +37,7 @@ paths:
                         metadata:
                           language: en
                     content_definition:
-                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      endpoint: v1.content.creative_work.get_list
                       parameters:
                         languages: en
                         filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -52,6 +52,9 @@ paths:
                       image_type: poster
                       item_count: 10
                       max_count: 25
+                    _links:
+                      self:
+                        href: /editorial/collections/bd4a6096a8f976931c39676572f00cfd709790aa
       description: ''
       tags:
         - collection_management
@@ -59,30 +62,48 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
-              x-examples:
-                example-1:
-                  title: Mark's Top Picks
-                  description: Curated by Mark
-                  definition:
-                    base_url: 'https://dev-services.utelly.com/content/creative_works'
-                    parameters:
-                      languages: en
-                      filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
-                  refresh_timeout: 3600
-                  shuffle_set: []
-                  shuffle_rate: 3
-                  promotions:
-                    - fake_promotion_guid
-                  pinned_items:
-                    - d34a6096a8f9760c7c39676572f00cfd709790ff
+              description: ''
+              additionalProperties: false
               properties:
                 collection:
                   $ref: '#/components/schemas/collection'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
-            examples: {}
+              required:
+                - collection
+                - audit_entry
+            examples:
+              '1':
+                value:
+                  collection:
+                    titles:
+                      - title: Top Picks
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Curated by Utelly
+                        metadata:
+                          language: en
+                    content_definition:
+                      endpoint: v1.content.creative_work.get_list
+                      parameters:
+                        languages:
+                          - en
+                    refresh_timeout: 3600
+                    shuffle_set: []
+                    shuffle_rate: 3
+                    pinned_items: []
+                    status: draft
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    ui_configuration:
+                      image_type: poster
+                      item_count: 10
+                      max_count: 25
+                  audit_entry:
+                    author: Jessy Green
+                    description: New Top picks collection
+      parameters: []
     get:
       summary: List collections
       operationId: v1.editorial.collections.get_list
@@ -93,9 +114,13 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   _embedded:
                     type: object
+                    additionalProperties: false
+                    required:
+                      - collections
                     properties:
                       collections:
                         type: array
@@ -103,6 +128,9 @@ paths:
                           $ref: '#/components/schemas/collection'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
               examples:
                 '1':
                   value:
@@ -118,7 +146,7 @@ paths:
                               metadata:
                                 language: en
                           content_definition:
-                            endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                            endpoint: v1.content.creative_work.get_list
                             parameters:
                               languages: en
                               filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -149,6 +177,18 @@ paths:
           in: query
           name: skip
           description: Number of collections to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -171,7 +211,6 @@ paths:
               examples:
                 '1':
                   value:
-                    collection_guid: bd4a6096a8f976931c39676572f00cfd709790aa
                     titles:
                       - title: Top Picks
                         metadata:
@@ -181,16 +220,15 @@ paths:
                         metadata:
                           language: en
                     content_definition:
-                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      endpoint: v1.content.creative_work.get_list
                       parameters:
-                        languages: en
-                        filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
+                        languages:
+                          - en
                     refresh_timeout: 3600
                     shuffle_set: []
                     shuffle_rate: 3
-                    pinned_items:
-                      - d34a6096a8f9760c7c39676572f00cfd709790ff
-                    status: published
+                    pinned_items: []
+                    status: draft
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
@@ -198,6 +236,11 @@ paths:
                       max_count: 25
       operationId: v1.editorial.collections.get_one
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: embed
     put:
       summary: Update a collection
       operationId: v1.editorial.collections.update
@@ -221,7 +264,7 @@ paths:
                         metadata:
                           language: en
                     content_definition:
-                      endpoint: 'https://dev-services.utelly.com/content/creative_works'
+                      endpoint: v1.content.creative_work.get_list
                       parameters:
                         languages: en
                         filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
@@ -242,29 +285,47 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
-              x-examples:
-                example-1:
-                  title: Mark's Top Picks
-                  description: Curated by Mark
-                  definition:
-                    base_url: 'https://dev-services.utelly.com/content/creative_works'
-                    parameters:
-                      languages: en
-                      filters: '{''operator'': ''eq'', ''property'': ''guid'', ''value'': [''d34a6096a8f9760c7c39676572f00cfd709790ff'', ''69ece68298f50a5b34db5770f4fa06eac63f1ad0'']}'
-                  refresh_timeout: 3600
-                  shuffle_set: []
-                  shuffle_rate: 3
-                  promotions:
-                    - fake_promotion_guid
-                  pinned_items:
-                    - d34a6096a8f9760c7c39676572f00cfd709790ff
+              description: ''
+              additionalProperties: false
               properties:
                 collection:
                   $ref: '#/components/schemas/collection'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - collection
+                - audit_entry
+            examples:
+              '1':
+                value:
+                  collection:
+                    titles:
+                      - title: Top Picks
+                        metadata:
+                          language: en
+                    descriptions:
+                      - description: Curated by Utelly
+                        metadata:
+                          language: en
+                    content_definition:
+                      endpoint: v1.content.creative_work.get_list
+                      parameters:
+                        languages:
+                          - en
+                    refresh_timeout: 3600
+                    shuffle_set: []
+                    shuffle_rate: 3
+                    pinned_items: []
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    ui_configuration:
+                      image_type: poster
+                      item_count: 10
+                      max_count: 25
+                  audit_entry:
+                    author: Jessy Green
+                    description: Updated title and published Top picks collection
       description: ''
   /editorial/pages:
     get:
@@ -278,9 +339,13 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   _embedded:
                     type: object
+                    additionalProperties: false
+                    required:
+                      - pages
                     properties:
                       pages:
                         type: array
@@ -288,11 +353,14 @@ paths:
                           $ref: '#/components/schemas/page'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
               examples:
                 '1':
                   value:
                     _embedded:
-                      collections:
+                      pages:
                         - page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                           titles:
                             - title: Homepage
@@ -326,9 +394,9 @@ paths:
                           merchandising_enabled: true
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                           audience:
-                            users.sources:
+                            user.sources:
                               - utelly
-                            users.excl: []
+                            user.excls: []
                             platforms:
                               - ios
                               - web
@@ -353,6 +421,18 @@ paths:
           in: query
           name: skip
           description: Number of pages to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -399,9 +479,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      users.sources:
+                      user.sources:
                         - utelly
-                      users.excl: []
+                      user.excls: []
                       platforms:
                         - ios
                         - web
@@ -416,25 +496,67 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
-              x-examples:
-                example-1:
-                  title: Homepage
-                  description: Typical homepage
-                  definition:
-                    collections:
-                      - collection_guid: abc123
-                      - collection_guid: abc123
-                        title: Mark's Top French Picks
-                        definition:
-                          parameters:
-                            languages: fr
               type: object
+              description: ''
+              additionalProperties: false
               properties:
                 page:
                   $ref: '#/components/schemas/page'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - page
+                - audit_entry
+            examples:
+              '1':
+                value:
+                  page:
+                    titles:
+                      - title: Homepage
+                        metadata:
+                          language: fr
+                    descriptions:
+                      - description: Typical homepage
+                        metadata:
+                          language: fr
+                    content_definition:
+                      collections:
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                            titles:
+                              - title: Change language
+                            content_definition:
+                              languages: fr
+                    enforce_uniqueness: false
+                    refresh_timeout: 3600
+                    valid_from: 20210716T161521Z
+                    valid_to: 20210716T161521Z
+                    status: draft
+                    merchandising_enabled: true
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    audience:
+                      user.sources:
+                        - utelly
+                      user.excls: []
+                      platforms:
+                        - ios
+                        - web
+                      languages:
+                        - en
+                        - fr
+                      countries:
+                        - FR
+                  audit_entry:
+                    author: ''
+                    description: New homepage
     parameters: []
   '/editorial/pages/{page_guid}':
     parameters:
@@ -457,51 +579,20 @@ paths:
               examples:
                 '1':
                   value:
-                    page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     titles:
-                      - title: Homepage
+                      - title: Top Picks
                         metadata:
                           language: en
                     descriptions:
-                      - description: Typical homepage
+                      - description: Curated by Utelly
                         metadata:
                           language: en
-                    content_definition:
-                      collections:
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
-                            titles:
-                              - title: Change language
-                            content_definition:
-                              languages: fr
-                    enforce_uniqueness: false
-                    refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
-                    status: published
-                    merchandising_enabled: true
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      users.sources:
-                        - utelly
-                      users.excl: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
       operationId: v1.editorial.pages.get_one
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: embed
     put:
       summary: Update a page
       operationId: v1.editorial.pages.update
@@ -548,9 +639,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      users.sources:
+                      user.sources:
                         - utelly
-                      users.excl: []
+                      user.excls: []
                       platforms:
                         - ios
                         - web
@@ -565,25 +656,67 @@ paths:
         content:
           application/json:
             schema:
-              description: ''
               type: object
-              x-examples:
-                example-1:
-                  title: Homepage
-                  description: Typical homepage
-                  definition:
-                    collections:
-                      - collection_guid: abc123
-                      - collection_guid: abc123
-                        title: Mark's Top French Picks
-                        definition:
-                          parameters:
-                            languages: fr
+              description: ''
+              additionalProperties: false
               properties:
                 page:
                   $ref: '#/components/schemas/page'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - page
+                - audit_entry
+            examples:
+              '1':
+                value:
+                  page:
+                    titles:
+                      - title: Homepage
+                        metadata:
+                          language: fr
+                    descriptions:
+                      - description: Typical homepage
+                        metadata:
+                          language: fr
+                    content_definition:
+                      collections:
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                        - _links:
+                            self:
+                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+                          collection:
+                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                            titles:
+                              - title: Change language
+                            content_definition:
+                              languages: fr
+                    enforce_uniqueness: false
+                    refresh_timeout: 3600
+                    valid_from: 20210716T161521Z
+                    valid_to: 20210716T161521Z
+                    status: published
+                    merchandising_enabled: true
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    audience:
+                      user.sources:
+                        - utelly
+                      user.excls: []
+                      platforms:
+                        - ios
+                        - web
+                      languages:
+                        - en
+                        - fr
+                      countries:
+                        - FR
+                  audit_entry:
+                    author: ''
+                    description: Updated homepage
       description: ''
   /editorial/slugs:
     get:
@@ -597,9 +730,13 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: false
                 properties:
                   _embedded:
                     type: object
+                    additionalProperties: false
+                    required:
+                      - slugs
                     properties:
                       slugs:
                         type: array
@@ -607,6 +744,9 @@ paths:
                           $ref: '#/components/schemas/slug'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
               examples:
                 '1':
                   value:
@@ -625,6 +765,27 @@ paths:
                         href: /editorial/slugs/984a6096a8f32c9139676573200cfd70979bc5
       operationId: v1.editorial.slugs.get_list
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -651,11 +812,29 @@ paths:
           application/json:
             schema:
               type: object
+              additionalProperties: false
               properties:
                 slug:
                   $ref: '#/components/schemas/slug'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - slug
+                - audit_entry
+            examples:
+              '1':
+                value:
+                  slug:
+                    name: homepage1
+                    type: static
+                    mapping:
+                      _links:
+                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                  audit_entry:
+                    author: Jack Tester
+                    description: New slug
       tags:
         - slug_management
     parameters: []
@@ -704,6 +883,11 @@ paths:
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       operationId: v1.editorial.slugs.get_one
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: embed
     put:
       summary: Update a slug
       operationId: v1.editorial.slugs.update
@@ -730,21 +914,152 @@ paths:
           application/json:
             schema:
               type: object
+              additionalProperties: false
               properties:
                 slug:
                   $ref: '#/components/schemas/slug'
                 audit_entry:
                   $ref: '#/components/schemas/audit_entry'
+              required:
+                - slug
+                - audit_entry
+            examples:
+              '1':
+                value:
+                  slug:
+                    name: homepage1
+                    type: static
+                    mapping:
+                      _links:
+                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                    status: published
+                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                  audit_entry:
+                    author: Jack Tester
+                    description: Updated slug
       tags:
         - slug_management
       description: ''
+  /editorial/audit_entries:
+    get:
+      summary: List audit_entries
+      tags:
+        - audit_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      audit_entries:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/audit_entry'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      audit_entries:
+                        - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                          author: Joe Tester
+                          description: First draft
+                          previous_status: draft
+                          current_status: draft
+                          content: ''
+                          date: '2021-08-04T12:56:44Z'
+                        - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                          author: Joe Tester
+                          description: First draft
+                          previous_status: draft
+                          current_status: draft
+                          content: ''
+                          date: '2021-08-04T12:56:44Z'
+                        - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                          author: Joe Tester
+                          description: First draft
+                          previous_status: draft
+                          current_status: draft
+                          content: ''
+                          date: '2021-08-04T12:56:44Z'
+                    _links:
+                      self:
+                        href: /editorial/audit_entries/26355f455be5f1e07e7d00f4680b7d1abe847c8a
+      operationId: v1.editorial.audit_entries.get_list
+      description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+  '/editorial/audit_entries/{audit_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: audit_guid
+        in: path
+        required: true
+    get:
+      summary: Get an audit_entry
+      tags:
+        - audit_management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/audit_entry'
+              examples:
+                '1':
+                  value:
+                    audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
+                    author: Joe Tester
+                    description: First draft
+                    previous_status: draft
+                    current_status: draft
+                    content: ''
+                    date: '2021-08-04T12:56:44Z'
+      operationId: v1.editorial.audit_entries.get_one
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: integer
+          in: query
+          name: skip
 components:
   schemas:
     collection:
-      title: collection
       type: object
+      title: collection
       x-tags:
         - collection_management
+      additionalProperties: false
       properties:
         collection_guid:
           type: string
@@ -752,7 +1067,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/title'
-        description:
+        descriptions:
           type: array
           items:
             $ref: '#/components/schemas/description'
@@ -792,24 +1107,23 @@ components:
               type: integer
             max_count:
               type: integer
-        audit_log:
-          $ref: '#/components/schemas/audit_log'
-      required:
-        - collection_guid
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
     page:
-      title: page
       type: object
+      title: page
       x-tags:
         - page_management
       description: ''
+      additionalProperties: false
       properties:
         page_guid:
           type: string
-        title:
+        titles:
           type: array
           items:
             $ref: '#/components/schemas/title'
-        description:
+        descriptions:
           type: array
           items:
             $ref: '#/components/schemas/description'
@@ -856,8 +1170,8 @@ components:
           type: string
         audience:
           $ref: '#/components/schemas/audience'
-        audit_log:
-          $ref: '#/components/schemas/audit_log'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
     publishing_status:
       type: string
       enum:
@@ -866,8 +1180,9 @@ components:
         - archived
       title: ''
     audit_entry:
-      title: audit_entry
       type: object
+      title: audit_entry
+      additionalProperties: false
       properties:
         audit_guid:
           type: string
@@ -883,28 +1198,19 @@ components:
           type: string
         date:
           type: string
-    audit_log:
-      title: audit_log
-      type: object
-      properties:
-        _embedded:
-          type: object
-          properties:
-            audit_entries:
-              type: array
-              items:
-                $ref: '#/components/schemas/audit_entry'
-        _links:
-          $ref: ../models/HalLinks.v1.yaml
+      required:
+        - author
+        - description
     audience:
-      title: audience
       type: object
+      title: audience
+      additionalProperties: false
       properties:
         user.sources:
           type: array
           items:
             type: string
-        users.excl:
+        user.excls:
           type: array
           items:
             type: string
@@ -921,24 +1227,27 @@ components:
           items:
             $ref: ../models/country_field.v1.yaml
     title:
-      title: title
       type: object
+      title: title
+      additionalProperties: false
       properties:
         title:
           type: string
         metadata:
           $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
     description:
-      title: description
       type: object
+      title: description
+      additionalProperties: false
       properties:
         description:
           type: string
         metadata:
           $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
     slug:
-      title: slug
       type: object
+      title: slug
+      additionalProperties: false
       properties:
         slug_guid:
           type: string
@@ -952,8 +1261,8 @@ components:
           type: string
         interaction_guid:
           type: string
-        audit_log:
-          $ref: '#/components/schemas/audit_log'
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
   securitySchemes:
     Authorization:
       name: Authorization

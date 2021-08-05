@@ -50,12 +50,12 @@ paths:
             type: integer
           in: query
           name: limit
-          description: Number of collections to include in response
+          description: Number of items to include in response
         - schema:
             type: integer
           in: query
           name: skip
-          description: Number of collections to skip
+          description: Number of items to skip
         - schema:
             type: string
           in: query
