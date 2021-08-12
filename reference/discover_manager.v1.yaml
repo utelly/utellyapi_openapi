@@ -428,9 +428,9 @@ paths:
         in: query
         name: user.source
       - schema:
-          type: integer
+          type: string
         in: query
-        name: skip
+        name: search_after
       - schema:
           type: array
           items:
@@ -562,9 +562,9 @@ paths:
           name: limit
           description: Max items to be included in response
         - schema:
-            type: integer
+            type: string
           in: query
-          name: skip
+          name: search_after
           description: 'Number of items to skip, can be used with limit to page'
         - schema:
             type: array
