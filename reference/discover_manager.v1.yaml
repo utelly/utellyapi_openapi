@@ -565,7 +565,6 @@ paths:
             type: string
           in: query
           name: search_after
-          description: 'Number of items to skip, can be used with limit to page'
         - schema:
             type: array
             items:
