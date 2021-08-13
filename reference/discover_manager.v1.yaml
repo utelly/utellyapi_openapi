@@ -388,6 +388,66 @@ paths:
         style: pipeDelimited
         description: Has rating less than or equal to. List of ratings values with source flag
       - schema:
+          type: string
+          format: date-time
+          examples:
+          - '2021-08-31T00:00:00Z'
+        in: query
+        name: availability_from
+        style: pipeDelimited
+        explode: true
+        description: Has availability start date equal to value
+      - schema:
+          type: string
+          format: date-time
+          examples:
+          - '2021-08-31T00:00:00Z'
+        in: query
+        name: availability_from.gte
+        style: pipeDelimited
+        explode: true
+        description: Has availability start date greater than or equal to value
+      - schema:
+          type: string
+          format: date-time
+          examples:
+          - '2021-08-31T00:00:00Z'
+        in: query
+        name: availability_from.lte
+        style: pipeDelimited
+        explode: true
+        description: Has a start date less than or equal to value
+      - schema:
+          type: string
+          format: date-time
+          examples:
+          - '2021-08-31T00:00:00Z'
+        in: query
+        name: availability_to
+        style: pipeDelimited
+        explode: true
+        description: Has availability end date equal to value
+      - schema:
+          type: string
+          format: date-time
+          examples:
+          - '2021-08-31T00:00:00Z'
+        in: query
+        name: availability_to.gte
+        style: pipeDelimited
+        explode: true
+        description: Has availability end date greater than or equal to value
+      - schema:
+          type: string
+          format: date-time
+          examples:
+          - '2021-08-31T00:00:00Z'
+        in: query
+        name: availability_to.lte
+        style: pipeDelimited
+        explode: true
+        description: Has a end date less than or equal to value
+      - schema:
           type: array
           items:
             type: string
