@@ -299,6 +299,15 @@ paths:
           - release_year
           - recommendation
           - rating
+          - availability_from
+          - availability_to
+          - -popularity
+          - -relevancy
+          - -release_year
+          - -recommendation
+          - -rating
+          - -availability_from
+          - -availability_to
         in: query
         name: order_by
       - schema:
@@ -390,8 +399,7 @@ paths:
       - schema:
           type: string
           format: date-time
-          examples:
-          - '2021-08-31T00:00:00Z'
+          example: '2021-08-31T00:00:00Z'
         in: query
         name: availability_from
         style: pipeDelimited
@@ -400,8 +408,7 @@ paths:
       - schema:
           type: string
           format: date-time
-          examples:
-          - '2021-08-31T00:00:00Z'
+          example: '2021-08-31T00:00:00Z'
         in: query
         name: availability_from.gte
         style: pipeDelimited
@@ -410,8 +417,7 @@ paths:
       - schema:
           type: string
           format: date-time
-          examples:
-          - '2021-08-31T00:00:00Z'
+          example: '2021-08-31T00:00:00Z'
         in: query
         name: availability_from.lte
         style: pipeDelimited
@@ -420,8 +426,7 @@ paths:
       - schema:
           type: string
           format: date-time
-          examples:
-          - '2021-08-31T00:00:00Z'
+          example: '2021-08-31T00:00:00Z'
         in: query
         name: availability_to
         style: pipeDelimited
@@ -430,8 +435,7 @@ paths:
       - schema:
           type: string
           format: date-time
-          examples:
-          - '2021-08-31T00:00:00Z'
+          example: '2021-08-31T00:00:00Z'
         in: query
         name: availability_to.gte
         style: pipeDelimited
@@ -440,8 +444,7 @@ paths:
       - schema:
           type: string
           format: date-time
-          examples:
-          - '2021-08-31T00:00:00Z'
+          example: '2021-08-31T00:00:00Z'
         in: query
         name: availability_to.lte
         style: pipeDelimited
