@@ -521,20 +521,18 @@ paths:
                           language: fr
                     content_definition:
                       collections:
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                        - collection:
+                            collection_guid: 989075c6185f4972a1057dac07ca2eb3
+                        - collection:
+                            collection_guid: b2357506810f41f28d1f8de8ed35798e
                             titles:
                               - title: Change language
                             content_definition:
                               languages: fr
+                        - collection:
+                            collection_guid: eaa143e379da4f37a61805cfc745a51b
+                        - collection:
+                            collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
                     valid_from: 20210716T161521Z
@@ -555,7 +553,7 @@ paths:
                       countries:
                         - FR
                   audit_entry:
-                    author: ''
+                    author: mw
                     description: New homepage
     parameters: []
   '/editorial/pages/{page_guid}':
@@ -681,25 +679,23 @@ paths:
                           language: fr
                     content_definition:
                       collections:
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                        - _links:
-                            self:
-                              href: /editorial/pages/26355f455be5f1e07e7d00f4680b7d1abe847c8a
-                          collection:
-                            collection_guid: 23355f455be5f1e07e7d00f4680b7d1abe847c71
+                        - collection:
+                            collection_guid: 989075c6185f4972a1057dac07ca2eb3
+                        - collection:
+                            collection_guid: b2357506810f41f28d1f8de8ed35798e
                             titles:
                               - title: Change language
                             content_definition:
                               languages: fr
+                        - collection:
+                            collection_guid: eaa143e379da4f37a61805cfc745a51b
+                        - collection:
+                            collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
                     valid_from: 20210716T161521Z
                     valid_to: 20210716T161521Z
-                    status: published
+                    status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
@@ -715,8 +711,8 @@ paths:
                       countries:
                         - FR
                   audit_entry:
-                    author: ''
-                    description: Updated homepage
+                    author: mw
+                    description: New homepage
       description: ''
   /editorial/slugs:
     get:
@@ -754,10 +750,9 @@ paths:
                       slugs:
                         - slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                           page_name: homepage1
-                          type: static
+                          slug_type: static
                           mapping:
-                            _links:
-                              href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                            page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                           status: published
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     _links:
@@ -801,10 +796,9 @@ paths:
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    type: static
+                    slug_type: static
                     mapping:
-                      _links:
-                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       requestBody:
@@ -826,10 +820,9 @@ paths:
                 value:
                   slug:
                     page_name: homepage1
-                    type: static
+                    slug_type: static
                     mapping:
-                      _links:
-                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
@@ -861,25 +854,22 @@ paths:
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    type: static
+                    slug_type: static
                     mapping:
-                      _links:
-                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                 '2':
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    type: scheduled
+                    slug_type: scheduled
                     mapping:
                       schedule:
                         - active_date: 20210716T161521Z
-                          links:
-                            href: /editorial/pages/fa4a6096a8f9760c7c39674212f00cfd709790fa
+                          page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
                         - active_date: 20210716T161521Z
-                          _links:
-                            href: /editorial/pages/aa4a6096a8f9760c7c39674212f00cfd709790aa
+                          page_guid: aa4a6096a8f9760c7c39674212f00cfd709790aa
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       operationId: v1.editorial.slugs.get_one
@@ -903,10 +893,9 @@ paths:
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    type: static
+                    slug_type: static
                     mapping:
-                      _links:
-                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       requestBody:
@@ -928,10 +917,9 @@ paths:
                 value:
                   slug:
                     page_name: homepage1
-                    type: static
+                    slug_type: static
                     mapping:
-                      _links:
-                        href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
+                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
@@ -1056,7 +1044,8 @@ paths:
     parameters: []
     get:
       summary: Get a page
-      tags: []
+      tags:
+        - content_retrieval
       responses:
         '200':
           description: OK
@@ -1115,7 +1104,8 @@ paths:
     parameters: []
     get:
       summary: Get content of collection
-      tags: []
+      tags:
+        - content_retrieval
       responses:
         '200':
           description: OK
@@ -1543,10 +1533,12 @@ components:
           type: string
         page_name:
           type: string
-        type:
+        slug_type:
           type: string
         mapping:
-          type: object
+          oneOf:
+            - $ref: '#/components/schemas/static_slug_mapping'
+            - $ref: '#/components/schemas/scheduled_slug_mapping'
         status:
           type: string
         interaction_guid:
@@ -1555,6 +1547,29 @@ components:
           $ref: ../models/HalLinks.v1.yaml
       required:
         - page_name
+        - mapping
+    static_slug_mapping:
+      type: object
+      title: static_slug_mapping
+      additionalProperties: false
+      properties:
+        page_guid:
+          type: string
+    scheduled_slug_mapping:
+      type: object
+      title: scheduled_slug_mapping
+      additionalProperties: false
+      properties:
+        schedule:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              active_date:
+                type: string
+              page_guid:
+                type: string
   securitySchemes:
     Authorization:
       name: Authorization
