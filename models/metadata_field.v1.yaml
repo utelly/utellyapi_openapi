@@ -1,0 +1,22 @@
+additionalProperties: false
+properties:
+  request_guid:
+    type: string
+  user.id:
+    type: string
+  ordering:
+    type: string
+  execution_time_ms:
+    type: number
+  model_key:
+    type: string
+title: metadata_field
+type: object
+x-examples:
+  '1':
+    request_guid: "6ac7568186c7a8a180932ccc82188e25ae704740"
+    user.id: "000016baf268565edec4494b72e48e8e"
+    ordering: "popularity"
+    execution_time_ms: 5
+x-tags:
+- fields
