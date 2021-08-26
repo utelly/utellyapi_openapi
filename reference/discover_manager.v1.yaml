@@ -46,7 +46,7 @@ paths:
                     $ref: ../models/metadata_field.v1.yaml
                 required:
                   - _links
-                  - discover_guid
+                  - _embedded
                   - total_count
                   - _metadata
               examples:
@@ -534,7 +534,7 @@ paths:
                     $ref: ../models/metadata_field.v1.yaml
                 required:
                   - _links
-                  - discover_guid
+                  - _embedded
                   - total_count
                   - _metadata
               examples:
