@@ -39,17 +39,16 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-                  discover_guid:
-                    type: string
-                    description: Discover GUID used for interactions context
                   total_count:
                     type: integer
                     description: Total number of results
+                  _metadata:
+                    $ref: ../models/metadata_field.v1.yaml
                 required:
-                  - _embedded
                   - _links
-                  - discover_guid
+                  - _embedded
                   - total_count
+                  - _metadata
               examples:
                 '1':
                   value:
@@ -115,7 +114,8 @@ paths:
                         href: /content/creative_works
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
-                    discover_guid: 8703dd1ced974ecea01116f2c0a5a282
+                    _metadata:
+                      request_guid: 8703dd1ced974ecea01116f2c0a5a282
                     total_count: 1
       operationId: v1.discover.creative_work.get
       parameters:
@@ -527,16 +527,16 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-                  discover_guid:
-                    type: string
-                    description: Discover GUID used for interactions context
                   total_count:
                     type: integer
                     description: Total number of results
+                  _metadata:
+                    $ref: ../models/metadata_field.v1.yaml
                 required:
                   - _links
-                  - discover_guid
+                  - _embedded
                   - total_count
+                  - _metadata
               examples:
                 '1':
                   value:
