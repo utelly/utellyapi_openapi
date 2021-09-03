@@ -394,9 +394,9 @@ paths:
                           merchandising_enabled: true
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                           audience:
-                            user.sources:
+                            user_sources:
                               - utelly
-                            user.excls: []
+                            user_excls: []
                             platforms:
                               - ios
                               - web
@@ -479,9 +479,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      user.sources:
+                      user_sources:
                         - utelly
-                      user.excls: []
+                      user_excls: []
                       platforms:
                         - ios
                         - web
@@ -541,9 +541,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      user.sources:
+                      user_sources:
                         - utelly
-                      user.excls: []
+                      user_excls: []
                       platforms:
                         - ios
                         - web
@@ -637,9 +637,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      user.sources:
+                      user_sources:
                         - utelly
-                      user.excls: []
+                      user_excls: []
                       platforms:
                         - ios
                         - web
@@ -699,9 +699,9 @@ paths:
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     audience:
-                      user.sources:
+                      user_sources:
                         - utelly
-                      user.excls: []
+                      user_excls: []
                       platforms:
                         - ios
                         - web
@@ -1313,6 +1313,8 @@ paths:
           description: Number of items to skip
         - schema:
             type: array
+            items:
+              type: string
           in: query
           name: fields
           description: Specifies properties to include in response
@@ -1486,11 +1488,11 @@ components:
       title: audience
       additionalProperties: false
       properties:
-        user.sources:
+        user_sources:
           type: array
           items:
             type: string
-        user.excls:
+        user_excls:
           type: array
           items:
             type: string
