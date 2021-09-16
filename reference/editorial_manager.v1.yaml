@@ -433,6 +433,10 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: collection_guid
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -870,9 +874,9 @@ paths:
                     slug_type: scheduled
                     mapping:
                       schedule:
-                        - active_date: 2021-08-23T00:00:00Z
+                        - active_date: '2021-08-23T00:00:00Z'
                           page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
-                        - active_date: 2021-09-23T00:00:00Z
+                        - active_date: '2021-09-23T00:00:00Z'
                           page_guid: aa4a6096a8f9760c7c39674212f00cfd709790aa
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
