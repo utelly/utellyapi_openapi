@@ -388,8 +388,8 @@ paths:
                                     languages: fr
                           enforce_uniqueness: false
                           refresh_timeout: 3600
-                          valid_from: 20210716T161521Z
-                          valid_to: 20210716T161521Z
+                          valid_from: '2021-08-23T00:00:00Z'
+                          valid_to: '2021-09-23T00:00:00Z'
                           status: published
                           merchandising_enabled: true
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
@@ -473,8 +473,8 @@ paths:
                               languages: fr
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
+                    valid_from: '2021-08-23T00:00:00Z'
+                    valid_to: '2021-09-23T00:00:00Z'
                     status: published
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
@@ -535,8 +535,8 @@ paths:
                             collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
+                    valid_from: '2021-08-23T00:00:00Z'
+                    valid_to: '2021-09-23T00:00:00Z'
                     status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
@@ -631,8 +631,8 @@ paths:
                               languages: fr
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
+                    valid_from: '2021-08-23T00:00:00Z'
+                    valid_to: '2021-09-23T00:00:00Z'
                     status: published
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
@@ -693,8 +693,8 @@ paths:
                             collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
+                    valid_from: '2021-08-23T00:00:00Z'
+                    valid_to: '2021-09-23T00:00:00Z'
                     status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
@@ -781,6 +781,10 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: page_guid
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -866,9 +870,9 @@ paths:
                     slug_type: scheduled
                     mapping:
                       schedule:
-                        - active_date: 20210716T161521Z
+                        - active_date: 2021-08-23T00:00:00Z
                           page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
-                        - active_date: 20210716T161521Z
+                        - active_date: 2021-09-23T00:00:00Z
                           page_guid: aa4a6096a8f9760c7c39674212f00cfd709790aa
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
