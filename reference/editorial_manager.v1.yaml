@@ -396,23 +396,9 @@ paths:
                                     languages: fr
                           enforce_uniqueness: false
                           refresh_timeout: 3600
-                          valid_from: '2021-08-23T00:00:00Z'
-                          valid_to: '2021-10-23T00:00:00Z'
                           status: published
                           merchandising_enabled: true
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                          audience:
-                            user_sources:
-                              - utelly
-                            user_excls: []
-                            platforms:
-                              - ios
-                              - web
-                            languages:
-                              - en
-                              - fr
-                            countries:
-                              - FR
                     _links:
                       self:
                         href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
@@ -493,23 +479,9 @@ paths:
                               languages: fr
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: '2021-08-23T00:00:00Z'
-                    valid_to: '2021-09-23T00:00:00Z'
                     status: published
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user_sources:
-                        - utelly
-                      user_excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
       tags:
         - page_management
       requestBody:
@@ -555,23 +527,9 @@ paths:
                             collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: '2021-08-23T00:00:00Z'
-                    valid_to: '2021-09-23T00:00:00Z'
                     status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user_sources:
-                        - utelly
-                      user_excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
                   audit_entry:
                     author: mw
                     description: New homepage
@@ -651,23 +609,9 @@ paths:
                               languages: fr
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: '2021-08-23T00:00:00Z'
-                    valid_to: '2021-09-23T00:00:00Z'
                     status: published
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user_sources:
-                        - utelly
-                      user_excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
       tags:
         - page_management
       requestBody:
@@ -713,23 +657,9 @@ paths:
                             collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: '2021-08-23T00:00:00Z'
-                    valid_to: '2021-09-23T00:00:00Z'
                     status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user_sources:
-                        - utelly
-                      user_excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
                   audit_entry:
                     author: mw
                     description: New homepage
@@ -1550,8 +1480,6 @@ components:
             type: string
         status:
           $ref: '#/components/schemas/publishing_status'
-        audience:
-          $ref: '#/components/schemas/audience'
         interaction_guid:
           type: string
         ui_configuration:
@@ -1616,18 +1544,12 @@ components:
           type: boolean
         refresh_timeout:
           type: integer
-        valid_from:
-          type: string
-        valid_to:
-          type: string
         status:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
           type: boolean
         interaction_guid:
           type: string
-        audience:
-          $ref: '#/components/schemas/audience'
         _links:
           $ref: ../models/HalLinks.v1.yaml
     publishing_status:
