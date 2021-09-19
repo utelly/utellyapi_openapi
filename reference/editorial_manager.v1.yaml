@@ -189,6 +189,14 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: filter
+        - schema:
+            type: string
+          in: query
+          name: sort
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -437,6 +445,14 @@ paths:
             type: string
           in: query
           name: collection_guid
+        - schema:
+            type: string
+          in: query
+          name: filter
+        - schema:
+            type: string
+          in: query
+          name: sort
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -814,6 +830,14 @@ paths:
             type: string
           in: query
           name: page_guid
+        - schema:
+            type: string
+          in: query
+          name: filter
+        - schema:
+            type: string
+          in: query
+          name: sort
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -1142,6 +1166,18 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: collection_guid
+        - schema:
+            type: string
+          in: query
+          name: page_guid
+        - schema:
+            type: string
+          in: query
+          name: slug_guid
   '/editorial/audit_entries/{audit_guid}':
     parameters:
       - schema:
