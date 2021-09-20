@@ -1184,13 +1184,13 @@ paths:
         - schema:
             type: string
           in: query
-          name: user.id
+          name: user_id
           description: Identifier for user
         - schema:
             type: string
           in: query
-          name: user.source
-          description: Namespace of user.id
+          name: user_source
+          description: Namespace of user_id
         - schema:
             type: string
           in: query
@@ -1400,13 +1400,13 @@ paths:
         - schema:
             type: string
           in: query
-          name: user.id
+          name: user_id
           description: Identifier for user
         - schema:
             type: string
           in: query
-          name: user.source
-          description: Namespace of user.id
+          name: user_source
+          description: Namespace of user_id
         - schema:
             type: integer
           in: query
