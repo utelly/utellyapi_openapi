@@ -844,6 +844,22 @@ components:
           type: string
         width:
           type: integer
+        tag:
+          type: string
+        deleted:
+          type: boolean
+        guid:
+          type: string
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+        created_at:
+          format: date-time
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          type: string    
+        updated_at:
+          format: date-time
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          type: string  
       required:
         - metadata
         - url
@@ -939,6 +955,27 @@ paths:
         required: true
         schema:
           type: string
+  '/content/artworks/{artwork_guid}':
+    get:
+      description: ''
+      operationId: v1.content.artwork.get_one
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/picture_field'
+          description: OK
+      summary: Get an availability
+      tags:
+        - Availability management
+    parameters:
+      - in: path
+        name: artwork_guid
+        required: true
+        schema:
+          type: string
+
   /content/content_ratings:
     get:
       description: ''
@@ -1220,6 +1257,16 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - tags
+                - content_ratings
+              type: string
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1336,6 +1383,7 @@ paths:
               enum:
                 - tags
                 - content_ratings
+                - ratings
               type: string
             type: array
           style: form
@@ -1637,6 +1685,89 @@ paths:
                         href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings
                       self:
                         href: /content/creative_works/8703dd1ced974ecea01116f2c0a5a282/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+              schema:
+                additionalProperties: false
+                properties:
+                  _embedded:
+                    additionalProperties: false
+                    properties:
+                      content_ratings:
+                        items:
+                          $ref: '#/components/schemas/ContentRating'
+                        type: array
+                    type: object
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+                type: object
+          description: OK
+      summary: Get content ratings from creative work
+      tags:
+        - Content rating management
+    parameters:
+      - in: path
+        name: creative_work_guid
+        required: true
+        schema:
+          type: string
+  '/content/creative_works/{creative_work_guid}/artworks':
+    get:
+      description: ''
+      operationId: v1.content.artwork.get_list_from_creative_work
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: fields
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: json value of the Filters object
+          in: query
+          name: filters
+          schema:
+            type: string
+        - in: query
+          name: skip
+          schema:
+            type: integer
+        - in: query
+          name: before_or_eq_guid
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
               schema:
                 additionalProperties: false
                 properties:
