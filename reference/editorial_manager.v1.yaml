@@ -192,9 +192,11 @@ paths:
         - schema:
             type: string
           in: query
-          name: filter
+          name: filters
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: sort
     parameters: []
@@ -434,9 +436,11 @@ paths:
         - schema:
             type: string
           in: query
-          name: filter
+          name: filters
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: sort
     post:
@@ -763,9 +767,11 @@ paths:
         - schema:
             type: string
           in: query
-          name: filter
+          name: filters
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: sort
     post:
@@ -1052,22 +1058,19 @@ paths:
                         - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                           author: Joe Tester
                           description: First draft
-                          previous_status: draft
-                          current_status: draft
+                          status: draft
                           content: ''
                           date: '2021-08-04T12:56:44Z'
                         - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                           author: Joe Tester
                           description: First draft
-                          previous_status: draft
-                          current_status: draft
+                          status: draft
                           content: ''
                           date: '2021-08-04T12:56:44Z'
                         - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                           author: Joe Tester
                           description: First draft
-                          previous_status: draft
-                          current_status: draft
+                          status: draft
                           content: ''
                           date: '2021-08-04T12:56:44Z'
                     _links:
@@ -1132,8 +1135,7 @@ paths:
                     audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                     author: Joe Tester
                     description: First draft
-                    previous_status: draft
-                    current_status: draft
+                    status: draft
                     content: ''
                     date: '2021-08-04T12:56:44Z'
       operationId: v1.editorial.audit_entries.get_one
@@ -1570,14 +1572,14 @@ components:
           type: string
         description:
           type: string
-        current_status:
-          $ref: '#/components/schemas/publishing_status'
-        previous_status:
+        status:
           $ref: '#/components/schemas/publishing_status'
         content:
           type: string
         date:
           type: string
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
       required:
         - author
         - description
