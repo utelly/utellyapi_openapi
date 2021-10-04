@@ -844,8 +844,15 @@ components:
           type: string
         width:
           type: integer
-        tag:
-          type: string
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              url_params:
+                type: string
         deleted:
           type: boolean
         guid:
@@ -1264,6 +1271,8 @@ paths:
               enum:
                 - tags
                 - content_ratings
+                - ratings
+                - availabilities
               type: string
             type: array
           style: form
@@ -1384,6 +1393,7 @@ paths:
                 - tags
                 - content_ratings
                 - ratings
+                - availabilities
               type: string
             type: array
           style: form
