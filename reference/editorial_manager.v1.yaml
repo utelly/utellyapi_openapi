@@ -210,6 +210,7 @@ paths:
               type: string
           in: query
           name: embed
+          description: audit_entries|published
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -264,6 +265,7 @@ paths:
               type: string
           in: query
           name: embed
+          description: audit_entries|published
     put:
       summary: Update a collection
       operationId: v1.editorial.collections.update
@@ -468,6 +470,7 @@ paths:
               type: string
           in: query
           name: embed
+          description: audit_entries|published
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -606,6 +609,7 @@ paths:
               type: string
           in: query
           name: embed
+          description: audit_entries|published
     put:
       summary: Update a page
       operationId: v1.editorial.pages.update
@@ -819,6 +823,7 @@ paths:
               type: string
           in: query
           name: embed
+          description: audit_entries|published
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -983,6 +988,7 @@ paths:
               type: string
           in: query
           name: embed
+          description: audit_entries|published
     put:
       summary: Update a slug
       operationId: v1.editorial.slugs.update
@@ -1566,6 +1572,15 @@ components:
               type: integer
         _links:
           $ref: ../models/HalLinks.v1.yaml
+        _embedded:
+          type: object
+          properties:
+            audit_entries:
+              type: array
+              items:
+                $ref: '#/components/schemas/audit_entry'
+            published:
+              $ref: '#/components/schemas/collection'
     page:
       type: object
       title: page
@@ -1623,6 +1638,15 @@ components:
           type: string
         _links:
           $ref: ../models/HalLinks.v1.yaml
+        _embedded:
+          type: object
+          properties:
+            audit_entries:
+              type: array
+              items:
+                $ref: '#/components/schemas/audit_entry'
+            published:
+              $ref: '#/components/schemas/page'
     publishing_status:
       type: string
       enum:
@@ -1723,6 +1747,15 @@ components:
           type: string
         _links:
           $ref: ../models/HalLinks.v1.yaml
+        embedded:
+          type: object
+          properties:
+            audit_entries:
+              type: array
+              items:
+                $ref: '#/components/schemas/audit_entry'
+            published:
+              $ref: '#/components/schemas/slug'
       required:
         - page_name
   securitySchemes:
