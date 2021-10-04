@@ -199,6 +199,12 @@ paths:
               type: string
           in: query
           name: sort
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: embed
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -248,7 +254,9 @@ paths:
       description: ''
       parameters:
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: embed
     put:
@@ -443,6 +451,12 @@ paths:
               type: string
           in: query
           name: sort
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: embed
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -570,7 +584,9 @@ paths:
       operationId: v1.editorial.pages.get_one
       parameters:
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: embed
     put:
@@ -774,6 +790,12 @@ paths:
               type: string
           in: query
           name: sort
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: embed
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -927,7 +949,9 @@ paths:
       operationId: v1.editorial.slugs.get_one
       parameters:
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: embed
     put:
