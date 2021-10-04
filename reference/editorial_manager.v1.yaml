@@ -103,7 +103,12 @@ paths:
                   audit_entry:
                     author: Jessy Green
                     description: New Top picks collection
-      parameters: []
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: publish
+          description: Promote to published
     get:
       summary: List collections
       operationId: v1.editorial.collections.get_list
@@ -345,6 +350,12 @@ paths:
                     author: Jessy Green
                     description: Updated title and published Top picks collection
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: publish
+          description: Promote to published
   /editorial/pages:
     get:
       summary: List pages
@@ -551,6 +562,12 @@ paths:
                   audit_entry:
                     author: mw
                     description: New homepage
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: publish
+          description: Promote to published
     parameters: []
   '/editorial/pages/{page_guid}':
     parameters:
@@ -684,6 +701,12 @@ paths:
                     author: mw
                     description: New homepage
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: publish
+          description: Promote to published
   /editorial/slugs:
     get:
       summary: List slugs
@@ -892,6 +915,12 @@ paths:
                     description: Created a slug
       tags:
         - slug_management
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: publish
+          description: Promote to published
     parameters: []
   '/editorial/slugs/{slug_guid}':
     parameters:
@@ -1052,6 +1081,12 @@ paths:
       tags:
         - slug_management
       description: ''
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: publish
+          description: Promote to published
   /editorial/audit_entries:
     get:
       summary: List audit_entries
@@ -1232,6 +1267,11 @@ paths:
           in: query
           name: country
           description: User country
+        - schema:
+            type: string
+          in: query
+          name: preview
+          description: Use draft definition
   /content/collection:
     parameters: []
     get:
@@ -1465,6 +1505,11 @@ paths:
           in: query
           name: country
           description: User country
+        - schema:
+            type: boolean
+          in: query
+          name: preview
+          description: Use draft definition
       description: ''
 components:
   schemas:
