@@ -358,6 +358,11 @@ paths:
           in: query
           name: publish
           description: Promote to published
+        - schema:
+            type: string
+          in: query
+          name: restore
+          description: audit_guid of historical version to restore
   /editorial/pages:
     get:
       summary: List pages
@@ -711,6 +716,11 @@ paths:
           in: query
           name: publish
           description: Promote to published
+        - schema:
+            type: string
+          in: query
+          name: restore
+          description: audit_guid of historical version to restore
   /editorial/slugs:
     get:
       summary: List slugs
@@ -1084,6 +1094,7 @@ paths:
                   audit_entry:
                     author: Jack Tester
                     description: Updated slug
+        description: ''
       tags:
         - slug_management
       description: ''
@@ -1093,6 +1104,11 @@ paths:
           in: query
           name: publish
           description: Promote to published
+        - schema:
+            type: string
+          in: query
+          name: restore
+          description: audit_guid of historical version to restore
   /editorial/audit_entries:
     get:
       summary: List audit_entries
@@ -1840,8 +1856,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/audit_entry'
-            published:
-              $ref: '#/components/schemas/collection'
     page:
       type: object
       title: page
@@ -1906,8 +1920,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/audit_entry'
-            published:
-              $ref: '#/components/schemas/page'
     publishing_status:
       type: string
       enum:
@@ -2015,8 +2027,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/audit_entry'
-            published:
-              $ref: '#/components/schemas/slug'
       required:
         - page_name
   securitySchemes:
