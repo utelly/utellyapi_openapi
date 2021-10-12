@@ -189,6 +189,22 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: filters
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: sort
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: embed
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -238,7 +254,9 @@ paths:
       description: ''
       parameters:
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: embed
     put:
@@ -388,23 +406,9 @@ paths:
                                     languages: fr
                           enforce_uniqueness: false
                           refresh_timeout: 3600
-                          valid_from: 20210716T161521Z
-                          valid_to: 20210716T161521Z
                           status: published
                           merchandising_enabled: true
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                          audience:
-                            user.sources:
-                              - utelly
-                            user.excls: []
-                            platforms:
-                              - ios
-                              - web
-                            languages:
-                              - en
-                              - fr
-                            countries:
-                              - FR
                     _links:
                       self:
                         href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
@@ -433,6 +437,26 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: collection_guid
+        - schema:
+            type: string
+          in: query
+          name: filters
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: sort
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: embed
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -473,23 +497,9 @@ paths:
                               languages: fr
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
                     status: published
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user.sources:
-                        - utelly
-                      user.excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
       tags:
         - page_management
       requestBody:
@@ -535,23 +545,9 @@ paths:
                             collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
                     status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user.sources:
-                        - utelly
-                      user.excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
                   audit_entry:
                     author: mw
                     description: New homepage
@@ -588,7 +584,9 @@ paths:
       operationId: v1.editorial.pages.get_one
       parameters:
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: embed
     put:
@@ -631,23 +629,9 @@ paths:
                               languages: fr
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
                     status: published
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user.sources:
-                        - utelly
-                      user.excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
       tags:
         - page_management
       requestBody:
@@ -693,23 +677,9 @@ paths:
                             collection_guid: 914ee0238cd842d89f5d06338a0cce94
                     enforce_uniqueness: false
                     refresh_timeout: 3600
-                    valid_from: 20210716T161521Z
-                    valid_to: 20210716T161521Z
                     status: draft
                     merchandising_enabled: true
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                    audience:
-                      user.sources:
-                        - utelly
-                      user.excls: []
-                      platforms:
-                        - ios
-                        - web
-                      languages:
-                        - en
-                        - fr
-                      countries:
-                        - FR
                   audit_entry:
                     author: mw
                     description: New homepage
@@ -750,14 +720,39 @@ paths:
                       slugs:
                         - slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                           page_name: homepage1
-                          slug_type: static
-                          mapping:
-                            page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                          default_page: 818f3f8e42504cf0872e1076639dfb59
+                          pages:
+                            - page_guid: 818f3f8e42504cf0872e1076639dfb59
+                              active_date: '2021-08-23T00:00:00Z'
+                              audience:
+                                user_sources:
+                                  - utelly
+                                user_excls:
+                                  - 8b4a6096a8f32c7c39676573200cfd709790a1
+                                platforms:
+                                  - ios
+                                  - android
+                                languages:
+                                  - en
+                                  - fr
+                                countries:
+                                  - GB
+                                  - FR
+                            - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                              active_date: '2021-08-23T00:00:00Z'
+                              audience:
+                                platforms:
+                                  - web
+                            - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                              active_date: '2021-09-23T00:00:00Z'
                           status: published
                           interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                          _links:
+                            self:
+                              - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
                     _links:
                       self:
-                        href: /editorial/slugs/984a6096a8f32c9139676573200cfd70979bc5
+                        href: /editorial/slugs
       operationId: v1.editorial.slugs.get_list
       description: ''
       parameters:
@@ -781,6 +776,26 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: page_guid
+        - schema:
+            type: string
+          in: query
+          name: filters
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: sort
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: embed
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -796,11 +811,36 @@ paths:
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    slug_type: static
-                    mapping:
-                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    default_page: 818f3f8e42504cf0872e1076639dfb59
+                    pages:
+                      - page_guid: 818f3f8e42504cf0872e1076639dfb59
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          user_sources:
+                            - utelly
+                          user_excls:
+                            - 8b4a6096a8f32c7c39676573200cfd709790a1
+                          platforms:
+                            - ios
+                            - android
+                          languages:
+                            - en
+                            - fr
+                          countries:
+                            - GB
+                            - FR
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          platforms:
+                            - web
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-09-23T00:00:00Z'
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    _links:
+                      self:
+                        - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
       requestBody:
         content:
           application/json:
@@ -820,14 +860,36 @@ paths:
                 value:
                   slug:
                     page_name: homepage1
-                    slug_type: static
-                    mapping:
-                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    default_page: 818f3f8e42504cf0872e1076639dfb59
+                    pages:
+                      - page_guid: 818f3f8e42504cf0872e1076639dfb59
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          user_sources:
+                            - utelly
+                          user_excls:
+                            - 8b4a6096a8f32c7c39676573200cfd709790a1
+                          platforms:
+                            - ios
+                            - android
+                          languages:
+                            - en
+                            - fr
+                          countries:
+                            - GB
+                            - FR
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          platforms:
+                            - web
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-09-23T00:00:00Z'
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
                     author: Jack Tester
-                    description: New slug
+                    description: Created a slug
       tags:
         - slug_management
     parameters: []
@@ -854,28 +916,42 @@ paths:
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    slug_type: static
-                    mapping:
-                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    default_page: 818f3f8e42504cf0872e1076639dfb59
+                    pages:
+                      - page_guid: 818f3f8e42504cf0872e1076639dfb59
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          user_sources:
+                            - utelly
+                          user_excls:
+                            - 8b4a6096a8f32c7c39676573200cfd709790a1
+                          platforms:
+                            - ios
+                            - android
+                          languages:
+                            - en
+                            - fr
+                          countries:
+                            - GB
+                            - FR
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          platforms:
+                            - web
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-09-23T00:00:00Z'
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
-                '2':
-                  value:
-                    slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
-                    page_name: homepage1
-                    slug_type: scheduled
-                    mapping:
-                      schedule:
-                        - active_date: 20210716T161521Z
-                          page_guid: fa4a6096a8f9760c7c39674212f00cfd709790fa
-                        - active_date: 20210716T161521Z
-                          page_guid: aa4a6096a8f9760c7c39674212f00cfd709790aa
-                    status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    _links:
+                      self:
+                        - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
       operationId: v1.editorial.slugs.get_one
       parameters:
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: embed
     put:
@@ -893,11 +969,36 @@ paths:
                   value:
                     slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    slug_type: static
-                    mapping:
-                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    default_page: 818f3f8e42504cf0872e1076639dfb59
+                    pages:
+                      - page_guid: 818f3f8e42504cf0872e1076639dfb59
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          user_sources:
+                            - utelly
+                          user_excls:
+                            - 8b4a6096a8f32c7c39676573200cfd709790a1
+                          platforms:
+                            - ios
+                            - android
+                          languages:
+                            - en
+                            - fr
+                          countries:
+                            - GB
+                            - FR
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          platforms:
+                            - web
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-09-23T00:00:00Z'
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
+                    _links:
+                      self:
+                        - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
       requestBody:
         content:
           application/json:
@@ -916,10 +1017,33 @@ paths:
               '1':
                 value:
                   slug:
+                    slug_guid: 984a6096a8f32c9139676573200cfd70979bc5
                     page_name: homepage1
-                    slug_type: static
-                    mapping:
-                      page_guid: 9a676096a8f32c7c39676573200cfd709790b4
+                    default_page: 818f3f8e42504cf0872e1076639dfb59
+                    pages:
+                      - page_guid: 818f3f8e42504cf0872e1076639dfb59
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          user_sources:
+                            - utelly
+                          user_excls:
+                            - 8b4a6096a8f32c7c39676573200cfd709790a1
+                          platforms:
+                            - ios
+                            - android
+                          languages:
+                            - en
+                            - fr
+                          countries:
+                            - GB
+                            - FR
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-08-23T00:00:00Z'
+                        audience:
+                          platforms:
+                            - web
+                      - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
+                        active_date: '2021-09-23T00:00:00Z'
                     status: published
                     interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
@@ -958,22 +1082,19 @@ paths:
                         - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                           author: Joe Tester
                           description: First draft
-                          previous_status: draft
-                          current_status: draft
+                          status: draft
                           content: ''
                           date: '2021-08-04T12:56:44Z'
                         - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                           author: Joe Tester
                           description: First draft
-                          previous_status: draft
-                          current_status: draft
+                          status: draft
                           content: ''
                           date: '2021-08-04T12:56:44Z'
                         - audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                           author: Joe Tester
                           description: First draft
-                          previous_status: draft
-                          current_status: draft
+                          status: draft
                           content: ''
                           date: '2021-08-04T12:56:44Z'
                     _links:
@@ -1002,6 +1123,18 @@ paths:
             type: string
           in: query
           name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: collection_guid
+        - schema:
+            type: string
+          in: query
+          name: page_guid
+        - schema:
+            type: string
+          in: query
+          name: slug_guid
   '/editorial/audit_entries/{audit_guid}':
     parameters:
       - schema:
@@ -1026,8 +1159,7 @@ paths:
                     audit_guid: 34865f455be5f1e07e7d00f4680b7d1abe847c8a
                     author: Joe Tester
                     description: First draft
-                    previous_status: draft
-                    current_status: draft
+                    status: draft
                     content: ''
                     date: '2021-08-04T12:56:44Z'
       operationId: v1.editorial.audit_entries.get_one
@@ -1078,13 +1210,13 @@ paths:
         - schema:
             type: string
           in: query
-          name: user.id
+          name: user_id
           description: Identifier for user
         - schema:
             type: string
           in: query
-          name: user.source
-          description: Namespace of user.id
+          name: user_source
+          description: Namespace of user_id
         - schema:
             type: string
           in: query
@@ -1294,13 +1426,13 @@ paths:
         - schema:
             type: string
           in: query
-          name: user.id
+          name: user_id
           description: Identifier for user
         - schema:
             type: string
           in: query
-          name: user.source
-          description: Namespace of user.id
+          name: user_source
+          description: Namespace of user_id
         - schema:
             type: integer
           in: query
@@ -1313,6 +1445,8 @@ paths:
           description: Number of items to skip
         - schema:
             type: array
+            items:
+              type: string
           in: query
           name: fields
           description: Specifies properties to include in response
@@ -1372,8 +1506,6 @@ components:
             type: string
         status:
           $ref: '#/components/schemas/publishing_status'
-        audience:
-          $ref: '#/components/schemas/audience'
         interaction_guid:
           type: string
         ui_configuration:
@@ -1438,18 +1570,12 @@ components:
           type: boolean
         refresh_timeout:
           type: integer
-        valid_from:
-          type: string
-        valid_to:
-          type: string
         status:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
           type: boolean
         interaction_guid:
           type: string
-        audience:
-          $ref: '#/components/schemas/audience'
         _links:
           $ref: ../models/HalLinks.v1.yaml
     publishing_status:
@@ -1470,14 +1596,14 @@ components:
           type: string
         description:
           type: string
-        current_status:
-          $ref: '#/components/schemas/publishing_status'
-        previous_status:
+        status:
           $ref: '#/components/schemas/publishing_status'
         content:
           type: string
         date:
           type: string
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
       required:
         - author
         - description
@@ -1486,11 +1612,11 @@ components:
       title: audience
       additionalProperties: false
       properties:
-        user.sources:
+        user_sources:
           type: array
           items:
             type: string
-        user.excls:
+        user_excls:
           type: array
           items:
             type: string
@@ -1533,12 +1659,19 @@ components:
           type: string
         page_name:
           type: string
-        slug_type:
+        default_page:
           type: string
-        mapping:
-          oneOf:
-            - $ref: '#/components/schemas/static_slug_mapping'
-            - $ref: '#/components/schemas/scheduled_slug_mapping'
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              page_guid:
+                type: string
+              active_date:
+                type: string
+              audience:
+                $ref: '#/components/schemas/audience'
         status:
           type: string
         interaction_guid:
@@ -1547,29 +1680,6 @@ components:
           $ref: ../models/HalLinks.v1.yaml
       required:
         - page_name
-        - mapping
-    static_slug_mapping:
-      type: object
-      title: static_slug_mapping
-      additionalProperties: false
-      properties:
-        page_guid:
-          type: string
-    scheduled_slug_mapping:
-      type: object
-      title: scheduled_slug_mapping
-      additionalProperties: false
-      properties:
-        schedule:
-          type: array
-          items:
-            type: object
-            additionalProperties: false
-            properties:
-              active_date:
-                type: string
-              page_guid:
-                type: string
   securitySchemes:
     Authorization:
       name: Authorization

@@ -39,17 +39,16 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-                  discover_guid:
-                    type: string
-                    description: Discover GUID used for interactions context
                   total_count:
                     type: integer
                     description: Total number of results
+                  _metadata:
+                    $ref: ../models/metadata_field.v1.yaml
                 required:
-                  - _embedded
                   - _links
-                  - discover_guid
+                  - _embedded
                   - total_count
+                  - _metadata
               examples:
                 '1':
                   value:
@@ -115,7 +114,8 @@ paths:
                         href: /content/creative_works
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
-                    discover_guid: 8703dd1ced974ecea01116f2c0a5a282
+                    _metadata:
+                      request_guid: 8703dd1ced974ecea01116f2c0a5a282
                     total_count: 1
       operationId: v1.discover.creative_work.get
       parameters:
@@ -279,6 +279,15 @@ paths:
           items:
             type: string
         in: query
+        name: external_references
+        style: pipeDelimited
+        explode: true
+        description: Includes creative works with specified identifiers from external sources (e.g imdb, tmdb) 
+      - schema:
+          type: array
+          items:
+            type: string
+        in: query
         name: guids.excl
         style: pipeDelimited
         explode: true
@@ -295,6 +304,7 @@ paths:
           type: string
           enum:
           - popularity
+          - popularity.iva_iva
           - relevancy
           - release_year
           - recommendation
@@ -302,6 +312,7 @@ paths:
           - availability_from
           - availability_to
           - -popularity
+          - -popularity.iva_iva
           - -relevancy
           - -release_year
           - -recommendation
@@ -527,16 +538,16 @@ paths:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-                  discover_guid:
-                    type: string
-                    description: Discover GUID used for interactions context
                   total_count:
                     type: integer
                     description: Total number of results
+                  _metadata:
+                    $ref: ../models/metadata_field.v1.yaml
                 required:
                   - _links
-                  - discover_guid
+                  - _embedded
                   - total_count
+                  - _metadata
               examples:
                 '1':
                   value:
@@ -602,7 +613,8 @@ paths:
                         href: /content/creative_works
                       self:
                         href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
-                    discover_guid: 8b63dd1ced974ecea01116f2c0a5a282
+                    _metadata:
+                      request_guid: 8b63dd1ced974ecea01116f2c0a5a282
                     total_count: 1
       operationId: v1.discover.related.get
       parameters:
