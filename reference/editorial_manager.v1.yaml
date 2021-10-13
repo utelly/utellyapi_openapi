@@ -1472,6 +1472,12 @@ paths:
         - schema:
             type: string
           in: query
+          name: collection_guid
+          description: Guid for collection content to retrieve
+          required: true
+        - schema:
+            type: string
+          in: query
           name: page_guid
           description: Guid for page on which this collection is appearing
         - schema:
@@ -1925,6 +1931,7 @@ components:
       enum:
         - draft
         - published
+        - changed
         - archived
       title: ''
     audit_entry:
