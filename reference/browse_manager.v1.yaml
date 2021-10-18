@@ -973,9 +973,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/picture_field'
           description: OK
-      summary: Get an availability
-      tags:
-        - Availability management
+      summary: Get an artwork
     parameters:
       - in: path
         name: artwork_guid
