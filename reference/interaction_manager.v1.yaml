@@ -44,7 +44,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: user.guid
+          name: user.id
           required: true
     post:
       summary: Create one or more interactions
