@@ -45,6 +45,7 @@ paths:
             type: string
           in: query
           name: user.id
+          required: true
     post:
       summary: Create one or more interactions
       operationId: v1.interaction.post
