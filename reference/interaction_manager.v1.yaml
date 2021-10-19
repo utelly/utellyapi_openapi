@@ -41,8 +41,11 @@ paths:
                         type: movie
       operationId: v1.interaction.get
       parameters:
-        - $ref: '#/components/parameters/user_param'
-        - $ref: '#/components/parameters/entity_param'
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          required: true
     post:
       summary: Create one or more interactions
       operationId: v1.interaction.post
