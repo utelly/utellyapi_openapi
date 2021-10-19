@@ -1473,16 +1473,6 @@ paths:
           name: user_source
           description: Namespace of user_id
         - schema:
-            type: integer
-          in: query
-          name: limit
-          description: Number of items included in response
-        - schema:
-            type: integer
-          in: query
-          name: skip
-          description: Number of items to skip
-        - schema:
             type: array
             items:
               type: string
@@ -1504,6 +1494,36 @@ paths:
           in: query
           name: country
           description: User country
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of items included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of items to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: search_after
+          description: For pagination
       description: ''
   '/content/collection/{collection_guid}/preview':
     parameters:
@@ -1706,16 +1726,6 @@ paths:
           name: user_source
           description: Namespace of user_id
         - schema:
-            type: integer
-          in: query
-          name: limit
-          description: Number of items included in response
-        - schema:
-            type: integer
-          in: query
-          name: skip
-          description: Number of items to skip
-        - schema:
             type: array
             items:
               type: string
@@ -1737,6 +1747,36 @@ paths:
           in: query
           name: country
           description: User country
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of items included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of items to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: search_after
+          description: For pagination
   '/content/page/{page_name}/preview':
     parameters:
       - schema:
@@ -1988,6 +2028,13 @@ components:
           type: string
         default_page:
           type: string
+        calendar:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
         pages:
           type: array
           items:
