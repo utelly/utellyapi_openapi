@@ -973,9 +973,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/picture_field'
           description: OK
-      summary: Get an availability
-      tags:
-        - Availability management
+      summary: Get an artwork
     parameters:
       - in: path
         name: artwork_guid
@@ -1271,6 +1269,8 @@ paths:
               enum:
                 - tags
                 - content_ratings
+                - ratings
+                - availabilities
               type: string
             type: array
           style: form
@@ -1391,6 +1391,7 @@ paths:
                 - tags
                 - content_ratings
                 - ratings
+                - availabilities
               type: string
             type: array
           style: form
@@ -1781,9 +1782,9 @@ paths:
                   _embedded:
                     additionalProperties: false
                     properties:
-                      content_ratings:
+                      artworks:
                         items:
-                          $ref: '#/components/schemas/ContentRating'
+                          $ref: '#/components/schemas/picture_field'
                         type: array
                     type: object
                   _links:

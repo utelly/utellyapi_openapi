@@ -302,8 +302,10 @@ paths:
           explode: true
           description: Includes creative works if any of its titles contains the provided string. blah|foo will return \*blah\* OR \*foo\*
         - schema:
-            type: string
-            enum:
+            type: array
+            items:
+              type: string
+              enum:
               - popularity
               - popularity.iva_iva
               - relevancy
@@ -322,6 +324,7 @@ paths:
               - '-availability_to'
           in: query
           name: order_by
+          style: pipeDelimited
           description: "<table>       <tr>         <td>Parameter</td>         <td>Impact</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>popularity</b></td>         <td>most popular first</td>       </tr>       <tr>         <td><b>popularity.iva_iva</b></td>         <td>most popular first, based on iva score</td>       </tr>       <tr>         <td><b>relevancy</b></td>         <td>most relevant first, from a search perspective</td>       </tr>       <tr>         <td><b>release_year</b></td>         <td>most recent first</td>       </tr>       <tr>         <td><b>recommendation</b></td>         <td>best recommended first</td>       </tr>       <tr>         <td><b>rating</b></td>         <td>best rated first</td>       </tr>       <tr>         <td><b>availability_from</b></td>         <td>ASC</td>       </tr>       <tr>         <td><b>availability_to</b></td>         <td>ASC</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>note</b></td>         <td>use of \\*-\\* (minus) before the option provides the reverse order.</td>       </tr> </table>"
         - schema:
             type: integer
@@ -392,22 +395,24 @@ paths:
           explode: true
           description: Has none of the listed people ids as a contributor - optional role flag.
         - schema:
-            type: array
-            items:
-              type: string
-              example: 'imdb:80'
+            type: number
+            example: 80
           in: query
           name: rating.gte
           style: pipeDelimited
-          description: Has rating greater than or equal to. List of ratings values with source flag
+          description: Has rating greater than or equal to, with the provider specified in ratings_provider
         - schema:
-            type: array
-            items:
-              type: string
-              example: 'imdb:80'
+            type: number
+            example: 80
           in: query
           name: rating.lte
           style: pipeDelimited
+          description: Has rating less than or equal to, with the provider specified in ratings_provider
+        - schema:
+            type: string
+            example: 'iva'
+          in: query
+          name: ratings.provider
           description: Has rating less than or equal to. List of ratings values with source flag
         - schema:
             type: string
