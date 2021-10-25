@@ -19,15 +19,15 @@ paths:
       description: ''
       operationId: v1.configuration.get
       parameters:
-      - in: query
-        name: type
-        required: true
-        schema:
-          type: string
-      - in: query
-        name: identifier
-        schema:
-          type: string
+        - in: query
+          name: type
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: identifier
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -42,7 +42,8 @@ paths:
           description: OK
       summary: Get Configurations
       tags:
-      - Configuration Management
+        - Configuration Management
+      x-internal: false
     post:
       description: ''
       operationId: v1.configuration.post
@@ -59,22 +60,22 @@ paths:
                     display_name: LG Demo
                     enrichments: []
                     entities:
-                    - topic
-                    - genre
-                    - mood
-                    - actor
-                    - director
+                      - topic
+                      - genre
+                      - mood
+                      - actor
+                      - director
                     grouping: entity
                     ids_fields:
-                    - source_id
+                      - source_id
                     languages:
-                    - en
+                      - en
                     options:
-                    - phonetic
-                    - qualifiers
-                    - rest
+                      - phonetic
+                      - qualifiers
+                      - rest
                     source: iva_iva
-                  identifier: "my identifier"
+                  identifier: my identifier
                   type: sherlockConfig
             schema:
               additionalProperties: false
@@ -91,15 +92,22 @@ paths:
           description: OK
       summary: Create Config
       tags:
-      - Configuration Management
+        - Configuration Management
+    put:
+      summary: Update Configurations
+      operationId: v1.configuration.put
+      responses:
+        '200':
+          description: OK
+      x-internal: true
 servers:
-- description: prod
-  url: 'https://services.utelly.com/configuration_manager/v1'
-- description: staging
-  url: 'https://staging-services.utelly.com/configuration_manager/v1'
-- description: dev
-  url: 'https://dev-services.utelly.com/configuration_manager/v1'
+  - description: prod
+    url: 'https://services.utelly.com/configuration_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/configuration_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/configuration_manager/v1'
 tags:
-- name: utelly_services
+  - name: utelly_services
 security:
-- Authorization: []
+  - Authorization: []
