@@ -47,7 +47,6 @@ paths:
                     pinned_items:
                       - d34a6096a8f9760c7c39676572f00cfd709790ff
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
                       item_count: 10
@@ -95,7 +94,6 @@ paths:
                     shuffle_rate: 3
                     pinned_items: []
                     status: draft
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
                       item_count: 10
@@ -161,7 +159,6 @@ paths:
                           pinned_items:
                             - d34a6096a8f9760c7c39676572f00cfd709790ff
                           status: published
-                          interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                           ui_configuration:
                             image_type: poster
                             item_count: 10
@@ -251,7 +248,6 @@ paths:
                     shuffle_rate: 3
                     pinned_items: []
                     status: draft
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
                       item_count: 10
@@ -299,7 +295,6 @@ paths:
                     pinned_items:
                       - d34a6096a8f9760c7c39676572f00cfd709790ff
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
                       item_count: 10
@@ -343,7 +338,6 @@ paths:
                     shuffle_rate: 3
                     pinned_items: []
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     ui_configuration:
                       image_type: poster
                       item_count: 10
@@ -426,7 +420,6 @@ paths:
                           refresh_timeout: 3600
                           status: published
                           merchandising_enabled: true
-                          interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     _links:
                       self:
                         href: /editorial/pages/9a676096a8f32c7c39676573200cfd709790b4
@@ -518,7 +511,6 @@ paths:
                     refresh_timeout: 3600
                     status: published
                     merchandising_enabled: true
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       tags:
         - page_management
       requestBody:
@@ -566,7 +558,6 @@ paths:
                     refresh_timeout: 3600
                     status: draft
                     merchandising_enabled: true
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
                     author: mw
                     description: New homepage
@@ -657,7 +648,6 @@ paths:
                     refresh_timeout: 3600
                     status: published
                     merchandising_enabled: true
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       tags:
         - page_management
       requestBody:
@@ -705,7 +695,6 @@ paths:
                     refresh_timeout: 3600
                     status: draft
                     merchandising_enabled: true
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
                     author: mw
                     description: New homepage
@@ -783,7 +772,6 @@ paths:
                             - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
                               active_date: '2021-09-23T00:00:00Z'
                           status: published
-                          interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                           _links:
                             self:
                               - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
@@ -875,7 +863,6 @@ paths:
                       - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
                         active_date: '2021-09-23T00:00:00Z'
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     _links:
                       self:
                         - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
@@ -924,7 +911,6 @@ paths:
                       - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
                         active_date: '2021-09-23T00:00:00Z'
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
                     author: Jack Tester
                     description: Created a slug
@@ -986,7 +972,6 @@ paths:
                       - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
                         active_date: '2021-09-23T00:00:00Z'
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     _links:
                       self:
                         - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
@@ -1040,7 +1025,6 @@ paths:
                       - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
                         active_date: '2021-09-23T00:00:00Z'
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                     _links:
                       self:
                         - href: /editorial/slugs/2be86dc0f9de4c1c8e53ce4ce6cf40be
@@ -1090,7 +1074,6 @@ paths:
                       - page_guid: a3e3153b5f9959fb7efdb6f1520737fda7bf9976
                         active_date: '2021-09-23T00:00:00Z'
                     status: published
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
                   audit_entry:
                     author: Jack Tester
                     description: Updated slug
@@ -1255,7 +1238,6 @@ paths:
                         metadata:
                           language: en
                     refresh_timeout: 3600
-                    interaction_guid: 8b4a6096a8f32c7c39676573200cfd709790a1
       operationId: v1.content.page.get
       parameters:
         - schema:
@@ -1491,16 +1473,6 @@ paths:
           name: user_source
           description: Namespace of user_id
         - schema:
-            type: integer
-          in: query
-          name: limit
-          description: Number of items included in response
-        - schema:
-            type: integer
-          in: query
-          name: skip
-          description: Number of items to skip
-        - schema:
             type: array
             items:
               type: string
@@ -1522,6 +1494,36 @@ paths:
           in: query
           name: country
           description: User country
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of items included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of items to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: search_after
+          description: For pagination
       description: ''
   '/content/collection/{collection_guid}/preview':
     parameters:
@@ -1724,16 +1726,6 @@ paths:
           name: user_source
           description: Namespace of user_id
         - schema:
-            type: integer
-          in: query
-          name: limit
-          description: Number of items included in response
-        - schema:
-            type: integer
-          in: query
-          name: skip
-          description: Number of items to skip
-        - schema:
             type: array
             items:
               type: string
@@ -1755,6 +1747,36 @@ paths:
           in: query
           name: country
           description: User country
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Number of items included in response
+        - schema:
+            type: integer
+          in: query
+          name: skip
+          description: Number of items to skip
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+          description: For pagination
+        - schema:
+            type: string
+          in: query
+          name: search_after
+          description: For pagination
   '/content/page/{page_name}/preview':
     parameters:
       - schema:
@@ -1840,8 +1862,6 @@ components:
             type: string
         status:
           $ref: '#/components/schemas/publishing_status'
-        interaction_guid:
-          type: string
         ui_configuration:
           type: object
           properties:
@@ -1915,8 +1935,6 @@ components:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
           type: boolean
-        interaction_guid:
-          type: string
         _links:
           $ref: ../models/HalLinks.v1.yaml
         _embedded:
@@ -2010,6 +2028,13 @@ components:
           type: string
         default_page:
           type: string
+        calendar:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
         pages:
           type: array
           items:
@@ -2022,8 +2047,6 @@ components:
               audience:
                 $ref: '#/components/schemas/audience'
         status:
-          type: string
-        interaction_guid:
           type: string
         _links:
           $ref: ../models/HalLinks.v1.yaml
