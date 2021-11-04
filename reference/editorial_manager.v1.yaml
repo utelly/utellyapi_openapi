@@ -1534,8 +1534,9 @@ paths:
         required: true
         description: Collection guid
     get:
-      summary: Your GET endpoint
-      tags: []
+      summary: Preview unpublished collection content
+      tags:
+        - content_retrieval
       responses:
         '200':
           description: OK
@@ -1786,8 +1787,9 @@ paths:
         required: true
         description: Page name matching slug
     get:
-      summary: Your GET endpoint
-      tags: []
+      summary: Preview unpublished page content
+      tags:
+        - content_retrieval
       responses:
         '200':
           description: OK
