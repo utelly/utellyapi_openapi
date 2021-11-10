@@ -341,9 +341,9 @@ paths:
               - iTunes
               - Hulu
           in: query
-          name: popularity_sources
+          name: popularity.provider
           style: pipeDelimited
-          description:  Sources to use if ordering by popularity.external. All sources will be used if not specified.
+          description:  Providers to use if ordering by popularity.external. All providers will be used if not specified.
         - schema:
             type: integer
           in: query
