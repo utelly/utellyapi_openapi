@@ -307,7 +307,7 @@ paths:
               type: string
               enum:
               - popularity
-              - popularity.iva_iva
+              - popularity.external
               - relevancy
               - release_year
               - recommendation
@@ -315,7 +315,7 @@ paths:
               - availability_from
               - availability_to
               - '-popularity'
-              - '-popularity.iva_iva'
+              - '-popularity.external'
               - '-relevancy'
               - '-release_year'
               - '-recommendation'
@@ -326,6 +326,24 @@ paths:
           name: order_by
           style: pipeDelimited
           description: "<table>       <tr>         <td>Parameter</td>         <td>Impact</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>popularity</b></td>         <td>most popular first</td>       </tr>       <tr>         <td><b>popularity.iva_iva</b></td>         <td>most popular first, based on iva score</td>       </tr>       <tr>         <td><b>relevancy</b></td>         <td>most relevant first, from a search perspective</td>       </tr>       <tr>         <td><b>release_year</b></td>         <td>most recent first</td>       </tr>       <tr>         <td><b>recommendation</b></td>         <td>best recommended first</td>       </tr>       <tr>         <td><b>rating</b></td>         <td>best rated first</td>       </tr>       <tr>         <td><b>availability_from</b></td>         <td>ASC</td>       </tr>       <tr>         <td><b>availability_to</b></td>         <td>ASC</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>note</b></td>         <td>use of \\*-\\* (minus) before the option provides the reverse order.</td>       </tr> </table>"
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+              - IVA
+              - IMDB
+              - TMDB
+              - Amazon
+              - Netflix
+              - RottenTomatoes
+              - Youtube
+              - iTunes
+              - Hulu
+          in: query
+          name: popularity_sources
+          style: pipeDelimited
+          description:  Sources to use if ordering by popularity.external. All sources will be used if not specified.
         - schema:
             type: integer
           in: query
