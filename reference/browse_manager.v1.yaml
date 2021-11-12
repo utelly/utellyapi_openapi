@@ -1818,9 +1818,9 @@ paths:
                   - _links
                 type: object
           description: OK
-      summary: Get content ratings from creative work
+      summary: Get artworks from creative work
       tags:
-        - Content rating management
+        - Artworks management
     parameters:
       - in: path
         name: creative_work_guid
