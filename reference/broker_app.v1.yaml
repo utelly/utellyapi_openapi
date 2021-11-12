@@ -4757,6 +4757,180 @@ paths:
       required: true
       schema:
         type: string
+  '/modules/{module_id}/browse/creative_works/{creative_work_guid}/artworks':
+    get:
+      description: ''
+      operationId: v1.content.cbe00d5ed5bb14903b3ff77207641c987
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: fields
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: json value of the Filters object
+          in: query
+          name: filters
+          schema:
+            type: string
+        - in: query
+          name: skip
+          schema:
+            type: integer
+        - in: query
+          name: before_or_eq_guid
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    payload:
+                      _embedded:
+                        artworks:
+                        - _links:
+                            creative_works:
+                              href: /content/creative_works/002353ea413d23633b19a1705cac7aa824a7a43d
+                            self:
+                              href: /content/artworks/35c5dbd087699b66837c5603021f75c077baa35d
+                          created_at: '2020-01-01T00:00:00Z'
+                          deleted: false
+                          guid: 35c5dbd087699b66837c5603021f75c077baa35d
+                          height: 300
+                          metadata:
+                            source: mysource
+                            country: XX
+                            language: xx
+                            type: portrait
+                          updated_at: '2020-01-01T00:00:00Z'
+                          s: 'da2cc91d6e67be2ccad98097e92c615e'
+                          url: 'https://utellyassets9-1.imgix.net/api/Images/3f591df0fe4e088b8dac1bac09e0d3c2/Redirect'
+                          width: 200
+                      _links:
+                        self:
+                          href: /content/creative_works/002353ea413d23633b19a1705cac7aa824a7a43d/artworks
+                    ui_configuration: {}
+              schema:
+                additionalProperties: false
+                properties:
+                  payload:
+                    additionalProperties: false
+                    properties:
+                      _embedded:
+                        additionalProperties: false
+                        properties:
+                          artworks:
+                            items:
+                              $ref: './browse_manager.v1.yaml#/components/schemas/picture_field'
+                            type: array
+                        type: object
+                      _links:
+                        $ref: ../models/HalLinks.v1.yaml
+                    required:
+                      - _embedded
+                      - _links
+                    type: object
+                  ui_configuration:
+                    type: object
+                type: object
+          description: OK
+      summary: Get artworks from creative work
+      tags:
+        - Artwork management
+    parameters:
+    - in: path
+      name: creative_work_guid
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: module_id
+      required: true
+      schema:
+        type: string
+  '/modules/{module_id}/browse/artworks/{artwork_guid}':
+    get:
+      description: ''
+      operationId: v1.content.c43bea88af13d4cbe83f426e435f6f5b8
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    payload:
+                      _links:
+                        self:
+                          href: /content/artworks/35c5dbd087699b66837c5603021f75c077baa35d
+                      creative_works:
+                        href: /content/creative_works/002353ea413d23633b19a1705cac7aa824a7a43d
+                      created_at: '2020-01-01T00:00:00Z'
+                      deleted: false
+                      guid: 35c5dbd087699b66837c5603021f75c077baa35d
+                      height: 300
+                      metadata:
+                        source: mysource
+                        country: XX
+                        language: xx
+                        type: portrait
+                      updated_at: '2020-01-01T00:00:00Z'
+                      s: 'da2cc91d6e67be2ccad98097e92c615e'
+                      url: 'https://utellyassets9-1.imgix.net/api/Images/3f591df0fe4e088b8dac1bac09e0d3c2/Redirect'
+                      width: 200
+                    ui_configuration: {}              
+              schema:
+                additionalProperties: false
+                properties:
+                  payload:
+                    $ref: './browse_manager.v1.yaml#/components/schemas/picture_field'
+                  ui_configuration:
+                    type: object
+                type: object
+          description: OK
+      summary: Get an artwork
+    parameters:
+    - in: path
+      name: artwork_guid
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: module_id
+      required: true
+      schema:
+        type: string
   '/modules/{module_id}/browse/locations':
     get:
       description: ''
