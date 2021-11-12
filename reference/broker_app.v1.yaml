@@ -2402,6 +2402,18 @@ paths:
         name: filters
         schema:
           type: string
+      - in: query
+        name: embed
+        schema:
+          items:
+            enum:
+            - tags
+            - content_ratings
+            - ratings
+            - availabilities
+            type: string
+          type: array
+        style: form
       responses:
         '200':
           content:
@@ -2719,6 +2731,8 @@ paths:
             enum:
             - tags
             - content_ratings
+            - ratings
+            - availabilities
             type: string
           type: array
         style: form
