@@ -1419,14 +1419,6 @@ paths:
                 '1':
                   value:
                     _embedded:
-                      lineage:
-                        ancestors:
-                          - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509z
-                        group:
-                          - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509a
-                          - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509b
-                          - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509c
-                          - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509d
                       genres:
                         - _links:
                             self:
@@ -1491,6 +1483,14 @@ paths:
                           type: official
                         title: The Usual Suspects
                     type: movie
+                    lineage:
+                      ancestors:
+                        - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509z
+                      group:
+                        - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509a
+                        - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509b
+                        - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509c
+                        - guid: 3f6d73e9a01f417ed9b16d60538c6c7d7e58509d
                     updated_at: '2020-01-01T00:00:10Z'
               schema:
                 $ref: '#/components/schemas/CreativeWork'
