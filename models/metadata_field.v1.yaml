@@ -7,7 +7,9 @@ properties:
     type: string
     nullable: True
   ordering:
-    type: string
+    type: array
+    items:
+      type: string
     nullable: True
   execution_time_ms:
     type: number
