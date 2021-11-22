@@ -350,6 +350,27 @@ components:
         - updated_at
     Filter:
       description: ''
+      title: Filters
+      type: array
+      x-examples:
+        '1':
+          - operator: eq
+            property: titles.title
+            value: The Usual Suspects
+          - operator: regex
+            property: contributors.names.name
+            value: kevin*
+          - operator: eq
+            property: availabilities.services.names.name
+            value: Netflix
+          - operator: gte
+            property: created_at
+            value: '2020-04-03T23:01:06Z'
+          - operator: in
+            property: genres.genre.names.name
+            value:
+              - Action
+              - Comedy
       items:
         anyOf:
           - properties:
@@ -373,9 +394,9 @@ components:
               property:
                 type: string
               value:
+                type: array
                 items:
                   type: string
-                type: array
             required:
               - operator
               - property
@@ -386,9 +407,11 @@ components:
                   - contains
                 type: string
               property:
+                type: string
                 enum:
                   - titles.title
-                type: string
+                  - names.name
+                  - name
               value:
                 type: string
             required:
@@ -440,27 +463,6 @@ components:
               - property
               - value
         type: object
-      title: Filters
-      type: array
-      x-examples:
-        '1':
-          - operator: eq
-            property: titles.title
-            value: The Usual Suspects
-          - operator: regex
-            property: contributors.names.name
-            value: kevin*
-          - operator: eq
-            property: availabilities.services.names.name
-            value: Netflix
-          - operator: gte
-            property: created_at
-            value: '2020-04-03T23:01:06Z'
-          - operator: in
-            property: genres.genre.names.name
-            value:
-              - Action
-              - Comedy
     Location:
       additionalProperties: false
       properties:
