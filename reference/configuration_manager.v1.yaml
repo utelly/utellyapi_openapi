@@ -93,13 +93,14 @@ paths:
       summary: Create Config
       tags:
         - Configuration Management
-    put:
+  /configurations_update:
+    post:
       summary: Update Configurations
-      operationId: v1.configuration.put
+      operationId: v1.configuration.update
       responses:
         '200':
           description: OK
-      x-internal: true
+    parameters: []
 servers:
   - description: prod
     url: 'https://services.utelly.com/configuration_manager/v1'
