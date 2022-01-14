@@ -1843,6 +1843,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/description'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/collection_image'
         content_definition:
           type: object
           properties:
@@ -1871,6 +1875,7 @@ components:
               type: string
             hero_image:
               type: string
+              deprecated: true
             item_count:
               type: integer
             max_count:
@@ -1965,14 +1970,22 @@ components:
           type: string
         description:
           type: string
-        status:
-          $ref: '#/components/schemas/publishing_status'
         content:
+          type: string
+        status:
+          deprecated: true
           type: string
         date:
           type: string
         _links:
           $ref: ../models/HalLinks.v1.yaml
+        action:
+          type: object
+          properties:
+            from:
+              $ref: '#/components/schemas/publishing_status'
+            to:
+              $ref: '#/components/schemas/publishing_status'
       required:
         - author
         - description
@@ -2046,6 +2059,8 @@ components:
                 type: string
               active_date:
                 type: string
+              end_date:
+                type: string
               audience:
                 $ref: '#/components/schemas/audience'
         status:
@@ -2061,6 +2076,14 @@ components:
                 $ref: '#/components/schemas/audit_entry'
       required:
         - page_name
+    collection_image:
+      title: collection_image
+      type: object
+      properties:
+        url:
+          type: string
+        metadata:
+          $ref: ../models/metadata_field.v1.yaml
   securitySchemes:
     Authorization:
       name: Authorization
