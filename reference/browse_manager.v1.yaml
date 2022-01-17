@@ -1062,7 +1062,7 @@ paths:
                         url: 'https://mydomain.com/ressource_url'
                     updated_at: '2020-01-01T00:00:00Z'
               schema:
-                $ref: '#/components/schemas/Availability'
+                $ref: '#/components/schemas/Catalogue'
           description: OK
       summary: Get a catalogue
       tags:
@@ -1288,21 +1288,21 @@ paths:
                         href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
               schema:
                 additionalProperties: false
+                type: object
                 properties:
                   _embedded:
                     additionalProperties: false
+                    type: object
                     properties:
                       content_ratings:
-                        items:
-                          $ref: '#/components/schemas/ContentRating'
                         type: array
-                    type: object
+                        items:
+                          $ref: '#/components/schemas/Catalogue'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
                 required:
-                  - _links
                   - _embedded
-                type: object
+                  - _links
           description: OK
       summary: List catalogues
       tags:
