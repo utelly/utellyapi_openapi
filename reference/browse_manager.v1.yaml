@@ -997,72 +997,6 @@ paths:
         required: true
         schema:
           type: string
-  '/content/catalogues/{catalogue_guid}':
-    get:
-      description: ''
-      operationId: v1.content.catalogue.get_one
-      parameters:
-        - in: query
-          name: languages
-          schema:
-            items:
-              $ref: ../models/language_field.v1.yaml
-            type: array
-          style: form
-        - in: query
-          name: fields
-          schema:
-            items:
-              type: string
-            type: array
-          style: form
-        - in: query
-          name: embed
-          schema:
-            items:
-              enum:
-                - creative_works
-                - services
-                - locations
-              type: string
-            type: array
-          style: form
-      responses:
-        '200':
-          content:
-            application/json:
-              examples:
-                '1':
-                  value:
-                    _links:
-                      self:
-                        href: /content/catalogues/2e22e6baf42c1688e89494963c6acc97632c8479
-                      creative_works:
-                        href: /content/creative_works/9a2c7a5515673a01064f372069b48e999d9fca87
-                      locations:
-                        href: /content/locations/3b65b3d66407fef945e046119323512bb158f281
-                      services:
-                        href: /content/services/0d4082546a6c122bcc34f9a42c6373c260f4f304
-                    guid: 2e22e6baf42c1688e89494963c6acc97632c8479
-                    updated_at: '2022-01-17T13:18:39Z'
-                    created_at: '2022-01-17T00:00:00Z'
-                    deleted: false
-                    published:
-                      - published_at: '2022-01-17T00:00:00Z'
-                        metadata:
-                          source: iva_test_iva_test
-              schema:
-                $ref: '#/components/schemas/Catalogue'
-          description: OK
-      summary: Get a catalogue
-      tags:
-        - Catalogue management
-    parameters:
-      - schema:
-          type: string
-        name: catalogue_guid
-        in: path
-        required: true
   '/content/artworks/{artwork_guid}':
     get:
       description: ''
@@ -1189,10 +1123,76 @@ paths:
       summary: List content ratings
       tags:
         - Content rating management
+  '/content/catalogues/{catalogue_guid}':
+    get:
+      description: ''
+      operationId: v1.content.catalogue.get_one
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: fields
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - services
+                - locations
+              type: string
+            type: array
+          style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    _links:
+                      self:
+                        href: /content/catalogues/2e22e6baf42c1688e89494963c6acc97632c8479
+                      creative_works:
+                        href: /content/creative_works/9a2c7a5515673a01064f372069b48e999d9fca87
+                      locations:
+                        href: /content/locations/3b65b3d66407fef945e046119323512bb158f281
+                      services:
+                        href: /content/services/0d4082546a6c122bcc34f9a42c6373c260f4f304
+                    guid: 2e22e6baf42c1688e89494963c6acc97632c8479
+                    updated_at: '2022-01-17T13:18:39Z'
+                    created_at: '2022-01-17T00:00:00Z'
+                    deleted: false
+                    published:
+                      - published_at: '2022-01-17T00:00:00Z'
+                        metadata:
+                          source: iva_test_iva_test
+              schema:
+                $ref: '#/components/schemas/Catalogue'
+          description: OK
+      summary: Get a catalogue
+      tags:
+        - Catalogue management
+    parameters:
+      - schema:
+          type: string
+        name: catalogue_guid
+        in: path
+        required: true
   /content/catalogues:
     get:
       description: ''
-      operationId: v1.content.content_rating.get_list
+      operationId: v1.content.catalogue.get_list
       parameters:
         - in: query
           name: languages
@@ -2548,7 +2548,7 @@ paths:
   '/content/creative_works/{creative_work_guid}/catalogues':
     get:
       description: ''
-      operationId: v1.content.tag.get_list_from_creative_work
+      operationId: v1.content.catalogue.get_list_from_creative_work
       parameters:
         - in: query
           name: languages
