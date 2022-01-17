@@ -1056,7 +1056,7 @@ paths:
           description: OK
       summary: Get a catalogue
       tags:
-        - Availability management
+        - Catalogue management
     parameters:
       - schema:
           type: string
@@ -1298,7 +1298,7 @@ paths:
           description: OK
       summary: List catalogues
       tags:
-        - Content rating management
+        - Catalogue management
     parameters: []
   '/content/content_ratings/{content_rating_guid}':
     get:
@@ -2654,7 +2654,7 @@ paths:
           description: OK
       summary: Get catalogues from creative work
       tags:
-        - Tag management
+        - Catalogue management
     parameters:
       - in: path
         name: creative_work_guid
