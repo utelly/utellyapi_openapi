@@ -1035,32 +1035,22 @@ paths:
                 '1':
                   value:
                     _links:
-                      location:
-                        href: /content/locations/27c13eec19014084a0a3173061702b46
                       self:
-                        href: /content/availabilities/eb4aaa3de91242ba82ad48bee0b48996
-                      service:
-                        href: /content/services/27c13eec19014084a0a3173061702b46
-                    created_at: '2020-01-01T00:00:00Z'
-                    datetime_from: '2020-01-01T00:00:00Z'
-                    datetime_to: '2020-01-01T00:00:00Z'
+                        href: /content/catalogues/2e22e6baf42c1688e89494963c6acc97632c8479
+                      creative_works:
+                        href: /content/creative_works/9a2c7a5515673a01064f372069b48e999d9fca87
+                      locations:
+                        href: /content/locations/3b65b3d66407fef945e046119323512bb158f281
+                      services:
+                        href: /content/services/0d4082546a6c122bcc34f9a42c6373c260f4f304
+                    guid: 2e22e6baf42c1688e89494963c6acc97632c8479
+                    updated_at: '2022-01-17T13:18:39Z'
+                    created_at: '2022-01-17T00:00:00Z'
                     deleted: false
-                    guid: eb4aaa3de91242ba82ad48bee0b48996
-                    identifiers:
-                      - id: '1'
-                        source: mysource
-                    targets:
-                      - currency: EUR
+                    published:
+                      - published_at: '2022-01-17T00:00:00Z'
                         metadata:
-                          source: mysource
-                        ownership: Rent
-                        platform: web
-                        price: 0
-                        product: default
-                        provider: mydomain
-                        quality: HD
-                        url: 'https://mydomain.com/ressource_url'
-                    updated_at: '2020-01-01T00:00:00Z'
+                          source: iva_test_iva_test
               schema:
                 $ref: '#/components/schemas/Catalogue'
           description: OK
@@ -1259,33 +1249,35 @@ paths:
                 '1':
                   value:
                     _embedded:
-                      content_ratings:
+                      catalogues:
                         - _links:
                             self:
-                              href: /content/content_ratings/bcb27a2c9ee74a5a86720c3b5828093c
-                          created_at: '2020-01-01T00:00:00Z'
+                              href: /content/catalogues/2e22e6baf42c1688e89494963c6acc97632c8479
+                            creative_works:
+                              href: /content/creative_works/9a2c7a5515673a01064f372069b48e999d9fca87
+                            locations:
+                              href: /content/locations/3b65b3d66407fef945e046119323512bb158f281
+                            services:
+                              href: /content/services/0d4082546a6c122bcc34f9a42c6373c260f4f304
+                          guid: 2e22e6baf42c1688e89494963c6acc97632c8479
+                          updated_at: '2022-01-17T13:18:39Z'
+                          created_at: '2022-01-17T00:00:00Z'
                           deleted: false
-                          guid: bcb27a2c9ee74a5a86720c3b5828093c
-                          identifiers:
-                            - id: '1'
-                              source: mysource
-                          ratings:
-                            - metadata:
-                                country: GB
-                              organization: MPAA
-                              rating: '12'
-                          updated_at: '2020-01-01T00:00:00Z'
+                          published:
+                            - published_at: '2022-01-17T00:00:00Z'
+                              metadata:
+                                source: iva_test_iva_test
                     _links:
                       first:
-                        href: /content/content_ratings
+                        href: /content/catalogues
                       last:
-                        href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                        href: /content/catalogues?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                       next:
-                        href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                        href: /content/catalogues?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
                       prev:
-                        href: /content/content_ratings
+                        href: /content/catalogues
                       self:
-                        href: /content/content_ratings?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                        href: /content/catalogues?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
               schema:
                 additionalProperties: false
                 type: object
@@ -1294,7 +1286,7 @@ paths:
                     additionalProperties: false
                     type: object
                     properties:
-                      content_ratings:
+                      catalogues:
                         type: array
                         items:
                           $ref: '#/components/schemas/Catalogue'
@@ -2297,114 +2289,6 @@ paths:
         required: true
         schema:
           type: string
-  '/content/creative_works/{creative_work_guid}/related':
-    get:
-      operationId: v1.content.related.get_list_from_creative_work
-      parameters:
-        - in: query
-          name: languages
-          schema:
-            items:
-              $ref: ../models/language_field.v1.yaml
-            type: array
-          style: form
-        - in: query
-          name: limit
-          schema:
-            maximum: 50
-            type: integer
-        - in: query
-          name: after_guid
-          schema:
-            type: string
-        - in: query
-          name: before_guid
-          schema:
-            type: string
-        - in: query
-          name: skip
-          schema:
-            type: integer
-        - in: query
-          name: before_or_eq_guid
-          schema:
-            type: string
-        - in: query
-          name: embed
-          schema:
-            items:
-              enum:
-                - creative_works
-                - people
-                - tags
-              type: string
-            type: array
-          style: form
-        - in: query
-          name: sort
-          schema:
-            items:
-              type: string
-            type: array
-      responses:
-        '200':
-          content:
-            application/json:
-              examples:
-                '1':
-                  value:
-                    _embedded:
-                      related:
-                        - _links:
-                            creative_works:
-                              - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
-                          guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
-                          params:
-                            strength: 0.22
-                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
-                        - _links:
-                            creative_works:
-                              - href: /content/creative_works/e7a123e5dbea8e04ed0bdc38d937c4829a694ce1
-                          guid: 562a8fe82fda00ab55f2869077bacb7bfb7d2269
-                          params:
-                            strength: 0.89
-                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
-                    _links:
-                      last:
-                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&before_or_eq_guid=c3ed729405bd71d20f34f60a771103b19d7a280e
-                      next:
-                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&after_guid=562a8fe82fda00ab55f2869077bacb7bfb7d2269
-                      self:
-                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2
-              schema:
-                additionalProperties: false
-                properties:
-                  _embedded:
-                    additionalProperties: false
-                    properties:
-                      related:
-                        items:
-                          $ref: '#/components/schemas/Related'
-                        type: array
-                    required:
-                      - related
-                    type: object
-                  _links:
-                    $ref: ../models/HalLinks.v1.yaml
-                required:
-                  - _embedded
-                  - _links
-                type: object
-          description: OK
-      summary: Get items related to a creative work
-      tags:
-        - Related management
-    parameters:
-      - in: path
-        name: creative_work_guid
-        required: true
-        schema:
-          type: string
   '/content/creative_works/{creative_work_guid}/seasons':
     get:
       description: ''
@@ -2547,6 +2431,230 @@ paths:
       summary: Get seasons from creative work
       tags:
         - Creative work management
+    parameters:
+      - in: path
+        name: creative_work_guid
+        required: true
+        schema:
+          type: string
+  '/content/creative_works/{creative_work_guid}/related':
+    get:
+      operationId: v1.content.related.get_list_from_creative_work
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - in: query
+          name: skip
+          schema:
+            type: integer
+        - in: query
+          name: before_or_eq_guid
+          schema:
+            type: string
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+                - people
+                - tags
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: sort
+          schema:
+            items:
+              type: string
+            type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      related:
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/f01dbca9e075140989c226e620f0993c0ce6979b
+                          guid: 4f15360894320c853e9e2b3c0875dbf15fa15c90
+                          params:
+                            strength: 0.22
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                        - _links:
+                            creative_works:
+                              - href: /content/creative_works/e7a123e5dbea8e04ed0bdc38d937c4829a694ce1
+                          guid: 562a8fe82fda00ab55f2869077bacb7bfb7d2269
+                          params:
+                            strength: 0.89
+                          seed_guid: aca87f333beb8c8a1d1a1ab69d44029d9750cd6b
+                    _links:
+                      last:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&before_or_eq_guid=c3ed729405bd71d20f34f60a771103b19d7a280e
+                      next:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2&after_guid=562a8fe82fda00ab55f2869077bacb7bfb7d2269
+                      self:
+                        href: /content/creative_works/aca87f333beb8c8a1d1a1ab69d44029d9750cd6b/related?limit=2
+              schema:
+                additionalProperties: false
+                properties:
+                  _embedded:
+                    additionalProperties: false
+                    properties:
+                      related:
+                        items:
+                          $ref: '#/components/schemas/Related'
+                        type: array
+                    required:
+                      - related
+                    type: object
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+                type: object
+          description: OK
+      summary: Get items related to a creative work
+      tags:
+        - Related management
+    parameters:
+      - in: path
+        name: creative_work_guid
+        required: true
+        schema:
+          type: string
+  '/content/creative_works/{creative_work_guid}/catalogues':
+    get:
+      description: ''
+      operationId: v1.content.tag.get_list_from_creative_work
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: fields
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: limit
+          schema:
+            maximum: 50
+            type: integer
+        - in: query
+          name: after_guid
+          schema:
+            type: string
+        - in: query
+          name: before_guid
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: json value of the Filters object
+          in: query
+          name: filters
+          schema:
+            type: string
+        - in: query
+          name: skip
+          schema:
+            type: integer
+        - in: query
+          name: before_or_eq_guid
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      catalogues:
+                        - _links:
+                            self:
+                              href: /content/catalogues/2e22e6baf42c1688e89494963c6acc97632c8479
+                            creative_works:
+                              href: /content/creative_works/9a2c7a5515673a01064f372069b48e999d9fca87
+                            locations:
+                              href: /content/locations/3b65b3d66407fef945e046119323512bb158f281
+                            services:
+                              href: /content/services/0d4082546a6c122bcc34f9a42c6373c260f4f304
+                          guid: 2e22e6baf42c1688e89494963c6acc97632c8479
+                          updated_at: '2022-01-17T13:18:39Z'
+                          created_at: '2022-01-17T00:00:00Z'
+                          deleted: false
+                          published:
+                            - published_at: '2022-01-17T00:00:00Z'
+                              metadata:
+                                source: iva_test_iva_test
+                    _links:
+                      first:
+                        href: /content/catalogues
+                      last:
+                        href: /content/catalogues?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      next:
+                        href: /content/catalogues?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      prev:
+                        href: /content/catalogues
+                      self:
+                        href: /content/catalogues?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+              schema:
+                additionalProperties: false
+                type: object
+                properties:
+                  _embedded:
+                    additionalProperties: false
+                    type: object
+                    properties:
+                      catalogues:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Catalogue'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+          description: OK
+      summary: Get catalogues from creative work
+      tags:
+        - Tag management
     parameters:
       - in: path
         name: creative_work_guid
