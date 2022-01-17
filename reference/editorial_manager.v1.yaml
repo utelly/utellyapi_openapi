@@ -2083,7 +2083,7 @@ components:
         url:
           type: string
         metadata:
-          $ref: ../models/metadata_field.v1.yaml
+          $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
   securitySchemes:
     Authorization:
       name: Authorization
