@@ -465,13 +465,15 @@ components:
         type: object
     Location:
       additionalProperties: false
+      title: Location
+      type: object
       properties:
         _links:
           $ref: ../models/HalLinks.v1.yaml
         artworks:
+          type: array
           items:
             $ref: '#/components/schemas/picture_field'
-          type: array
         created_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
@@ -483,16 +485,18 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         latitude:
           type: number
         longitude:
           type: number
         names:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               country_code:
                 type: string
@@ -502,13 +506,13 @@ components:
                 type: string
             required:
               - metadata
-            type: object
-          type: array
         s:
           type: string
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          type: string
+        type:
           type: string
       required:
         - _links
@@ -517,8 +521,6 @@ components:
         - guid
         - identifiers
         - updated_at
-      title: Location
-      type: object
     Person:
       additionalProperties: false
       properties:
