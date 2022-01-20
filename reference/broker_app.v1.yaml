@@ -2411,6 +2411,7 @@ paths:
             - content_ratings
             - ratings
             - availabilities
+            - catalogues
             type: string
           type: array
         style: form
@@ -2733,6 +2734,7 @@ paths:
             - content_ratings
             - ratings
             - availabilities
+            - catalogues
             type: string
           type: array
         style: form
