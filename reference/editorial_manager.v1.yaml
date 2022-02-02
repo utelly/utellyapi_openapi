@@ -1144,11 +1144,11 @@ paths:
       description: ''
       parameters:
         - schema:
-            type: string
+            type: integer
           in: query
           name: limit
         - schema:
-            type: string
+            type: integer
           in: query
           name: skip
         - schema:
