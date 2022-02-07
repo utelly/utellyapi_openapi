@@ -308,6 +308,7 @@ paths:
               enum:
               - popularity
               - popularity.external
+              - popularity.iva_iva
               - relevancy
               - release_year
               - recommendation
@@ -316,6 +317,7 @@ paths:
               - availability_to
               - '-popularity'
               - '-popularity.external'
+              - '-popularity.iva_iva'
               - '-relevancy'
               - '-release_year'
               - '-recommendation'
@@ -325,7 +327,7 @@ paths:
           in: query
           name: order_by
           style: pipeDelimited
-          description: "<table>       <tr>         <td>Parameter</td>         <td>Impact</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>popularity</b></td>         <td>most popular first</td>       </tr>       <tr>         <td><b>popularity.iva_iva</b></td>         <td>most popular first, based on iva score</td>       </tr> <tr>         <td><b>popularity.external</b></td>         <td>most popular first, based on the score by providers in the 'popularity.provider' parameter</td>       </tr>       <tr>         <td><b>relevancy</b></td>         <td>most relevant first, from a search perspective</td>       </tr>       <tr>         <td><b>release_year</b></td>         <td>most recent first</td>       </tr>       <tr>         <td><b>recommendation</b></td>         <td>best recommended first</td>       </tr>       <tr>         <td><b>rating</b></td>         <td>best rated first</td>       </tr>       <tr>         <td><b>availability_from</b></td>         <td>ASC</td>       </tr>       <tr>         <td><b>availability_to</b></td>         <td>ASC</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>note</b></td>         <td>use of \\*-\\* (minus) before the option provides the reverse order.</td>       </tr> </table>"
+          description: "<table>       <tr>         <td>Parameter</td>         <td>Impact</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>popularity</b></td>         <td>most popular first</td>       </tr><tr>         <td><b>popularity.external</b></td>         <td>most popular first, based on the score by providers in the 'popularity.provider' parameter</td>       </tr>       <tr>         <td><b>relevancy</b></td>         <td>most relevant first, from a search perspective</td>       </tr>       <tr>         <td><b>release_year</b></td>         <td>most recent first</td>       </tr>       <tr>         <td><b>recommendation</b></td>         <td>best recommended first</td>       </tr>       <tr>         <td><b>rating</b></td>         <td>best rated first</td>       </tr>       <tr>         <td><b>availability_from</b></td>         <td>ASC</td>       </tr>       <tr>         <td><b>availability_to</b></td>         <td>ASC</td>       </tr>       <tr> \t\t  <td>----</td> \t\t   <td>----</td>       </tr>       <tr>         <td><b>note</b></td>         <td>use of \\*-\\* (minus) before the option provides the reverse order.</td>       </tr> </table>"
         - schema:
             type: array
             items:
