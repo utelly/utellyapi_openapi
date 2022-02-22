@@ -909,30 +909,6 @@ components:
               published_at:
                 type: string
                 pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
-    AssetBlob:
-      title: AssetBlob
-      type: object
-      properties:
-        _links:
-          $ref: ../models/HalLinks.v1.yaml
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        deleted:
-          type: boolean
-        guid:
-          type: string
-        identifiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/identifier_field'
-        locale:
-          type: string
-        asset_bytes:
-          type: string
-        asset_encoding:
-          type: string
   securitySchemes:
     Authorization:
       in: header
@@ -957,6 +933,13 @@ paths:
           schema:
             items:
               $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
         - in: query
@@ -1053,6 +1036,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -1162,6 +1152,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -1227,6 +1224,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -1339,6 +1343,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -1391,6 +1402,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -1459,6 +1477,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -1615,6 +1640,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -1739,6 +1771,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -1866,6 +1905,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -1980,6 +2026,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -2062,6 +2115,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -2181,6 +2241,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -2330,6 +2397,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -2477,6 +2551,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: limit
           schema:
             maximum: 50
@@ -2585,6 +2666,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -2702,6 +2790,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -2818,6 +2913,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -2925,6 +3027,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -2976,6 +3085,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -3090,6 +3206,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -3146,6 +3269,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -3264,6 +3394,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -3324,6 +3461,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -3430,7 +3574,14 @@ paths:
             items:
               $ref: ../models/language_field.v1.yaml
             type: array
-          style: form
+          style: form      
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -3484,6 +3635,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: limit
           schema:
@@ -3586,6 +3744,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: embed
           schema:
             items:
@@ -3634,6 +3799,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -3752,6 +3924,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -3813,6 +3992,13 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
         - in: query
           name: fields
           schema:
@@ -3924,6 +4110,13 @@ paths:
             type: array
           style: form
         - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form          
+        - in: query
           name: fields
           schema:
             items:
@@ -3966,48 +4159,6 @@ paths:
         required: true
         schema:
           type: string
-  /content/asset_blobs:
-    get:
-      summary: List asset blobs
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  _embedded:
-                    type: object
-                    properties:
-                      asset_blobs:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/AssetBlob'
-                  _links:
-                    $ref: ../models/HalLinks.v1.yaml
-      operationId: v1.content.asset_blob.get_list
-      tags:
-        - Asset management
-  '/content/asset_blobs/{asset_blob_guid}':
-    parameters:
-      - schema:
-          type: string
-        name: asset_blob_guid
-        in: path
-        required: true
-    get:
-      summary: Get an asset blob
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssetBlob'
-      operationId: v1.content.asset_blob.get_one
-      tags:
-        - Asset management
 security:
   - Authorization: []
 servers:
