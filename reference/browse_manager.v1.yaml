@@ -909,6 +909,30 @@ components:
               published_at:
                 type: string
                 pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+    AssetBlob:
+      title: AssetBlob
+      type: object
+      properties:
+        _links:
+          $ref: ../models/HalLinks.v1.yaml
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        deleted:
+          type: boolean
+        guid:
+          type: string
+        identifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/identifier_field'
+        locale:
+          type: string
+        asset_bytes:
+          type: string
+        asset_encoding:
+          type: string
   securitySchemes:
     Authorization:
       in: header
