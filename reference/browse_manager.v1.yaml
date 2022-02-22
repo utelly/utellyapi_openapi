@@ -4159,6 +4159,48 @@ paths:
         required: true
         schema:
           type: string
+  /content/asset_blobs:
+    get:
+      summary: List asset blobs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      asset_blobs:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/AssetBlob'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: v1.content.asset_blob.get_list
+      tags:
+        - Asset management
+  '/content/asset_blobs/{asset_blob_guid}':
+    parameters:
+      - schema:
+          type: string
+        name: asset_blob_guid
+        in: path
+        required: true
+    get:
+      summary: Get an asset blob
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetBlob'
+      operationId: v1.content.asset_blob.get_one
+      tags:
+        - Asset management
 security:
   - Authorization: []
 servers:
