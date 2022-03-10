@@ -5,6 +5,8 @@ components:
       type: object
       x-examples:
         example-1:
+          _links:
+            href: string
           guid: string
           identifiers:
             - id: string
@@ -17,27 +19,10 @@ components:
                 id: string
                 source: string
                 type: string
-          affinities:
-            services:
-              - guid: string
-                score: 0
-            genres:
-              - guid: string
-                score: 0
-            tags:
-              - guid: string
-                score: 0
-            people:
-              - guid: string
-                score: 0
-          subscriptions:
-            services:
-              - guid: string
-                datetime_from: '2019-08-24T14:15:22Z'
-                datetime_to: '2019-08-24T14:15:22Z'
-          currently_watching: string
           kvs: {}
       properties:
+        _links:
+          $ref: ../models/hal_link_field.v1.yaml
         guid:
           type: string
           minLength: 1
@@ -56,73 +41,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/interaction'
-        affinities:
-          type: object
-          properties:
-            services:
-              type: array
-              items:
-                $ref: '#/components/schemas/affinity'
-            genres:
-              type: array
-              items:
-                $ref: '#/components/schemas/affinity'
-            tags:
-              type: array
-              items:
-                $ref: '#/components/schemas/affinity'
-            people:
-              type: array
-              items:
-                $ref: '#/components/schemas/affinity'
-        subscriptions:
-          type: object
-          properties:
-            services:
-              type: array
-              items:
-                $ref: '#/components/schemas/subscription'
-        currently_watching:
-          type: string
         kvs:
           type: object
-    subscription:
-      description: ''
-      type: object
-      x-examples:
-        example-1:
-          guid: 251b248e8cfad517ab9fcdafb0e951af
-          datetime_from: ''
-          datetime_to: ''
-      properties:
-        guid:
-          type: string
-          minLength: 1
-        datetime_from:
-          type: string
-          format: date-time
-        datetime_to:
-          type: string
-          format: date-time
-      required:
-        - guid
-        - datetime_from
-        - datetime_to
-    affinity:
-      description: ''
-      type: object
-      x-examples:
-        example-1:
-          guid: ''
-          score: 10
-      properties:
-        guid:
-          type: string
-        score:
-          type: number
-      required:
-        - guid
-        - score
     interaction:
       description: ''
       type: object
@@ -247,23 +167,22 @@ paths:
         '200':
           $ref: '#/components/responses/consumer'
       operationId: get-consumers
-      description: ''
+      description: Retrieve consumer by guid
     parameters:
       - schema:
           type: string
         name: consumer_guid
         in: path
         required: true
-    post:
+    put:
       summary: Update Consumer
-      operationId: post-consumers-consumer_guid
-      requestBody:
-        $ref: '#/components/requestBodies/consumer'
+      operationId: put-consumers-consumer_guid
       responses:
         '200':
           $ref: '#/components/responses/consumer'
-      tags:
-        - Consumer Management
+      requestBody:
+        $ref: '#/components/requestBodies/consumer'
+      description: Update consumer resource
   /consumers:
     get:
       summary: List Consumers
@@ -323,6 +242,7 @@ paths:
             type: string
           in: query
           name: sort
+      description: Retrieve consumers
     post:
       summary: Create Consumer
       operationId: post-consumers
@@ -334,18 +254,6 @@ paths:
         $ref: '#/components/requestBodies/consumer'
       tags:
         - Consumer Management
-  '/consumers/{consumer_guid}/affinities':
-    parameters:
-      - schema:
-          type: string
-        name: consumer_guid
-        in: path
-        required: true
-    get:
-      summary: Your GET endpoint
-      tags: []
-      responses: {}
-      operationId: get-consumers-consumer_guid-affinities
 servers:
   - description: prod
     url: 'https://services.utelly.com/consumer_manager/v1'
