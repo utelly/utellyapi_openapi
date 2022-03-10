@@ -1,0 +1,124 @@
+components:
+  schemas:
+    Role:
+      additionalProperties: false
+      properties:
+        environment_id:
+          type: string
+        module_id:
+          type: string
+        permission:
+          enum:
+          - read
+          - write
+          type: string
+        perspective_id:
+          type: string
+      required:
+      - environment_id
+      - perspective_id
+      - module_id
+      - permission
+      title: Role
+      type: object
+      x-examples:
+        '1':
+          environment_id: '1'
+          module_id: '1'
+          permission: read
+          perspective_id: '1'
+      x-tags:
+      - Model
+  securitySchemes:
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-apikeyInfoFunc: security.check_token
+info:
+  contact:
+    email: developers@utelly.com
+    name: API Support
+  description: ''
+  title: user_manager
+  version: v1
+openapi: 3.0.0
+paths:
+  /user/preferences:
+    get:
+      operationId: v1.user.get_preferences
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    values:
+                    - key: default_env
+                      value: '1'
+                    - key: default_perspective
+                      value: '1'
+                    - key: default_view
+                      value: '1'
+              schema:
+                additionalProperties: false
+                properties:
+                  values:
+                    items:
+                      $ref: ../models/kv_field.v1.yaml
+                    minItems: 1
+                    type: array
+                    uniqueItems: true
+                required:
+                - values
+                type: object
+          description: OK
+      security:
+      - Authorization: []
+      summary: Get user preferences
+      tags:
+      - User Management
+    parameters: []
+  /user/roles:
+    get:
+      description: Get user roles
+      operationId: v1.user.get_roles
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    roles:
+                    - environment_id: '1'
+                      module_id: '1'
+                      permission: read
+                      perspective_id: '1'
+              schema:
+                additionalProperties: false
+                properties:
+                  roles:
+                    items:
+                      $ref: '#/components/schemas/Role'
+                    type: array
+                required:
+                - roles
+                type: object
+          description: OK
+      security:
+      - Authorization: []
+      summary: Get user roles
+      tags:
+      - User Management
+    parameters: []
+servers:
+- description: prod
+  url: https://services.utelly.com/user_manager/v1
+- description: staging
+  url: https://staging-services.utelly.com/user_manager/v1
+- description: dev
+  url: https://dev-services.utelly.com/user_manager/v1
+tags:
+- name: utelly_services
