@@ -9,16 +9,16 @@ components:
           type: string
         permission:
           enum:
-          - read
-          - write
+            - read
+            - write
           type: string
         perspective_id:
           type: string
       required:
-      - environment_id
-      - perspective_id
-      - module_id
-      - permission
+        - environment_id
+        - perspective_id
+        - module_id
+        - permission
       title: Role
       type: object
       x-examples:
@@ -28,7 +28,7 @@ components:
           permission: read
           perspective_id: '1'
       x-tags:
-      - Model
+        - Model
   securitySchemes:
     Authorization:
       in: header
@@ -40,7 +40,7 @@ info:
     email: developers@utelly.com
     name: API Support
   description: ''
-  title: user_manager
+  title: consumer_manager
   version: v1
 openapi: 3.0.0
 paths:
@@ -55,12 +55,12 @@ paths:
                 '1':
                   value:
                     values:
-                    - key: default_env
-                      value: '1'
-                    - key: default_perspective
-                      value: '1'
-                    - key: default_view
-                      value: '1'
+                      - key: default_env
+                        value: '1'
+                      - key: default_perspective
+                        value: '1'
+                      - key: default_view
+                        value: '1'
               schema:
                 additionalProperties: false
                 properties:
@@ -71,14 +71,14 @@ paths:
                     type: array
                     uniqueItems: true
                 required:
-                - values
+                  - values
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get user preferences
       tags:
-      - User Management
+        - User Management
     parameters: []
   /user/roles:
     get:
@@ -92,10 +92,10 @@ paths:
                 '1':
                   value:
                     roles:
-                    - environment_id: '1'
-                      module_id: '1'
-                      permission: read
-                      perspective_id: '1'
+                      - environment_id: '1'
+                        module_id: '1'
+                        permission: read
+                        perspective_id: '1'
               schema:
                 additionalProperties: false
                 properties:
@@ -104,21 +104,21 @@ paths:
                       $ref: '#/components/schemas/Role'
                     type: array
                 required:
-                - roles
+                  - roles
                 type: object
           description: OK
       security:
-      - Authorization: []
+        - Authorization: []
       summary: Get user roles
       tags:
-      - User Management
+        - User Management
     parameters: []
 servers:
-- description: prod
-  url: https://services.utelly.com/user_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/user_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/user_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/consumer_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/consumer_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/consumer_manager/v1'
 tags:
-- name: utelly_services
+  - name: utelly_services
