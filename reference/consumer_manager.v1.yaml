@@ -1,40 +1,234 @@
 components:
   schemas:
-    Role:
-      additionalProperties: false
-      properties:
-        environment_id:
-          type: string
-        module_id:
-          type: string
-        permission:
-          enum:
-            - read
-            - write
-          type: string
-        perspective_id:
-          type: string
-      required:
-        - environment_id
-        - perspective_id
-        - module_id
-        - permission
-      title: Role
+    consumer:
+      description: ''
       type: object
       x-examples:
-        '1':
-          environment_id: '1'
-          module_id: '1'
-          permission: read
-          perspective_id: '1'
-      x-tags:
-        - Model
+        example-1:
+          guid: string
+          identifiers:
+            - id: string
+              source: string
+          updated_at: string
+          created_at: string
+          last_n_interactions:
+            - type: string
+              entity:
+                id: string
+                source: string
+                type: string
+          affinities:
+            services:
+              - guid: string
+                score: 0
+            genres:
+              - guid: string
+                score: 0
+            tags:
+              - guid: string
+                score: 0
+            people:
+              - guid: string
+                score: 0
+          subscriptions:
+            services:
+              - guid: string
+                datetime_from: '2019-08-24T14:15:22Z'
+                datetime_to: '2019-08-24T14:15:22Z'
+          currently_watching: string
+          kvs: {}
+      properties:
+        guid:
+          type: string
+          minLength: 1
+          readOnly: true
+        identifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/indentifier'
+        updated_at:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          readOnly: true
+        last_n_interactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/interaction'
+        affinities:
+          type: object
+          properties:
+            services:
+              type: array
+              items:
+                $ref: '#/components/schemas/affinity'
+            genres:
+              type: array
+              items:
+                $ref: '#/components/schemas/affinity'
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/affinity'
+            people:
+              type: array
+              items:
+                $ref: '#/components/schemas/affinity'
+        subscriptions:
+          type: object
+          properties:
+            services:
+              type: array
+              items:
+                $ref: '#/components/schemas/subscription'
+        currently_watching:
+          type: string
+        kvs:
+          type: object
+    subscription:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          guid: 251b248e8cfad517ab9fcdafb0e951af
+          datetime_from: ''
+          datetime_to: ''
+      properties:
+        guid:
+          type: string
+          minLength: 1
+        datetime_from:
+          type: string
+          format: date-time
+        datetime_to:
+          type: string
+          format: date-time
+      required:
+        - guid
+        - datetime_from
+        - datetime_to
+    affinity:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          guid: ''
+          score: 10
+      properties:
+        guid:
+          type: string
+        score:
+          type: number
+      required:
+        - guid
+        - score
+    interaction:
+      description: ''
+      type: object
+      properties:
+        type:
+          type: string
+        entity:
+          type: object
+          properties:
+            id:
+              type: string
+            source:
+              type: string
+            type:
+              type: string
+          required:
+            - id
+            - source
+            - type
+      required:
+        - type
+        - entity
+      x-examples:
+        example-1:
+          type: ''
+          entity:
+            id: ''
+            source: ''
+            type: ''
+    indentifier:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+      required:
+        - id
+        - source
+      x-examples:
+        example-1:
+          id: ''
+          source: ''
+    filters:
+      title: filters
+      type: array
+      items: {}
+    filter:
+      title: filter
+      type: object
+      properties:
+        property:
+          type: string
+        operator:
+          type: string
+        value:
+          anyOf:
+            - items:
+                type: string
+          type:
+            - array
+            - string
+      required:
+        - property
+        - operator
+        - value
   securitySchemes:
     Authorization:
       in: header
       name: Authorization
       type: apiKey
       x-apikeyInfoFunc: security.check_token
+  parameters: {}
+  requestBodies:
+    consumer:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              consumer:
+                $ref: '#/components/schemas/consumer'
+        application/xml:
+          schema:
+            type: object
+            properties: {}
+        multipart/form-data:
+          schema:
+            type: object
+            properties: {}
+        text/html:
+          schema:
+            type: object
+            properties: {}
+        text/plain:
+          schema:
+            type: object
+            properties: {}
+  responses:
+    consumer:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/consumer'
 info:
   contact:
     email: developers@utelly.com
@@ -44,75 +238,114 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /user/preferences:
+  '/consumers/{consumer_guid}':
     get:
-      operationId: v1.user.get_preferences
+      summary: Get a Consumer
+      tags:
+        - Consumer Management
       responses:
         '200':
-          content:
-            application/json:
-              examples:
-                '1':
-                  value:
-                    values:
-                      - key: default_env
-                        value: '1'
-                      - key: default_perspective
-                        value: '1'
-                      - key: default_view
-                        value: '1'
-              schema:
-                additionalProperties: false
-                properties:
-                  values:
-                    items:
-                      $ref: ../models/kv_field.v1.yaml
-                    minItems: 1
-                    type: array
-                    uniqueItems: true
-                required:
-                  - values
-                type: object
-          description: OK
-      security:
-        - Authorization: []
-      summary: Get user preferences
-      tags:
-        - User Management
-    parameters: []
-  /user/roles:
-    get:
-      description: Get user roles
-      operationId: v1.user.get_roles
+          $ref: '#/components/responses/consumer'
+      operationId: get-consumers
+      description: ''
+    parameters:
+      - schema:
+          type: string
+        name: consumer_guid
+        in: path
+        required: true
+    post:
+      summary: Update Consumer
+      operationId: post-consumers-consumer_guid
+      requestBody:
+        $ref: '#/components/requestBodies/consumer'
       responses:
         '200':
+          $ref: '#/components/responses/consumer'
+      tags:
+        - Consumer Management
+  /consumers:
+    get:
+      summary: List Consumers
+      tags:
+        - Consumer Management
+      responses:
+        '200':
+          description: OK
           content:
             application/json:
-              examples:
-                '1':
-                  value:
-                    roles:
-                      - environment_id: '1'
-                        module_id: '1'
-                        permission: read
-                        perspective_id: '1'
               schema:
-                additionalProperties: false
-                properties:
-                  roles:
-                    items:
-                      $ref: '#/components/schemas/Role'
-                    type: array
-                required:
-                  - roles
                 type: object
-          description: OK
-      security:
-        - Authorization: []
-      summary: Get user roles
+                properties:
+                  _embedded:
+                    type:
+                      - string
+                      - object
+                    properties:
+                      consumers:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/consumer'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: get-consumers
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: filters
+          description: json value of the Filters object
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: fields
+        - schema:
+            type: string
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: sort
+    post:
+      summary: Create Consumer
+      operationId: post-consumers
+      responses:
+        '200':
+          $ref: '#/components/responses/consumer'
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/consumer'
       tags:
-        - User Management
-    parameters: []
+        - Consumer Management
+  '/consumers/{consumer_guid}/affinities':
+    parameters:
+      - schema:
+          type: string
+        name: consumer_guid
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-consumers-consumer_guid-affinities
 servers:
   - description: prod
     url: 'https://services.utelly.com/consumer_manager/v1'
