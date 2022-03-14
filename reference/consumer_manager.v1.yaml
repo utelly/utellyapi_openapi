@@ -13,13 +13,12 @@ components:
               source: string
           updated_at: string
           created_at: string
-          last_n_interactions:
+          last_interactions:
             - type: string
               entity:
                 id: string
                 source: string
                 type: string
-          kvs: {}
       properties:
         _links:
           $ref: ../models/hal_link_field.v1.yaml
@@ -37,12 +36,10 @@ components:
         created_at:
           type: string
           readOnly: true
-        last_n_interactions:
+        last_interactions:
           type: array
           items:
             $ref: '#/components/schemas/interaction'
-        kvs:
-          type: object
     interaction:
       description: ''
       type: object
