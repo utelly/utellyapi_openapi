@@ -1,0 +1,265 @@
+components:
+  schemas:
+    consumer:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          _links:
+            href: string
+          guid: string
+          identifiers:
+            - id: string
+              source: string
+          updated_at: string
+          created_at: string
+          last_n_interactions:
+            - type: string
+              entity:
+                id: string
+                source: string
+                type: string
+          kvs: {}
+      properties:
+        _links:
+          $ref: ../models/hal_link_field.v1.yaml
+        guid:
+          type: string
+          minLength: 1
+          readOnly: true
+        identifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/indentifier'
+        updated_at:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          readOnly: true
+        last_n_interactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/interaction'
+        kvs:
+          type: object
+    interaction:
+      description: ''
+      type: object
+      properties:
+        type:
+          type: string
+        entity:
+          type: object
+          properties:
+            id:
+              type: string
+            source:
+              type: string
+            type:
+              type: string
+          required:
+            - id
+            - source
+            - type
+      required:
+        - type
+        - entity
+      x-examples:
+        example-1:
+          type: ''
+          entity:
+            id: ''
+            source: ''
+            type: ''
+    indentifier:
+      description: ''
+      type: object
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+      required:
+        - id
+        - source
+      x-examples:
+        example-1:
+          id: ''
+          source: ''
+    filters:
+      title: filters
+      type: array
+      items: {}
+    filter:
+      title: filter
+      type: object
+      properties:
+        property:
+          type: string
+        operator:
+          type: string
+        value:
+          anyOf:
+            - items:
+                type: string
+          type:
+            - array
+            - string
+      required:
+        - property
+        - operator
+        - value
+  securitySchemes:
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
+      x-apikeyInfoFunc: security.check_token
+  parameters: {}
+  requestBodies:
+    consumer:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              consumer:
+                $ref: '#/components/schemas/consumer'
+        application/xml:
+          schema:
+            type: object
+            properties: {}
+        multipart/form-data:
+          schema:
+            type: object
+            properties: {}
+        text/html:
+          schema:
+            type: object
+            properties: {}
+        text/plain:
+          schema:
+            type: object
+            properties: {}
+  responses:
+    consumer:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/consumer'
+info:
+  contact:
+    email: developers@utelly.com
+    name: API Support
+  description: ''
+  title: consumer_manager
+  version: v1
+openapi: 3.0.0
+paths:
+  '/consumers/{consumer_guid}':
+    get:
+      summary: Get a Consumer
+      tags:
+        - Consumer Management
+      responses:
+        '200':
+          $ref: '#/components/responses/consumer'
+      operationId: get-consumers
+      description: Retrieve consumer by guid
+    parameters:
+      - schema:
+          type: string
+        name: consumer_guid
+        in: path
+        required: true
+    put:
+      summary: Update Consumer
+      operationId: put-consumers-consumer_guid
+      responses:
+        '200':
+          $ref: '#/components/responses/consumer'
+      requestBody:
+        $ref: '#/components/requestBodies/consumer'
+      description: Update consumer resource
+  /consumers:
+    get:
+      summary: List Consumers
+      tags:
+        - Consumer Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type:
+                      - string
+                      - object
+                    properties:
+                      consumers:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/consumer'
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+      operationId: get-consumers
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: filters
+          description: json value of the Filters object
+        - schema:
+            type: string
+          in: query
+          name: after_guid
+        - schema:
+            type: string
+          in: query
+          name: before_guid
+        - schema:
+            type: string
+          in: query
+          name: before_or_eq_guid
+        - schema:
+            type: string
+          in: query
+          name: fields
+        - schema:
+            type: string
+          in: query
+          name: limit
+        - schema:
+            type: string
+          in: query
+          name: skip
+        - schema:
+            type: string
+          in: query
+          name: sort
+      description: Retrieve consumers
+    post:
+      summary: Create Consumer
+      operationId: post-consumers
+      responses:
+        '200':
+          $ref: '#/components/responses/consumer'
+      description: ''
+      requestBody:
+        $ref: '#/components/requestBodies/consumer'
+      tags:
+        - Consumer Management
+servers:
+  - description: prod
+    url: 'https://services.utelly.com/consumer_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/consumer_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/consumer_manager/v1'
+tags:
+  - name: utelly_services
