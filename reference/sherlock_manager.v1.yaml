@@ -1,11 +1,908 @@
 components:
-  schemas: {}
+  schemas:
+    topic:
+      description: ''
+      type: object
+      x-examples:
+        example-1:
+          _id: 11d019ee16032aa10867e4b28299b53121f4d629
+          actors:
+            - id: 070b752c0b2c2402ac20376b60f0c85473c5080d
+              name: Amy Wright
+              picture: ''
+              source_id: Person/2895
+            - id: 076de2df031c016d270070abc8bf41d9a6cab393
+              name: Michael McShane
+              picture: ''
+              source_id: Person/12488
+            - id: 287a6011659917d6a7416bdab192c232a459034a
+              name: Adrian Roberts
+              picture: ''
+              source_id: Person/81908
+            - id: 3ee1860bc35b977382afb23dda84fa46700f0ae4
+              name: Blake Heron
+              picture: ''
+              source_id: Person/77931
+            - id: 43fcbaa408a5cc52b19e8070807ee1e6c860aaab
+              name: Jonathan Taylor Thomas
+              picture: ''
+              source_id: Person/3343
+            - id: 43fe1d5b0b2bf5d74f6dc4e0487ff9cb359b4fb7
+              name: Joey Stinson
+              picture: ''
+              source_id: Person/606469
+            - id: 470ce9c43f644372c128c44769e6778553b7c48a
+              name: Newell Alexander
+              picture: ''
+              source_id: Person/54751
+            - id: 5696c6873f3e2786ad26547a89bec257318ad5b8
+              name: Tamara Mello
+              picture: ''
+              source_id: Person/89023
+            - id: 5c3823850e26200d8b70cdb1cec4c7964e40f105
+              name: Paul Kropfl
+              picture: ''
+              source_id: Person/1146302
+            - id: 634d7e2178fe10cdc990bc9c0d8d704b6eb91037
+              name: Tiffany Lynn Clark
+              picture: ''
+              source_id: Person/1146300
+            - id: 6986ec1ec70582edf1cb0cb3d9eaf8b8c557813b
+              name: Wade Woods
+              picture: ''
+              source_id: Person/614669
+            - id: 76cc9a888485057630bfa615aa12bfef3590f94b
+              name: Rachael Leigh Cook
+              picture: ''
+              source_id: Person/361
+            - id: 7e274884925f45c7cf531bff848bcff65e534474
+              name: Ron Clinton Smith
+              picture: ''
+              source_id: Person/255831
+            - id: 9c651e32bbac6871a80a7b6f0bb7f37a617ebc75
+              name: Heath Lamberts
+              picture: ''
+              source_id: Person/205481
+            - id: a508704cc88b89be68053efe95c785c832cf7432
+              name: Lanny Flaherty
+              picture: ''
+              source_id: Person/26812
+            - id: b1673016a101eee36e0bdd0365f8cb2a8f0479ee
+              name: Jim Aycock
+              picture: ''
+              source_id: Person/1146299
+            - id: b3152770f61db447aa54fdd1ed398b53393dda07
+              name: Bronwen Murray
+              picture: ''
+              source_id: Person/1146301
+            - id: b79d1d8e27b1da42943ba7ddb79d4d925ce890a1
+              name: Kellen Hathaway
+              picture: ''
+              source_id: Person/432320
+            - id: c230e4f480f3f616904979aaf8a5d5a40c2ef4dd
+              name: William Newman
+              picture: ''
+              source_id: Person/171628
+            - id: c785f1d444af80d0ec09539651d46d3231a1304c
+              name: Courtland Mead
+              picture: ''
+              source_id: Person/8316
+            - id: dd3170088fb0d48848cdf2f7c07d55b7ab2fccd7
+              name: Marian Seldes
+              picture: 'https://utellyassets9-1.imgix.net/api/Images/326889792d2e53f73bcbe41274483b35/Redirect'
+              source_id: Person/49094
+            - id: e1c539e29f43781b1ced6f4dd8714f818384326f
+              name: Charles Rocket
+              picture: ''
+              source_id: Person/22447
+            - id: e6d19698f84c6707837296002717821b17b66898
+              name: Adam Crosby
+              picture: ''
+              source_id: Person/401851
+            - id: ee38eff7d61ae7a4fbb0a9a5d1c6b040399db51b
+              name: Peter MacKenzie
+              picture: 'https://utellyassets9-1.imgix.net/api/Images/e77d0101ffed80ff07814271d6a7176d/Redirect'
+              source_id: Person/82689
+            - id: eef7c855b0d6d2e7b20cd2e24e92d119e6d8b866
+              name: Eric Schweig
+              picture: ''
+              source_id: Person/8854
+            - id: f212256ba495a5215167061dc3f6b738981cc92b
+              name: Mark Cabus
+              picture: ''
+              source_id: Person/142271
+            - id: f715ff47bbc1ac72b6031bc26487eccc9c936f9c
+              name: Emmy Collins
+              picture: ''
+              source_id: Person/140444
+            - id: fbf9a2c8a166ea1d3daab8e14163138b7f0212a6
+              name: Brad Renfro
+              picture: ''
+              source_id: Person/14421
+            - id: fe436e43f65a0a7354b89ad794740c7d754463bc
+              name: Andy Stahl
+              picture: ''
+              source_id: Person/39045
+          availabilities:
+            - channel_id: f95f520e05e4af3d0ec3f717bda64fcfaaef678c
+              channel_name: DisneyPlus
+              datetime_from: '2022-02-14T00:00:00+00:00'
+              datetime_to: '2023-02-14T00:00:00+00:00'
+              location_country_code: US
+              location_id: 2a8dabb5ae31e5c7d2d81bf9465d66d4a9eb7667
+              location_name: ''
+              platforms:
+                - web
+          channels:
+            - id: f95f520e05e4af3d0ec3f717bda64fcfaaef678c
+              name: DisneyPlus
+          content_ratings:
+            - id: 00472c37329b560d0adf195551210ea413d58545
+              organization: ''
+              rating: PG
+            - id: 32981c0ceb826b578467ac4dff27214a88f4b931
+              organization: ''
+              rating: '12'
+            - id: 4e68647ab490ac086142a502c79d12febfb6f4a0
+              organization: ''
+              rating: PG
+            - id: 9e0e5b2f9c7a7f28442136eebe586160dae156ba
+              organization: ''
+              rating: PG
+            - id: 9ea9456b93babcf98abc98a1d3d9a3a885ece4a9
+              organization: ''
+              rating: '6'
+          description: 'Jonathan Taylor Thomas stars as Tom Sawyer, America''s legendary teenage hero. No boy ever had so much fun, got into so much trouble or had so many outrageous adventures. When Tom and rebellious friend Huck Finn (Brad Renfro) witness a midnight killing, they swear not to reveal what they saw. But that causes a real problem: if Tom doesn''t speak up, an innocent friend may be hanged; if he does tell the truth, the real killer, knife-throwing Injun Joe, will come after him. With escapades including a treasure hunt, a haunted house, a courtroom showdown and a scary chase in a cave, Tom learns a valuable lesson: when a friend''s in trouble, you don''t run away. Contains tobacco depictions.'
+          description_search:
+            bg-bg: 'Една от най-великите детски книги, писани някога - “Приключенията на Том Сойер” от Марк Твен, получава една от най-достоверните си екранизации. Славните патила на щурите юнаци Том Сойер и Хъкълбери Фин имат реалния шанс не просто да станат причина за нови пакости у дома, а дори да накарат децата ви да прочетат книгата, ако още не са го сторили. Не им спестявайте тази искрена радост! Никое момче на света не се е забавлявало толкова, не е имало толкова приключения и не се забърквало в толкова неприятности, колкото Том Сойер. Том и добрият му приятел Хък стават свидетели на убийство. Двамата виждат как Индианеца Джо убива собственика на погребално бюро, за да стигне до картата му. Двамата си обещават да не разкриват случилото се, но така един невинен приятел може да бъде обесен. Ако обаче разкрият Джо, той ще е по петите им.'
+            de-de: 'Tom Sawyer hat sich gerade mit dem Waisen Huck Finn angefreundet, als die beiden Zeugen eines Mordes auf dem Stadtfriedhof werden. Als das Verbrechen an die Öffentlichkeit gerät, wird Toms Freund Muff Potter des Mordes angeklagt. Tom und Huck wissen nur allzu gut, dass Muff unschuldig ist, schließlich haben sie den wahren Mörder beobachtet. Doch Huck hat Tom aus Angst vor dem wahren Täter schwören lassen, den Namen nicht zu verraten.'
+            en: 'Jonathan Taylor Thomas stars as Tom Sawyer, America''s legendary teenage hero. No boy ever had so much fun, got into so much trouble or had so many outrageous adventures. When Tom and rebellious friend Huck Finn (Brad Renfro) witness a midnight killing, they swear not to reveal what they saw. But that causes a real problem: if Tom doesn''t speak up, an innocent friend may be hanged; if he does tell the truth, the real killer, knife-throwing Injun Joe, will come after him. With escapades including a treasure hunt, a haunted house, a courtroom showdown and a scary chase in a cave, Tom learns a valuable lesson: when a friend''s in trouble, you don''t run away. Contains tobacco depictions.'
+            en-us: 'A mischievous young boy, Tom Sawyer, witnesses a murder by the deadly Injun Joe. Tom becomes friends with Huckleberry Finn, a boy with no future and no family. Tom has to choose between honoring a friendship or honoring an oath because the town alcoholic is accused of the murder. Tom and Huck go through several adventures trying to retrieve evidence.'
+            es-es: 'Tom Sawyer y Huck Finn presencian el asesinato de un hombre por todos conocido como el "Indio Joe", para robarle el mapa de un tesoro. Cuando es acusado del asesinato un inocente, ambos muchachos correrán todo tipo de peligros para evitar que sea condenado.'
+            fr-fr: 'Tom et Huck témoin du meurtre de Injun Joe de Doc Robinson une nuit au cimetière. Quand un homme innocent est accusé d''avoir tué le Doc, Tom étapes comme témoin, ne pas respecter la promesse faite à Huck à mettre bas.'
+            it-it: 'Il giovane Tom Sawyer assiste a un omicidio, e insieme all''amico analfabeta Huck Finn cerca - tra mille avventure - di scagionare un ubriacone ingiustamente accusato del crimine.'
+            ko-kr: '마을의 장난꾸러기 톰 소여(Tom Sawyer: 조나단 테일러 토마스 분)와 떠돌이 허클베리 핀(Huck Finn: 브래드 렌프로 분)은 어느날 밤, 마을 공동묘지에서 살인 사건을 목격한다. 죄없는 마을 주정뱅이가 범인으로 몰리지만, 진실을 밝힌다면 악당이 그들을 가만 두지 않을 것이다.'
+            nl-nl: 'Tom Sawyer is getuige van een moord. Samen met zijn vriend Huckleberry Finn, een zwerversjongen, gaat hij op zoek naar bewijzen, om de onschuld van de plaatselijke alcoholist, die van de moord beschuldigd is, aan te tonen. Wanneer dit lukt, is Tom bang om door de werkelijke moordenaar te worden omgebracht.'
+            pt-br: 'O travesso Tom Sawyer é testemunha de um assassinato cometido pelo malvado Injun Joe. Quando um inocente é culpado pelo crime, Tom e seu rebelde amigo Huck Finn começam uma busca pelo mapa de piratas para poder absolvê-lo. Baseado no clássico livro de Mark Twain.'
+            ru-ru: 'От их проделок в ужас приходит вся округа. Кошки и собаки разбегаются, хозяйки запирают окна и двери, малыши плачут. Нет, это не монстры из страшной сказки вышли на улицу города. Просто нам предстоят новые встречи с Томом Сойером и Геком Финном, любимыми героями из романа Марка Твена.'
+            sv-se: 'Tom Sawyer blir vittne till ett mord av en man och stadens lodis anklagas för mordet. Men Tom har sett den verkliga mördaren, det är bara det att ingen tror honom, förrän han möter Huck, en ung pojke som är hemlös.'
+            uk-ua: 'Їхніми витівками перелякані всі навкруги: кішки та собаки розбігаються, господині замикають вікна та двері, малюки плачуть... Ні, це не монстри із страшної казки вийшли на вулицю міста. Просто нас чекають нові зустрічі з Томом Сойєром і Геком Фінном.'
+            zh-cn: 本片改编自大文豪马克·吐温的作品。密西西比河畔小镇上出了名的捣蛋鬼汤姆和他的流浪哥们哈克无意中目击印第安人乔杀人并嫁祸于无辜的老醉鬼马夫，在良心的驱使下，汤姆与哈克决定偷取杀人凶手的藏宝图以帮助马夫洗刷冤屈，但乔却在寻获在寻获宝物后将图烧了，现在唯一能解救马夫的只有两人的证词。
+          descriptions_all:
+            bg-BG:
+              - description: 'Една от най-великите детски книги, писани някога - “Приключенията на Том Сойер” от Марк Твен, получава една от най-достоверните си екранизации. Славните патила на щурите юнаци Том Сойер и Хъкълбери Фин имат реалния шанс не просто да станат причина за нови пакости у дома, а дори да накарат децата ви да прочетат книгата, ако още не са го сторили. Не им спестявайте тази искрена радост! Никое момче на света не се е забавлявало толкова, не е имало толкова приключения и не се забърквало в толкова неприятности, колкото Том Сойер. Том и добрият му приятел Хък стават свидетели на убийство. Двамата виждат как Индианеца Джо убива собственика на погребално бюро, за да стигне до картата му. Двамата си обещават да не разкриват случилото се, но така един невинен приятел може да бъде обесен. Ако обаче разкрият Джо, той ще е по петите им.'
+                type: description
+            de-DE:
+              - description: 'Tom Sawyer hat sich gerade mit dem Waisen Huck Finn angefreundet, als die beiden Zeugen eines Mordes auf dem Stadtfriedhof werden. Als das Verbrechen an die Öffentlichkeit gerät, wird Toms Freund Muff Potter des Mordes angeklagt. Tom und Huck wissen nur allzu gut, dass Muff unschuldig ist, schließlich haben sie den wahren Mörder beobachtet. Doch Huck hat Tom aus Angst vor dem wahren Täter schwören lassen, den Namen nicht zu verraten.'
+                type: description
+            en:
+              - description: 'Tom and his rebellious friend Huck witness a midnight killing. They swear not to reveal what they saw – but that causes a real problem. If Tom doesn''t speak up, an innocent friend may be hanged. But if he does tell the truth, the real killer, knife-throwing Injun Joe, will come after him! '
+                type: description
+              - description: 'Jonathan Taylor Thomas stars as Tom Sawyer, America''s legendary teenage hero. No boy ever had so much fun, got into so much trouble or had so many outrageous adventures. When Tom and rebellious friend Huck Finn (Brad Renfro) witness a midnight killing, they swear not to reveal what they saw. But that causes a real problem: if Tom doesn''t speak up, an innocent friend may be hanged; if he does tell the truth, the real killer, knife-throwing Injun Joe, will come after him. With escapades including a treasure hunt, a haunted house, a courtroom showdown and a scary chase in a cave, Tom learns a valuable lesson: when a friend''s in trouble, you don''t run away. Contains tobacco depictions.'
+                type: description
+              - description: |
+                  Not to be confused with the 1918 film Huck and Tom.
+                  Tom and Huck is a 1995 American adventure comedy-drama film based on Mark Twain's novel The Adventures of Tom Sawyer, and starring Jonathan Taylor Thomas, Brad Renfro, Mike McShane, and Amy Wright. The film was directed by Peter Hewitt and produced/co-written by Stephen Sommers (who also worked on another Disney adaptation of Twain's work, 1993's The Adventures of Huck Finn). The movie was released in the U.S. and Canada on December 22, 1995.
+                  In the film, mischievous young Tom Sawyer witnesses a murder by a vicious half-Native American criminal known as "Injun Joe". Tom befriends Huck Finn, a boy with no future and no family, and is forced to choose between honoring a friendship or honoring an oath, when the town drunk is accused of the murder.
+                type: description
+            en-US:
+              - description: 'A mischievous young boy, Tom Sawyer, witnesses a murder by the deadly Injun Joe. Tom becomes friends with Huckleberry Finn, a boy with no future and no family. Tom has to choose between honoring a friendship or honoring an oath because the town alcoholic is accused of the murder. Tom and Huck go through several adventures trying to retrieve evidence.'
+                type: description
+            es-ES:
+              - description: 'Tom Sawyer y Huck Finn presencian el asesinato de un hombre por todos conocido como el "Indio Joe", para robarle el mapa de un tesoro. Cuando es acusado del asesinato un inocente, ambos muchachos correrán todo tipo de peligros para evitar que sea condenado.'
+                type: description
+            fr-FR:
+              - description: 'Tom et Huck témoin du meurtre de Injun Joe de Doc Robinson une nuit au cimetière. Quand un homme innocent est accusé d''avoir tué le Doc, Tom étapes comme témoin, ne pas respecter la promesse faite à Huck à mettre bas.'
+                type: description
+            it-IT:
+              - description: 'Il giovane Tom Sawyer assiste a un omicidio, e insieme all''amico analfabeta Huck Finn cerca - tra mille avventure - di scagionare un ubriacone ingiustamente accusato del crimine.'
+                type: description
+            ko-KR:
+              - description: '마을의 장난꾸러기 톰 소여(Tom Sawyer: 조나단 테일러 토마스 분)와 떠돌이 허클베리 핀(Huck Finn: 브래드 렌프로 분)은 어느날 밤, 마을 공동묘지에서 살인 사건을 목격한다. 죄없는 마을 주정뱅이가 범인으로 몰리지만, 진실을 밝힌다면 악당이 그들을 가만 두지 않을 것이다.'
+                type: description
+            nl-NL:
+              - description: 'Tom Sawyer is getuige van een moord. Samen met zijn vriend Huckleberry Finn, een zwerversjongen, gaat hij op zoek naar bewijzen, om de onschuld van de plaatselijke alcoholist, die van de moord beschuldigd is, aan te tonen. Wanneer dit lukt, is Tom bang om door de werkelijke moordenaar te worden omgebracht.'
+                type: description
+            pt-BR:
+              - description: 'O travesso Tom Sawyer é testemunha de um assassinato cometido pelo malvado Injun Joe. Quando um inocente é culpado pelo crime, Tom e seu rebelde amigo Huck Finn começam uma busca pelo mapa de piratas para poder absolvê-lo. Baseado no clássico livro de Mark Twain.'
+                type: description
+            ru-RU:
+              - description: 'От их проделок в ужас приходит вся округа. Кошки и собаки разбегаются, хозяйки запирают окна и двери, малыши плачут. Нет, это не монстры из страшной сказки вышли на улицу города. Просто нам предстоят новые встречи с Томом Сойером и Геком Финном, любимыми героями из романа Марка Твена.'
+                type: description
+            sv-SE:
+              - description: 'Tom Sawyer blir vittne till ett mord av en man och stadens lodis anklagas för mordet. Men Tom har sett den verkliga mördaren, det är bara det att ingen tror honom, förrän han möter Huck, en ung pojke som är hemlös.'
+                type: description
+            uk-UA:
+              - description: 'Їхніми витівками перелякані всі навкруги: кішки та собаки розбігаються, господині замикають вікна та двері, малюки плачуть... Ні, це не монстри із страшної казки вийшли на вулицю міста. Просто нас чекають нові зустрічі з Томом Сойєром і Геком Фінном.'
+                type: description
+            zh-CN:
+              - description: 本片改编自大文豪马克·吐温的作品。密西西比河畔小镇上出了名的捣蛋鬼汤姆和他的流浪哥们哈克无意中目击印第安人乔杀人并嫁祸于无辜的老醉鬼马夫，在良心的驱使下，汤姆与哈克决定偷取杀人凶手的藏宝图以帮助马夫洗刷冤屈，但乔却在寻获在寻获宝物后将图烧了，现在唯一能解救马夫的只有两人的证词。
+                type: description
+          directors:
+            - id: e25b5db07054f2dad675853a51ee05cfe2e4af0d
+              name: Peter Hewitt
+              picture: ''
+              source_id: Person/1879963
+          duration: '01:37:00'
+          external_references:
+            - identifier: '111987842150800'
+              organization: facebook
+            - identifier: '528173'
+              organization: iva
+            - identifier: '670514'
+              organization: wikipedia
+            - identifier: movie/45325
+              organization: tmdb
+            - identifier: Q1616185
+              organization: wikidata
+            - identifier: tt0112302
+              organization: imdb
+          genres:
+            - id: 033a1c6b343af3c602d38348fc752b530c972d03
+              name: romance
+              source_id: Romance
+            - id: 2b81683767cd8a9d7a684e7875c9be832486b112
+              name: comedy
+              source_id: Comedy
+            - id: 66caf1fdb21d2efb9de592a1688b5440735fed11
+              name: action-adventure
+              source_id: Action-Adventure
+            - id: 74d852c40925e32dfc157909f924fe6b30fb1af2
+              name: drama
+              source_id: Drama
+            - id: 788428f8fccd21120afdb012d2618fa2ba29a5dc
+              name: western
+              source_id: Western
+            - id: f90f7de34ff1aa01e09c89638d7775ddfdcef00f
+              name: family
+              source_id: Family
+          keywords:
+            - action-adventure
+            - comedy
+            - coming of age/teen
+            - drama
+            - family
+            - friend
+            - movie
+            - romance
+            - western
+          moods: []
+          name: Tom and Huck
+          name_search:
+            bg:
+              - том и хък
+            de:
+              - tom und huck
+            el:
+              - 'tom kai huck: diplos belas'
+              - 'tom και huck: διπλός μπελάς'
+              - 'tom και huck:διπλός μπελάς'
+            en:
+              - the adventures of tom and huck
+              - tom and huck
+              - tom sawyer
+            es:
+              - tom y huck
+            fi:
+              - tom ja huck
+            fr:
+              - tom et huck
+            hu:
+              - tom és huck
+            it:
+              - le avventure di tom sawyer e huck finn
+            ja:
+              - トム・ソーヤーの大冒険
+            ko:
+              - 톰과 허크
+            'no':
+              - tom og huck
+            pl:
+              - tom i huck
+            pt:
+              - 'tom e huck, em busca do grande tesouro'
+              - 'tom e huck: em busca do grande tesouro'
+            ru:
+              - приключения тома сойера
+            sv:
+              - tom och huck
+            uk:
+              - том і гек
+            xx:
+              - les nouvelles aventures de tom et huck
+              - the adventures of tom and huck
+              - tom and huck
+              - tom sawyer
+            zh:
+              - 汤姆历险记
+          names_all:
+            bg-BG:
+              - name: Том и Хък
+                type: name
+            de:
+              - name: Tom und Huck
+                type: name
+            de-DE:
+              - name: Tom und Huck
+                type: name
+            el-GR:
+              - name: 'Tom kai Huck: Diplos belas'
+                type: name
+              - name: 'Tom και Huck:διπλός μπελάς'
+                type: name
+              - name: 'Tom και Huck: Διπλός Μπελάς'
+                type: name
+            en-AU:
+              - name: Tom and Huck
+                type: name
+            en-GB:
+              - name: Tom and Huck
+                type: name
+            en-US:
+              - name: The Adventures of Tom and Huck
+                type: name
+              - name: Tom Sawyer
+                type: name
+              - name: Tom and Huck
+                type: name
+            es-AR:
+              - name: Tom y Huck
+                type: name
+            es-ES:
+              - name: Tom y Huck
+                type: name
+              - name: Tom y Huck
+                type: name
+            fi-FI:
+              - name: Tom ja Huck
+                type: name
+            fr-FR:
+              - name: Tom et Huck
+                type: name
+              - name: Tom et Huck
+                type: name
+            hu-HU:
+              - name: Tom és Huck
+                type: name
+            it-IT:
+              - name: Le avventure di Tom Sawyer e Huck Finn
+                type: name
+              - name: Le avventure di Tom Sawyer e Huck Finn
+                type: name
+            ja:
+              - name: トム・ソーヤーの大冒険
+                type: name
+            ko-KR:
+              - name: 톰과 허크
+                type: name
+            'no':
+              - name: Tom og Huck
+                type: name
+            pl:
+              - name: Tom i Huck
+                type: name
+            pt-BR:
+              - name: 'Tom e Huck, em Busca do Grande Tesouro'
+                type: name
+              - name: 'Tom e Huck: Em Busca do Grande Tesouro'
+                type: name
+            ru:
+              - name: Приключения Тома Сойера
+                type: name
+            ru-RU:
+              - name: Приключения Тома Сойера
+                type: name
+            sv-SE:
+              - name: Tom och Huck
+                type: name
+              - name: Tom Och Huck
+                type: name
+            uk:
+              - name: Том і Гек
+                type: name
+            uk-UA:
+              - name: Том і Гек
+                type: name
+            xx-XX:
+              - name: Tom and Huck
+                type: name
+              - name: Tom and Huck
+                type: name
+              - name: Les Nouvelles Aventures de Tom et Huck
+                type: name
+              - name: The Adventures of Tom and Huck
+                type: name
+              - name: Tom Sawyer
+                type: name
+              - name: Tom and Huck
+                type: name
+            zh-CN:
+              - name: 汤姆历险记
+                type: name
+          picture: 'https://utellyassets9-1.imgix.net/api/Images/c250d94447668308f92d0b36dcdd4264/Redirect'
+          popularity: {}
+          ratings:
+            iva:
+              number_of_ratings: 1
+              rating: '80.27'
+          release_year: '1995'
+          show_type: movie
+          updated: '2022-02-14T13:33:55.035442+00:00'
+      properties:
+        _id:
+          type: string
+          minLength: 1
+        actors:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                minLength: 1
+              name:
+                type: string
+                minLength: 1
+              picture:
+                type: string
+              source_id:
+                type: string
+                minLength: 1
+            required:
+              - id
+              - name
+              - picture
+              - source_id
+        availabilities:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              channel_id:
+                type: string
+                minLength: 1
+              channel_name:
+                type: string
+                minLength: 1
+              datetime_from:
+                type: string
+                minLength: 1
+              datetime_to:
+                type: string
+                minLength: 1
+              location_country_code:
+                type: string
+                minLength: 1
+              location_id:
+                type: string
+                minLength: 1
+              location_name:
+                type: string
+              platforms:
+                type: array
+                items:
+                  type: object
+            required:
+              - channel_id
+              - channel_name
+              - datetime_from
+              - datetime_to
+              - location_country_code
+              - location_id
+              - location_name
+        channels:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                minLength: 1
+              name:
+                type: string
+                minLength: 1
+            required:
+              - id
+              - name
+        content_ratings:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                minLength: 1
+              organization:
+                type: string
+              rating:
+                type: string
+                minLength: 1
+            required:
+              - id
+              - organization
+              - rating
+        description:
+          type: string
+          minLength: 1
+        description_search:
+          type: object
+          required:
+            - '{locale}'
+          properties:
+            '{locale}':
+              type: string
+              minLength: 1
+        descriptions_all:
+          type: object
+          required:
+            - '{locale}'
+          properties:
+            '{locale}':
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    minLength: 1
+                  type:
+                    type: string
+                    minLength: 1
+                required:
+                  - description
+                  - type
+        directors:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                minLength: 1
+              name:
+                type: string
+                minLength: 1
+              picture:
+                type: string
+              source_id:
+                type: string
+                minLength: 1
+            required:
+              - id
+              - name
+              - picture
+              - source_id
+        duration:
+          type: string
+          minLength: 1
+        external_references:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              identifier:
+                type: string
+                minLength: 1
+              organization:
+                type: string
+                minLength: 1
+            required:
+              - identifier
+              - organization
+        genres:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                minLength: 1
+              name:
+                type: string
+                minLength: 1
+              source_id:
+                type: string
+                minLength: 1
+            required:
+              - id
+              - name
+              - source_id
+        keywords:
+          type: array
+          items:
+            type: string
+        moods:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+          minLength: 1
+        name_search:
+          type: object
+          required:
+            - '{locale}'
+          properties:
+            '{locale}':
+              type: array
+              items:
+                type: string
+        names_all:
+          type: object
+          required:
+            - '{locale}'
+          properties:
+            '{locale}':
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    minLength: 1
+                  type:
+                    type: string
+                    minLength: 1
+                required:
+                  - name
+                  - type
+        picture:
+          type: string
+          minLength: 1
+        popularity:
+          type: object
+        ratings:
+          type: object
+          required:
+            - '{provider}'
+          properties:
+            '{provider}':
+              type: object
+              required:
+                - number_of_ratings
+                - rating
+              properties:
+                number_of_ratings:
+                  type: number
+                rating:
+                  type: string
+                  minLength: 1
+        release_year:
+          type: string
+          minLength: 1
+        show_type:
+          type: string
+          minLength: 1
+        updated:
+          type: string
+          minLength: 1
+      required:
+        - _id
+        - actors
+        - availabilities
+        - channels
+        - content_ratings
+        - description
+        - description_search
+        - descriptions_all
+        - directors
+        - duration
+        - external_references
+        - genres
+        - keywords
+        - moods
+        - name
+        - name_search
+        - names_all
+        - picture
+        - popularity
+        - ratings
+        - release_year
+        - show_type
+        - updated
+    genre:
+      description: ''
+      type: object
+      properties:
+        _id:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        source_id:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        weight:
+          type: number
+      required:
+        - _id
+        - name
+        - source_id
+        - type
+        - weight
+      x-examples:
+        example-1:
+          _id: 915d59e70b863eab459f2b101fc22d9f5cfb9ec4
+          name: thriller
+          source_id: Thriller
+          type: genre
+          weight: 35021
+    person:
+      description: ''
+      type: object
+      properties:
+        _id:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        picture:
+          type: string
+          minLength: 1
+        source_id:
+          type: string
+          minLength: 1
+        weight:
+          type: number
+      required:
+        - _id
+        - name
+        - picture
+        - source_id
+        - weight
+      x-examples:
+        example-1:
+          _id: e042a6c19210d1e8e5b222c9dd05959cf61af4bb
+          name: Tom Hanks
+          picture: 'https://utellyassets9-1.imgix.net/api/Images/2265adebdb6811c794c948030d62a884/Redirect'
+          source_id: Person/6604
+          weight: 192
+    tag:
+      description: ''
+      type: object
+      properties:
+        _id:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        source_id:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          minLength: 1
+        weight:
+          type: number
+      required:
+        - _id
+        - name
+        - source_id
+        - type
+        - weight
+      x-examples:
+        example-1:
+          _id: ea5ecbaa31808c8d4aa4875206f1edda77936bfc
+          name: hand to hand combat
+          source_id: hand to hand combat
+          type: tag
+          weight: 32
+    metadata:
+      type: array
+      description: ''
+      minItems: 1
+      uniqueItems: true
+      items:
+        type: object
+        required:
+          - entity
+          - key
+          - name
+        properties:
+          entity:
+            type: string
+            minLength: 1
+          key:
+            type: string
+            minLength: 1
+          name:
+            type: string
+            minLength: 1
+      x-examples:
+        example-1:
+          - entity: person
+            key: person
+            name: People
+          - entity: topic
+            key: topic
+            name: Shows & Movies
+          - entity: tag
+            key: tag
+            name: Tags
+          - entity: genre
+            key: genre
+            name: Genres
+          - entity: topic
+            key: swimlane_n
+            name: Comedy Shows
   securitySchemes:
     Authorization:
       name: Authorization
       type: apiKey
       in: header
       x-apikeyInfoFunc: security.check_token
+  responses:
+    sherlock:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+              metadata:
+                $ref: '#/components/schemas/metadata'
+              results:
+                oneOf:
+                  - type: object
+                    properties:
+                      topic:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/topic'
+                      genre:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/genre'
+                      tag:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/tag'
+                      person:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/person'
+                      swimlane_n:
+                        oneOf:
+                          - items:
+                              $ref: '#/components/schemas/topic'
+                          - items:
+                              $ref: '#/components/schemas/genre'
+                          - items:
+                              $ref: '#/components/schemas/person'
+                          - items:
+                              $ref: '#/components/schemas/tag'
+                        type: array
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/topic'
+            required:
+              - count
 info:
   contact:
     email: developers@utelly.com
@@ -20,78 +917,71 @@ paths:
       description: ''
       operationId: v1.search.search.do_search
       parameters:
-      - description: query string
-        in: query
-        name: q
-        schema:
-          type: string
-      - description: number of items to return
-        in: query
-        name: size
-        schema:
-          type: integer
-      - description: offset of query
-        in: query
-        name: offset
-        schema:
-          type: integer
-      - description: only return exact matches
-        in: query
-        name: exact_match
-        schema:
-          type: boolean
-      - description: verbose flag
-        in: query
-        name: v
-        schema:
-          type: string
-      - description: locales to search on
-        in: query
-        name: locales
-        schema:
-          items:
+        - description: query string
+          in: query
+          name: q
+          schema:
             type: string
-          type: array
-        style: form
-      - description: grouping of results by sherlock
-        in: query
-        name: grouping
-        schema:
-          enum:
-          - topic
-          - entity
-          items:
+            example: Tom Hanks
+          required: true
+        - description: number of items to return
+          in: query
+          name: size
+          schema:
+            type: integer
+        - description: offset of query
+          in: query
+          name: offset
+          schema:
+            type: integer
+        - description: only return exact matches
+          in: query
+          name: exact_match
+          schema:
+            type: boolean
+        - description: verbose flag
+          in: query
+          name: v
+          schema:
             type: string
-          type: string
+        - description: locales to search on
+          in: query
+          name: locales
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: grouping of results by sherlock
+          in: query
+          name: grouping
+          schema:
+            enum:
+              - topic
+              - entity
+            items:
+              type: string
+            type: string
       responses:
         '200':
-          content:
-            application/json:
-              examples:
-                '1':
-                  value:
-                    sherlock_response: true
-              schema:
-                properties: {}
-                type: object
-          description: OK
+          $ref: '#/components/responses/sherlock'
       summary: Sherlock Search
       tags: []
     parameters:
-    - description: sherlock config id
-      in: path
-      name: config_id
-      required: true
-      schema:
-        type: string
+      - description: sherlock config id
+        in: path
+        name: config_id
+        required: true
+        schema:
+          type: string
 servers:
-- description: prod
-  url: 'https://services.utelly.com/sherlock_manager/v1'
-- description: staging
-  url: 'https://staging-services.utelly.com/sherlock_manager/v1'
-- description: dev
-  url: 'https://dev-services.utelly.com/sherlock_manager/v1'
+  - description: prod
+    url: 'https://services.utelly.com/sherlock_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/sherlock_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/sherlock_manager/v1'
 tags:
-- name: utelly_services
+  - name: utelly_services
 security:
-- Authorization: []
+  - Authorization: []
