@@ -87,10 +87,7 @@ components:
         example-1:
           id: ''
           source: ''
-    filters:
-      title: filters
-      type: array
-      items: {}
+      title: ''
     filter:
       title: filter
       type: object
