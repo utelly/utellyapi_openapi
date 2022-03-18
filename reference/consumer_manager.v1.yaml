@@ -187,19 +187,23 @@ paths:
           in: query
           name: before_or_eq_guid
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: fields
         - schema:
-            type: string
+            type: integer
           in: query
           name: limit
         - schema:
-            type: string
+            type: integer
           in: query
           name: skip
         - schema:
-            type: string
+            type: array
+            items:
+              type: string            
           in: query
           name: sort
       description: Retrieve consumers
