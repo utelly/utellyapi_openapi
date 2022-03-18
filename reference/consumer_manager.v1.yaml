@@ -223,3 +223,5 @@ servers:
     url: 'https://dev-services.utelly.com/consumer_manager/v1'
 tags:
   - name: utelly_services
+security:
+  - Authorization: []
