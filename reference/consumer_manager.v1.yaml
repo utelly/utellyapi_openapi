@@ -1,8 +1,8 @@
 components:
   schemas:
     Consumer:
-      description: ''
       type: object
+      description: ''
       x-examples:
         example-1:
           _links:
@@ -20,6 +20,7 @@ components:
                 source: string
                 type: string
             - kv: {}
+      additionalProperties: false
       properties:
         _links:
           $ref: ../models/hal_link_field.v1.yaml
@@ -44,8 +45,8 @@ components:
         kv:
           type: object
     Interaction:
-      description: ''
       type: object
+      description: ''
       x-examples:
         example-1:
           type: ''
@@ -53,6 +54,7 @@ components:
             id: ''
             source: ''
             type: ''
+      additionalProperties: false
       properties:
         type:
           type: string
@@ -61,6 +63,7 @@ components:
           required:
             - guid
             - source
+          additionalProperties: false
           properties:
             guid:
               type: string
@@ -74,13 +77,14 @@ components:
         - type
         - entity
     identifier:
-      description: ''
       type: object
+      description: ''
       x-examples:
         example-1:
           id: ''
           source: ''
       title: ''
+      additionalProperties: false
       properties:
         id:
           type: string
@@ -102,6 +106,7 @@ components:
         application/json:
           schema:
             type: object
+            additionalProperties: false
             properties:
               consumer:
                 $ref: '#/components/schemas/Consumer'
