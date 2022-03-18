@@ -251,7 +251,7 @@ paths:
       summary: Create Consumer
       operationId: v1.consumer.post_one
       responses:
-        '200':
+        '201':
           $ref: '#/components/responses/consumer'
       description: ''
       requestBody:
