@@ -66,6 +66,8 @@ components:
               type: string
             source:
               type: string
+              enum:
+                - utelly
             type:
               type: string
       required:
