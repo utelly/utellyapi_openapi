@@ -104,22 +104,6 @@ components:
             properties:
               consumer:
                 $ref: '#/components/schemas/consumer'
-        application/xml:
-          schema:
-            type: object
-            properties: {}
-        multipart/form-data:
-          schema:
-            type: object
-            properties: {}
-        text/html:
-          schema:
-            type: object
-            properties: {}
-        text/plain:
-          schema:
-            type: object
-            properties: {}
   responses:
     consumer:
       description: Example response
