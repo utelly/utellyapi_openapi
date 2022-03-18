@@ -74,19 +74,21 @@ components:
     identifier:
       description: ''
       type: object
-      properties:
-        id:
-          type: string
-        source:
-          type: string
-      required:
-        - id
-        - source
       x-examples:
         example-1:
           id: ''
           source: ''
       title: ''
+      properties:
+        id:
+          type: string
+        source:
+          type: string
+          enum:
+            - utelly
+      required:
+        - id
+        - source
   securitySchemes:
     Authorization:
       in: header
