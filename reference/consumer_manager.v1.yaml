@@ -59,10 +59,10 @@ components:
         entity:
           type: object
           required:
-            - id
+            - guid
             - source
           properties:
-            id:
+            guid:
               type: string
             source:
               type: string
