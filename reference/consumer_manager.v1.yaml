@@ -144,7 +144,7 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/consumer'
-      operationId: get-consumers
+      operationId: v1.consumer.get_one
       description: Retrieve consumer by guid
     parameters:
       - schema:
@@ -154,7 +154,7 @@ paths:
         required: true
     put:
       summary: Update Consumer
-      operationId: put-consumers-consumer_guid
+      operationId: v1.consumer.put_one
       responses:
         '200':
           $ref: '#/components/responses/consumer'
@@ -183,7 +183,7 @@ paths:
                           $ref: '#/components/schemas/consumer'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-      operationId: get-consumers
+      operationId: v1.consumer.get_list
       parameters:
         - schema:
             type: string
@@ -221,7 +221,7 @@ paths:
       description: Retrieve consumers
     post:
       summary: Create Consumer
-      operationId: post-consumers
+      operationId: v1.consumer.post_one
       responses:
         '200':
           $ref: '#/components/responses/consumer'
