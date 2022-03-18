@@ -46,25 +46,6 @@ components:
     Interaction:
       description: ''
       type: object
-      properties:
-        type:
-          type: string
-        entity:
-          type: object
-          properties:
-            id:
-              type: string
-            source:
-              type: string
-            type:
-              type: string
-          required:
-            - id
-            - source
-            - type
-      required:
-        - type
-        - entity
       x-examples:
         example-1:
           type: ''
@@ -72,6 +53,24 @@ components:
             id: ''
             source: ''
             type: ''
+      properties:
+        type:
+          type: string
+        entity:
+          type: object
+          required:
+            - id
+            - source
+          properties:
+            id:
+              type: string
+            source:
+              type: string
+            type:
+              type: string
+      required:
+        - type
+        - entity
     identifier:
       description: ''
       type: object
