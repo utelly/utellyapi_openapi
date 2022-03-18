@@ -88,25 +88,6 @@ components:
           id: ''
           source: ''
       title: ''
-    filter:
-      title: filter
-      type: object
-      properties:
-        property:
-          type: string
-        operator:
-          type: string
-        value:
-          anyOf:
-            - items:
-                type: string
-          type:
-            - array
-            - string
-      required:
-        - property
-        - operator
-        - value
   securitySchemes:
     Authorization:
       in: header
