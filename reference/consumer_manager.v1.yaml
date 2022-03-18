@@ -30,7 +30,7 @@ components:
         identifiers:
           type: array
           items:
-            $ref: '#/components/schemas/indentifier'
+            $ref: '#/components/schemas/identifier'
         updated_at:
           type: string
           readOnly: true
@@ -72,7 +72,7 @@ components:
             id: ''
             source: ''
             type: ''
-    indentifier:
+    identifier:
       description: ''
       type: object
       properties:
