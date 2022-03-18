@@ -111,6 +111,22 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Consumer'
+          examples:
+            '1':
+              value:
+                created_at: '2022-03-14T12:42:30Z'
+                guid: '123'
+                identifiers:
+                  - id: '123456'
+                    source: test
+                kv:
+                  city: London
+                last_interactions:
+                  - entity:
+                      guid: '323232'
+                      source: utelly
+                    type: play
+                updated_at: '2022-03-14T12:42:30Z'
 info:
   contact:
     email: developers@utelly.com
@@ -167,6 +183,31 @@ paths:
                           $ref: '#/components/schemas/Consumer'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      consumers:
+                        - created_at: '2022-03-14T12:42:30Z'
+                          guid: '123'
+                          identifiers:
+                            - id: '123456'
+                              source: test
+                          kv:
+                            city: London
+                          last_interactions:
+                            - entity:
+                                guid: '323232'
+                                source: utelly
+                              type: play
+                          updated_at: '2022-03-14T12:42:30Z'
+                    _links:
+                      self:
+                        href: string
+                      property1:
+                        href: string
+                      property2:
+                        href: string
       operationId: v1.consumer.get_list
       parameters:
         - schema:
@@ -203,7 +244,7 @@ paths:
         - schema:
             type: array
             items:
-              type: string            
+              type: string
           in: query
           name: sort
       description: Retrieve consumers
