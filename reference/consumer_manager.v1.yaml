@@ -1,6 +1,6 @@
 components:
   schemas:
-    consumer:
+    Consumer:
       description: ''
       type: object
       x-examples:
@@ -40,10 +40,10 @@ components:
         last_interactions:
           type: array
           items:
-            $ref: '#/components/schemas/interaction'
+            $ref: '#/components/schemas/Interaction'
         kv:
           type: object
-    interaction:
+    Interaction:
       description: ''
       type: object
       properties:
@@ -103,14 +103,14 @@ components:
             type: object
             properties:
               consumer:
-                $ref: '#/components/schemas/consumer'
+                $ref: '#/components/schemas/Consumer'
   responses:
     consumer:
       description: Example response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/consumer'
+            $ref: '#/components/schemas/Consumer'
 info:
   contact:
     email: developers@utelly.com
@@ -164,7 +164,7 @@ paths:
                       consumers:
                         type: array
                         items:
-                          $ref: '#/components/schemas/consumer'
+                          $ref: '#/components/schemas/Consumer'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
       operationId: v1.consumer.get_list
