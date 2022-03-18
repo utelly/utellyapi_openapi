@@ -84,8 +84,6 @@ components:
           type: string
         source:
           type: string
-          enum:
-            - utelly
       required:
         - id
         - source
