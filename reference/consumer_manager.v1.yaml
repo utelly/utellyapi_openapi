@@ -6,7 +6,8 @@ components:
       x-examples:
         example-1:
           _links:
-            href: string
+            self:
+              href: string
           guid: string
           identifiers:
             - id: string
