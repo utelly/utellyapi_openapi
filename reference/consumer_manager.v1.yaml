@@ -23,7 +23,7 @@ components:
       additionalProperties: false
       properties:
         _links:
-          $ref: ../models/hal_link_field.v1.yaml
+          $ref: ../models/HalLinks.v1.yaml
         guid:
           type: string
           minLength: 1
