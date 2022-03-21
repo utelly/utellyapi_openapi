@@ -1,8 +1,8 @@
 components:
   schemas:
-    consumer:
-      description: ''
+    Consumer:
       type: object
+      description: ''
       x-examples:
         example-1:
           _links:
@@ -20,6 +20,7 @@ components:
                 source: string
                 type: string
             - kv: {}
+      additionalProperties: false
       properties:
         _links:
           $ref: ../models/hal_link_field.v1.yaml
@@ -30,7 +31,7 @@ components:
         identifiers:
           type: array
           items:
-            $ref: '#/components/schemas/indentifier'
+            $ref: '#/components/schemas/identifier'
         updated_at:
           type: string
           readOnly: true
@@ -40,31 +41,12 @@ components:
         last_interactions:
           type: array
           items:
-            $ref: '#/components/schemas/interaction'
+            $ref: '#/components/schemas/Interaction'
         kv:
           type: object
-    interaction:
-      description: ''
+    Interaction:
       type: object
-      properties:
-        type:
-          type: string
-        entity:
-          type: object
-          properties:
-            id:
-              type: string
-            source:
-              type: string
-            type:
-              type: string
-          required:
-            - id
-            - source
-            - type
-      required:
-        - type
-        - entity
+      description: ''
       x-examples:
         example-1:
           type: ''
@@ -72,9 +54,37 @@ components:
             id: ''
             source: ''
             type: ''
-    indentifier:
-      description: ''
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+        entity:
+          type: object
+          required:
+            - guid
+            - source
+          additionalProperties: false
+          properties:
+            guid:
+              type: string
+            source:
+              type: string
+              enum:
+                - utelly
+            type:
+              type: string
+      required:
+        - type
+        - entity
+    identifier:
       type: object
+      description: ''
+      x-examples:
+        example-1:
+          id: ''
+          source: ''
+      title: ''
+      additionalProperties: false
       properties:
         id:
           type: string
@@ -83,33 +93,6 @@ components:
       required:
         - id
         - source
-      x-examples:
-        example-1:
-          id: ''
-          source: ''
-    filters:
-      title: filters
-      type: array
-      items: {}
-    filter:
-      title: filter
-      type: object
-      properties:
-        property:
-          type: string
-        operator:
-          type: string
-        value:
-          anyOf:
-            - items:
-                type: string
-          type:
-            - array
-            - string
-      required:
-        - property
-        - operator
-        - value
   securitySchemes:
     Authorization:
       in: header
@@ -123,32 +106,33 @@ components:
         application/json:
           schema:
             type: object
+            additionalProperties: false
             properties:
               consumer:
-                $ref: '#/components/schemas/consumer'
-        application/xml:
-          schema:
-            type: object
-            properties: {}
-        multipart/form-data:
-          schema:
-            type: object
-            properties: {}
-        text/html:
-          schema:
-            type: object
-            properties: {}
-        text/plain:
-          schema:
-            type: object
-            properties: {}
+                $ref: '#/components/schemas/Consumer'
   responses:
     consumer:
       description: Example response
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/consumer'
+            $ref: '#/components/schemas/Consumer'
+          examples:
+            '1':
+              value:
+                created_at: '2022-03-14T12:42:30Z'
+                guid: '123'
+                identifiers:
+                  - id: '123456'
+                    source: test
+                kv:
+                  city: London
+                last_interactions:
+                  - entity:
+                      guid: '323232'
+                      source: utelly
+                    type: play
+                updated_at: '2022-03-14T12:42:30Z'
 info:
   contact:
     email: developers@utelly.com
@@ -166,7 +150,7 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/consumer'
-      operationId: get-consumers
+      operationId: v1.consumer.get_one
       description: Retrieve consumer by guid
     parameters:
       - schema:
@@ -176,7 +160,7 @@ paths:
         required: true
     put:
       summary: Update Consumer
-      operationId: put-consumers-consumer_guid
+      operationId: v1.consumer.put_one
       responses:
         '200':
           $ref: '#/components/responses/consumer'
@@ -197,17 +181,40 @@ paths:
                 type: object
                 properties:
                   _embedded:
-                    type:
-                      - string
-                      - object
+                    type: object
                     properties:
                       consumers:
                         type: array
                         items:
-                          $ref: '#/components/schemas/consumer'
+                          $ref: '#/components/schemas/Consumer'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
-      operationId: get-consumers
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      consumers:
+                        - created_at: '2022-03-14T12:42:30Z'
+                          guid: '123'
+                          identifiers:
+                            - id: '123456'
+                              source: test
+                          kv:
+                            city: London
+                          last_interactions:
+                            - entity:
+                                guid: '323232'
+                                source: utelly
+                              type: play
+                          updated_at: '2022-03-14T12:42:30Z'
+                    _links:
+                      self:
+                        href: string
+                      property1:
+                        href: string
+                      property2:
+                        href: string
+      operationId: v1.consumer.get_list
       parameters:
         - schema:
             type: string
@@ -227,27 +234,31 @@ paths:
           in: query
           name: before_or_eq_guid
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: fields
         - schema:
-            type: string
+            type: integer
           in: query
           name: limit
         - schema:
-            type: string
+            type: integer
           in: query
           name: skip
         - schema:
-            type: string
+            type: array
+            items:
+              type: string
           in: query
           name: sort
       description: Retrieve consumers
     post:
       summary: Create Consumer
-      operationId: post-consumers
+      operationId: v1.consumer.post_one
       responses:
-        '200':
+        '201':
           $ref: '#/components/responses/consumer'
       description: ''
       requestBody:
@@ -263,3 +274,5 @@ servers:
     url: 'https://dev-services.utelly.com/consumer_manager/v1'
 tags:
   - name: utelly_services
+security:
+  - Authorization: []
