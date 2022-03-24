@@ -348,7 +348,7 @@ paths:
       description: ''
       parameters:
         - schema:
-            type: string
+            type: boolean
           in: query
           name: publish
           description: Promote to published
@@ -563,7 +563,7 @@ paths:
                     description: New homepage
       parameters:
         - schema:
-            type: string
+            type: boolean
           in: query
           name: publish
           description: Promote to published
@@ -701,7 +701,7 @@ paths:
       description: ''
       parameters:
         - schema:
-            type: string
+            type: boolean
           in: query
           name: publish
           description: Promote to published
@@ -918,7 +918,7 @@ paths:
         - slug_management
       parameters:
         - schema:
-            type: string
+            type: boolean
           in: query
           name: publish
           description: Promote to published
@@ -1083,7 +1083,7 @@ paths:
       description: ''
       parameters:
         - schema:
-            type: string
+            type: boolean
           in: query
           name: publish
           description: Promote to published
