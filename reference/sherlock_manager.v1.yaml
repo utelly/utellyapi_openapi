@@ -903,6 +903,163 @@ components:
                       $ref: '#/components/schemas/topic'
             required:
               - count
+          examples:
+            example-1:
+              value:
+                count: 0
+                metadata:
+                  - entity: string
+                    key: string
+                    name: string
+                results:
+                  topic:
+                    - _id: string
+                      actors:
+                        - id: string
+                          name: string
+                          picture: string
+                          source_id: string
+                      availabilities:
+                        - channel_id: string
+                          channel_name: string
+                          datetime_from: string
+                          datetime_to: string
+                          location_country_code: string
+                          location_id: string
+                          location_name: string
+                          platforms:
+                            - {}
+                      channels:
+                        - id: string
+                          name: string
+                      content_ratings:
+                        - id: string
+                          organization: string
+                          rating: string
+                      description: string
+                      description_search:
+                        '{locale}': string
+                      descriptions_all:
+                        '{locale}':
+                          - description: string
+                            type: string
+                      directors:
+                        - id: string
+                          name: string
+                          picture: string
+                          source_id: string
+                      duration: string
+                      external_references:
+                        - identifier: string
+                          organization: string
+                      genres:
+                        - id: string
+                          name: string
+                          source_id: string
+                      keywords:
+                        - string
+                      moods:
+                        - string
+                      name: string
+                      name_search:
+                        '{locale}':
+                          - string
+                      names_all:
+                        '{locale}':
+                          - name: string
+                            type: string
+                      picture: string
+                      popularity: {}
+                      ratings:
+                        '{provider}':
+                          number_of_ratings: 0
+                          rating: string
+                      release_year: string
+                      show_type: string
+                      updated: string
+                  genre:
+                    - _id: string
+                      name: string
+                      source_id: string
+                      type: string
+                      weight: 0
+                  tag:
+                    - _id: string
+                      name: string
+                      source_id: string
+                      type: string
+                      weight: 0
+                  person:
+                    - _id: string
+                      name: string
+                      picture: string
+                      source_id: string
+                      weight: 0
+                  swimlane_n:
+                    - _id: string
+                      actors:
+                        - id: string
+                          name: string
+                          picture: string
+                          source_id: string
+                      availabilities:
+                        - channel_id: string
+                          channel_name: string
+                          datetime_from: string
+                          datetime_to: string
+                          location_country_code: string
+                          location_id: string
+                          location_name: string
+                          platforms:
+                            - {}
+                      channels:
+                        - id: string
+                          name: string
+                      content_ratings:
+                        - id: string
+                          organization: string
+                          rating: string
+                      description: string
+                      description_search:
+                        '{locale}': string
+                      descriptions_all:
+                        '{locale}':
+                          - description: string
+                            type: string
+                      directors:
+                        - id: string
+                          name: string
+                          picture: string
+                          source_id: string
+                      duration: string
+                      external_references:
+                        - identifier: string
+                          organization: string
+                      genres:
+                        - id: string
+                          name: string
+                          source_id: string
+                      keywords:
+                        - string
+                      moods:
+                        - string
+                      name: string
+                      name_search:
+                        '{locale}':
+                          - string
+                      names_all:
+                        '{locale}':
+                          - name: string
+                            type: string
+                      picture: string
+                      popularity: {}
+                      ratings:
+                        '{provider}':
+                          number_of_ratings: 0
+                          rating: string
+                      release_year: string
+                      show_type: string
+                      updated: string
 info:
   contact:
     email: developers@utelly.com
