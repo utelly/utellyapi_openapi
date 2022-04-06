@@ -7841,10 +7841,13 @@ paths:
                       selected_perspective_navigation: '1'
               schema:
                 additionalProperties: false
+                type: object
                 properties:
-                  enviroments:
+                  environments:
+                    type: array
                     items:
                       additionalProperties: false
+                      type: object
                       properties:
                         descriptions:
                           $ref: '#/components/schemas/ui_language'
@@ -7853,13 +7856,13 @@ paths:
                         uid:
                           type: string
                       required:
-                        - uid
                         - names
-                      type: object
-                    type: array
+                        - uid
                   perspectives:
+                    type: array
                     items:
                       additionalProperties: false
+                      type: object
                       properties:
                         base_url:
                           type: string
@@ -7868,8 +7871,10 @@ paths:
                         names:
                           $ref: '#/components/schemas/ui_language'
                         navigation:
+                          type: array
                           items:
                             additionalProperties: false
+                            type: object
                             properties:
                               href:
                                 type: string
@@ -7878,27 +7883,22 @@ paths:
                               uid:
                                 type: string
                             required:
-                              - uid
-                              - names
                               - href
-                            type: object
-                          type: array
+                              - names
+                              - uid
                         uid:
                           type: string
                       required:
-                        - uid
-                        - names
                         - base_url
+                        - names
                         - navigation
-                      type: object
-                    type: array
+                        - uid
                   preferences:
                     type: object
                 required:
-                  - enviroments
+                  - environments
                   - perspectives
                   - preferences
-                type: object
           description: OK
       security:
         - Authorization: []
