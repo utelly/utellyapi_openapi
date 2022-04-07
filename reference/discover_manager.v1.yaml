@@ -380,6 +380,7 @@ paths:
           name: limit
         - schema:
             type: string
+            pattern: '^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?(T(?=\d+[HMS])(\d+H)?(\d+M)?(\d+S)?)?$'
           in: query
           name: duration.gte
           style: pipeDelimited
@@ -387,6 +388,7 @@ paths:
           description: Has duration greater than or equal to in iso8601 duration format.
         - schema:
             type: string
+            pattern: '^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?(T(?=\d+[HMS])(\d+H)?(\d+M)?(\d+S)?)?$'            
           in: query
           name: duration.lte
           style: pipeDelimited
