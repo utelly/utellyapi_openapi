@@ -126,6 +126,50 @@ components:
           type: string
       title: Ui Language
       type: object
+    Widget:
+      description: ''
+      type: object
+      x-examples:
+        '1':
+          container: '#homepage'
+          component: Homepage
+          content:
+            url: 'https://dev-services.utelly.com/editorial_manager/v1/content/page'
+            parameters:
+              page_name: homepage
+            headers:
+              authorization: cb5d8da50443410eb61a71fe3ddafe94
+      properties:
+        container:
+          type: string
+          minLength: 1
+        component:
+          type: string
+          minLength: 1
+        content:
+          type: object
+          required:
+            - url
+            - parameters
+            - headers
+          properties:
+            url:
+              type: string
+              minLength: 1
+            parameters:
+              type: object
+            headers:
+              type: object
+              required:
+                - authorization
+              properties:
+                authorization:
+                  type: string
+                  minLength: 1
+      required:
+        - container
+        - component
+        - content
   securitySchemes:
     Authorization:
       in: header
@@ -8231,6 +8275,82 @@ paths:
       summary: Register
       tags:
         - User Management
+  /ui/widgets:
+    get:
+      summary: Get Widgets
+      tags:
+        - UI
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  widgets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Widget'
+              examples:
+                '1':
+                  value:
+                    widgets:
+                      - container: '#homepage'
+                        component: Homepage
+                        content:
+                          url: 'https://dev-services.utelly.com/editorial_manager/v1/content/page'
+                          parameters:
+                            page_name: home_widget
+                          headers:
+                            authorization: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  type:
+                    type: string
+                    minLength: 1
+                  title:
+                    type: string
+                    minLength: 1
+                  detail:
+                    type: string
+                    minLength: 1
+                  status:
+                    type: number
+                required:
+                  - type
+                  - title
+                  - detail
+                  - status
+                x-examples:
+                  example-1:
+                    type: 'about:blank'
+                    title: Not Found
+                    detail: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+                    status: 404
+              examples:
+                '1':
+                  value:
+                    type: 'about:blank'
+                    title: Not Found
+                    detail: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+                    status: 404
+      operationId: v1.ui.get_widgets
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: url
+          description: URL of page for injecting Utelly widgets
+          required: true
+      security:
+        - Authorization: []
 servers:
   - description: prod
     url: 'https://services.utelly.com/broker_app/v1'
