@@ -130,7 +130,7 @@ components:
       description: ''
       type: object
       x-examples:
-        example-1:
+        '1':
           container: '#homepage'
           component: Homepage
           content:
@@ -8293,7 +8293,7 @@ paths:
                     items:
                       $ref: '#/components/schemas/Widget'
               examples:
-                example-1:
+                '1':
                   value:
                     widgets:
                       - container: '#homepage'
@@ -8335,13 +8335,13 @@ paths:
                     detail: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
                     status: 404
               examples:
-                example-1:
+                '1':
                   value:
                     type: 'about:blank'
                     title: Not Found
                     detail: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
                     status: 404
-      operationId: get-ui-widgets
+      operationId: v1.ui.get_widgets
       parameters:
         - schema:
             type: string
