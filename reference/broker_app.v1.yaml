@@ -134,11 +134,11 @@ components:
           container: '#homepage'
           component: Homepage
           content:
-            url: 'https://dev-services.utelly.com/editorial_manager/v1/content/page'
-            parameters:
-              page_name: homepage
-            headers:
-              authorization: cb5d8da50443410eb61a71fe3ddafe94
+            - url: 'https://dev-services.utelly.com/editorial_manager/v1/content/page'
+              parameters:
+                page_name: homepage
+              headers:
+                authorization: cb5d8da50443410eb61a71fe3ddafe94
       properties:
         container:
           type: string
@@ -147,25 +147,23 @@ components:
           type: string
           minLength: 1
         content:
-          type: object
-          required:
-            - url
-            - parameters
-            - headers
-          properties:
-            url:
-              type: string
-              minLength: 1
-            parameters:
-              type: object
-            headers:
-              type: object
-              required:
-                - authorization
-              properties:
-                authorization:
-                  type: string
-                  minLength: 1
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                minLength: 1
+              parameters:
+                type: object
+              headers:
+                type: object
+                required:
+                  - authorization
+                properties:
+                  authorization:
+                    type: string
+                    minLength: 1
       required:
         - container
         - component
@@ -8299,11 +8297,11 @@ paths:
                       - container: '#homepage'
                         component: Homepage
                         content:
-                          url: 'https://dev-services.utelly.com/editorial_manager/v1/content/page'
-                          parameters:
-                            page_name: home_widget
-                          headers:
-                            authorization: string
+                          - url: 'https://dev-services.utelly.com/editorial_manager/v1/content/page'
+                            parameters:
+                              page_name: home_widget
+                            headers:
+                              authorization: string
         '404':
           description: Not Found
           content:
