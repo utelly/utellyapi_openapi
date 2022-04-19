@@ -306,24 +306,24 @@ paths:
             items:
               type: string
               enum:
-              - popularity
-              - popularity.external
-              - popularity.iva_iva
-              - relevancy
-              - release_year
-              - recommendation
-              - rating
-              - availability_from
-              - availability_to
-              - '-popularity'
-              - '-popularity.external'
-              - '-popularity.iva_iva'
-              - '-relevancy'
-              - '-release_year'
-              - '-recommendation'
-              - '-rating'
-              - '-availability_from'
-              - '-availability_to'
+                - popularity
+                - popularity.external
+                - popularity.iva_iva
+                - relevancy
+                - release_year
+                - recommendation
+                - rating
+                - availability_from
+                - availability_to
+                - '-popularity'
+                - '-popularity.external'
+                - '-popularity.iva_iva'
+                - '-relevancy'
+                - '-release_year'
+                - '-recommendation'
+                - '-rating'
+                - '-availability_from'
+                - '-availability_to'
           in: query
           name: order_by
           style: pipeDelimited
@@ -333,29 +333,29 @@ paths:
             items:
               type: string
               enum:
-              - IVA
-              - IMDB
-              - TMDB
-              - Amazon
-              - Netflix
-              - RottenTomatoes
-              - Youtube
-              - iTunes
-              - Hulu
-              - BoxOfficeMojo
-              - TheNumbers
-              - TVGuide
-              - MovieClips
-              - Redbox
-              - Xfinity
-              - Fios
-              - Vudu
-              - PlutoTV
-              - Gamespot
+                - IVA
+                - IMDB
+                - TMDB
+                - Amazon
+                - Netflix
+                - RottenTomatoes
+                - Youtube
+                - iTunes
+                - Hulu
+                - BoxOfficeMojo
+                - TheNumbers
+                - TVGuide
+                - MovieClips
+                - Redbox
+                - Xfinity
+                - Fios
+                - Vudu
+                - PlutoTV
+                - Gamespot
           in: query
           name: popularity.provider
           style: pipeDelimited
-          description:  Providers to use if ordering by popularity.external. All providers will be used if not specified.
+          description: Providers to use if ordering by popularity.external. All providers will be used if not specified.
         - schema:
             type: integer
           in: query
@@ -374,8 +374,8 @@ paths:
           name: shuffle_rate
         - schema:
             type: integer
-            minimum: 0
             maximum: 50
+            minimum: 1
           in: query
           name: limit
         - schema:
@@ -430,17 +430,17 @@ paths:
           in: query
           name: rating.gte
           style: pipeDelimited
-          description: Has rating greater than or equal to, with the provider specified in ratings_provider
+          description: 'Has rating greater than or equal to, with the provider specified in ratings_provider'
         - schema:
             type: number
             example: 80
           in: query
           name: rating.lte
           style: pipeDelimited
-          description: Has rating less than or equal to, with the provider specified in ratings_provider
+          description: 'Has rating less than or equal to, with the provider specified in ratings_provider'
         - schema:
             type: string
-            example: 'iva'
+            example: iva
           in: query
           name: ratings.provider
           description: Has rating less than or equal to. List of ratings values with source flag
