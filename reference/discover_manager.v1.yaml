@@ -379,23 +379,21 @@ paths:
           in: query
           name: limit
         - schema:
-            type: integer
-            items:
-              $ref: ../models/integer_range_field.v1.yaml
+            type: string
+            pattern: '^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?(T(?=\d+[HMS])(\d+H)?(\d+M)?(\d+S)?)?$'
           in: query
           name: duration.gte
           style: pipeDelimited
           explode: true
-          description: Has duration greater than or equal to.
+          description: Has duration greater than or equal to in iso8601 duration format.
         - schema:
-            type: integer
-            items:
-              $ref: ../models/integer_range_field.v1.yaml
+            type: string
+            pattern: '^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?(T(?=\d+[HMS])(\d+H)?(\d+M)?(\d+S)?)?$'            
           in: query
           name: duration.lte
           style: pipeDelimited
           explode: true
-          description: Has duration less than or equal to.
+          description: Has duration less than or equal to in iso8601 duration format.
         - schema:
             type: array
             items:
