@@ -1524,6 +1524,11 @@ paths:
           in: query
           name: search_after
           description: For pagination
+        - schema:
+            type: integer
+          in: query
+          name: pskip
+          description: For pagination
       description: ''
   '/content/collection/{collection_guid}/preview':
     parameters:
