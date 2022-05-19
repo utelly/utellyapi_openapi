@@ -3986,6 +3986,9 @@ paths:
                           $ref: '#/components/schemas/AssetBlob'
                   _links:
                     $ref: ../models/HalLinks.v1.yaml
+              examples:
+                '1':
+                  value: {}
       operationId: v1.content.asset_blob.get_list
       tags:
         - Asset management
