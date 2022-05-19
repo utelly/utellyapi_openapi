@@ -4005,6 +4005,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssetBlob'
+              examples:
+                '1':
+                  value: {}
       operationId: v1.content.asset_blob.get_one
       tags:
         - Asset management
