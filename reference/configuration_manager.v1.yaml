@@ -16,7 +16,7 @@ openapi: 3.0.0
 paths:
   /configurations/{type}:
     get:
-      description: 'Retrieve configurations by type directly from the configuration source. Caching disabled for the endpoint. Only accessable by the admin user.'
+      description: 'Retrieve configurations by type directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
       operationId: v1.configuration.get_configs
       responses:
         '200':
@@ -60,7 +60,7 @@ paths:
         - Configuration Management
       x-internal: false
     post:
-      description: 'Create a configuration and store directly in the configuration source. Caching disabled for the endpoint. Only accessable by the admin user.'
+      description: 'Create a configuration and store directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
       operationId: v1.configuration.create_config
       requestBody:
         content:
@@ -111,7 +111,7 @@ paths:
         type: string  
   /configurations/{type}/{identifier}:
     get:
-      description: 'Retrieve a configuration directly from the configuration source. Caching disabled for the endpoint. Only accessable by the admin user.'
+      description: 'Retrieve a configuration directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
       operationId: v1.configuration.get_config
       responses:
         '200':
@@ -153,7 +153,7 @@ paths:
         - Configuration Management
       x-internal: false
     post:
-      description: 'Update a configuration directly in the configuration source. Caching disabled for the endpoint. Only accessable by the admin user.'
+      description: 'Update a configuration directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
       operationId: v1.configuration.update_config
       requestBody:
         content:
