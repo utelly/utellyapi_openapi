@@ -105,6 +105,7 @@ paths:
                   type: object
                 identifier:
                   type: string
+      summary: Create Configuration
       x-internal: True
       responses:
         '201':
@@ -202,6 +203,7 @@ paths:
               properties:
                 config:
                   type: object
+      summary: Update Configuration
       x-internal: True
       responses:
         '201':
