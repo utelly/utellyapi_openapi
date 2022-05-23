@@ -265,7 +265,13 @@ paths:
                       identifier: my identifier
                       type: sherlockConfig
               schema:
-                properties: {}
+                properties:
+                  type:
+                    type: string
+                  identifier:
+                    type: string
+                  config:
+                    type: object                
                 type: object
           description: OK
       summary: Get Configurations
