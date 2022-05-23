@@ -14,7 +14,7 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /configurations/{type}:
+  /configurations/source/{type}:
     get:
       description: 'Retrieve configurations by type directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
       operationId: v1.configuration.get_configs
@@ -116,7 +116,7 @@ paths:
       required: true
       schema:
         type: string  
-  /configurations/{type}/{identifier}:
+  /configurations/source/{type}/{identifier}:
     get:
       description: 'Retrieve a configuration directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
       operationId: v1.configuration.get_config
