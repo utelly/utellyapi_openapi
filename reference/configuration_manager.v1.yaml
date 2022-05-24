@@ -14,20 +14,10 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /configurations:
+  /configurations/source/{type}:
     get:
-      description: ''
-      operationId: v1.configuration.get
-      parameters:
-        - in: query
-          name: type
-          required: true
-          schema:
-            type: string
-        - in: query
-          name: identifier
-          schema:
-            type: string
+      description: 'Retrieve configurations by type directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      operationId: v1.configuration.get_configs
       responses:
         '200':
           content:
@@ -35,18 +25,49 @@ paths:
               examples:
                 '1':
                   value:
-                    example: example configuration
+                    - config:
+                        SHERLOCK_READ_INDEX: sherlock_iva_iva_read
+                        default_size: 20
+                        depth: '2'
+                        display_name: LG Demo
+                        enrichments: []
+                        entities:
+                          - topic
+                          - genre
+                          - mood
+                          - actor
+                          - director
+                        grouping: entity
+                        ids_fields:
+                          - source_id
+                        languages:
+                          - en
+                        options:
+                          - phonetic
+                          - qualifiers
+                          - rest
+                        source: iva_iva
+                      identifier: my identifier
+                      type: sherlockConfig
               schema:
-                properties: {}
-                type: object
+                type: array
+                items:
+                  properties: 
+                    type:
+                      type: string
+                    identifier:
+                      type: string
+                    config:
+                      type: object
+                  type: object
           description: OK
       summary: Get Configurations
       tags:
         - Configuration Management
-      x-internal: false
+      x-internal: true
     post:
-      description: ''
-      operationId: v1.configuration.post
+      description: 'Create a configuration and store directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      operationId: v1.configuration.create_config
       requestBody:
         content:
           application/json:
@@ -76,7 +97,6 @@ paths:
                       - rest
                     source: iva_iva
                   identifier: my identifier
-                  type: sherlockConfig
             schema:
               additionalProperties: false
               type: object
@@ -85,14 +105,181 @@ paths:
                   type: object
                 identifier:
                   type: string
-                type:
-                  type: string
+      summary: Create Configuration
+      x-internal: True
+      responses:
+        '201':
+          description: OK
+    parameters:
+    - description: configuration type
+      in: path
+      name: type
+      required: true
+      schema:
+        type: string  
+  /configurations/source/{type}/{identifier}:
+    get:
+      description: 'Retrieve a configuration directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      operationId: v1.configuration.get_config
       responses:
         '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    config:
+                      SHERLOCK_READ_INDEX: sherlock_iva_iva_read
+                      default_size: 20
+                      depth: '2'
+                      display_name: LG Demo
+                      enrichments: []
+                      entities:
+                        - topic
+                        - genre
+                        - mood
+                        - actor
+                        - director
+                      grouping: entity
+                      ids_fields:
+                        - source_id
+                      languages:
+                        - en
+                      options:
+                        - phonetic
+                        - qualifiers
+                        - rest
+                      source: iva_iva
+                    identifier: my identifier
+                    type: sherlockConfig
+              schema:
+                properties: 
+                  type:
+                    type: string
+                  identifier:
+                    type: string
+                  config:
+                    type: object
+                type: object
           description: OK
-      summary: Create Config
+      summary: Get Configurations
       tags:
         - Configuration Management
+      x-internal: True
+    post:
+      description: 'Update a configuration directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      operationId: v1.configuration.update_config
+      requestBody:
+        content:
+          application/json:
+            examples:
+              '1':
+                value:
+                  config:
+                    SHERLOCK_READ_INDEX: sherlock_iva_iva_read
+                    default_size: 20
+                    depth: '2'
+                    display_name: LG Demo
+                    enrichments: []
+                    entities:
+                      - topic
+                      - genre
+                      - mood
+                      - actor
+                      - director
+                    grouping: entity
+                    ids_fields:
+                      - source_id
+                    languages:
+                      - en
+                    options:
+                      - phonetic
+                      - qualifiers
+                      - rest
+                    source: iva_iva
+            schema:
+              additionalProperties: false
+              type: object
+              properties:
+                config:
+                  type: object
+      summary: Update Configuration
+      x-internal: True
+      responses:
+        '201':
+          description: OK
+    parameters:
+    - description: configuration type
+      in: path
+      name: type
+      required: true
+      schema:
+        type: string 
+    - description: configuration identifier
+      in: path
+      name: identifier
+      required: true
+      schema:
+        type: string 
+  /configurations:
+    get:
+      description: 'Retrieve a configuration or configurations by type. Caching enabled for the endpoint.'
+      operationId: v1.configuration.get
+      parameters:
+        - in: query
+          name: type
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                '1':
+                  value:
+                    - config:
+                        SHERLOCK_READ_INDEX: sherlock_iva_iva_read
+                        default_size: 20
+                        depth: '2'
+                        display_name: LG Demo
+                        enrichments: []
+                        entities:
+                          - topic
+                          - genre
+                          - mood
+                          - actor
+                          - director
+                        grouping: entity
+                        ids_fields:
+                          - source_id
+                        languages:
+                          - en
+                        options:
+                          - phonetic
+                          - qualifiers
+                          - rest
+                        source: iva_iva
+                      identifier: my identifier
+                      type: sherlockConfig
+              schema:
+                properties:
+                  type:
+                    type: string
+                  identifier:
+                    type: string
+                  config:
+                    type: object                
+                type: object
+          description: OK
+      summary: Get Configurations
+      tags:
+        - Configuration Management
+      x-internal: false
   /configurations_update:
     post:
       summary: Update Configurations
