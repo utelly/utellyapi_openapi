@@ -52,13 +52,7 @@ paths:
               schema:
                 type: array
                 items:
-                  properties: 
-                    type:
-                      type: string
-                    identifier:
-                      type: string
-                    config:
-                      type: object
+                  properties: {}
                   type: object
           description: OK
       summary: Get Configurations
@@ -98,13 +92,8 @@ paths:
                     source: iva_iva
                   identifier: my identifier
             schema:
-              additionalProperties: false
               type: object
-              properties:
-                config:
-                  type: object
-                identifier:
-                  type: string
+              properties: {}
       summary: Create Configuration
       x-internal: True
       responses:
@@ -153,13 +142,7 @@ paths:
                     identifier: my identifier
                     type: sherlockConfig
               schema:
-                properties: 
-                  type:
-                    type: string
-                  identifier:
-                    type: string
-                  config:
-                    type: object
+                properties: {}
                 type: object
           description: OK
       summary: Get Configurations
@@ -198,11 +181,8 @@ paths:
                       - rest
                     source: iva_iva
             schema:
-              additionalProperties: false
               type: object
-              properties:
-                config:
-                  type: object
+              properties: {}
       summary: Update Configuration
       x-internal: True
       responses:
@@ -267,13 +247,7 @@ paths:
                       identifier: my identifier
                       type: sherlockConfig
               schema:
-                properties:
-                  type:
-                    type: string
-                  identifier:
-                    type: string
-                  config:
-                    type: object                
+                properties: {}
                 type: object
           description: OK
       summary: Get Configurations
