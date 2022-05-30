@@ -352,7 +352,7 @@ paths:
           type: string
   /data-flow:
     get:
-      description: Retrieve the simplified definition of data-flows in a table format.aaaa
+      description: Retrieve the simplified definition of data-flows in a table format.aaaaaaaa
       operationId: get-data-flows
       responses:
         '200':
