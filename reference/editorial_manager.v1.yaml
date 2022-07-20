@@ -205,9 +205,14 @@ paths:
             type: array
             items:
               type: string
+              enum:
+                - audit_entries
+            example:
+              - audit_entries
           in: query
           name: embed
-          description: audit_entries|published
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
     parameters: []
   '/editorial/collections/{collection_guid}':
     parameters:
@@ -259,9 +264,14 @@ paths:
             type: array
             items:
               type: string
+              enum:
+                - audit_entries
+            example:
+              - audit_entries
           in: query
           name: embed
-          description: audit_entries|published
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
     put:
       summary: Update a collection
       operationId: v1.editorial.collections.update
@@ -466,9 +476,14 @@ paths:
             type: array
             items:
               type: string
+              enum:
+                - audit_entries
+            example:
+              - audit_entries
           in: query
           name: embed
-          description: audit_entries|published
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
     post:
       summary: Create a page
       operationId: v1.editorial.pages.create
@@ -603,9 +618,14 @@ paths:
             type: array
             items:
               type: string
+              enum:
+                - audit_entries
+            example:
+              - audit_entries
           in: query
           name: embed
-          description: audit_entries|published
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
     put:
       summary: Update a page
       operationId: v1.editorial.pages.update
@@ -819,9 +839,14 @@ paths:
             type: array
             items:
               type: string
+              enum:
+                - audit_entries
+            example:
+              - audit_entries
           in: query
           name: embed
-          description: audit_entries|published
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
     post:
       summary: Create a slug
       operationId: v1.editorial.slugs.create
@@ -981,9 +1006,14 @@ paths:
             type: array
             items:
               type: string
+              enum:
+                - audit_entries
+            example:
+              - audit_entries
           in: query
           name: embed
-          description: audit_entries|published
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
     put:
       summary: Update a slug
       operationId: v1.editorial.slugs.update
@@ -1529,6 +1559,23 @@ paths:
           in: query
           name: pskip
           description: For pagination
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - tags
+                - content_ratings
+                - ratings
+                - availabilities
+                - catalogues
+            example:
+              - tags
+              - availabilities
+          in: query
+          name: embed
+          description: 'List of related resources to be embedded.'
+          style: pipeDelimited
       description: ''
   '/content/collection/{collection_guid}/preview':
     parameters:
