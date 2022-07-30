@@ -959,7 +959,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1092,7 +1091,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1208,7 +1206,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1282,7 +1279,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1401,7 +1397,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1462,7 +1457,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1538,7 +1532,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1701,7 +1694,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1834,7 +1826,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -1968,7 +1959,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2090,7 +2080,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2181,7 +2170,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2308,7 +2296,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2464,7 +2451,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2619,7 +2605,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: limit
           schema:
@@ -2736,7 +2721,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2860,7 +2844,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -2984,7 +2967,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3099,7 +3081,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3159,7 +3140,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3280,7 +3260,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3345,7 +3324,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3470,7 +3448,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3539,7 +3516,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3654,7 +3630,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -3715,7 +3690,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: limit
           schema:
@@ -3824,7 +3798,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: embed
           schema:
@@ -3881,7 +3854,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -4006,7 +3978,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -4076,7 +4047,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
@@ -4194,7 +4164,6 @@ paths:
               $ref: ../models/language_field.v1.yaml
             type: array
           style: form
-          deprecated: true
         - in: query
           name: fields
           schema:
