@@ -552,6 +552,8 @@ paths:
           explode: true
           description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
         - schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           in: query
           name: locales
@@ -774,6 +776,8 @@ paths:
           name: languages
           description: 'Used to remove unnecessary titles, descriptions and artworks.'
         - schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           in: query
           name: locales
