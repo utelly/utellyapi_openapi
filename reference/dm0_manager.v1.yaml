@@ -9,20 +9,20 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /data_matches/{type}:
+  '/data_matches/{type}':
     get:
       operationId: v1.data_matches.get
       parameters:
-      - in: query
-        name: group_uid
-        required: true
-        schema:
-          type: string
-      - in: query
-        name: source
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: group_uid
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: source
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -31,12 +31,12 @@ paths:
                 '1':
                   value:
                     items:
-                    - deleted: true
-                      destination_name: gracenote_gracenote
-                      destination_uid: '3232'
-                      matcher: ManualMatcher
-                      source_name: iva_iva
-                      source_uid: '123'
+                      - deleted: true
+                        destination_name: gracenote_gracenote
+                        destination_uid: '3232'
+                        matcher: ManualMatcher
+                        source_name: iva_iva
+                        source_uid: '123'
               schema:
                 additionalProperties: false
                 description: ''
@@ -62,31 +62,31 @@ paths:
                           minLength: 1
                           type: string
                       required:
-                      - source_name
-                      - source_uid
-                      - destination_name
-                      - destination_uid
-                      - deleted
+                        - source_name
+                        - source_uid
+                        - destination_name
+                        - destination_uid
+                        - deleted
                       type: object
                     minItems: 1
                     type: array
                     uniqueItems: true
                 required:
-                - items
+                  - items
                 type: object
           description: OK
       summary: Get data matches
       tags:
-      - Dm0 Management
+        - Dm0 Management
     parameters:
-    - in: path
-      name: type
-      required: true
-      schema:
-        enum:
-        - people
-        - shows
-        type: string
+      - in: path
+        name: type
+        required: true
+        schema:
+          enum:
+            - people
+            - shows
+          type: string
     post:
       operationId: v1.data_matches.post
       requestBody:
@@ -104,6 +104,7 @@ paths:
             schema:
               additionalProperties: false
               description: ''
+              type: object
               properties:
                 deleted:
                   type: boolean
@@ -115,6 +116,9 @@ paths:
                   type: string
                 matcher:
                   type: string
+                  enum:
+                    - ManualMatcher
+                    - VerifiedMatcher
                 source_name:
                   minLength: 1
                   type: string
@@ -122,13 +126,12 @@ paths:
                   minLength: 1
                   type: string
               required:
-              - source_name
-              - source_uid
-              - destination_name
-              - destination_uid
-              - deleted
-              - matcher
-              type: object
+                - deleted
+                - destination_name
+                - destination_uid
+                - matcher
+                - source_name
+                - source_uid
       responses:
         '201':
           content:
@@ -163,25 +166,25 @@ paths:
                     minLength: 1
                     type: string
                 required:
-                - source_name
-                - source_uid
-                - destination_name
-                - destination_uid
-                - deleted
+                  - source_name
+                  - source_uid
+                  - destination_name
+                  - destination_uid
+                  - deleted
                 type: object
           description: Created
       summary: Create new data match
       tags:
-      - Dm0 Management
-  /people/{uid}:
+        - Dm0 Management
+  '/people/{uid}':
     get:
       operationId: v1.person.get
       parameters:
-      - in: query
-        name: source
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: source
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -191,7 +194,7 @@ paths:
                   value:
                     full_name: hello
                     pictures:
-                    - url: https://mydomain.com/image.jpg
+                      - url: 'https://mydomain.com/image.jpg'
                     uid: '23232'
               schema:
                 additionalProperties: false
@@ -208,7 +211,7 @@ paths:
                           minLength: 1
                           type: string
                       required:
-                      - url
+                        - url
                       type: object
                     minItems: 1
                     type: array
@@ -217,29 +220,29 @@ paths:
                     minLength: 1
                     type: string
                 required:
-                - uid
-                - full_name
-                - pictures
+                  - uid
+                  - full_name
+                  - pictures
                 type: object
           description: OK
       summary: Get person
       tags:
-      - Dm0 Management
+        - Dm0 Management
     parameters:
-    - in: path
-      name: uid
-      required: true
-      schema:
-        type: string
-  /shows/{uid}:
-    get:
-      operationId: v1.show.get
-      parameters:
-      - in: query
-        name: source
+      - in: path
+        name: uid
         required: true
         schema:
           type: string
+  '/shows/{uid}':
+    get:
+      operationId: v1.show.get
+      parameters:
+        - in: query
+          name: source
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -248,9 +251,9 @@ paths:
                 '1':
                   value:
                     actors:
-                    - full_name: Leonardo
+                      - full_name: Leonardo
                     pictures:
-                    - url: https://mydomain.com/image.jpg
+                      - url: 'https://mydomain.com/image.jpg'
                     primary_name: hello
                     uid: '23232'
               schema:
@@ -264,7 +267,7 @@ paths:
                         full_name:
                           type: string
                       required:
-                      - full_name
+                        - full_name
                       type: object
                     type: array
                   pictures:
@@ -275,7 +278,7 @@ paths:
                           minLength: 1
                           type: string
                       required:
-                      - url
+                        - url
                       type: object
                     minItems: 1
                     type: array
@@ -288,27 +291,27 @@ paths:
                   uid:
                     type: string
                 required:
-                - primary_name
-                - pictures
-                - uid
-                - actors
+                  - primary_name
+                  - pictures
+                  - uid
+                  - actors
                 type: object
           description: OK
       summary: Get show
       tags:
-      - Dm0 Management
+        - Dm0 Management
     parameters:
-    - in: path
-      name: uid
-      required: true
-      schema:
-        type: string
+      - in: path
+        name: uid
+        required: true
+        schema:
+          type: string
 servers:
-- description: prod
-  url: https://services.utelly.com/dm0_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/dm0_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/dm0_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/dm0_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/dm0_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/dm0_manager/v1'
 tags:
-- name: utelly_services
+  - name: utelly_services
