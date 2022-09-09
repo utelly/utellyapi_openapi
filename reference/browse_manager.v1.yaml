@@ -978,6 +978,13 @@ paths:
               type: string
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1028,6 +1035,37 @@ paths:
     get:
       description: ''
       operationId: v1.content.artwork.get_one
+      parameters:
+        - in: query
+          name: languages
+          schema:
+            items:
+              $ref: ../models/language_field.v1.yaml
+            type: array
+          style: form
+        - in: query
+          name: fields
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: embed
+          schema:
+            items:
+              enum:
+                - creative_works
+              type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1094,6 +1132,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1178,6 +1223,13 @@ paths:
                 - services
                 - locations
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -1268,6 +1320,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1346,6 +1405,13 @@ paths:
               type: string
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1407,6 +1473,13 @@ paths:
                 - creative_works
                 - people
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -1511,6 +1584,13 @@ paths:
                 - availabilities
                 - catalogues
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -1633,6 +1713,13 @@ paths:
                 - availabilities
                 - catalogues
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -1780,6 +1867,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -1906,6 +2000,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2020,6 +2121,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2103,6 +2211,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2222,6 +2337,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2370,6 +2492,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2515,6 +2644,13 @@ paths:
             items:
               type: string
             type: array
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2626,6 +2762,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2742,6 +2885,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2858,6 +3008,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -2930,6 +3087,13 @@ paths:
           schema:
             items:
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -3017,6 +3181,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -3095,6 +3266,13 @@ paths:
           schema:
             items:
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -3187,6 +3365,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -3269,6 +3454,13 @@ paths:
           schema:
             items:
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -3365,6 +3557,13 @@ paths:
           name: skip
           schema:
             type: integer
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -3437,6 +3636,13 @@ paths:
           schema:
             items:
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -3524,6 +3730,13 @@ paths:
               type: string
             type: array
           style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -3595,6 +3808,13 @@ paths:
                 - people
                 - tags
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -3675,6 +3895,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -3757,6 +3984,13 @@ paths:
           schema:
             items:
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
@@ -3854,6 +4088,13 @@ paths:
           name: before_or_eq_guid
           schema:
             type: string
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          style: form
       responses:
         '200':
           content:
@@ -3929,6 +4170,13 @@ paths:
           schema:
             items:
               type: string
+            type: array
+          style: form
+        - in: query
+          name: locales
+          schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
             type: array
           style: form
       responses:
