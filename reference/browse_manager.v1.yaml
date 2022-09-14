@@ -320,6 +320,7 @@ components:
             - season
             - episode
             - music_series
+            - spoken_word_series
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
