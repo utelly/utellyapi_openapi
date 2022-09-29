@@ -303,6 +303,197 @@ paths:
         required: true
         schema:
           type: string
+  '/data_quality/samples/{guid}':
+    get:
+      summary: Your GET endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  guid:
+                    type: string
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        guid:
+                          type: string
+                        matches:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              guid:
+                                type: string
+                              matcher:
+                                type: string
+                        unmatches:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              guid:
+                                type: string
+                              matcher:
+                                type: string
+                x-examples:
+                  example-1:
+                    guid: abc123
+                    items:
+                      - guid: cbd456
+                        matches:
+                          - guid: cbd789
+                            matcher: ZipMatcher
+                        unmatches:
+                          - guid: cbe034
+                            matcher: ZipMatcher
+                      - guid: efg456
+                        matches:
+                          - matcher: ZipMatcher
+                            guid: d3e330
+                        unmatches:
+                          - matcher: ManualMatcher
+                            guid: efg789
+              examples:
+                '1':
+                  value:
+                    guid: abc123
+                    items:
+                      - guid: cbd456
+                        matches:
+                          - guid: cbd789
+                            matcher: ZipMatcher
+                        unmatches:
+                          - guid: cbe034
+                            matcher: ZipMatcher
+                      - guid: efg456
+                        matches:
+                          - matcher: ZipMatcher
+                            guid: d3e330
+                        unmatches:
+                          - matcher: ManualMatcher
+                            guid: efg789
+      operationId: v1.data_quality.samples.get
+      description: Retrieve a list of entities and their matches for review.
+      tags:
+        - Dm0 Management
+    parameters:
+      - schema:
+          type: string
+        name: guid
+        in: path
+        required: true
+        description: Identifier for a sample created for review
+  '/data_quality/verify/{guid}':
+    parameters:
+      - schema:
+          type: string
+        name: guid
+        in: path
+        required: true
+        description: Guid for creative_work to be verified
+    post:
+      summary: ''
+      operationId: v1.data_qaulity.verify.post
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  verified:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        guid:
+                          type: string
+                  statistics:
+                    type: object
+                    properties:
+                      verified:
+                        type: integer
+                      pending:
+                        type: integer
+                      manual_matches:
+                        type: integer
+                      manual_unmatches:
+                        type: integer
+                      veried_matches:
+                        type: integer
+                      verified_unmatches:
+                        type: integer
+                x-examples:
+                  example-1:
+                    verified:
+                      - guid: cbd456
+                    statistics:
+                      verified: 3
+                      pending: 97
+                      manual_matches: 1
+                      manual_unmatches: 1
+                      veried_matches: 1
+                      verified_unmatches: 0
+              examples:
+                '1':
+                  value:
+                    verified:
+                      - guid: cbd456
+                    statistics:
+                      verified: 3
+                      pending: 97
+                      manual_matches: 1
+                      manual_unmatches: 1
+                      veried_matches: 1
+                      verified_unmatches: 0
+      tags:
+        - Dm0 Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                example-1:
+                  guid: cbd456
+                  verified: false
+                  unmatch:
+                    - cbd789
+                  match:
+                    - dde298
+              properties:
+                guid:
+                  type: string
+                verified:
+                  type: boolean
+                unmatch:
+                  type: array
+                  items:
+                    type: string
+                match:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - guid
+                - verified
+            examples:
+              '1':
+                value:
+                  guid: cbd456
+                  verified: false
+                  unmatch:
+                    - cbd789
+                  match:
+                    - dde298
+      description: Verify that the specified item is correctly matched or unmatched. If flagged as incorrcect the optionally include guids of items to match or unmatch.
 servers:
   - description: prod
     url: 'https://services.utelly.com/dm0_manager/v1'
