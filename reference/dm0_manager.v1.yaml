@@ -1,5 +1,28 @@
 components:
-  schemas: {}
+  schemas:
+    sample_statistics:
+      type: object
+      properties:
+        verified:
+          type: integer
+        pending:
+          type: integer
+        manual_matches:
+          type: integer
+        manual_unmatches:
+          type: integer
+        veried_matches:
+          type: integer
+        verified_unmatches:
+          type: integer
+      x-examples:
+        '1':
+          verified: 3
+          pending: 97
+          manual_matches: 1
+          manual_unmatches: 1
+          veried_matches: 1
+          verified_unmatches: 0
 info:
   contact:
     email: developers@utelly.com
@@ -303,9 +326,9 @@ paths:
         required: true
         schema:
           type: string
-  '/data_quality/samples/{guid}':
+  '/data_quality/samples/{source}':
     get:
-      summary: Your GET endpoint
+      summary: Fetch Sample
       responses:
         '200':
           description: OK
@@ -313,8 +336,26 @@ paths:
             application/json:
               schema:
                 type: object
+                x-examples:
+                  example-1:
+                    guid: abc123
+                    items:
+                      - guid: cbd456
+                        matches:
+                          - guid: cbd789
+                            matcher: ZipMatcher
+                        unmatches:
+                          - guid: cbe034
+                            matcher: ZipMatcher
+                      - guid: efg456
+                        matches:
+                          - matcher: ZipMatcher
+                            guid: d3e330
+                        unmatches:
+                          - matcher: ManualMatcher
+                            guid: efg789
                 properties:
-                  guid:
+                  sample_uid:
                     type: string
                   items:
                     type: array
@@ -341,74 +382,69 @@ paths:
                                 type: string
                               matcher:
                                 type: string
-                x-examples:
-                  example-1:
-                    guid: abc123
-                    items:
-                      - guid: cbd456
-                        matches:
-                          - guid: cbd789
-                            matcher: ZipMatcher
-                        unmatches:
-                          - guid: cbe034
-                            matcher: ZipMatcher
-                      - guid: efg456
-                        matches:
-                          - matcher: ZipMatcher
-                            guid: d3e330
-                        unmatches:
-                          - matcher: ManualMatcher
-                            guid: efg789
+                  statistics:
+                    $ref: '#/components/schemas/sample_statistics'
               examples:
                 '1':
                   value:
-                    guid: abc123
+                    sample_uid: abc123
                     items:
-                      - guid: cbd456
+                      - uid: cbd456
                         matches:
                           - guid: cbd789
                             matcher: ZipMatcher
                         unmatches:
-                          - guid: cbe034
+                          - uid: cbe034
                             matcher: ZipMatcher
-                      - guid: efg456
+                      - uid: efg456
                         matches:
                           - matcher: ZipMatcher
-                            guid: d3e330
+                            uid: d3e330
                         unmatches:
                           - matcher: ManualMatcher
-                            guid: efg789
+                            uid: efg789
       operationId: v1.data_quality.samples.get
       description: Retrieve a list of entities and their matches for review.
       tags:
         - Dm0 Management
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: sample_uid
     parameters:
       - schema:
           type: string
-        name: guid
+        name: source
         in: path
         required: true
-        description: Identifier for a sample created for review
-  '/data_quality/verify/{guid}':
-    parameters:
-      - schema:
-          type: string
-        name: guid
-        in: path
-        required: true
-        description: Guid for creative_work to be verified
+        description: data source for sample
     post:
-      summary: ''
-      operationId: v1.data_qaulity.verify.post
+      summary: Create Sample
+      operationId: v1.data_quality.samples.post
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
           content:
             application/json:
               schema:
                 type: object
+                x-examples:
+                  example-1:
+                    sample_uid: 0009960da420b29312714ff9a8ff4b6ae066e333
+                    items:
+                      - guid: d05006f0899a4db3cba6bb76dccb551895dbe8a4
+                      - guid: 3ce5962e1a35f01a007cf082370549369ac4fb20
+                      - guid: 9115260da420b29312714ff9a8ff4b6ae066ed6c
+                    statistics:
+                      total_samples: 3
+                      total_verified: 0
+                      verified_correct: 0
+                      verified_incorrect: 0
                 properties:
-                  verified:
+                  sample_uid:
+                    type: string
+                  items:
                     type: array
                     items:
                       type: object
@@ -416,20 +452,83 @@ paths:
                         guid:
                           type: string
                   statistics:
-                    type: object
-                    properties:
-                      verified:
-                        type: integer
-                      pending:
-                        type: integer
-                      manual_matches:
-                        type: integer
-                      manual_unmatches:
-                        type: integer
-                      veried_matches:
-                        type: integer
-                      verified_unmatches:
-                        type: integer
+                    $ref: '#/components/schemas/sample_statistics'
+              examples:
+                '1':
+                  value:
+                    sample_uid: 000006f0899a4db3cba6bb76dccb551895db5445
+                    items:
+                      - guid: d05006f0899a4db3cba6bb76dccb551895dbe8a4
+                      - guid: 3ce5962e1a35f01a007cf082370549369ac4fb20
+                      - guid: 9115260da420b29312714ff9a8ff4b6ae066ed6c
+                    statistics:
+                      total_samples: 3
+                      total_verified: 0
+                      verified_correct: 0
+                      verified_incorrect: 0
+      description: Create a list of entities and their matches for review.
+      tags:
+        - Dm0 Management
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: count
+        - schema:
+            type: array
+            enum:
+              - movie
+              - series
+              - tv
+          in: query
+          name: show_types
+          style: pipeDelimited
+        - schema:
+            type: boolean
+          in: query
+          name: exclude_verified
+    delete:
+      summary: Delete Sample
+      operationId: v1.data_quality.samples.delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  example-1:
+                    sample_uid: abc123
+                properties:
+                  sample_uid:
+                    type: string
+                  deleted_count:
+                    type: integer
+              examples:
+                '1':
+                  value:
+                    sample_uid: string
+                    deleted_count: 50
+      description: Delete a list of entities and their matches for review.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: sample_uid
+          required: true
+  /data_quality/verify:
+    parameters: []
+    post:
+      summary: Verify
+      operationId: v1.data_quality.verify.post
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
                 x-examples:
                   example-1:
                     verified:
@@ -441,11 +540,21 @@ paths:
                       manual_unmatches: 1
                       veried_matches: 1
                       verified_unmatches: 0
+                properties:
+                  verified:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        uid:
+                          type: string
+                  statistics:
+                    $ref: '#/components/schemas/sample_statistics'
               examples:
                 '1':
                   value:
                     verified:
-                      - guid: cbd456
+                      - uid: cbd456
                     statistics:
                       verified: 3
                       pending: 97
@@ -469,9 +578,9 @@ paths:
                   match:
                     - dde298
               properties:
-                guid:
-                  type: string
                 verified:
+                  type: boolean
+                correct:
                   type: boolean
                 unmatch:
                   type: array
@@ -482,18 +591,40 @@ paths:
                   items:
                     type: string
               required:
-                - guid
                 - verified
+                - correct
             examples:
               '1':
                 value:
-                  guid: cbd456
-                  verified: false
+                  uid: cbd456
+                  source: test_source
+                  verified: true
+                  correct: false
                   unmatch:
                     - cbd789
                   match:
                     - dde298
+        description: ''
       description: Verify that the specified item is correctly matched or unmatched. If flagged as incorrcect the optionally include guids of items to match or unmatch.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: uid
+          required: true
+          description: Show uid
+        - schema:
+            type: string
+          in: query
+          name: sample_uid
+          required: true
+          description: Sample uid
+        - schema:
+            type: string
+          in: query
+          name: source
+          required: true
+          description: Data source
 servers:
   - description: prod
     url: 'https://services.utelly.com/dm0_manager/v1'
