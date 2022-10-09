@@ -2,27 +2,44 @@ components:
   schemas:
     sample_statistics:
       type: object
-      properties:
-        verified:
-          type: integer
-        pending:
-          type: integer
-        manual_matches:
-          type: integer
-        manual_unmatches:
-          type: integer
-        veried_matches:
-          type: integer
-        verified_unmatches:
-          type: integer
       x-examples:
         '1':
-          verified: 3
-          pending: 97
-          manual_matches: 1
-          manual_unmatches: 1
-          veried_matches: 1
-          verified_unmatches: 0
+          total_samples: 50
+          total_verified: 45
+          false_positive_count: 2
+          false_negative_count: 1
+      properties:
+        total_samples:
+          type: integer
+        total_verified:
+          type: integer
+        false_positive_count:
+          type: integer
+        false_negative_count:
+          type: integer
+    match:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+        destination_name:
+          type: string
+        destination_uid:
+          type: string
+        matcher:
+          type: string
+        source_name:
+          type: string
+        source_uid:
+          type: string
+      x-examples:
+        '1':
+          deleted: true
+          destination_name: gracenote_gracenote
+          destination_uid: '3232'
+          matcher: ManualMatcher
+          source_name: iva_iva
+          source_uid: '123'
 info:
   contact:
     email: developers@utelly.com
@@ -336,24 +353,6 @@ paths:
             application/json:
               schema:
                 type: object
-                x-examples:
-                  example-1:
-                    guid: abc123
-                    items:
-                      - guid: cbd456
-                        matches:
-                          - guid: cbd789
-                            matcher: ZipMatcher
-                        unmatches:
-                          - guid: cbe034
-                            matcher: ZipMatcher
-                      - guid: efg456
-                        matches:
-                          - matcher: ZipMatcher
-                            guid: d3e330
-                        unmatches:
-                          - matcher: ManualMatcher
-                            guid: efg789
                 properties:
                   sample_uid:
                     type: string
@@ -362,26 +361,12 @@ paths:
                     items:
                       type: object
                       properties:
-                        guid:
-                          type: string
+                        creative_work:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                         matches:
                           type: array
                           items:
-                            type: object
-                            properties:
-                              guid:
-                                type: string
-                              matcher:
-                                type: string
-                        unmatches:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              guid:
-                                type: string
-                              matcher:
-                                type: string
+                            $ref: '#/components/schemas/match'
                   statistics:
                     $ref: '#/components/schemas/sample_statistics'
               examples:
@@ -389,20 +374,68 @@ paths:
                   value:
                     sample_uid: abc123
                     items:
-                      - uid: cbd456
+                      - creative_work:
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
                         matches:
-                          - guid: cbd789
-                            matcher: ZipMatcher
-                        unmatches:
-                          - uid: cbe034
-                            matcher: ZipMatcher
-                      - uid: efg456
-                        matches:
-                          - matcher: ZipMatcher
-                            uid: d3e330
-                        unmatches:
-                          - matcher: ManualMatcher
-                            uid: efg789
+                          - deleted: true
+                            destination_name: gracenote_gracenote
+                            destination_uid: '3232'
+                            matcher: ManualMatcher
+                            source_name: iva_iva
+                            source_uid: '123'
+                    statistics:
+                      total_samples: 50
+                      total_verified: 45
+                      false_positive_count: 1
+                      false_negative_count: 2
       operationId: v1.data_quality.samples.get
       description: Retrieve a list of entities and their matches for review.
       tags:
@@ -429,18 +462,6 @@ paths:
             application/json:
               schema:
                 type: object
-                x-examples:
-                  example-1:
-                    sample_uid: 0009960da420b29312714ff9a8ff4b6ae066e333
-                    items:
-                      - guid: d05006f0899a4db3cba6bb76dccb551895dbe8a4
-                      - guid: 3ce5962e1a35f01a007cf082370549369ac4fb20
-                      - guid: 9115260da420b29312714ff9a8ff4b6ae066ed6c
-                    statistics:
-                      total_samples: 3
-                      total_verified: 0
-                      verified_correct: 0
-                      verified_incorrect: 0
                 properties:
                   sample_uid:
                     type: string
@@ -449,8 +470,12 @@ paths:
                     items:
                       type: object
                       properties:
-                        guid:
-                          type: string
+                        creative_work:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                        matches:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/match'
                   statistics:
                     $ref: '#/components/schemas/sample_statistics'
               examples:
@@ -458,14 +483,68 @@ paths:
                   value:
                     sample_uid: 000006f0899a4db3cba6bb76dccb551895db5445
                     items:
-                      - guid: d05006f0899a4db3cba6bb76dccb551895dbe8a4
-                      - guid: 3ce5962e1a35f01a007cf082370549369ac4fb20
-                      - guid: 9115260da420b29312714ff9a8ff4b6ae066ed6c
+                      - creative_work:
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
+                        matches:
+                          - deleted: true
+                            destination_name: gracenote_gracenote
+                            destination_uid: '3232'
+                            matcher: ManualMatcher
+                            source_name: iva_iva
+                            source_uid: '123'
                     statistics:
-                      total_samples: 3
-                      total_verified: 0
-                      verified_correct: 0
-                      verified_incorrect: 0
+                      total_samples: 50
+                      total_verified: 45
+                      false_positive_count: 43
+                      false_negative_count: 2
       description: Create a list of entities and their matches for review.
       tags:
         - Dm0 Management
@@ -474,6 +553,7 @@ paths:
             type: integer
           in: query
           name: count
+          description: Number of items to include in sample
         - schema:
             type: array
             enum:
@@ -483,10 +563,17 @@ paths:
           in: query
           name: show_types
           style: pipeDelimited
+          description: Sample will only include shows of these types if set
         - schema:
             type: boolean
           in: query
           name: exclude_verified
+          description: Exclude already verified items from sample
+        - schema:
+            type: boolean
+          in: query
+          name: replace_extant
+          description: When set true any existing samples will be deleted
     delete:
       summary: Delete Sample
       operationId: v1.data_quality.samples.delete
@@ -497,9 +584,6 @@ paths:
             application/json:
               schema:
                 type: object
-                x-examples:
-                  example-1:
-                    sample_uid: abc123
                 properties:
                   sample_uid:
                     type: string
@@ -508,7 +592,7 @@ paths:
               examples:
                 '1':
                   value:
-                    sample_uid: string
+                    sample_uid: abc123
                     deleted_count: 50
       description: Delete a list of entities and their matches for review.
       parameters:
@@ -517,6 +601,8 @@ paths:
           in: query
           name: sample_uid
           required: true
+      tags:
+        - Dm0 Management
   /data_quality/verify:
     parameters: []
     post:
@@ -529,39 +615,23 @@ paths:
             application/json:
               schema:
                 type: object
-                x-examples:
-                  example-1:
-                    verified:
-                      - guid: cbd456
-                    statistics:
-                      verified: 3
-                      pending: 97
-                      manual_matches: 1
-                      manual_unmatches: 1
-                      veried_matches: 1
-                      verified_unmatches: 0
                 properties:
+                  uid:
+                    type: string
                   verified:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        uid:
-                          type: string
+                    type: boolean
                   statistics:
                     $ref: '#/components/schemas/sample_statistics'
               examples:
                 '1':
                   value:
-                    verified:
-                      - uid: cbd456
+                    verified: true
+                    uid: abc123
                     statistics:
-                      verified: 3
-                      pending: 97
-                      manual_matches: 1
-                      manual_unmatches: 1
-                      veried_matches: 1
-                      verified_unmatches: 0
+                      total_samples: 50
+                      total_verified: 45
+                      false_positive_count: 1
+                      false_negative_count: 2
       tags:
         - Dm0 Management
       requestBody:
@@ -569,41 +639,21 @@ paths:
           application/json:
             schema:
               type: object
-              x-examples:
-                example-1:
-                  guid: cbd456
-                  verified: false
-                  unmatch:
-                    - cbd789
-                  match:
-                    - dde298
               properties:
                 verified:
                   type: boolean
-                correct:
-                  type: boolean
-                unmatch:
-                  type: array
-                  items:
-                    type: string
-                match:
-                  type: array
-                  items:
-                    type: string
+                false_positive_count:
+                  type: integer
+                false_negative_count:
+                  type: integer
               required:
                 - verified
-                - correct
             examples:
               '1':
                 value:
-                  uid: cbd456
-                  source: test_source
                   verified: true
-                  correct: false
-                  unmatch:
-                    - cbd789
-                  match:
-                    - dde298
+                  false_positive_count: 0
+                  false_negative_count: 2
         description: ''
       description: Verify that the specified item is correctly matched or unmatched. If flagged as incorrcect the optionally include guids of items to match or unmatch.
       parameters:
