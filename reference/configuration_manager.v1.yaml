@@ -14,9 +14,9 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /configurations/source/{type}:
+  '/configurations/source/{type}':
     get:
-      description: 'Retrieve configurations by type directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      description: Retrieve configurations by type directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.
       operationId: v1.configuration.get_configs
       responses:
         '200':
@@ -52,7 +52,7 @@ paths:
               schema:
                 type: array
                 items:
-                  properties: 
+                  properties:
                     type:
                       type: string
                     identifier:
@@ -66,7 +66,7 @@ paths:
         - Configuration Management
       x-internal: true
     post:
-      description: 'Create a configuration and store directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      description: Create a configuration and store directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.
       operationId: v1.configuration.create_config
       requestBody:
         content:
@@ -106,20 +106,20 @@ paths:
                 identifier:
                   type: string
       summary: Create Configuration
-      x-internal: True
+      x-internal: true
       responses:
         '201':
           description: OK
     parameters:
-    - description: configuration type
-      in: path
-      name: type
-      required: true
-      schema:
-        type: string  
-  /configurations/source/{type}/{identifier}:
+      - description: configuration type
+        in: path
+        name: type
+        required: true
+        schema:
+          type: string
+  '/configurations/source/{type}/{identifier}':
     get:
-      description: 'Retrieve a configuration directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      description: Retrieve a configuration directly from the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.
       operationId: v1.configuration.get_config
       responses:
         '200':
@@ -153,7 +153,7 @@ paths:
                     identifier: my identifier
                     type: sherlockConfig
               schema:
-                properties: 
+                properties:
                   type:
                     type: string
                   identifier:
@@ -165,9 +165,9 @@ paths:
       summary: Get Configurations
       tags:
         - Configuration Management
-      x-internal: True
+      x-internal: true
     post:
-      description: 'Update a configuration directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.'
+      description: Update a configuration directly in the configuration source. Caching disabled for the endpoint. Only accessible by the admin user.
       operationId: v1.configuration.update_config
       requestBody:
         content:
@@ -198,32 +198,31 @@ paths:
                       - rest
                     source: iva_iva
             schema:
-              additionalProperties: false
               type: object
               properties:
                 config:
                   type: object
       summary: Update Configuration
-      x-internal: True
+      x-internal: true
       responses:
         '201':
           description: OK
     parameters:
-    - description: configuration type
-      in: path
-      name: type
-      required: true
-      schema:
-        type: string 
-    - description: configuration identifier
-      in: path
-      name: identifier
-      required: true
-      schema:
-        type: string 
+      - description: configuration type
+        in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - description: configuration identifier
+        in: path
+        name: identifier
+        required: true
+        schema:
+          type: string
   /configurations:
     get:
-      description: 'Retrieve a configuration or configurations by type. Caching enabled for the endpoint.'
+      description: Retrieve a configuration or configurations by type. Caching enabled for the endpoint.
       operationId: v1.configuration.get
       parameters:
         - in: query
@@ -273,7 +272,7 @@ paths:
                   identifier:
                     type: string
                   config:
-                    type: object                
+                    type: object
                 type: object
           description: OK
       summary: Get Configurations
