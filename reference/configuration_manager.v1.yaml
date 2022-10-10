@@ -266,14 +266,16 @@ paths:
                       identifier: my identifier
                       type: sherlockConfig
               schema:
-                properties:
-                  type:
-                    type: string
-                  identifier:
-                    type: string
-                  config:
-                    type: object
-                type: object
+                type: array
+                items:
+                  properties:
+                    type:
+                      type: string
+                    identifier:
+                      type: string
+                    config:
+                      type: object
+                  type: object
           description: OK
       summary: Get Configurations
       tags:
