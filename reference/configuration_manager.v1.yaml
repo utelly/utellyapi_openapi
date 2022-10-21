@@ -98,7 +98,6 @@ paths:
                     source: iva_iva
                   identifier: my identifier
             schema:
-              additionalProperties: false
               type: object
               properties:
                 config:
