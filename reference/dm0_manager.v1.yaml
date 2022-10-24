@@ -365,6 +365,8 @@ paths:
                     items:
                       type: object
                       properties:
+                        title_uid:
+                          type: string
                         creative_work:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                         matches:
@@ -378,7 +380,8 @@ paths:
                   value:
                     sample_uid: abc123
                     items:
-                      - creative_work:
+                      - title_uid: 27c13eec19014084a0a3173061702b46
+                        creative_work:
                           _links:
                             availabilities:
                               href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
@@ -473,6 +476,17 @@ paths:
           in: query
           name: count
           description: Number of shows to sample
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - creative_works
+                - matches
+          in: query
+          name: embed
+          style: pipeDelimited
+          description: Optionally include matches or creative_Works
     parameters:
       - schema:
           type: string
@@ -498,6 +512,8 @@ paths:
                     items:
                       type: object
                       properties:
+                        title_uid:
+                          type: string
                         creative_work:
                           $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
                         matches:
@@ -511,7 +527,8 @@ paths:
                   value:
                     sample_uid: 000006f0899a4db3cba6bb76dccb551895db5445
                     items:
-                      - creative_work:
+                      - title_uid: 27c13eec19014084a0a3173061702b46
+                        creative_work:
                           _links:
                             availabilities:
                               href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
