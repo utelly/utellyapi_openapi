@@ -482,11 +482,10 @@ paths:
               type: string
               enum:
                 - creative_works
-                - matches
           in: query
           name: embed
           style: pipeDelimited
-          description: Optionally include matches or creative_Works
+          description: Optionally include creative_works
     parameters:
       - schema:
           type: string
