@@ -1,5 +1,49 @@
 components:
-  schemas: {}
+  schemas:
+    sample_statistics:
+      type: object
+      x-examples:
+        '1':
+          total_samples: 50
+          total_verified: 45
+          false_positive_count: 2
+          false_negative_count: 1
+      properties:
+        total_shows_in_source:
+          type: integer
+        verified_shows_in_source:
+          type: integer
+        total_false_positives:
+          type: integer
+        total_false_negatives:
+          type: integer
+        verified_false_positives:
+          type: integer
+        verified_false_negatives:
+          type: integer
+    match:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+        destination_name:
+          type: string
+        destination_uid:
+          type: string
+        matcher:
+          type: string
+        source_name:
+          type: string
+        source_uid:
+          type: string
+      x-examples:
+        '1':
+          deleted: true
+          destination_name: gracenote_gracenote
+          destination_uid: '3232'
+          matcher: ManualMatcher
+          source_name: iva_iva
+          source_uid: '123'
 info:
   contact:
     email: developers@utelly.com
@@ -9,20 +53,20 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  /data_matches/{type}:
+  '/data_matches/{type}':
     get:
       operationId: v1.data_matches.get
       parameters:
-      - in: query
-        name: group_uid
-        required: true
-        schema:
-          type: string
-      - in: query
-        name: source
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: group_uid
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: source
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -31,12 +75,12 @@ paths:
                 '1':
                   value:
                     items:
-                    - deleted: true
-                      destination_name: gracenote_gracenote
-                      destination_uid: '3232'
-                      matcher: ManualMatcher
-                      source_name: iva_iva
-                      source_uid: '123'
+                      - deleted: true
+                        destination_name: gracenote_gracenote
+                        destination_uid: '3232'
+                        matcher: ManualMatcher
+                        source_name: iva_iva
+                        source_uid: '123'
               schema:
                 additionalProperties: false
                 description: ''
@@ -62,31 +106,31 @@ paths:
                           minLength: 1
                           type: string
                       required:
-                      - source_name
-                      - source_uid
-                      - destination_name
-                      - destination_uid
-                      - deleted
+                        - source_name
+                        - source_uid
+                        - destination_name
+                        - destination_uid
+                        - deleted
                       type: object
                     minItems: 1
                     type: array
                     uniqueItems: true
                 required:
-                - items
+                  - items
                 type: object
           description: OK
       summary: Get data matches
       tags:
-      - Dm0 Management
+        - Dm0 Management
     parameters:
-    - in: path
-      name: type
-      required: true
-      schema:
-        enum:
-        - people
-        - shows
-        type: string
+      - in: path
+        name: type
+        required: true
+        schema:
+          enum:
+            - people
+            - shows
+          type: string
     post:
       operationId: v1.data_matches.post
       requestBody:
@@ -122,12 +166,12 @@ paths:
                   minLength: 1
                   type: string
               required:
-              - source_name
-              - source_uid
-              - destination_name
-              - destination_uid
-              - deleted
-              - matcher
+                - source_name
+                - source_uid
+                - destination_name
+                - destination_uid
+                - deleted
+                - matcher
               type: object
       responses:
         '201':
@@ -163,25 +207,25 @@ paths:
                     minLength: 1
                     type: string
                 required:
-                - source_name
-                - source_uid
-                - destination_name
-                - destination_uid
-                - deleted
+                  - source_name
+                  - source_uid
+                  - destination_name
+                  - destination_uid
+                  - deleted
                 type: object
           description: Created
       summary: Create new data match
       tags:
-      - Dm0 Management
-  /people/{uid}:
+        - Dm0 Management
+  '/people/{uid}':
     get:
       operationId: v1.person.get
       parameters:
-      - in: query
-        name: source
-        required: true
-        schema:
-          type: string
+        - in: query
+          name: source
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -191,7 +235,7 @@ paths:
                   value:
                     full_name: hello
                     pictures:
-                    - url: https://mydomain.com/image.jpg
+                      - url: 'https://mydomain.com/image.jpg'
                     uid: '23232'
               schema:
                 additionalProperties: false
@@ -208,7 +252,7 @@ paths:
                           minLength: 1
                           type: string
                       required:
-                      - url
+                        - url
                       type: object
                     minItems: 1
                     type: array
@@ -217,29 +261,29 @@ paths:
                     minLength: 1
                     type: string
                 required:
-                - uid
-                - full_name
-                - pictures
+                  - uid
+                  - full_name
+                  - pictures
                 type: object
           description: OK
       summary: Get person
       tags:
-      - Dm0 Management
+        - Dm0 Management
     parameters:
-    - in: path
-      name: uid
-      required: true
-      schema:
-        type: string
-  /shows/{uid}:
-    get:
-      operationId: v1.show.get
-      parameters:
-      - in: query
-        name: source
+      - in: path
+        name: uid
         required: true
         schema:
           type: string
+  '/shows/{uid}':
+    get:
+      operationId: v1.show.get
+      parameters:
+        - in: query
+          name: source
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           content:
@@ -248,9 +292,9 @@ paths:
                 '1':
                   value:
                     actors:
-                    - full_name: Leonardo
+                      - full_name: Leonardo
                     pictures:
-                    - url: https://mydomain.com/image.jpg
+                      - url: 'https://mydomain.com/image.jpg'
                     primary_name: hello
                     uid: '23232'
               schema:
@@ -264,7 +308,7 @@ paths:
                         full_name:
                           type: string
                       required:
-                      - full_name
+                        - full_name
                       type: object
                     type: array
                   pictures:
@@ -275,7 +319,7 @@ paths:
                           minLength: 1
                           type: string
                       required:
-                      - url
+                        - url
                       type: object
                     minItems: 1
                     type: array
@@ -288,27 +332,430 @@ paths:
                   uid:
                     type: string
                 required:
-                - primary_name
-                - pictures
-                - uid
-                - actors
+                  - primary_name
+                  - pictures
+                  - uid
+                  - actors
                 type: object
           description: OK
       summary: Get show
       tags:
-      - Dm0 Management
+        - Dm0 Management
     parameters:
-    - in: path
-      name: uid
-      required: true
-      schema:
-        type: string
+      - in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+  '/data_quality/samples/{source}':
+    get:
+      summary: Fetch Sample
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sample_uid:
+                    type: string
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title_uid:
+                          type: string
+                        creative_work:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                        matches:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/match'
+                  statistics:
+                    $ref: '#/components/schemas/sample_statistics'
+              examples:
+                '1':
+                  value:
+                    sample_uid: abc123
+                    items:
+                      - title_uid: 27c13eec19014084a0a3173061702b46
+                        creative_work:
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
+                        matches:
+                          - deleted: true
+                            destination_name: gracenote_gracenote
+                            destination_uid: '3232'
+                            matcher: ManualMatcher
+                            source_name: iva_iva
+                            source_uid: '123'
+                    statistics:
+                      total_shows_in_source: 500
+                      verified_shows_in_source: 45
+                      total_false_positives: 10
+                      total_false_negatives: 6
+                      verified_false_positives: 1
+                      verified_false_negatives: 2
+      operationId: v1.data_quality.samples.get
+      description: Retrieve a list of entities and their matches for review.
+      tags:
+        - Dm0 Management
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: sample_uid
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - tv
+                - movie
+                - series
+          in: query
+          name: show_types
+          style: pipeDelimited
+          description: Sample only shows of these types
+        - schema:
+            type: boolean
+          in: query
+          name: exclude_verified
+          description: Sample only shows that are not verified
+        - schema:
+            type: integer
+          in: query
+          name: count
+          description: Number of shows to sample
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - creative_works
+          in: query
+          name: embed
+          style: pipeDelimited
+          description: Optionally include creative_works
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+        description: data source for sample
+    post:
+      summary: Create Sample
+      operationId: v1.data_quality.samples.post
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sample_uid:
+                    type: string
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title_uid:
+                          type: string
+                        creative_work:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                        matches:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/match'
+                  statistics:
+                    $ref: '#/components/schemas/sample_statistics'
+              examples:
+                '1':
+                  value:
+                    sample_uid: 000006f0899a4db3cba6bb76dccb551895db5445
+                    items:
+                      - title_uid: 27c13eec19014084a0a3173061702b46
+                        creative_work:
+                          _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
+                        matches:
+                          - deleted: true
+                            destination_name: gracenote_gracenote
+                            destination_uid: '3232'
+                            matcher: ManualMatcher
+                            source_name: iva_iva
+                            source_uid: '123'
+                    statistics:
+                      total_shows_in_source: 500
+                      verified_shows_in_source: 45
+                      total_false_positives: 10
+                      total_false_negatives: 6
+                      verified_false_positives: 1
+                      verified_false_negatives: 2
+      description: Create a list of entities and their matches for review.
+      tags:
+        - Dm0 Management
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: count
+          description: Number of items to include in sample
+        - schema:
+            type: array
+            enum:
+              - movie
+              - series
+              - tv
+          in: query
+          name: show_types
+          style: pipeDelimited
+          description: Sample will only include shows of these types if set
+        - schema:
+            type: boolean
+          in: query
+          name: exclude_verified
+          description: Exclude already verified items from sample
+        - schema:
+            type: boolean
+          in: query
+          name: replace_extant
+          description: When set true any existing samples will be deleted
+    delete:
+      summary: Delete Sample
+      operationId: v1.data_quality.samples.delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sample_uid:
+                    type: string
+                  deleted_count:
+                    type: integer
+              examples:
+                '1':
+                  value:
+                    sample_uid: abc123
+                    deleted_count: 50
+      description: Delete a list of entities and their matches for review.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: sample_uid
+          required: true
+      tags:
+        - Dm0 Management
+  /data_quality/verify:
+    parameters: []
+    post:
+      summary: Verify
+      operationId: v1.data_quality.verify.post
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uid:
+                    type: string
+                  verified:
+                    type: boolean
+                  statistics:
+                    $ref: '#/components/schemas/sample_statistics'
+              examples:
+                '1':
+                  value:
+                    verified: true
+                    uid: abc123
+                    statistics:
+                      total_shows_in_source: 500
+                      verified_shows_in_source: 45
+                      total_false_positives: 10
+                      total_false_negatives: 6
+                      verified_false_positives: 1
+                      verified_false_negatives: 2
+      tags:
+        - Dm0 Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                verified:
+                  type: boolean
+                false_positive_count:
+                  type: integer
+                false_negative_count:
+                  type: integer
+              required:
+                - verified
+            examples:
+              '1':
+                value:
+                  verified: true
+                  false_positive_count: 0
+                  false_negative_count: 2
+        description: ''
+      description: Verify that the specified item is correctly matched or unmatched. If flagged as incorrcect the optionally include guids of items to match or unmatch.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: uid
+          required: true
+          description: Show uid
+        - schema:
+            type: string
+          in: query
+          name: sample_uid
+          description: Sample uid
+        - schema:
+            type: string
+          in: query
+          name: source
+          required: true
+          description: Data source
+  '/data_quality/statistics/{source}':
+    get:
+      summary: Statistics
+      tags:
+        - Dm0 Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sample_statistics'
+              examples:
+                '1':
+                  value:
+                    total_shows_in_source: 0
+                    verified_shows_in_source: 0
+                    total_false_positives: 0
+                    total_false_negatives: 0
+                    verified_false_positives: 0
+                    verified_false_negatives: 0
+      operationId: v1.data_quality.statistics.get
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
 servers:
-- description: prod
-  url: https://services.utelly.com/dm0_manager/v1
-- description: staging
-  url: https://staging-services.utelly.com/dm0_manager/v1
-- description: dev
-  url: https://dev-services.utelly.com/dm0_manager/v1
+  - description: prod
+    url: 'https://services.utelly.com/dm0_manager/v1'
+  - description: staging
+    url: 'https://staging-services.utelly.com/dm0_manager/v1'
+  - description: dev
+    url: 'https://dev-services.utelly.com/dm0_manager/v1'
 tags:
-- name: utelly_services
+  - name: utelly_services
