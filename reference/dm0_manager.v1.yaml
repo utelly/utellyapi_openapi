@@ -375,6 +375,23 @@ paths:
                             $ref: '#/components/schemas/match'
                   statistics:
                     $ref: '#/components/schemas/sample_statistics'
+                  settings:
+                    type: object
+                    properties:
+                      sample_uid:
+                        type: string
+                      show_types:
+                        type: array
+                        items:
+                          type: string
+                      exclude_verified:
+                        type: boolean
+                      count:
+                        type: number
+                      embed:
+                        type: array
+                        items:
+                          type: string
               examples:
                 '1':
                   value:
