@@ -375,6 +375,23 @@ paths:
                             $ref: '#/components/schemas/match'
                   statistics:
                     $ref: '#/components/schemas/sample_statistics'
+                  settings:
+                    type: object
+                    properties:
+                      sample_uid:
+                        type: string
+                      show_types:
+                        type: array
+                        items:
+                          type: string
+                      exclude_verified:
+                        type: boolean
+                      count:
+                        type: number
+                      embed:
+                        type: array
+                        items:
+                          type: string
               examples:
                 '1':
                   value:
@@ -445,6 +462,10 @@ paths:
                       total_false_negatives: 6
                       verified_false_positives: 1
                       verified_false_negatives: 2
+                    settings:
+                      count: 1
+                      embed:
+                        - creative_works
       operationId: v1.data_quality.samples.get
       description: Retrieve a list of entities and their matches for review.
       tags:
