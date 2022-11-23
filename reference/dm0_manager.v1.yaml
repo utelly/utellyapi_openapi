@@ -462,6 +462,10 @@ paths:
                       total_false_negatives: 6
                       verified_false_positives: 1
                       verified_false_negatives: 2
+                    settings:
+                      count: 1
+                      embed:
+                        - creative_works
       operationId: v1.data_quality.samples.get
       description: Retrieve a list of entities and their matches for review.
       tags:
