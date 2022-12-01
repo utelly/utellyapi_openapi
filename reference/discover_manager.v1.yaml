@@ -782,6 +782,137 @@ paths:
           in: query
           name: locales
           description: 'Used to remove unnecessary titles, descriptions and artworks.'
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: audiences
+          description: Content without availabilities for these audiences will be removed
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: sources
+          description: Content that doesn't exist in these sources will be removed.
+          style: pipeDelimited
+      description: ''
+    parameters: []
+  /creative_works/related_light:
+    get:
+      summary: Related Creative Works
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  _embedded:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      creative_works:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            guid:
+                              type: string
+                            type:
+                              type: string
+                            sources:
+                              type: array
+                              items:
+                                type: string
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  total_count:
+                    type: integer
+                    description: Total number of results
+                  _metadata:
+                    $ref: ../models/metadata_field.v1.yaml
+                required:
+                  - _embedded
+                  - _links
+                  - total_count
+                  - _metadata
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      creative_works:
+                        - guid: abc123
+                          type: movie
+                          sources:
+                            - tenant1_vod
+                        - guid: abc123
+                          type: series
+                          sources:
+                            - tenant1_vod
+                    _links:
+                      first:
+                        href: /content/creative_works
+                      last:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      next:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      prev:
+                        href: /content/creative_works
+                      self:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                    _metadata:
+                      request_guid: 8b63dd1ced974ecea01116f2c0a5a282
+                    total_count: 1
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: v1.discover.related.light.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: content.id
+          description: Id of the item to which items should be related.
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: content.source
+          description: Namespace for seed_source_id so that consumers don't need to map to Utelly create_work_guid.
+        - schema:
+            type: integer
+            minimum: 0
+            maximum: 50
+          in: query
+          name: limit
+          description: Max items to be included in response.
+        - schema:
+            type: string
+          in: query
+          name: search_after
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: audiences
+          description: Content without availabilities for these audiences will be removed
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: sources
+          description: Content that doesn't exist in these sources will be removed.
+          style: pipeDelimited
       description: ''
     parameters: []
 components:
