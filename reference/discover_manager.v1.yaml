@@ -672,7 +672,6 @@ paths:
           in: query
           name: content.id
           description: Id of the item to which items should be related
-          required: true
         - schema:
             type: string
           in: query
@@ -787,13 +786,15 @@ paths:
           in: query
           name: locales
           description: 'Used to remove unnecessary titles, descriptions and artworks.'
+          style: pipeDelimited
         - schema:
             type: array
             items:
               type: string
+            example: 'offer:offer_id'
           in: query
           name: audiences
-          description: Content without availabilities for these audiences will be removed
+          description: 'Content must have an availability.audience of type + ID '
           style: pipeDelimited
         - schema:
             type: array
@@ -801,7 +802,14 @@ paths:
               type: string
           in: query
           name: sources
-          description: Content that doesn't exist in these sources will be removed.
+          description: 'Content must have originated from one of the listed sources '
+          style: pipeDelimited
+        - schema:
+            type: array
+            pattern: 'offer:offer_id'
+          in: query
+          name: audiences.opt
+          description: Content must have an availability.audience of type + ID OR no availability of type
           style: pipeDelimited
       description: ''
     parameters: []
