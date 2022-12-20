@@ -800,12 +800,15 @@ paths:
             type: array
             items:
               type: string
+            pattern: 'offer:offer_id'
           in: query
           name: sources
           description: 'Content must have originated from one of the listed sources '
           style: pipeDelimited
         - schema:
             type: array
+            items:
+              type: string
             pattern: 'offer:offer_id'
           in: query
           name: audiences.opt
