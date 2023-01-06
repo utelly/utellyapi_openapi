@@ -560,9 +560,30 @@ paths:
           description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
         - schema:
             type: array
+            items:
+              type: string
+          in: query
+          name: sources
+          description: 'Content must have originated from one of the listed sources '
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+            example: 'offer:offer_id'
           in: query
           name: audiences
-          description: Content without availabilities for these audiences will be removed
+          description: 'Content must have an availability.audience matching at least one <type>:<value> from this list'
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+            pattern: 'offer:offer_id'
+          in: query
+          name: audiences.opt
+          description: 'Content must have an availability.audience matching at least one <type>:<value> from this list or no availability.audience of <type>'
+          style: pipeDelimited
       description: ''
   /creative_works/related:
     get:
@@ -763,6 +784,60 @@ paths:
           description: Has none of the listed service ids as an availability.
         - schema:
             type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_from
+          style: pipeDelimited
+          explode: true
+          description: Has availability start date equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_from.gte
+          style: pipeDelimited
+          explode: true
+          description: Has availability start date greater than or equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_from.lte
+          style: pipeDelimited
+          explode: true
+          description: Has a start date less than or equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_to
+          style: pipeDelimited
+          explode: true
+          description: Has availability end date equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_to.gte
+          style: pipeDelimited
+          explode: true
+          description: Has availability end date greater than or equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_to.lte
+          style: pipeDelimited
+          explode: true
+          description: Has a end date less than or equal to value
+        - schema:
+            type: string
           in: query
           name: user.id
           description: Identifier for user
@@ -791,16 +866,6 @@ paths:
             type: array
             items:
               type: string
-            example: 'offer:offer_id'
-          in: query
-          name: audiences
-          description: 'Content must have an availability.audience of type + ID '
-          style: pipeDelimited
-        - schema:
-            type: array
-            items:
-              type: string
-            pattern: 'offer:offer_id'
           in: query
           name: sources
           description: 'Content must have originated from one of the listed sources '
@@ -809,10 +874,19 @@ paths:
             type: array
             items:
               type: string
+            example: 'offer:offer_id'
+          in: query
+          name: audiences
+          description: 'Content must have an availability.audience matching at least one <type>:<value> from this list'
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
             pattern: 'offer:offer_id'
           in: query
           name: audiences.opt
-          description: Content must have an availability.audience of type + ID OR no availability of type
+          description: 'Content must have an availability.audience matching at least one <type>:<value> from this list or no availability.audience of <type>'
           style: pipeDelimited
       description: ''
     parameters: []
