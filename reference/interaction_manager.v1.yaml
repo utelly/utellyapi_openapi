@@ -63,7 +63,12 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Interaction'
+                anyOf:
+                  - $ref: '#/components/schemas/interaction_bookmark'
+                  - $ref: '#/components/schemas/interaction_rate'
+                  - $ref: '#/components/schemas/interaction_view'
+                  - $ref: '#/components/schemas/interaction_play'
+                  - $ref: '#/components/schemas/interaction_buy_rent'
             examples:
               '1':
                 value:
