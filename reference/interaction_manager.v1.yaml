@@ -31,7 +31,7 @@ paths:
                     - $ref: '#/components/schemas/interaction_play'
                     - $ref: '#/components/schemas/interaction_buy_rent'
               examples:
-                '1':
+                Example 1:
                   value:
                     - platform: ios
                       discover_guid: 5e987e47-7ed0-4442-a3bb-e3aeacd4840c
@@ -131,11 +131,11 @@ components:
         user:
           $ref: '#/components/schemas/user_object'
         entity:
-          $ref: '#/components/schemas/entity_object'        
+          $ref: '#/components/schemas/entity_object'
       required:
         - created_at
         - user
-        - entity            
+        - entity
         - type
     interaction_rate:
       title: interaction_rate
@@ -169,11 +169,11 @@ components:
         user:
           $ref: '#/components/schemas/user_object'
         entity:
-          $ref: '#/components/schemas/entity_object'        
+          $ref: '#/components/schemas/entity_object'
       required:
         - created_at
         - user
-        - entity            
+        - entity
         - type
     interaction_view:
       title: interaction_view
@@ -199,11 +199,11 @@ components:
         user:
           $ref: '#/components/schemas/user_object'
         entity:
-          $ref: '#/components/schemas/entity_object'        
+          $ref: '#/components/schemas/entity_object'
       required:
         - created_at
         - user
-        - entity            
+        - entity
         - type
     interaction_play:
       title: interaction_play
@@ -233,11 +233,11 @@ components:
         user:
           $ref: '#/components/schemas/user_object'
         entity:
-          $ref: '#/components/schemas/entity_object'        
+          $ref: '#/components/schemas/entity_object'
       required:
         - created_at
         - user
-        - entity            
+        - entity
         - type
     interaction_buy_rent:
       title: interaction_buy_rent
@@ -273,11 +273,11 @@ components:
         user:
           $ref: '#/components/schemas/user_object'
         entity:
-          $ref: '#/components/schemas/entity_object'        
+          $ref: '#/components/schemas/entity_object'
       required:
         - created_at
         - user
-        - entity            
+        - entity
         - type
     platform_type:
       type: string
