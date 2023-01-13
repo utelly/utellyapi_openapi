@@ -24,7 +24,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Interaction'
+                  anyOf:
+                    - $ref: '#/components/schemas/interaction_bookmark'
+                    - $ref: '#/components/schemas/interaction_rate'
+                    - $ref: '#/components/schemas/interaction_view'
+                    - $ref: '#/components/schemas/interaction_play'
+                    - $ref: '#/components/schemas/interaction_buy_rent'
               examples:
                 '1':
                   value:
@@ -75,32 +80,6 @@ paths:
                       type: movie
 components:
   schemas:
-    Interaction:
-      title: Interaction
-      x-examples: {}
-      description: 'This model represents the interaction between a user and an object (creative works, people, tags, etc...).'
-      allOf:
-        - anyOf:
-            - $ref: '#/components/schemas/interaction_bookmark'
-            - $ref: '#/components/schemas/interaction_play'
-            - $ref: '#/components/schemas/interaction_view'
-            - $ref: '#/components/schemas/interaction_buy_rent'
-            - $ref: '#/components/schemas/interaction_rate'
-        - type: object
-          additionalProperties: false
-          properties:
-            created_at:
-              type: string
-              pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
-              format: date-time
-            user:
-              $ref: '#/components/schemas/user_object'
-            entity:
-              $ref: '#/components/schemas/entity_object'
-          required:
-            - created_at
-            - user
-            - entity
     entity_type:
       type: string
       enum:
@@ -145,7 +124,18 @@ components:
           type: string
           enum:
             - bookmark
+        created_at:
+          type: string
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          format: date-time
+        user:
+          $ref: '#/components/schemas/user_object'
+        entity:
+          $ref: '#/components/schemas/entity_object'        
       required:
+        - created_at
+        - user
+        - entity            
         - type
     interaction_rate:
       title: interaction_rate
@@ -172,8 +162,18 @@ components:
           type: string
           enum:
             - rate
+        created_at:
+          type: string
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          format: date-time
+        user:
+          $ref: '#/components/schemas/user_object'
+        entity:
+          $ref: '#/components/schemas/entity_object'        
       required:
-        - platform
+        - created_at
+        - user
+        - entity            
         - type
     interaction_view:
       title: interaction_view
@@ -192,7 +192,18 @@ components:
           type: string
           enum:
             - view
+        created_at:
+          type: string
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          format: date-time
+        user:
+          $ref: '#/components/schemas/user_object'
+        entity:
+          $ref: '#/components/schemas/entity_object'        
       required:
+        - created_at
+        - user
+        - entity            
         - type
     interaction_play:
       title: interaction_play
@@ -215,7 +226,18 @@ components:
           type: string
           enum:
             - play
+        created_at:
+          type: string
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          format: date-time
+        user:
+          $ref: '#/components/schemas/user_object'
+        entity:
+          $ref: '#/components/schemas/entity_object'        
       required:
+        - created_at
+        - user
+        - entity            
         - type
     interaction_buy_rent:
       title: interaction_buy_rent
@@ -244,7 +266,18 @@ components:
           enum:
             - buy
             - rent
+        created_at:
+          type: string
+          pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
+          format: date-time
+        user:
+          $ref: '#/components/schemas/user_object'
+        entity:
+          $ref: '#/components/schemas/entity_object'        
       required:
+        - created_at
+        - user
+        - entity            
         - type
     platform_type:
       type: string
