@@ -771,6 +771,21 @@ paths:
             type: array
             items:
               type: string
+            example:
+              - tv
+              - movie
+              - series
+              - season
+              - episode
+          in: query
+          name: types
+          style: pipeDelimited
+          explode: true
+          description: Is one of the listed types
+        - schema:
+            type: array
+            items:
+              type: string
           in: query
           name: services
           style: pipeDelimited
