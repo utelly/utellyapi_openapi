@@ -558,6 +558,7 @@ paths:
           in: query
           name: locales
           description: 'Used to remove unnecessary titles, descriptions and artworks. Defaults to en-US'
+          style: pipeDelimited
         - schema:
             type: array
             items:
