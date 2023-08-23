@@ -211,7 +211,7 @@ paths:
               - audit_entries
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
     parameters: []
   '/editorial/collections/{collection_guid}':
@@ -270,7 +270,7 @@ paths:
               - audit_entries
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
     put:
       summary: Update a collection
@@ -482,7 +482,7 @@ paths:
               - audit_entries
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
     post:
       summary: Create a page
@@ -624,7 +624,7 @@ paths:
               - audit_entries
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
     put:
       summary: Update a page
@@ -845,7 +845,7 @@ paths:
               - audit_entries
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
     post:
       summary: Create a slug
@@ -1012,7 +1012,7 @@ paths:
               - audit_entries
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
     put:
       summary: Update a slug
@@ -1574,7 +1574,7 @@ paths:
               - availabilities
           in: query
           name: embed
-          description: 'List of related resources to be embedded.'
+          description: List of related resources to be embedded.
           style: pipeDelimited
       description: ''
   '/content/collection/{collection_guid}/preview':
@@ -1946,7 +1946,6 @@ components:
       title: page
       x-tags:
         - page_management
-      description: ''
       additionalProperties: false
       properties:
         page_guid:
@@ -1993,6 +1992,8 @@ components:
         status:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
+          type: boolean
+        audience_hit:
           type: boolean
         _links:
           $ref: ../models/HalLinks.v1.yaml
