@@ -949,7 +949,7 @@ paths:
         required: true
   "/override/{source}/artworks":
     get:
-      summary: Get all artworks with their tags by title_guid
+      summary: Get all artworks with their tags by creative_work_guid
       operationId: v1.override.artworks.get_all_artworks
       responses:
         "200":
@@ -978,8 +978,6 @@ paths:
                             type: string
                           manually_created:
                             type: boolean
-                          manually_overriden:
-                            type: boolean
               examples:
                 "1":
                   value:
@@ -990,25 +988,13 @@ paths:
                           name: poster
                           artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
                           manually_created: False
-                          manually_overridden: False
-                        - guid: 00001d567eff55ce2d193bdfc786680734e25db1
-                          tag_guid: main_poster
-                          artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop
-                          manually_created: False
-                          manually_overridden: True
                     - guid: 3232debd8274eed8d97751895fdd7ef21f5d32b3
                       uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser
                       tags:
                         - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
-                          name: poster
+                          name: billboard
                           artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges
                           manually_created: False
-                          manually_overridden: False
-                        - guid: 00001d567eff55ce2d193bdfc786680734e25db1
-                          tag_guid: main_poster
-                          artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=532&w=354&fit=crop
-                          manually_created: False
-                          manually_overridden: True
     parameters:
       - schema:
           type: string
@@ -1017,7 +1003,7 @@ paths:
         required: true
       - schema:
           type: string
-        name: title_guid
+        name: creative_work_guid
         in: query
         required: true
   "/override/{source}/artworks/{artwork_guid}":
@@ -1061,12 +1047,6 @@ paths:
                         name: poster
                         artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
                         manually_created: False
-                        manually_overridden: False
-                      - guid: 00001d567eff55ce2d193bdfc786680734e25db1
-                        tag_guid: main_poster
-                        artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop
-                        manually_created: False
-                        manually_overridden: True
     post:
       summary: Manually assign a new tag to artwork 
       operationId: v1.override.artworks.override_artwork_with_tag
