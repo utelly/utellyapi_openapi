@@ -947,7 +947,231 @@ paths:
         in: query
         name: seed_guid
         required: true
-        
+  "/override/{source}/artworks":
+    get:
+      summary: Get all artworks with their tags by title_guid
+      operationId: v1.override.artworks.get_all_artworks
+      responses:
+        "200":
+          description: OK1
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    guid:
+                      type: string
+                    uri:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          tag_guid:
+                            type: string
+                          name:
+                            type: string
+                          artwork_fitted_uri:
+                            type: string
+                          manually_created:
+                            type: boolean
+                          manually_overriden:
+                            type: boolean
+              examples:
+                "1":
+                  value:
+                    - guid: c2cc6c3cd1ea3610e66adcad8b555eda50f7342e
+                      uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top
+                      tags:
+                        - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
+                          name: poster
+                          artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
+                          manually_created: False
+                          manually_overridden: False
+                        - guid: 00001d567eff55ce2d193bdfc786680734e25db1
+                          tag_guid: main_poster
+                          artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop
+                          manually_created: False
+                          manually_overridden: True
+                    - guid: 3232debd8274eed8d97751895fdd7ef21f5d32b3
+                      uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser
+                      tags:
+                        - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
+                          name: poster
+                          artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges
+                          manually_created: False
+                          manually_overridden: False
+                        - guid: 00001d567eff55ce2d193bdfc786680734e25db1
+                          tag_guid: main_poster
+                          artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=532&w=354&fit=crop
+                          manually_created: False
+                          manually_overridden: True
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: title_guid
+        in: query
+        required: true
+  "/override/{source}/artworks/{artwork_guid}":
+    get:
+      summary: Get artwork tags
+      operationId: v1.override.artworks.get_artwork_tags
+      responses:
+        "200":
+          description: OK1
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  guid:
+                    type: string
+                  uri:
+                    type: string
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tag_guid:
+                          type: string
+                        name:
+                          type: string
+                        artwork_fitted_uri:
+                          type: string
+                        manually_created:
+                          type: boolean
+                        manually_overriden:
+                          type: boolean
+              examples:
+                "1":
+                  value:
+                    guid: c2cc6c3cd1ea3610e66adcad8b555eda50f7342e
+                    uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top
+                    tags:
+                      - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
+                        name: poster
+                        artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
+                        manually_created: False
+                        manually_overridden: False
+                      - guid: 00001d567eff55ce2d193bdfc786680734e25db1
+                        tag_guid: main_poster
+                        artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop
+                        manually_created: False
+                        manually_overridden: True
+    post:
+      summary: Manually assign a new tag to artwork 
+      operationId: v1.override.artworks.override_artwork_with_tag
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tag_guid:
+                    type: string
+                  name:
+                    type: string
+                  artwork_fitted_uri:
+                    type: string
+                  manually_created:
+                    type: boolean
+                  manually_overriden:
+                    type: boolean
+              examples:
+                "1":
+                  value:
+                    tag_guid: 00001d567eff55ce2d193bdfc786680734e25db1
+                    name: main_poster
+                    artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop
+                    manually_created: True
+                    manually_overriden: True
+      description: Manually create a new tag and assign to an artwork with uri display parameters
+      tags:
+        - Dm0 Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                name:
+                  type: string
+                uri_fit:
+                  type: object
+                  properties:
+                    width:
+                      type: integer
+                    height:
+                      type: integer
+              required:
+                - name
+            examples:
+              "1":
+                value:
+                  name: main_poster
+                  uri_fit: 
+                    width: 354
+                    height: 532
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: artwork_guid
+        in: path
+        required: true
+  "/override/{source}/tags/artworks":
+    get:
+      summary: Get available artwork tags
+      operationId: v1.override.artworks.get_tags
+      responses:
+        "200":
+          description: OK1
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tag_guid:
+                      type: string
+                    name:
+                      type: string
+                    manually_created:
+                      type: boolean
+              examples:
+                "1":
+                  value:
+                    - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
+                      name: poster
+                      manually_created: False
+                    - guid: 00001d567eff55ce2d193bdfc786680734e25db1
+                      tag_guid: main_poster
+                      manually_created: True
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+
 servers:
   - description: prod
     url: 'https://services.utelly.com/dm0_manager/v1'
