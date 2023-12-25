@@ -947,10 +947,10 @@ paths:
         in: query
         name: seed_guid
         required: true
-  "/override/{source}/artworks":
+  "/override/{source}/{creative_work_guid}/artworks":
     get:
-      summary: Get all artworks with their tags by creative_work_guid
-      operationId: v1.override.artworks.get_all_artworks
+      summary: Get all overridden artworks with their tags by creative_work_guid
+      operationId: v1.override.artworks.get_all_artworks_tags_overridden
       responses:
         "200":
           description: OK1
@@ -978,6 +978,8 @@ paths:
                             type: string
                           manually_created:
                             type: boolean
+                          manually_overriden:
+                            type: boolean
               examples:
                 "1":
                   value:
@@ -988,6 +990,7 @@ paths:
                           name: poster
                           artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
                           manually_created: False
+                          manually_overriden: True
                     - guid: 3232debd8274eed8d97751895fdd7ef21f5d32b3
                       uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser
                       tags:
@@ -995,6 +998,7 @@ paths:
                           name: billboard
                           artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges
                           manually_created: False
+                          manually_overriden: True
     parameters:
       - schema:
           type: string
@@ -1004,9 +1008,14 @@ paths:
       - schema:
           type: string
         name: creative_work_guid
-        in: query
+        in: path
         required: true
-  "/override/{source}/artworks/{artwork_guid}":
+      - schema:
+          type: boolean
+        name: only_overridden
+        in: query
+        required: False
+  "/override/{source}/{creative_work_guid}/artworks/{artwork_guid}":
     get:
       summary: Get artwork tags
       operationId: v1.override.artworks.get_artwork_tags
@@ -1047,6 +1056,7 @@ paths:
                         name: poster
                         artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
                         manually_created: False
+                        manually_overriden: True
     post:
       summary: Manually assign a new tag to artwork 
       operationId: v1.override.artworks.override_artwork_with_tag
@@ -1116,7 +1126,46 @@ paths:
         name: artwork_guid
         in: path
         required: true
-  "/override/{source}/tags/artworks":
+      - schema:
+          type: string
+        name: creative_work_guid
+        in: path
+        required: true
+      - schema:
+          type: boolean
+        name: only_overridden
+        in: query
+        required: False
+  "/override/{source}/{creative_work_guid}/artworks/{artwork_guid}/tags/{tag_guid}":
+    delete:
+      summary: Delete artwork tags override
+      operationId: v1.override.artworks.delete_overridden_artwork_tag
+      responses:
+        '200':
+          description: OK
+      description: Delete a tag from an artwork
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: artwork_guid
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: creative_work_guid
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: tag_guid
+        in: path
+        required: true
+  "/override/{source}/artworks/tags":
     get:
       summary: Get available artwork tags
       operationId: v1.override.artworks.get_tags
