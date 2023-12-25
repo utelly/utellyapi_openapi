@@ -1144,8 +1144,6 @@ paths:
         '200':
           description: OK
       description: Delete a tag from an artwork
-      tags:
-        - Dm0 Management
     parameters:
       - schema:
           type: string
