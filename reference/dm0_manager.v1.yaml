@@ -774,6 +774,8 @@ paths:
   "/explainer_tool/related/{source}":
     get:
       summary: explain
+      tags:
+        - Explainer Tool
       operationId: v1.explainer_tool.related.get
       responses:
         "200":
@@ -947,6 +949,104 @@ paths:
         in: query
         name: seed_guid
         required: true
+  "/explainer_tool/related/{source}/models":
+    get:
+      summary: explain
+      tags:
+        - Explainer Tool
+      operationId: v1.explainer_tool.related.get_models
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    model:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        settings:
+                          type: object
+                          properties:
+                            weights:
+                              type: object
+                x-examples:
+                  Example 1:
+                    - model:
+                        name: tfidf
+                        settings:
+                          weights:
+                            description: 0.05
+                            tags: 0.25
+                            title: 0.7
+                      results:
+                        - guid: 25346266de484d0eaf168d4e416434fdc6edfde1
+                          title: "lego dc: shazam! magic and monsters"
+                          source_id: "shazam"
+                          score: 0.8138144818129545
+                          components:
+                            description: 1
+                            tags: 0.25525792725181806
+                            title: 1
+                          message: 0.7*1.0 + 0.25*0.25525792725181806 + 0.05*1.0 = 0.8138144818129545
+                        - guid: df7741b11aba8f3fb5dde3a77d1c54ba4dd7ab02
+                          title: "lego dc super hero girls: super-villain high"
+                          source_id: "legodcgirls"
+                          score: 0.3365560651083932
+                          components:
+                            description: 0.11786247585439169
+                            tags: 1
+                            title: 0.08104664020637997
+                          message: 0.7*0.11786247585439169 + 0.25*1.0 + 0.05*0.08104664020637997 = 0.3365560651083932
+                        - guid: fb2710f34c97d57a3e7a12eec7ff4336c3493c2f
+                          title: "jla adventures: trapped in time"
+                          source_id: "jlaadventures"
+                          score: 0.3159509456799562
+                          components:
+                            description: 0.0942156366856517
+                            tags: 1
+                            title: 0
+                          message: 0.7*0.0942156366856517 + 0.25*1.0 + 0.05*0.0 = 0.3159509456799562
+                        - guid: 7e01c5021c1c54762c157244a8e7fd7db51ee78b
+                          title: "lego batman: the movie - dc super heroes unite"
+                          source_id: "legobatman"
+                          score: 0.29625431287660015
+                          components:
+                            description: 0.05934299763416806
+                            tags: 1
+                            title: 0.09428429065364974
+                          message: 0.7*0.05934299763416806 + 0.25*1.0 + 0.05*0.09428429065364974 = 0.29625431287660015
+                        - guid: 9a8d703dbbf73ed30ba362721670ae570c64e8de
+                          title: "lego dc comics super heroes: aquaman - rage of atlantis"
+                          source_id: "legodcaquaman"
+                          score: 0.29566899918453904
+                          components:
+                            description: 0.05945620030096166
+                            tags: 1
+                            title: 0.08099317947731766
+                          message: 0.7*0.05945620030096166 + 0.25*1.0 + 0.05*0.08099317947731766 = 0.29566899918453904
+              examples:
+                "1":
+                  value:
+                    - model:
+                        name: tfidf
+                        settings:
+                          weights:
+                            description: 0.05
+                            tags: 0.25
+                            title: 0.7
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+  
   "/override/{source}/{creative_work_guid}/artworks":
     get:
       summary: Get all overridden artworks with their tags by creative_work_guid
@@ -999,6 +1099,8 @@ paths:
                           artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges
                           manually_created: False
                           manually_overriden: True
+      tags:
+        - Artworks Override
     parameters:
       - schema:
           type: string
@@ -1057,6 +1159,8 @@ paths:
                         artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
                         manually_created: False
                         manually_overriden: True
+      tags:
+        - Artworks Override
     post:
       summary: Manually assign a new tag to artwork 
       operationId: v1.override.artworks.override_artwork_with_tag
@@ -1087,8 +1191,6 @@ paths:
                     manually_created: True
                     manually_overriden: True
       description: Manually create a new tag and assign to an artwork with uri display parameters
-      tags:
-        - Dm0 Management
       requestBody:
         content:
           application/json:
@@ -1115,6 +1217,8 @@ paths:
                   uri_fit: 
                     width: 354
                     height: 532
+      tags:
+        - Artworks Override    
     parameters:
       - schema:
           type: string
@@ -1144,6 +1248,8 @@ paths:
         '200':
           description: OK
       description: Delete a tag from an artwork
+      tags:
+        - Artworks Override
     parameters:
       - schema:
           type: string
@@ -1169,6 +1275,8 @@ paths:
     get:
       summary: Get available artwork tags
       operationId: v1.override.artworks.get_tags
+      tags:
+        - Artworks Override
       responses:
         "200":
           description: OK1
