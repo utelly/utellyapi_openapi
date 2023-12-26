@@ -774,6 +774,8 @@ paths:
   "/explainer_tool/related/{source}":
     get:
       summary: explain
+      tags:
+        - Explainer Tool
       operationId: v1.explainer_tool.related.get
       responses:
         "200":
@@ -947,6 +949,58 @@ paths:
         in: query
         name: seed_guid
         required: true
+  "/explainer_tool/related/{source}/models":
+    get:
+      summary: explain
+      tags:
+        - Explainer Tool
+      operationId: v1.explainer_tool.related.get_models
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    model:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        settings:
+                          type: object
+                          properties:
+                            weights:
+                              type: object
+                x-examples:
+                  Example 1:
+                    - model:
+                        name: tfidf
+                        settings:
+                          weights:
+                            description: 0.05
+                            tags: 0.25
+                            title: 0.7
+              examples:
+                "1":
+                  value:
+                    - model:
+                        name: tfidf
+                        settings:
+                          weights:
+                            description: 0.05
+                            tags: 0.25
+                            title: 0.7
+    parameters:
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+  
   "/override/{source}/{creative_work_guid}/artworks":
     get:
       summary: Get all overridden artworks with their tags by creative_work_guid
@@ -999,6 +1053,8 @@ paths:
                           artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges
                           manually_created: False
                           manually_overriden: True
+      tags:
+        - Artworks Override
     parameters:
       - schema:
           type: string
@@ -1057,6 +1113,8 @@ paths:
                         artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
                         manually_created: False
                         manually_overriden: True
+      tags:
+        - Artworks Override
     post:
       summary: Manually assign a new tag to artwork 
       operationId: v1.override.artworks.override_artwork_with_tag
@@ -1087,8 +1145,6 @@ paths:
                     manually_created: True
                     manually_overriden: True
       description: Manually create a new tag and assign to an artwork with uri display parameters
-      tags:
-        - Dm0 Management
       requestBody:
         content:
           application/json:
@@ -1115,6 +1171,8 @@ paths:
                   uri_fit: 
                     width: 354
                     height: 532
+      tags:
+        - Artworks Override    
     parameters:
       - schema:
           type: string
@@ -1144,6 +1202,8 @@ paths:
         '200':
           description: OK
       description: Delete a tag from an artwork
+      tags:
+        - Artworks Override
     parameters:
       - schema:
           type: string
@@ -1169,6 +1229,8 @@ paths:
     get:
       summary: Get available artwork tags
       operationId: v1.override.artworks.get_tags
+      tags:
+        - Artworks Override
       responses:
         "200":
           description: OK1
