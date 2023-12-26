@@ -773,7 +773,7 @@ paths:
         required: true
   "/explainer_tool/related/{source}":
     get:
-      summary: explain
+      summary: explain related
       tags:
         - Explainer Tool
       operationId: v1.explainer_tool.related.get
@@ -951,7 +951,7 @@ paths:
         required: true
   "/explainer_tool/related/{source}/models":
     get:
-      summary: explain
+      summary: get explainer models
       tags:
         - Explainer Tool
       operationId: v1.explainer_tool.related.get_models
