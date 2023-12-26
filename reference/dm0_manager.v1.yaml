@@ -984,52 +984,6 @@ paths:
                             description: 0.05
                             tags: 0.25
                             title: 0.7
-                      results:
-                        - guid: 25346266de484d0eaf168d4e416434fdc6edfde1
-                          title: "lego dc: shazam! magic and monsters"
-                          source_id: "shazam"
-                          score: 0.8138144818129545
-                          components:
-                            description: 1
-                            tags: 0.25525792725181806
-                            title: 1
-                          message: 0.7*1.0 + 0.25*0.25525792725181806 + 0.05*1.0 = 0.8138144818129545
-                        - guid: df7741b11aba8f3fb5dde3a77d1c54ba4dd7ab02
-                          title: "lego dc super hero girls: super-villain high"
-                          source_id: "legodcgirls"
-                          score: 0.3365560651083932
-                          components:
-                            description: 0.11786247585439169
-                            tags: 1
-                            title: 0.08104664020637997
-                          message: 0.7*0.11786247585439169 + 0.25*1.0 + 0.05*0.08104664020637997 = 0.3365560651083932
-                        - guid: fb2710f34c97d57a3e7a12eec7ff4336c3493c2f
-                          title: "jla adventures: trapped in time"
-                          source_id: "jlaadventures"
-                          score: 0.3159509456799562
-                          components:
-                            description: 0.0942156366856517
-                            tags: 1
-                            title: 0
-                          message: 0.7*0.0942156366856517 + 0.25*1.0 + 0.05*0.0 = 0.3159509456799562
-                        - guid: 7e01c5021c1c54762c157244a8e7fd7db51ee78b
-                          title: "lego batman: the movie - dc super heroes unite"
-                          source_id: "legobatman"
-                          score: 0.29625431287660015
-                          components:
-                            description: 0.05934299763416806
-                            tags: 1
-                            title: 0.09428429065364974
-                          message: 0.7*0.05934299763416806 + 0.25*1.0 + 0.05*0.09428429065364974 = 0.29625431287660015
-                        - guid: 9a8d703dbbf73ed30ba362721670ae570c64e8de
-                          title: "lego dc comics super heroes: aquaman - rage of atlantis"
-                          source_id: "legodcaquaman"
-                          score: 0.29566899918453904
-                          components:
-                            description: 0.05945620030096166
-                            tags: 1
-                            title: 0.08099317947731766
-                          message: 0.7*0.05945620030096166 + 0.25*1.0 + 0.05*0.08099317947731766 = 0.29566899918453904
               examples:
                 "1":
                   value:
