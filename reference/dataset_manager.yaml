@@ -1,0 +1,128 @@
+openapi: 3.1.0
+info:
+  title: dataset_manager
+  version: v1
+servers:
+  - url: 'https://services.utelly.com/dataset_manager/v1'
+    description: prod
+  - url: 'https://staging-services.utelly.com/dataset_manager/v1'
+    description: staging
+  - url: 'https://dev-services.utelly.com/dataset_manager/v1'
+    description: dev
+paths:
+  /datasets:
+    get:
+      summary: Get available datasets
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  properties:
+                    config:
+                      type: object
+                      properties:
+                        dataset:
+                          type: string
+                          minLength: 1
+                        roles:
+                          type: array
+                          items:
+                            type: string
+                    identifier:
+                      type: string
+                      minLength: 1
+                    name:
+                      type: string
+                      minLength: 1
+                    products:
+                      type: array
+                      uniqueItems: true
+                      minItems: 1
+                      items:
+                        type: object
+                        properties:
+                          config:
+                            type: object
+                            properties:
+                              url_rules:
+                                type: array
+                                uniqueItems: true
+                                minItems: 1
+                                items:
+                                  type: object
+                                  properties:
+                                    regex:
+                                      type: string
+                                      minLength: 1
+                                    rule:
+                                      type: string
+                                      minLength: 1
+                                    verb:
+                                      type: string
+                                      minLength: 1
+                                  required:
+                                    - regex
+                                    - rule
+                                    - verb
+                            required:
+                              - url_rules
+                          id:
+                            type: string
+                            minLength: 1
+                          name:
+                            type: string
+                            minLength: 1
+                          type:
+                            type: string
+                            minLength: 1
+                        required:
+                          - id
+                          - name
+                          - type
+                    type:
+                      type: string
+                      minLength: 1
+                  required:
+                    - config
+                    - identifier
+                    - name
+                    - type
+              examples:
+                '1':
+                  value:
+                    - config:
+                        dataset: netflix
+                        role:
+                          - admin
+                      identifier: 6a82cb4732634a5a81d9ac1b94d45ea2
+                      name: admin_key
+                      products:
+                        - config:
+                            url_rules:
+                              - regex: '*'
+                                rule: allow
+                                verb: ALL
+                          id: 29gCT3R3T8hVUQLUgQmKzV
+                          name: all_access
+                          type: product
+                      type: clientConfig
+      operationId: v1.datasets.get
+      description: ''
+components:
+  schemas: {}
+  securitySchemes:
+    Authorization:
+      name: Authorization
+      type: apiKey
+      in: header
+security:
+  - Authorization: []
