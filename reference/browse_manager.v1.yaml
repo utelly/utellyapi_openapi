@@ -91,6 +91,16 @@ components:
         - updated_at
     ContentRating:
       additionalProperties: false
+      title: ContentRating
+      type: object
+      required:
+        - _links
+        - created_at
+        - deleted
+        - guid
+        - identifiers
+        - ratings
+        - updated_at
       properties:
         _links:
           $ref: ../models/HalLinks.v1.yaml
@@ -103,40 +113,31 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         ratings:
+          type: array
           items:
             additionalProperties: false
+            type: object
+            required:
+              - organization
+              - rating
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
               organization:
                 type: string
+                description: 'Content Rating organization (MPAA, BBFC...)'
               rating:
                 type: string
-            required:
-              - rating
-              - organization
-            type: object
-          type: array
         s:
           type: string
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
-      required:
-        - _links
-        - ratings
-        - created_at
-        - deleted
-        - guid
-        - identifiers
-        - updated_at
-      title: ContentRating
-      type: object
     Contributor:
       additionalProperties: false
       properties:
