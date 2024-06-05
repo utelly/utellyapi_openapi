@@ -93,6 +93,7 @@ components:
       additionalProperties: false
       title: ContentRating
       type: object
+      description: The **Content Rating** field aggregates parental guidance ratings from various recognized rating organizations. It provides a consolidated view of the suitability of content for different age groups based on standards set by each organization. This field ensures users can make informed decisions about content consumption based on age-appropriate guidelines.
       required:
         - _links
         - created_at
@@ -129,9 +130,10 @@ components:
                 $ref: '#/components/schemas/metadata_field'
               organization:
                 type: string
-                description: 'Content Rating organization (MPAA, BBFC...)'
+                description: 'Content rating organization (MPAA, BBFC...)'
               rating:
                 type: string
+                description: Rating value given by the organization
         s:
           type: string
         updated_at:
