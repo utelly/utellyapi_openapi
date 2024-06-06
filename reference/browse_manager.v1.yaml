@@ -91,6 +91,17 @@ components:
         - updated_at
     ContentRating:
       additionalProperties: false
+      title: ContentRating
+      type: object
+      description: The **Content Rating** field aggregates parental guidance ratings from various recognized rating organizations. It provides a consolidated view of the suitability of content for different age groups based on standards set by each organization. This field ensures users can make informed decisions about content consumption based on age-appropriate guidelines.
+      required:
+        - _links
+        - created_at
+        - deleted
+        - guid
+        - identifiers
+        - ratings
+        - updated_at
       properties:
         _links:
           $ref: ../models/HalLinks.v1.yaml
@@ -103,40 +114,32 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         ratings:
+          type: array
           items:
             additionalProperties: false
+            type: object
+            required:
+              - organization
+              - rating
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
               organization:
                 type: string
+                description: 'Content rating organization (MPAA, BBFC...)'
               rating:
                 type: string
-            required:
-              - rating
-              - organization
-            type: object
-          type: array
+                description: Rating value given by the organization
         s:
           type: string
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
-      required:
-        - _links
-        - ratings
-        - created_at
-        - deleted
-        - guid
-        - identifiers
-        - updated_at
-      title: ContentRating
-      type: object
     Contributor:
       additionalProperties: false
       properties:
@@ -626,6 +629,17 @@ components:
       type: object
     Rating:
       additionalProperties: false
+      title: Rating
+      type: object
+      description: 'The Rating field consolidates ratings from various organizations. These ratings serve as a proxy for the quality of the content, providing an aggregated score that reflects its overall reception and popularity. This field helps users gauge the content''s excellence and appeal based on multiple sources.'
+      required:
+        - _links
+        - created_at
+        - deleted
+        - guid
+        - identifiers
+        - ratings
+        - updated_at
       properties:
         _links:
           $ref: ../models/HalLinks.v1.yaml
@@ -638,43 +652,36 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         ratings:
+          type: array
           items:
             additionalProperties: false
+            type: object
+            required:
+              - organization
+              - rating
+              - type
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
               organization:
                 type: string
+                description: 'Rating organization (TMDB, IVA, IMDB...)'
               rating:
                 type: string
+                description: Value of the rating from the organization
               type:
                 type: string
-            required:
-              - rating
-              - organization
-              - type
-            type: object
-          type: array
+                description: 'Different rating type to describe different behaviour, eg a popularity rating will describe how popular the content is'
         s:
           type: string
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
-      required:
-        - _links
-        - ratings
-        - created_at
-        - deleted
-        - guid
-        - identifiers
-        - updated_at
-      title: Rating
-      type: object
     Related:
       additionalProperties: false
       title: Related
