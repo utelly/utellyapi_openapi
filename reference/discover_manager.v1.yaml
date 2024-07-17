@@ -585,6 +585,11 @@ paths:
           name: audiences.opt
           description: 'Content must have an availability.audience matching at least one <type>:<value> from this list or no availability.audience of <type>'
           style: pipeDelimited
+        - schema:
+            type: string
+          in: query
+          name: blending_option
+          description: Key to recommendation blending config
       description: ''
   /creative_works/related:
     get:
