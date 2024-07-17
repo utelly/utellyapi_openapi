@@ -1993,6 +1993,7 @@ components:
           type: boolean
         refresh_timeout:
           type: integer
+          minimum: 0
         status:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
@@ -2023,10 +2024,13 @@ components:
       properties:
         audit_guid:
           type: string
+          maxLength: 512
         author:
           type: string
+          maxLength: 512
         description:
           type: string
+          maxLength: 2048
         content:
           type: string
         status:
@@ -2098,6 +2102,7 @@ components:
       properties:
         slug_guid:
           type: string
+          maxLength: 512
         page_name:
           type: string
           maxLength: 512
@@ -2118,6 +2123,7 @@ components:
             properties:
               page_guid:
                 type: string
+                maxLength: 512
               active_date:
                 type: string
               end_date:
