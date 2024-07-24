@@ -1908,12 +1908,14 @@ components:
               type: object
         refresh_timeout:
           type: integer
+          minimum: 0
         shuffle_set:
           type: array
           items:
             type: integer
         shuffle_rate:
           type: integer
+          minimum: 0
         pinned_items:
           type: array
           items:
@@ -1930,8 +1932,10 @@ components:
               deprecated: true
             item_count:
               type: integer
+              minimum: 0
             max_count:
               type: integer
+              minimum: 0
         _links:
           $ref: ../models/HalLinks.v1.yaml
         _embedded:
@@ -1989,6 +1993,7 @@ components:
           type: boolean
         refresh_timeout:
           type: integer
+          minimum: 0
         status:
           $ref: '#/components/schemas/publishing_status'
         merchandising_enabled:
@@ -2019,10 +2024,13 @@ components:
       properties:
         audit_guid:
           type: string
+          maxLength: 512
         author:
           type: string
+          maxLength: 512
         description:
           type: string
+          maxLength: 2048
         content:
           type: string
         status:
@@ -2074,6 +2082,7 @@ components:
       properties:
         title:
           type: string
+          maxLength: 512
         metadata:
           $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
     description:
@@ -2083,6 +2092,7 @@ components:
       properties:
         description:
           type: string
+          maxLength: 2048
         metadata:
           $ref: ./browse_manager.v1.yaml#/components/schemas/metadata_field
     slug:
@@ -2092,10 +2102,13 @@ components:
       properties:
         slug_guid:
           type: string
+          maxLength: 512
         page_name:
           type: string
+          maxLength: 512
         default_page:
           type: string
+          maxLength: 512
         calendar:
           type: object
           properties:
@@ -2110,6 +2123,7 @@ components:
             properties:
               page_guid:
                 type: string
+                maxLength: 512
               active_date:
                 type: string
               end_date:
