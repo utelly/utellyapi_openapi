@@ -771,14 +771,26 @@ paths:
         name: source
         in: path
         required: true
-  "/explainer_tool/related/{source}":
+      - schema:
+          type: string
+        name: source
+        in: path
+        required: true
+    post:
+      summary: push statistics
+      tags: []
+      responses: {}
+      operationId: v1.data_quality.statistics.post
+      x-stoplight:
+        id: u53nhfhec0hak
+  '/explainer_tool/related/{source}':
     get:
       summary: explain related
       tags:
         - Explainer Tool
       operationId: v1.explainer_tool.related.get
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -820,12 +832,11 @@ paths:
                             type: object
                           message:
                             type: string
-
                 x-examples:
                   Example 1:
                     - seed_guid: ff10011d550d10513ab0d8fb76fe17a7060136f8
-                      seed_title: "lego dc: shazam! magic and monsters"
-                      seed_source_id: "shazam"
+                      seed_title: 'lego dc: shazam! magic and monsters'
+                      seed_source_id: shazam
                       model:
                         name: tfidf
                         settings:
@@ -835,8 +846,8 @@ paths:
                             title: 0.7
                       results:
                         - guid: 25346266de484d0eaf168d4e416434fdc6edfde1
-                          title: "lego dc: shazam! magic and monsters"
-                          source_id: "shazam"
+                          title: 'lego dc: shazam! magic and monsters'
+                          source_id: shazam
                           score: 0.8138144818129545
                           components:
                             description: 1
@@ -844,8 +855,8 @@ paths:
                             title: 1
                           message: 0.7*1.0 + 0.25*0.25525792725181806 + 0.05*1.0 = 0.8138144818129545
                         - guid: df7741b11aba8f3fb5dde3a77d1c54ba4dd7ab02
-                          title: "lego dc super hero girls: super-villain high"
-                          source_id: "legodcgirls"
+                          title: 'lego dc super hero girls: super-villain high'
+                          source_id: legodcgirls
                           score: 0.3365560651083932
                           components:
                             description: 0.11786247585439169
@@ -853,8 +864,8 @@ paths:
                             title: 0.08104664020637997
                           message: 0.7*0.11786247585439169 + 0.25*1.0 + 0.05*0.08104664020637997 = 0.3365560651083932
                         - guid: fb2710f34c97d57a3e7a12eec7ff4336c3493c2f
-                          title: "jla adventures: trapped in time"
-                          source_id: "jlaadventures"
+                          title: 'jla adventures: trapped in time'
+                          source_id: jlaadventures
                           score: 0.3159509456799562
                           components:
                             description: 0.0942156366856517
@@ -862,8 +873,8 @@ paths:
                             title: 0
                           message: 0.7*0.0942156366856517 + 0.25*1.0 + 0.05*0.0 = 0.3159509456799562
                         - guid: 7e01c5021c1c54762c157244a8e7fd7db51ee78b
-                          title: "lego batman: the movie - dc super heroes unite"
-                          source_id: "legobatman"
+                          title: 'lego batman: the movie - dc super heroes unite'
+                          source_id: legobatman
                           score: 0.29625431287660015
                           components:
                             description: 0.05934299763416806
@@ -871,8 +882,8 @@ paths:
                             title: 0.09428429065364974
                           message: 0.7*0.05934299763416806 + 0.25*1.0 + 0.05*0.09428429065364974 = 0.29625431287660015
                         - guid: 9a8d703dbbf73ed30ba362721670ae570c64e8de
-                          title: "lego dc comics super heroes: aquaman - rage of atlantis"
-                          source_id: "legodcaquaman"
+                          title: 'lego dc comics super heroes: aquaman - rage of atlantis'
+                          source_id: legodcaquaman
                           score: 0.29566899918453904
                           components:
                             description: 0.05945620030096166
@@ -880,11 +891,11 @@ paths:
                             title: 0.08099317947731766
                           message: 0.7*0.05945620030096166 + 0.25*1.0 + 0.05*0.08099317947731766 = 0.29566899918453904
               examples:
-                "1":
+                '1':
                   value:
                     - seed_guid: ff10011d550d10513ab0d8fb76fe17a7060136f8
-                      seed_title: "lego dc: shazam! magic and monsters"
-                      seed_source_id: "shazam"
+                      seed_title: 'lego dc: shazam! magic and monsters'
+                      seed_source_id: shazam
                       model:
                         name: tfidf
                         settings:
@@ -894,8 +905,8 @@ paths:
                             title: 0.7
                       results:
                         - guid: 25346266de484d0eaf168d4e416434fdc6edfde1
-                          title: "lego dc: shazam! magic and monsters"
-                          source_id: "shazam"
+                          title: 'lego dc: shazam! magic and monsters'
+                          source_id: shazam
                           score: 0.8138144818129545
                           components:
                             description: 1
@@ -903,8 +914,8 @@ paths:
                             title: 1
                           message: 0.7*1.0 + 0.25*0.25525792725181806 + 0.05*1.0 = 0.8138144818129545
                         - guid: df7741b11aba8f3fb5dde3a77d1c54ba4dd7ab02
-                          title: "lego dc super hero girls: super-villain high"
-                          source_id: "legodcgirls"
+                          title: 'lego dc super hero girls: super-villain high'
+                          source_id: legodcgirls
                           score: 0.3365560651083932
                           components:
                             description: 0.11786247585439169
@@ -912,8 +923,8 @@ paths:
                             title: 0.08104664020637997
                           message: 0.7*0.11786247585439169 + 0.25*1.0 + 0.05*0.08104664020637997 = 0.3365560651083932
                         - guid: fb2710f34c97d57a3e7a12eec7ff4336c3493c2f
-                          title: "jla adventures: trapped in time"
-                          source_id: "jlaadventures"
+                          title: 'jla adventures: trapped in time'
+                          source_id: jlaadventures
                           score: 0.3159509456799562
                           components:
                             description: 0.0942156366856517
@@ -921,8 +932,8 @@ paths:
                             title: 0
                           message: 0.7*0.0942156366856517 + 0.25*1.0 + 0.05*0.0 = 0.3159509456799562
                         - guid: 7e01c5021c1c54762c157244a8e7fd7db51ee78b
-                          title: "lego batman: the movie - dc super heroes unite"
-                          source_id: "legobatman"
+                          title: 'lego batman: the movie - dc super heroes unite'
+                          source_id: legobatman
                           score: 0.29625431287660015
                           components:
                             description: 0.05934299763416806
@@ -930,8 +941,8 @@ paths:
                             title: 0.09428429065364974
                           message: 0.7*0.05934299763416806 + 0.25*1.0 + 0.05*0.09428429065364974 = 0.29625431287660015
                         - guid: 9a8d703dbbf73ed30ba362721670ae570c64e8de
-                          title: "lego dc comics super heroes: aquaman - rage of atlantis"
-                          source_id: "legodcaquaman"
+                          title: 'lego dc comics super heroes: aquaman - rage of atlantis'
+                          source_id: legodcaquaman
                           score: 0.29566899918453904
                           components:
                             description: 0.05945620030096166
@@ -949,14 +960,14 @@ paths:
         in: query
         name: seed_guid
         required: true
-  "/explainer_tool/related/{source}/models":
+  '/explainer_tool/related/{source}/models':
     get:
       summary: get explainer models
       tags:
         - Explainer Tool
       operationId: v1.explainer_tool.related.get_models
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -985,7 +996,7 @@ paths:
                             tags: 0.25
                             title: 0.7
               examples:
-                "1":
+                '1':
                   value:
                     - model:
                         name: tfidf
@@ -1000,13 +1011,12 @@ paths:
         name: source
         in: path
         required: true
-  
-  "/override/{source}/{creative_work_guid}/artworks":
+  '/override/{source}/{creative_work_guid}/artworks':
     get:
       summary: Get all overridden artworks with their tags by creative_work_guid
       operationId: v1.override.artworks.get_all_artworks_tags_overridden
       responses:
-        "200":
+        '200':
           description: OK1
           content:
             application/json:
@@ -1035,24 +1045,24 @@ paths:
                           manually_overriden:
                             type: boolean
               examples:
-                "1":
+                '1':
                   value:
                     - guid: c2cc6c3cd1ea3610e66adcad8b555eda50f7342e
-                      uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top
+                      uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top'
                       tags:
                         - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                           name: poster
-                          artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
-                          manually_created: False
-                          manually_overriden: True
+                          artwork_fitted_uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges'
+                          manually_created: false
+                          manually_overriden: true
                     - guid: 3232debd8274eed8d97751895fdd7ef21f5d32b3
-                      uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser
+                      uri: 'https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser'
                       tags:
                         - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                           name: billboard
-                          artwork_fitted_uri: https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges
-                          manually_created: False
-                          manually_overriden: True
+                          artwork_fitted_uri: 'https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges'
+                          manually_created: false
+                          manually_overriden: true
       tags:
         - Artworks Override
     parameters:
@@ -1070,13 +1080,13 @@ paths:
           type: boolean
         name: only_overridden
         in: query
-        required: False
-  "/override/{source}/{creative_work_guid}/artworks/{artwork_guid}":
+        required: false
+  '/override/{source}/{creative_work_guid}/artworks/{artwork_guid}':
     get:
       summary: Get artwork tags
       operationId: v1.override.artworks.get_artwork_tags
       responses:
-        "200":
+        '200':
           description: OK1
           content:
             application/json:
@@ -1103,23 +1113,23 @@ paths:
                         manually_overriden:
                           type: boolean
               examples:
-                "1":
+                '1':
                   value:
                     guid: c2cc6c3cd1ea3610e66adcad8b555eda50f7342e
-                    uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top
+                    uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top'
                     tags:
                       - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                         name: poster
-                        artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges
-                        manually_created: False
-                        manually_overriden: True
+                        artwork_fitted_uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges'
+                        manually_created: false
+                        manually_overriden: true
       tags:
         - Artworks Override
     post:
-      summary: Manually assign a new tag to artwork 
+      summary: Manually assign a new tag to artwork
       operationId: v1.override.artworks.override_artwork_with_tag
       responses:
-        "201":
+        '201':
           description: Created
           content:
             application/json:
@@ -1137,13 +1147,13 @@ paths:
                   manually_overriden:
                     type: boolean
               examples:
-                "1":
+                '1':
                   value:
                     tag_guid: 00001d567eff55ce2d193bdfc786680734e25db1
                     name: main_poster
-                    artwork_fitted_uri: https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop
-                    manually_created: True
-                    manually_overriden: True
+                    artwork_fitted_uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop'
+                    manually_created: true
+                    manually_overriden: true
       description: Manually create a new tag and assign to an artwork with uri display parameters
       requestBody:
         content:
@@ -1165,14 +1175,14 @@ paths:
               required:
                 - name
             examples:
-              "1":
+              '1':
                 value:
                   name: main_poster
-                  uri_fit: 
+                  uri_fit:
                     width: 354
                     height: 532
       tags:
-        - Artworks Override    
+        - Artworks Override
     parameters:
       - schema:
           type: string
@@ -1193,8 +1203,8 @@ paths:
           type: boolean
         name: only_overridden
         in: query
-        required: False
-  "/override/{source}/{creative_work_guid}/artworks/{artwork_guid}/tags/{tag_guid}":
+        required: false
+  '/override/{source}/{creative_work_guid}/artworks/{artwork_guid}/tags/{tag_guid}':
     delete:
       summary: Delete artwork tags override
       operationId: v1.override.artworks.delete_overridden_artwork_tag
@@ -1225,14 +1235,14 @@ paths:
         name: tag_guid
         in: path
         required: true
-  "/override/{source}/artworks/tags":
+  '/override/{source}/artworks/tags':
     get:
       summary: Get available artwork tags
       operationId: v1.override.artworks.get_tags
       tags:
         - Artworks Override
       responses:
-        "200":
+        '200':
           description: OK1
           content:
             application/json:
@@ -1248,21 +1258,20 @@ paths:
                     manually_created:
                       type: boolean
               examples:
-                "1":
+                '1':
                   value:
                     - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                       name: poster
-                      manually_created: False
+                      manually_created: false
                     - guid: 00001d567eff55ce2d193bdfc786680734e25db1
                       tag_guid: main_poster
-                      manually_created: True
+                      manually_created: true
     parameters:
       - schema:
           type: string
         name: source
         in: path
         required: true
-
 servers:
   - description: prod
     url: 'https://services.utelly.com/dm0_manager/v1'
