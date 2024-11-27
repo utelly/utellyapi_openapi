@@ -1591,6 +1591,7 @@ paths:
                 - ratings
                 - availabilities
                 - catalogues
+                - contributors
               type: string
             type: array
           style: form
@@ -1720,6 +1721,7 @@ paths:
                 - ratings
                 - availabilities
                 - catalogues
+                - contributors
               type: string
             type: array
           style: form
