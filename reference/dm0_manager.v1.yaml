@@ -771,6 +771,19 @@ paths:
         name: source
         in: path
         required: true
+    post:
+      summary: Statistics to firehose
+      tags: [ ]
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sample_statistics'
+      operationId: v1.data_quality.statistics.post
+      x-stoplight:
+        id: xxhyark5g5uq8
   "/explainer_tool/related/{source}":
     get:
       summary: explain related
