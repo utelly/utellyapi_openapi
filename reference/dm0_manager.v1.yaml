@@ -3,7 +3,7 @@ components:
     sample_statistics:
       type: object
       x-examples:
-        '1':
+        "1":
           total_samples: 50
           total_verified: 45
           false_positive_count: 2
@@ -37,13 +37,13 @@ components:
         source_uid:
           type: string
       x-examples:
-        '1':
+        "1":
           deleted: true
           destination_name: gracenote_gracenote
-          destination_uid: '3232'
+          destination_uid: "3232"
           matcher: ManualMatcher
           source_name: iva_iva
-          source_uid: '123'
+          source_uid: "123"
 info:
   contact:
     email: developers@utelly.com
@@ -53,7 +53,7 @@ info:
   version: v1
 openapi: 3.0.0
 paths:
-  '/data_matches/{type}':
+  "/data_matches/{type}":
     get:
       operationId: v1.data_matches.get
       parameters:
@@ -68,22 +68,22 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json:
               examples:
-                '1':
+                "1":
                   value:
                     items:
                       - deleted: true
                         destination_name: gracenote_gracenote
-                        destination_uid: '3232'
+                        destination_uid: "3232"
                         matcher: ManualMatcher
                         source_name: iva_iva
-                        source_uid: '123'
+                        source_uid: "123"
               schema:
                 additionalProperties: false
-                description: ''
+                description: ""
                 properties:
                   items:
                     items:
@@ -137,17 +137,17 @@ paths:
         content:
           application/json:
             examples:
-              '1':
+              "1":
                 value:
                   deleted: true
                   destination_name: gracenote_gracenote
-                  destination_uid: '3232'
+                  destination_uid: "3232"
                   matcher: ManualMatcher
                   source_name: iva_iva
-                  source_uid: '123'
+                  source_uid: "123"
             schema:
               additionalProperties: false
-              description: ''
+              description: ""
               properties:
                 deleted:
                   type: boolean
@@ -174,21 +174,21 @@ paths:
                 - matcher
               type: object
       responses:
-        '201':
+        "201":
           content:
             application/json:
               examples:
-                '1':
+                "1":
                   value:
                     deleted: true
                     destination_name: gracenote_gracenote
-                    destination_uid: '3232'
+                    destination_uid: "3232"
                     matcher: ManualMatcher
                     source_name: iva_iva
-                    source_uid: '123'
+                    source_uid: "123"
               schema:
                 additionalProperties: false
-                description: ''
+                description: ""
                 properties:
                   deleted:
                     type: boolean
@@ -217,7 +217,7 @@ paths:
       summary: Create new data match
       tags:
         - Dm0 Management
-  '/people/{uid}':
+  "/people/{uid}":
     get:
       operationId: v1.person.get
       parameters:
@@ -227,19 +227,19 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json:
               examples:
-                '1':
+                "1":
                   value:
                     full_name: hello
                     pictures:
-                      - url: 'https://mydomain.com/image.jpg'
-                    uid: '23232'
+                      - url: "https://mydomain.com/image.jpg"
+                    uid: "23232"
               schema:
                 additionalProperties: false
-                description: ''
+                description: ""
                 properties:
                   full_name:
                     minLength: 1
@@ -275,7 +275,7 @@ paths:
         required: true
         schema:
           type: string
-  '/shows/{uid}':
+  "/shows/{uid}":
     get:
       operationId: v1.show.get
       parameters:
@@ -285,21 +285,21 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json:
               examples:
-                '1':
+                "1":
                   value:
                     actors:
                       - full_name: Leonardo
                     pictures:
-                      - url: 'https://mydomain.com/image.jpg'
+                      - url: "https://mydomain.com/image.jpg"
                     primary_name: hello
-                    uid: '23232'
+                    uid: "23232"
               schema:
                 additionalProperties: false
-                description: ''
+                description: ""
                 properties:
                   actors:
                     items:
@@ -347,11 +347,11 @@ paths:
         required: true
         schema:
           type: string
-  '/data_quality/samples/{source}':
+  "/data_quality/samples/{source}":
     get:
       summary: Fetch Sample
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -372,9 +372,9 @@ paths:
                         matches:
                           type: array
                           items:
-                            $ref: '#/components/schemas/match'
+                            $ref: "#/components/schemas/match"
                   statistics:
-                    $ref: '#/components/schemas/sample_statistics'
+                    $ref: "#/components/schemas/sample_statistics"
                   settings:
                     type: object
                     properties:
@@ -393,7 +393,7 @@ paths:
                         items:
                           type: string
               examples:
-                '1':
+                "1":
                   value:
                     sample_uid: abc123
                     items:
@@ -421,12 +421,12 @@ paths:
                                 language: en
                                 source: mysource
                                 type: poster
-                              url: 'https://mydomain.com/poster.jpg'
+                              url: "https://mydomain.com/poster.jpg"
                               width: 100
-                          created_at: '2020-01-01T00:00:10Z'
+                          created_at: "2020-01-01T00:00:10Z"
                           deleted: false
                           descriptions:
-                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                            - description: "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup."
                               metadata:
                                 country: GB
                                 language: en
@@ -434,7 +434,7 @@ paths:
                                 type: full
                           guid: 27c13eec19014084a0a3173061702b46
                           identifiers:
-                            - id: '1'
+                            - id: "1"
                               source: mysource
                           relationships:
                             - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
@@ -447,14 +447,14 @@ paths:
                                 type: official
                               title: The Usual Suspects
                           type: movie
-                          updated_at: '2020-01-01T00:00:10Z'
+                          updated_at: "2020-01-01T00:00:10Z"
                         matches:
                           - deleted: true
                             destination_name: gracenote_gracenote
-                            destination_uid: '3232'
+                            destination_uid: "3232"
                             matcher: ManualMatcher
                             source_name: iva_iva
-                            source_uid: '123'
+                            source_uid: "123"
                     statistics:
                       total_shows_in_source: 500
                       verified_shows_in_source: 45
@@ -518,7 +518,7 @@ paths:
       summary: Create Sample
       operationId: v1.data_quality.samples.post
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -539,11 +539,11 @@ paths:
                         matches:
                           type: array
                           items:
-                            $ref: '#/components/schemas/match'
+                            $ref: "#/components/schemas/match"
                   statistics:
-                    $ref: '#/components/schemas/sample_statistics'
+                    $ref: "#/components/schemas/sample_statistics"
               examples:
-                '1':
+                "1":
                   value:
                     sample_uid: 000006f0899a4db3cba6bb76dccb551895db5445
                     items:
@@ -571,12 +571,12 @@ paths:
                                 language: en
                                 source: mysource
                                 type: poster
-                              url: 'https://mydomain.com/poster.jpg'
+                              url: "https://mydomain.com/poster.jpg"
                               width: 100
-                          created_at: '2020-01-01T00:00:10Z'
+                          created_at: "2020-01-01T00:00:10Z"
                           deleted: false
                           descriptions:
-                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                            - description: "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup."
                               metadata:
                                 country: GB
                                 language: en
@@ -584,7 +584,7 @@ paths:
                                 type: full
                           guid: 27c13eec19014084a0a3173061702b46
                           identifiers:
-                            - id: '1'
+                            - id: "1"
                               source: mysource
                           relationships:
                             - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
@@ -597,14 +597,14 @@ paths:
                                 type: official
                               title: The Usual Suspects
                           type: movie
-                          updated_at: '2020-01-01T00:00:10Z'
+                          updated_at: "2020-01-01T00:00:10Z"
                         matches:
                           - deleted: true
                             destination_name: gracenote_gracenote
-                            destination_uid: '3232'
+                            destination_uid: "3232"
                             matcher: ManualMatcher
                             source_name: iva_iva
-                            source_uid: '123'
+                            source_uid: "123"
                     statistics:
                       total_shows_in_source: 500
                       verified_shows_in_source: 45
@@ -645,7 +645,7 @@ paths:
       summary: Delete Sample
       operationId: v1.data_quality.samples.delete
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -657,7 +657,7 @@ paths:
                   deleted_count:
                     type: integer
               examples:
-                '1':
+                "1":
                   value:
                     sample_uid: abc123
                     deleted_count: 50
@@ -676,7 +676,7 @@ paths:
       summary: Verify
       operationId: v1.data_quality.verify.post
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -688,9 +688,9 @@ paths:
                   verified:
                     type: boolean
                   statistics:
-                    $ref: '#/components/schemas/sample_statistics'
+                    $ref: "#/components/schemas/sample_statistics"
               examples:
-                '1':
+                "1":
                   value:
                     verified: true
                     uid: abc123
@@ -718,12 +718,12 @@ paths:
               required:
                 - verified
             examples:
-              '1':
+              "1":
                 value:
                   verified: true
                   false_positive_count: 0
                   false_negative_count: 2
-        description: ''
+        description: ""
       description: Verify that the specified item is correctly matched or unmatched. If flagged as incorrcect the optionally include guids of items to match or unmatch.
       parameters:
         - schema:
@@ -743,27 +743,14 @@ paths:
           name: source
           required: true
           description: Data source
-  '/data_quality/statistics/{source}':
+  "/data_quality/statistics/{source}":
     get:
       summary: Statistics
       tags:
         - Dm0 Management
       responses:
-        '200':
+        "200":
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/sample_statistics'
-              examples:
-                '1':
-                  value:
-                    total_shows_in_source: 0
-                    verified_shows_in_source: 0
-                    total_false_positives: 0
-                    total_false_negatives: 0
-                    verified_false_positives: 0
-                    verified_false_negatives: 0
       operationId: v1.data_quality.statistics.get
     parameters:
       - schema:
@@ -771,26 +758,27 @@ paths:
         name: source
         in: path
         required: true
-      - schema:
-          type: string
-        name: source
-        in: path
-        required: true
     post:
-      summary: push statistics
+      summary: Statistics to firehose
       tags: []
-      responses: {}
+      responses:
+        "202":
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/sample_statistics"
       operationId: v1.data_quality.statistics.post
       x-stoplight:
-        id: u53nhfhec0hak
-  '/explainer_tool/related/{source}':
+        id: xxhyark5g5uq8
+  "/explainer_tool/related/{source}":
     get:
       summary: explain related
       tags:
         - Explainer Tool
       operationId: v1.explainer_tool.related.get
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -835,7 +823,7 @@ paths:
                 x-examples:
                   Example 1:
                     - seed_guid: ff10011d550d10513ab0d8fb76fe17a7060136f8
-                      seed_title: 'lego dc: shazam! magic and monsters'
+                      seed_title: "lego dc: shazam! magic and monsters"
                       seed_source_id: shazam
                       model:
                         name: tfidf
@@ -846,7 +834,7 @@ paths:
                             title: 0.7
                       results:
                         - guid: 25346266de484d0eaf168d4e416434fdc6edfde1
-                          title: 'lego dc: shazam! magic and monsters'
+                          title: "lego dc: shazam! magic and monsters"
                           source_id: shazam
                           score: 0.8138144818129545
                           components:
@@ -855,7 +843,7 @@ paths:
                             title: 1
                           message: 0.7*1.0 + 0.25*0.25525792725181806 + 0.05*1.0 = 0.8138144818129545
                         - guid: df7741b11aba8f3fb5dde3a77d1c54ba4dd7ab02
-                          title: 'lego dc super hero girls: super-villain high'
+                          title: "lego dc super hero girls: super-villain high"
                           source_id: legodcgirls
                           score: 0.3365560651083932
                           components:
@@ -864,7 +852,7 @@ paths:
                             title: 0.08104664020637997
                           message: 0.7*0.11786247585439169 + 0.25*1.0 + 0.05*0.08104664020637997 = 0.3365560651083932
                         - guid: fb2710f34c97d57a3e7a12eec7ff4336c3493c2f
-                          title: 'jla adventures: trapped in time'
+                          title: "jla adventures: trapped in time"
                           source_id: jlaadventures
                           score: 0.3159509456799562
                           components:
@@ -873,7 +861,7 @@ paths:
                             title: 0
                           message: 0.7*0.0942156366856517 + 0.25*1.0 + 0.05*0.0 = 0.3159509456799562
                         - guid: 7e01c5021c1c54762c157244a8e7fd7db51ee78b
-                          title: 'lego batman: the movie - dc super heroes unite'
+                          title: "lego batman: the movie - dc super heroes unite"
                           source_id: legobatman
                           score: 0.29625431287660015
                           components:
@@ -882,7 +870,7 @@ paths:
                             title: 0.09428429065364974
                           message: 0.7*0.05934299763416806 + 0.25*1.0 + 0.05*0.09428429065364974 = 0.29625431287660015
                         - guid: 9a8d703dbbf73ed30ba362721670ae570c64e8de
-                          title: 'lego dc comics super heroes: aquaman - rage of atlantis'
+                          title: "lego dc comics super heroes: aquaman - rage of atlantis"
                           source_id: legodcaquaman
                           score: 0.29566899918453904
                           components:
@@ -891,10 +879,10 @@ paths:
                             title: 0.08099317947731766
                           message: 0.7*0.05945620030096166 + 0.25*1.0 + 0.05*0.08099317947731766 = 0.29566899918453904
               examples:
-                '1':
+                "1":
                   value:
                     - seed_guid: ff10011d550d10513ab0d8fb76fe17a7060136f8
-                      seed_title: 'lego dc: shazam! magic and monsters'
+                      seed_title: "lego dc: shazam! magic and monsters"
                       seed_source_id: shazam
                       model:
                         name: tfidf
@@ -905,7 +893,7 @@ paths:
                             title: 0.7
                       results:
                         - guid: 25346266de484d0eaf168d4e416434fdc6edfde1
-                          title: 'lego dc: shazam! magic and monsters'
+                          title: "lego dc: shazam! magic and monsters"
                           source_id: shazam
                           score: 0.8138144818129545
                           components:
@@ -914,7 +902,7 @@ paths:
                             title: 1
                           message: 0.7*1.0 + 0.25*0.25525792725181806 + 0.05*1.0 = 0.8138144818129545
                         - guid: df7741b11aba8f3fb5dde3a77d1c54ba4dd7ab02
-                          title: 'lego dc super hero girls: super-villain high'
+                          title: "lego dc super hero girls: super-villain high"
                           source_id: legodcgirls
                           score: 0.3365560651083932
                           components:
@@ -923,7 +911,7 @@ paths:
                             title: 0.08104664020637997
                           message: 0.7*0.11786247585439169 + 0.25*1.0 + 0.05*0.08104664020637997 = 0.3365560651083932
                         - guid: fb2710f34c97d57a3e7a12eec7ff4336c3493c2f
-                          title: 'jla adventures: trapped in time'
+                          title: "jla adventures: trapped in time"
                           source_id: jlaadventures
                           score: 0.3159509456799562
                           components:
@@ -932,7 +920,7 @@ paths:
                             title: 0
                           message: 0.7*0.0942156366856517 + 0.25*1.0 + 0.05*0.0 = 0.3159509456799562
                         - guid: 7e01c5021c1c54762c157244a8e7fd7db51ee78b
-                          title: 'lego batman: the movie - dc super heroes unite'
+                          title: "lego batman: the movie - dc super heroes unite"
                           source_id: legobatman
                           score: 0.29625431287660015
                           components:
@@ -941,7 +929,7 @@ paths:
                             title: 0.09428429065364974
                           message: 0.7*0.05934299763416806 + 0.25*1.0 + 0.05*0.09428429065364974 = 0.29625431287660015
                         - guid: 9a8d703dbbf73ed30ba362721670ae570c64e8de
-                          title: 'lego dc comics super heroes: aquaman - rage of atlantis'
+                          title: "lego dc comics super heroes: aquaman - rage of atlantis"
                           source_id: legodcaquaman
                           score: 0.29566899918453904
                           components:
@@ -960,14 +948,14 @@ paths:
         in: query
         name: seed_guid
         required: true
-  '/explainer_tool/related/{source}/models':
+  "/explainer_tool/related/{source}/models":
     get:
       summary: get explainer models
       tags:
         - Explainer Tool
       operationId: v1.explainer_tool.related.get_models
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -996,7 +984,7 @@ paths:
                             tags: 0.25
                             title: 0.7
               examples:
-                '1':
+                "1":
                   value:
                     - model:
                         name: tfidf
@@ -1011,12 +999,12 @@ paths:
         name: source
         in: path
         required: true
-  '/override/{source}/{creative_work_guid}/artworks':
+  "/override/{source}/{creative_work_guid}/artworks":
     get:
       summary: Get all overridden artworks with their tags by creative_work_guid
       operationId: v1.override.artworks.get_all_artworks_tags_overridden
       responses:
-        '200':
+        "200":
           description: OK1
           content:
             application/json:
@@ -1045,22 +1033,22 @@ paths:
                           manually_overriden:
                             type: boolean
               examples:
-                '1':
+                "1":
                   value:
                     - guid: c2cc6c3cd1ea3610e66adcad8b555eda50f7342e
-                      uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top'
+                      uri: "https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top"
                       tags:
                         - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                           name: poster
-                          artwork_fitted_uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges'
+                          artwork_fitted_uri: "https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges"
                           manually_created: false
                           manually_overriden: true
                     - guid: 3232debd8274eed8d97751895fdd7ef21f5d32b3
-                      uri: 'https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser'
+                      uri: "https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser"
                       tags:
                         - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                           name: billboard
-                          artwork_fitted_uri: 'https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges'
+                          artwork_fitted_uri: "https://utelly2.global.ssl.fastly.net/00b5d9c750b094118928026deed8706f/https%3A%2F%2Fstatic.bb-static.com%2Fshain%2Fv1%2Fdataservice%2FResizeImage%2F%24value%3FFormat%3D%27jpg%27%26Quality%3D85%26ImageId%3D%27312060%27%26EntityType%3D%27Item%27%26EntityId%3D%2754216%27%26Width%3D720%26Height%3D1080%26ImageUrl%3D312060.jpg%26device%3Dweb_browser?h=266&w=177&fit=crop&crop=faces,edges"
                           manually_created: false
                           manually_overriden: true
       tags:
@@ -1081,12 +1069,12 @@ paths:
         name: only_overridden
         in: query
         required: false
-  '/override/{source}/{creative_work_guid}/artworks/{artwork_guid}':
+  "/override/{source}/{creative_work_guid}/artworks/{artwork_guid}":
     get:
       summary: Get artwork tags
       operationId: v1.override.artworks.get_artwork_tags
       responses:
-        '200':
+        "200":
           description: OK1
           content:
             application/json:
@@ -1113,14 +1101,14 @@ paths:
                         manually_overriden:
                           type: boolean
               examples:
-                '1':
+                "1":
                   value:
                     guid: c2cc6c3cd1ea3610e66adcad8b555eda50f7342e
-                    uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top'
+                    uri: "https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?fit=crop&auto=compress&crop=faces,top"
                     tags:
                       - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                         name: poster
-                        artwork_fitted_uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges'
+                        artwork_fitted_uri: "https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=266&w=177&fit=crop&crop=faces,edges"
                         manually_created: false
                         manually_overriden: true
       tags:
@@ -1129,7 +1117,7 @@ paths:
       summary: Manually assign a new tag to artwork
       operationId: v1.override.artworks.override_artwork_with_tag
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -1147,11 +1135,11 @@ paths:
                   manually_overriden:
                     type: boolean
               examples:
-                '1':
+                "1":
                   value:
                     tag_guid: 00001d567eff55ce2d193bdfc786680734e25db1
                     name: main_poster
-                    artwork_fitted_uri: 'https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop'
+                    artwork_fitted_uri: "https://utellyassets4-7.imgix.net/assets/p18379525_v_v10_ab.jpg?h=532&w=354&fit=crop"
                     manually_created: true
                     manually_overriden: true
       description: Manually create a new tag and assign to an artwork with uri display parameters
@@ -1175,7 +1163,7 @@ paths:
               required:
                 - name
             examples:
-              '1':
+              "1":
                 value:
                   name: main_poster
                   uri_fit:
@@ -1204,12 +1192,12 @@ paths:
         name: only_overridden
         in: query
         required: false
-  '/override/{source}/{creative_work_guid}/artworks/{artwork_guid}/tags/{tag_guid}':
+  "/override/{source}/{creative_work_guid}/artworks/{artwork_guid}/tags/{tag_guid}":
     delete:
       summary: Delete artwork tags override
       operationId: v1.override.artworks.delete_overridden_artwork_tag
       responses:
-        '200':
+        "200":
           description: OK
       description: Delete a tag from an artwork
       tags:
@@ -1235,14 +1223,14 @@ paths:
         name: tag_guid
         in: path
         required: true
-  '/override/{source}/artworks/tags':
+  "/override/{source}/artworks/tags":
     get:
       summary: Get available artwork tags
       operationId: v1.override.artworks.get_tags
       tags:
         - Artworks Override
       responses:
-        '200':
+        "200":
           description: OK1
           content:
             application/json:
@@ -1258,7 +1246,7 @@ paths:
                     manually_created:
                       type: boolean
               examples:
-                '1':
+                "1":
                   value:
                     - tag_guid: e287f931b467014a4fed48ded97d7887a62af2ba
                       name: poster
@@ -1274,10 +1262,10 @@ paths:
         required: true
 servers:
   - description: prod
-    url: 'https://services.utelly.com/dm0_manager/v1'
+    url: "https://services.utelly.com/dm0_manager/v1"
   - description: staging
-    url: 'https://staging-services.utelly.com/dm0_manager/v1'
+    url: "https://staging-services.utelly.com/dm0_manager/v1"
   - description: dev
-    url: 'https://dev-services.utelly.com/dm0_manager/v1'
+    url: "https://dev-services.utelly.com/dm0_manager/v1"
 tags:
   - name: utelly_services
