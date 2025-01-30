@@ -211,7 +211,6 @@ components:
       type: object
     CreativeWork:
       additionalProperties: false
-      description: ''
       title: CreativeWork
       type: object
       x-examples: {}
@@ -345,6 +344,13 @@ components:
                 properties:
                   guid:
                     type: string
+        release_dates:
+          x-stoplight:
+            id: 8ptwygklr1ko4
+          type: array
+          items:
+            type: CreativeWork
+            $ref: '#/components/schemas/ReleaseDate'
       required:
         - _links
         - created_at
@@ -942,6 +948,22 @@ components:
           type: string
         asset_encoding:
           type: string
+    ReleaseDate:
+      title: ReleaseDate
+      x-stoplight:
+        id: q4wvk04wp8gms
+      type: object
+      properties:
+        country:
+          type: string
+          x-stoplight:
+            id: xwygb2npkxv5i
+        release_date:
+          type: string
+          x-stoplight:
+            id: 4roj6d90vx229
+      required:
+        - release_date
   securitySchemes:
     Authorization:
       in: header
