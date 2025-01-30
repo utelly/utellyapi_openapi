@@ -775,12 +775,24 @@ paths:
       summary: Statistics to firehose
       tags: [ ]
       responses:
-        '202':
-          description: Accepted
+        '201':
+          description: Created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/sample_statistics'
+              examples:
+                '1':
+                  value:
+                    total_shows_in_source: 0
+                    verified_shows_in_source: 0
+                    total_false_positives: 0
+                    total_false_negatives: 0
+                    verified_false_positives: 0
+                    verified_false_negatives: 0
+                    dataset: 'dataset_name'
+                    type: 'matcher_data_quality'
+                    created_at: '2025-01-29T11:20:31.007583+00:00'
       operationId: v1.data_quality.statistics.post
       x-stoplight:
         id: xxhyark5g5uq8
