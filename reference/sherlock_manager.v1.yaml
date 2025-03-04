@@ -986,7 +986,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      operationId: v1.search.search.autocomplete.lookup
+      operationId: v1.search.autocomplete.lookup
       x-stoplight:
         id: y6v1fb0np4a24
       parameters:
