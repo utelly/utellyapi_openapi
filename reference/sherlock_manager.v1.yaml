@@ -974,6 +974,24 @@ paths:
         required: true
         schema:
           type: string
+  /lookup:
+    get:
+      summary: Lookup
+      tags: []
+      responses: {}
+      operationId: v1.search.lookup
+      x-stoplight:
+        id: y6v1fb0np4a24
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: term
+        - schema:
+            type: string
+          in: query
+          name: countries
+      x-internal: true
 servers:
   - description: prod
     url: 'https://services.utelly.com/sherlock_manager/v1'
