@@ -1000,6 +1000,31 @@ paths:
           in: query
           name: country
       x-internal: true
+  /lookupID:
+    get:
+      summary: Lookup by ID
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: v1.search.autocomplete.id_lookup
+      x-stoplight:
+        id: 6po3t3pfwpsxn
+      x-internal: true
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: source
+        - schema:
+            type: string
+          in: query
+          name: source_id
 servers:
   - description: prod
     url: 'https://services.utelly.com/sherlock_manager/v1'
