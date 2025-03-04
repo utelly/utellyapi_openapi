@@ -980,7 +980,7 @@ paths:
       tags: []
       responses:
         '200':
-          description: OK
+          description: Example Response
           content:
             application/json:
               schema:
