@@ -1000,13 +1000,14 @@ paths:
           in: query
           name: country
       x-internal: true
-  /lookupID:
+  /lookup_id:
     get:
       summary: Lookup by ID
       tags: []
       responses:
         '200':
           description: OK
+          headers: {}
           content:
             application/json:
               schema:
@@ -1014,9 +1015,12 @@ paths:
                 properties: {}
       operationId: v1.search.autocomplete.id_lookup
       x-stoplight:
-        id: 6po3t3pfwpsxn
-      x-internal: true
+        id: z56srg2c0sbcq
       parameters:
+        - schema:
+            type: string
+          in: query
+          name: country
         - schema:
             type: string
           in: query
