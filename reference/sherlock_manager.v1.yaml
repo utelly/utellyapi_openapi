@@ -990,7 +990,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: countries
+          name: country
       x-internal: true
 servers:
   - description: prod
