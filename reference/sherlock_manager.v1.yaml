@@ -978,7 +978,14 @@ paths:
     get:
       summary: Lookup
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       operationId: v1.search.search.autocomplete.lookup
       x-stoplight:
         id: y6v1fb0np4a24
