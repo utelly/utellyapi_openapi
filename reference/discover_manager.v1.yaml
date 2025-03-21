@@ -333,25 +333,26 @@ paths:
             items:
               type: string
               enum:
-                - IVA
-                - IMDB
-                - TMDB
                 - Amazon
-                - Netflix
-                - RottenTomatoes
-                - Youtube
-                - iTunes
-                - Hulu
+                - Apple TV Plus
                 - BoxOfficeMojo
-                - TheNumbers
-                - TVGuide
-                - MovieClips
-                - Redbox
-                - Xfinity
-                - Fios
-                - Vudu
-                - PlutoTV
+                - Disney Plus
                 - Gamespot
+                - HBO Max
+                - Hulu
+                - IMDB
+                - Letterboxd
+                - MetaCritic
+                - Netflix
+                - Open Critic
+                - Paramount
+                - Peacock
+                - Pluto
+                - Rotten Tomatoes
+                - TheNumbers
+                - Tubi
+                - Twitter
+                - Youtube                
           in: query
           name: popularity.provider
           style: pipeDelimited
