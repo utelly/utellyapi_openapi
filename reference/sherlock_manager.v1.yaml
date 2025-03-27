@@ -1157,7 +1157,7 @@ paths:
           in: query
           name: country
       x-internal: true
-  /lookup_id:
+  /idlookup:
     get:
       summary: Lookup by ID
       tags: []
