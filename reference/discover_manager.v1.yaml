@@ -351,7 +351,16 @@ paths:
                 - TheNumbers
                 - Tubi
                 - Twitter
-                - Youtube                
+                - Youtube        
+                - TMDB
+                - iTunes
+                - TVGuide
+                - Redbox
+                - Xfinity
+                - Fios
+                - Vudu       
+                - MovieClips
+                - PlutoTV
           in: query
           name: popularity.provider
           style: pipeDelimited
