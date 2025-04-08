@@ -777,6 +777,33 @@ paths:
             type: array
             items:
               type: string
+          in: query
+          name: tags
+          style: pipeDelimited
+          explode: true
+          description: Has one of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: tags.all
+          style: pipeDelimited
+          explode: true
+          description: Has all of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: tags.excl
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
             example:
               - tv
               - movie
