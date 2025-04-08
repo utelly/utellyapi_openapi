@@ -142,12 +142,16 @@ components:
           type: string
     Contributor:
       additionalProperties: false
+      title: Contributor
+      type: object
       properties:
         _links:
           $ref: ../models/HalLinks.v1.yaml
         character_names:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               character_name:
                 type: string
@@ -156,8 +160,6 @@ components:
             required:
               - character_name
               - metadata
-            type: object
-          type: array
         created_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
@@ -167,12 +169,14 @@ components:
         guid:
           type: string
         identifiers:
+          type: array
           items:
             $ref: '#/components/schemas/identifier_field'
-          type: array
         roles:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
@@ -181,24 +185,26 @@ components:
             required:
               - metadata
               - role
-            type: object
-          type: array
         s:
           type: string
         sequences:
+          type: array
           items:
             additionalProperties: false
+            type: object
             properties:
               metadata:
                 $ref: '#/components/schemas/metadata_field'
               sequence:
                 type: integer
-            type: object
-          type: array
         updated_at:
           format: date-time
           pattern: '(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z'
           type: string
+        _embedded:
+          type: object
+          x-stoplight:
+            id: 3ogijognfoj5c
       required:
         - _links
         - created_at
@@ -207,8 +213,6 @@ components:
         - identifiers
         - roles
         - updated_at
-      title: Contributor
-      type: object
     CreativeWork:
       additionalProperties: false
       title: CreativeWork
