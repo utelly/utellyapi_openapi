@@ -1577,6 +1577,14 @@ paths:
           name: embed
           description: List of related resources to be embedded.
           style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: locations
+          description: Filter results by location(s)
+          style: pipeDelimited
       description: ''
   '/content/collection/{collection_guid}/preview':
     parameters:
@@ -1831,6 +1839,14 @@ paths:
           in: query
           name: search_after
           description: For pagination
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: locations
+          description: Filter results by location(s)
+          style: pipeDelimited
   '/content/page/{page_name}/preview':
     parameters:
       - schema:
