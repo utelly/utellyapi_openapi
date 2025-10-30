@@ -4300,6 +4300,136 @@ paths:
       operationId: v1.content.asset_blob.get_one
       tags:
         - Asset management
+  '/external_data/{organization}/videos/{video_id}':
+    parameters:
+      - schema:
+          type: string
+        name: video_id
+        in: path
+        required: true
+      - schema:
+          type: string
+          enum:
+            - IVA
+        name: organization
+        in: path
+        required: true
+    get:
+      summary: Get a video url
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - hls
+              - mp4
+          name: format
+          in: query
+          required: true
+        - schema:
+            type: string
+            format: date-time
+            example: '2026-10-31T00:00:00Z'
+          in: query
+          name: expiry
+          required: true
+        - schema:
+            type: string
+            enum:
+              - NOT_SET
+              - mp4_80
+              - mp4_212
+              - mp4_450
+              - mp4_750
+              - mp4_1500
+              - mp4_2500
+              - mp4_5000
+              - mp4_8000
+          name: kb_rate
+          in: query
+          description: Video bit-rate required for MP4 content
+        - schema:
+            type: string
+            enum:
+              - RESOLUTION_QVGA
+              - RESOLUTION_HVGA 
+              - RESOLUTION_480P
+              - RESOLUTION_720P
+              - RESOLUTION_1080P
+          name: adaptive_minimum_resolution
+          in: query
+          description: Adaptive Minimum resolution. Default is QVGA (320 wide, 212Kbps)
+        - schema:
+            type: string
+            enum:
+              - RESOLUTION_QVGA
+              - RESOLUTION_HVGA 
+              - RESOLUTION_480P
+              - RESOLUTION_720P
+              - RESOLUTION_1080P
+          name: adaptive_maximum_resolution
+          in: query
+          description: Adaptive Minimum resolution. Default is 1080P
+        - schema:
+            type: integer
+          name: adaptive_start_index
+          in: query
+          description: Adaptive Start Index. Default = 4, the 480P resolution.
+        - schema:
+            type: integer
+          name: adaptive_client_manifest_version
+          in: query
+          description: Adaptive Client Manifest Version (HLS, default = 3)
+        - schema:
+            type: string
+            enum:
+              - Two
+              - Three
+              - Four
+              - Five
+              - Six
+              - Seven
+              - Eight
+              - Nine
+              - Ten
+              - Fifteen
+              - Twenty
+              - Thirty
+          name: adaptive_minimum_fragment_length
+          in: query
+          description: Adaptive Minimum Fragment Length. Default is 10 seconds.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                  expiry:
+                    type: string
+                    format: date-time
+                    example: '2026-10-31T00:00:00Z'
+                  request_parameters:
+                    type: object
+                    additionalProperties: true
+                    properties:
+                      format:
+                        type: string
+                        enum:
+                          - hls
+                          - mp4
+              examples:
+                '1':
+                  value:
+                    video_url: https://video.internetvideoarchive.net/video.m3u8?cmd=6&fmt=11&customerid=989237&publishedid=1000&e=1767225600&sub=test_content_discovery&h=afcb01394fe8b885b2c4c1a3e8f659e8
+                    expiry: '2026-10-31T00:00:00Z'
+                    request_parameters:
+                      format: hls
+      operationId: v1.external_data.videos.get_video_url
+      tags:
+        - External data management
 security:
   - Authorization: []
 servers:
