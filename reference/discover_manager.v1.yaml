@@ -1055,7 +1055,7 @@ paths:
             type: string
           in: query
           name: q
-          description: search keyword
+          description: Semantic query string. Will be interpreted by NLU component. Other content filters will be ignored.
         - schema:
             type: integer
             minimum: 0
