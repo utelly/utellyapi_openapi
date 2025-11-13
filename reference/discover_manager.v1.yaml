@@ -1085,7 +1085,7 @@ paths:
             type: array
           in: query
           name: fields
-          description: List of resource fields to be including in the response.
+          description: List of resource fields to be included in the response.
           style: pipeDelimited
         - schema:
             type: array
