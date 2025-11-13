@@ -948,6 +948,349 @@ paths:
           style: pipeDelimited
       description: ''
     parameters: []
+  /creative_works/semantic:
+    get:
+      summary: Semantic search for Creative Works
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  _embedded:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      creative_works:
+                        type: array
+                        items:
+                          $ref: ./browse_manager.v1.yaml#/components/schemas/CreativeWork
+                  _links:
+                    $ref: ../models/HalLinks.v1.yaml
+                  total_count:
+                    type: integer
+                    description: Total number of results
+                  _metadata:
+                    $ref: ../models/metadata_field.v1.yaml
+                required:
+                  - _links
+                  - _embedded
+                  - total_count
+                  - _metadata
+              examples:
+                '1':
+                  value:
+                    _embedded:
+                      creative_works:
+                        - _links:
+                            availabilities:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/availabilities
+                            content_ratings:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/content_ratings
+                            contributors:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/contributors
+                            episodes:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/episodes
+                            seasons:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/seasons
+                            self:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46
+                            tags:
+                              href: /content/creative_works/27c13eec19014084a0a3173061702b46/tags
+                          artworks:
+                            - height: 100
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: poster
+                              url: 'https://mydomain.com/poster.jpg'
+                              width: 100
+                          created_at: '2020-01-01T00:00:10Z'
+                          deleted: false
+                          descriptions:
+                            - description: 'A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which began when five criminals met at a seemingly random police lineup.'
+                              metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: full
+                          guid: 27c13eec19014084a0a3173061702b46
+                          identifiers:
+                            - id: '1'
+                              source: mysource
+                          relationships:
+                            - href: /content/creative_works/eac7cb1192264b088ccbad0874395ce5
+                              rel: parent
+                          titles:
+                            - metadata:
+                                country: GB
+                                language: en
+                                source: mysource
+                                type: official
+                              title: The Usual Suspects
+                          type: movie
+                          updated_at: '2020-01-01T00:00:10Z'
+                    _links:
+                      first:
+                        href: /content/creative_works
+                      last:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      next:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                      prev:
+                        href: /content/creative_works
+                      self:
+                        href: /content/creative_works?after_guid=8703dd1ced974ecea01116f2c0a5a282&limit=50
+                    _metadata:
+                      request_guid: 8b63dd1ced974ecea01116f2c0a5a282
+                    total_count: 1
+      operationId: v1.discover.semantic.get
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: Semantic query string. Will be interpreted by Semantic component. Other content filters will be ignored.
+          required: true
+        - schema:
+            type: integer
+            minimum: 0
+            maximum: 50
+          in: query
+          name: limit
+          description: Max items to be included in response
+        - schema:
+            type: string
+          in: query
+          name: search_after
+        - schema:
+            type: array
+            items:
+              type: string
+            example:
+              - availabilities
+              - tags
+          in: query
+          name: embed
+          description: 'List of related resources to be embedded in creative works. Note: embedded resources will themselves be fully embedded.'
+          style: pipeDelimited
+        - schema:
+            items:
+              type: string
+            type: array
+          in: query
+          name: fields
+          description: List of resource fields to be included in the response.
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - web
+                - android
+                - ios
+                - tv
+                - native_hbbtv
+          in: query
+          name: platform
+          style: pipeDelimited
+          explode: true
+          description: Has one or more of the listed platforms as an availability.
+        - schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - web
+                - android
+                - ios
+                - tv
+                - native_hbbtv
+          in: query
+          name: platform.excl
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed platforms as an availability.
+        - schema:
+            items:
+              type: string
+            type: array
+          in: query
+          style: pipeDelimited
+          description: Has availability for one or more of the listed location ids.
+          name: locations
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: tags
+          style: pipeDelimited
+          explode: true
+          description: Has one of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: tags.all
+          style: pipeDelimited
+          explode: true
+          description: Has all of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: tags.excl
+          style: pipeDelimited
+          explode: true
+          description: Has none of the listed tag ids.
+        - schema:
+            type: array
+            items:
+              type: string
+            example:
+              - tv
+              - movie
+              - series
+              - season
+              - episode
+          in: query
+          name: types
+          style: pipeDelimited
+          explode: true
+          description: Is one of the listed types
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: services
+          style: pipeDelimited
+          description: Has one or more of the listed service ids as an availability.
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: services.excl
+          style: pipeDelimited
+          description: Has none of the listed service ids as an availability.
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_from
+          style: pipeDelimited
+          explode: true
+          description: Has availability start date equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_from.gte
+          style: pipeDelimited
+          explode: true
+          description: Has availability start date greater than or equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_from.lte
+          style: pipeDelimited
+          explode: true
+          description: Has availability start date less than or equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_to
+          style: pipeDelimited
+          explode: true
+          description: Has availability end date equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_to.gte
+          style: pipeDelimited
+          explode: true
+          description: Has availability end date greater than or equal to value
+        - schema:
+            type: string
+            format: date-time
+            example: '2021-08-31T00:00:00Z'
+          in: query
+          name: availability_to.lte
+          style: pipeDelimited
+          explode: true
+          description: Has availability end date less than or equal to value
+        - schema:
+            type: string
+          in: query
+          name: user.id
+          description: Identifier for user
+        - schema:
+            type: string
+          in: query
+          name: user.source
+          description: Namespace of user.id
+        - schema:
+            type: array
+            items:
+              $ref: ../models/language_field.v1.yaml
+          in: query
+          style: pipeDelimited
+          name: languages
+          description: 'Used to remove unnecessary titles, descriptions and artworks.'
+        - schema:
+            items:
+              $ref: ../models/locale_field.v1.yaml
+            type: array
+          in: query
+          name: locales
+          description: 'Used to remove unnecessary titles, descriptions and artworks.'
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+          in: query
+          name: sources
+          description: Content must have originated from one of the listed sources
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+            example: 'offer:offer_id'
+          in: query
+          name: audiences
+          description: 'Content must have an availability.audience matching at least one <type>:<value> from this list'
+          style: pipeDelimited
+        - schema:
+            type: array
+            items:
+              type: string
+            pattern: 'offer:offer_id'
+          in: query
+          name: audiences.opt
+          description: 'Content must have an availability.audience matching at least one <type>:<value> from this list or no availability.audience of <type>'
+          style: pipeDelimited
+      description: ''
+    parameters: []
 components:
   schemas:
     user_object:
