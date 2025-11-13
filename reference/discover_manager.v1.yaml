@@ -1208,7 +1208,7 @@ paths:
           name: availability_from.lte
           style: pipeDelimited
           explode: true
-          description: Has a start date less than or equal to value
+          description: Has availability start date less than or equal to value
         - schema:
             type: string
             format: date-time
