@@ -1289,7 +1289,7 @@ paths:
           description: 'Content must have an availability.audience matching at least one <type>:<value> from this list or no availability.audience of <type>'
           style: pipeDelimited
       description: ''
-    parameters: []    
+    parameters: []
 components:
   schemas:
     user_object:
