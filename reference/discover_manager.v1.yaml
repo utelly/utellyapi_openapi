@@ -1235,7 +1235,7 @@ paths:
           name: availability_to.lte
           style: pipeDelimited
           explode: true
-          description: Has a end date less than or equal to value
+          description: Has availability end date less than or equal to value
         - schema:
             type: string
           in: query
